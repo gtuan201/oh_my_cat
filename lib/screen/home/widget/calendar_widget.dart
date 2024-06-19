@@ -69,9 +69,9 @@ class CalendarPageState extends State<CalendarPage> {
       children: [
         InkWell(
           onTap: afterNow ? null : (){
-            Get.bottomSheet(AddEmotionWidget(date: day,),isScrollControlled: true,ignoreSafeArea: false);
+            Get.bottomSheet(AddEmotionWidget(date: day,),isScrollControlled: true);
           },
-          child: !isToday ? Container(
+          child: Container(
             height: 52,
             width: 52,
             decoration: BoxDecoration(
@@ -80,7 +80,7 @@ class CalendarPageState extends State<CalendarPage> {
             ),
             padding: EdgeInsets.all(afterNow ? 1 : 4),
             child: Icon(Icons.circle,color: isToday ? Colors.lightBlue.shade100 : afterNow ? ColorName.colorPrimary : Colors.blueGrey.shade500,size: afterNow ? 50 : 40,),
-          ) : Assets.image.happy.svg(width: 52,height: 52),
+          ),
         ),
         const SizedBox(height: 4,),
         Text('${day.day}',style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w600),)
