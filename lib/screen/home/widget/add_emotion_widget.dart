@@ -30,14 +30,25 @@ class _CircleListAnimationState extends State<AddEmotionWidget> {
         appBar: AppBar(
           backgroundColor: ColorName.colorPrimary,
           elevation: 0,
+          automaticallyImplyLeading: false,
+          toolbarHeight: 100,
+          leading: Container(
+            margin: const EdgeInsets.only(right: 6,top: 48),
+            child: IconButton(
+                onPressed: (){
+                  Get.back();
+                },
+                icon: FaIcon(FontAwesomeIcons.arrowLeft,color: Colors.grey.shade400,)
+            ),
+          ),
           actions: [
             Container(
-              margin: const EdgeInsets.only(right: 6),
+              margin: const EdgeInsets.only(right: 6,top: 48),
               child: IconButton(
                 onPressed: (){
 
                 },
-                icon: const FaIcon(FontAwesomeIcons.sliders)
+                icon: FaIcon(FontAwesomeIcons.sliders,color: Colors.grey.shade400)
               ),
             )
           ],
@@ -45,34 +56,58 @@ class _CircleListAnimationState extends State<AddEmotionWidget> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(DateTimeHelper.checkIsToday(widget.date) ? '' : ''),
-            Obx(() => GestureDetector(
-              onLongPress: (){
-                isShowTooltip.value = true;
-                Timer(3.seconds, (){
-                  isShowTooltip.value = false;
-                });
-              },
-              child: Center(
-                child: SizedBox(
-                  width: Get.width,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: List.generate(itemCount, (index) {
-                      return DelayedAnimation(
-                        delay: index * 50,
-                        child: CircleItem(
-                            index: index,
-                            totalItems: itemCount,
-                            radius: radius,
-                            isShowTooltip: isShowTooltip.value
-                        ),
-                      );
-                    }),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 64),
+              child: Text(DateTimeHelper.checkIsToday(widget.date) ? 'Yo! Hôm nay bạn cảm thấy thế nào?' : 'Bạn cảm thấy thế nào vào ngày hôm đó?',
+                style: TextStyle(color: Colors.grey.shade400,fontSize: 24,fontWeight: FontWeight.w800,),textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(height: 12,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FaIcon(FontAwesomeIcons.calendarWeek,color: Colors.grey.shade400,size: 18,),
+                const SizedBox(width: 8,),
+                InkWell(
+                  onTap: (){
+
+                  },
+                  child: Text("Ngày ${DateTimeHelper.dateTimeToString(widget.date)}",
+                    style: TextStyle(color: Colors.grey.shade400,fontSize: 20,fontWeight: FontWeight.w400,decoration: TextDecoration.underline),
                   ),
                 ),
-              ),
-            ),),
+              ],
+            ),
+            SizedBox(
+              height: 460,
+              child: Obx(() => GestureDetector(
+                onLongPress: (){
+                  isShowTooltip.value = true;
+                  Timer(3.seconds, (){
+                    isShowTooltip.value = false;
+                  });
+                },
+                child: Center(
+                  child: SizedBox(
+                    width: Get.width,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: List.generate(itemCount, (index) {
+                        return DelayedAnimation(
+                          delay: index * 50,
+                          child: CircleItem(
+                              index: index,
+                              totalItems: itemCount,
+                              radius: radius,
+                              isShowTooltip: isShowTooltip.value
+                          ),
+                        );
+                      }),
+                    ),
+                  ),
+                ),
+              ),),
+            ),
           ],
         )
       ),
