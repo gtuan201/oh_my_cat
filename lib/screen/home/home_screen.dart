@@ -4,7 +4,9 @@ import 'package:intl/intl.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mood_press/helper/database_helper.dart';
+import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/screen/home/widget/calendar_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,6 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     _pageController = PageController(initialPage: month.value - 1);
     super.initState();
+    // Get.find<DatabaseHelper>().removeAllMoods();
+    context.read<HomeProvider>().getMoods();
   }
 
   @override
@@ -69,9 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   month.value = i + 1;
                 },
                 itemBuilder: (context,index) =>
-                  SizedBox(
-                    child: CalendarPage(month: index + 1,)
-                ),
+                    CalendarPage(month: index + 1,)
               ),
             )
           ],

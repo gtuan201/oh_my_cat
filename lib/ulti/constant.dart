@@ -1,6 +1,11 @@
 import '../gen/assets.gen.dart';
 
 class Constant{
+
+  static const int ALIGN_CENTER = 0;
+  static const int ALIGN_LEFT = 1;
+  static const int ALIGN_RIGHT = 2;
+
   static List<SvgGenImage> listEmoji = [
     Assets.image.cry,
     Assets.image.sad,
