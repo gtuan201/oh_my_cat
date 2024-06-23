@@ -56,7 +56,7 @@ class _CircleListAnimationState extends State<AddEmotionWidget> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: Get.height*0.05,),
+            SizedBox(height: Get.height*0.08,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 64),
               child: Text(DateTimeHelper.checkIsToday(widget.date) ? 'Yo! Hôm nay bạn cảm thấy thế nào?' : 'Bạn cảm thấy thế nào vào ngày hôm đó?',

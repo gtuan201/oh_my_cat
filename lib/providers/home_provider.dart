@@ -57,6 +57,11 @@ class HomeProvider with ChangeNotifier {
     await getMoods();
   }
 
+  Future<void> removeMood(Mood mood) async {
+    await Get.find<DatabaseHelper>().deleteMood(mood.id!);  notifyListeners();
+    await getMoods();
+  }
+
   Future<void> getMoods()async {
     listMood = await Get.find<DatabaseHelper>().getMoods();
     notifyListeners();
