@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/helper/date_time_helper.dart';
+import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/screen/home/widget/add_emotion_widget.dart';
-
-import '../../../gen/assets.gen.dart';
+import 'package:mood_press/screen/home/widget/input_info_mood_widget.dart';
+import 'package:mood_press/ulti/constant.dart';
+import 'package:provider/provider.dart';
+import '../../../model/mood.dart';
 
 class CalendarPage extends StatefulWidget {
   final int month;
@@ -65,26 +68,54 @@ class CalendarPageState extends State<CalendarPage> {
 
     bool afterNow = day.isAfter(DateTime.now());
 
-    return Column(
-      children: [
-        InkWell(
-          onTap: afterNow ? null : (){
-            Get.bottomSheet(AddEmotionWidget(date: day,),isScrollControlled: true);
-          },
-          child: Container(
-            height: 52,
-            width: 52,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: isToday ? Colors.lightBlue : Colors.blueGrey.shade400,
-            ),
-            padding: EdgeInsets.all(afterNow ? 1 : 4),
-            child: Icon(Icons.circle,color: isToday ? Colors.lightBlue.shade100 : afterNow ? ColorName.colorPrimary : Colors.blueGrey.shade500,size: afterNow ? 50 : 40,),
-          ),
-        ),
-        const SizedBox(height: 4,),
-        Text('${day.day}',style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w600),)
-      ],
+    return Selector<HomeProvider,List<Mood>>(
+        builder: (context,listMood,child){
+          Mood? mood = moodOfDay(day, listMood);
+          return Column(
+            children: [
+              InkWell(
+                onTap: afterNow ? null : (){
+                  navigationToMood(day, mood);
+                },
+                child: mood != null ? Constant.listEmoji[mood.mood].svg(width: 52,height: 52) : Container(
+                  height: 52,
+                  width: 52,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: isToday ? Colors.lightBlue : Colors.blueGrey.shade400,
+                  ),
+                  padding: EdgeInsets.all(afterNow ? 1 : 4),
+                  child: Icon(Icons.circle,color: isToday ? Colors.lightBlue.shade100 : afterNow ? ColorName.colorPrimary : Colors.blueGrey.shade500,size: afterNow ? 50 : 40,),
+                ),
+              ),
+              const SizedBox(height: 4,),
+              Text('${day.day}',style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w600),)
+            ],
+          );
+        },
+        selector: (_,provider) => provider.listMood
+    );
+  }
+  Mood? moodOfDay(DateTime day,List<Mood> listMood){
+    return listMood.firstWhereOrNull((mood) => DateTimeHelper.areDatesEqual(day, mood.date));
+  }
+  void navigationToMood(DateTime day,Mood? mood){
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => mood != null
+            ? InputInfoMoodWidget(moodIndex: mood.mood, date: mood.date,mood: mood,)
+            : AddEmotionWidget(date: day,),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(0.0, 1.0);
+          const end = Offset.zero;
+          const curve = Curves.ease;
+          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        },
+      ),
     );
   }
 }

@@ -42,4 +42,7 @@ class ColorName {
 
   /// Color: #FFFF00
   static const Color colorYellow = Color(0xFFFFFF00);
+
+  /// Color: #1B2F3B
+  static const Color darkBlue = Color(0xFF1B2F3B);
 }

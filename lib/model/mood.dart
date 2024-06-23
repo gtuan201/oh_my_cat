@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Mood {
   int? id;
   int mood;
@@ -7,6 +5,8 @@ class Mood {
   DateTime date;
   String? location;
   List<String>? imagePath;
+  int isSpecial;
+  int align;
 
   Mood({
     this.id,
@@ -15,6 +15,8 @@ class Mood {
     required this.date,
     this.location,
     this.imagePath,
+    required this.isSpecial,
+    required this.align
   });
 
   Map<String, dynamic> toMap() {
@@ -24,7 +26,9 @@ class Mood {
       'note': note,
       'date': date.toIso8601String(),
       'location': location,
-      'imagePath': imagePath?.join(","),
+      'imagePath': imagePath != null && imagePath!.isNotEmpty ? imagePath?.join(",") : [],
+      'isSpecial' : isSpecial,
+      'align' : align
     };
   }
 
@@ -40,7 +44,9 @@ class Mood {
       note: map['note'],
       date: DateTime.parse(map['date']),
       location: map['location'],
-      imagePath: map['imagePath'] != null ? map['imagePath'].split(",") : [],
+      imagePath: map['imagePath'] != null && map['imagePath'].isNotEmpty ? map['imagePath'].split(",") : [],
+      isSpecial: map['isSpecial'],
+      align: map['align']
     );
   }
 }

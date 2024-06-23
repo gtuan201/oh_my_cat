@@ -29,7 +29,9 @@ class DatabaseHelper{
         note TEXT,
         date TEXT,
         location TEXT,
-        imagePath TEXT
+        imagePath TEXT,
+        isSpecial INTEGER,
+        align INTEGER
       )''');
   }
   Future<void> insertMood(Mood mood) async {

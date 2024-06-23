@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/screen/home/widget/custom_tooltip.dart';
+import 'package:mood_press/screen/home/widget/input_info_mood_widget.dart';
 import 'package:mood_press/ulti/constant.dart';
 
 import '../../../helper/date_time_helper.dart';
@@ -24,38 +25,38 @@ class _CircleListAnimationState extends State<AddEmotionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: ColorName.colorPrimary,
+      appBar: AppBar(
         backgroundColor: ColorName.colorPrimary,
-        appBar: AppBar(
-          backgroundColor: ColorName.colorPrimary,
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          toolbarHeight: 100,
-          leading: Container(
-            margin: const EdgeInsets.only(right: 6,top: 48),
-            child: IconButton(
-                onPressed: (){
-                  Get.back();
-                },
-                icon: FaIcon(FontAwesomeIcons.arrowLeft,color: Colors.grey.shade400,)
-            ),
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        toolbarHeight: 40,
+        leading: Container(
+          margin: const EdgeInsets.only(right: 6),
+          child: IconButton(
+              onPressed: (){
+                Get.back();
+              },
+              icon: FaIcon(FontAwesomeIcons.arrowLeft,color: Colors.grey.shade400,)
           ),
-          actions: [
-            Container(
-              margin: const EdgeInsets.only(right: 6,top: 48),
-              child: IconButton(
-                onPressed: (){
-
-                },
-                icon: FaIcon(FontAwesomeIcons.sliders,color: Colors.grey.shade400)
-              ),
-            )
-          ],
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 6),
+            child: IconButton(
+              onPressed: (){
+
+              },
+              icon: FaIcon(FontAwesomeIcons.sliders,color: Colors.grey.shade400)
+            ),
+          )
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
           children: [
+            SizedBox(height: Get.height*0.05,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 64),
               child: Text(DateTimeHelper.checkIsToday(widget.date) ? 'Yo! Hôm nay bạn cảm thấy thế nào?' : 'Bạn cảm thấy thế nào vào ngày hôm đó?',
@@ -99,7 +100,8 @@ class _CircleListAnimationState extends State<AddEmotionWidget> {
                               index: index,
                               totalItems: itemCount,
                               radius: radius,
-                              isShowTooltip: isShowTooltip.value
+                              isShowTooltip: isShowTooltip.value,
+                              date: widget.date,
                           ),
                         );
                       }),
@@ -109,8 +111,8 @@ class _CircleListAnimationState extends State<AddEmotionWidget> {
               ),),
             ),
           ],
-        )
-      ),
+        ),
+      )
     );
   }
 }
@@ -120,8 +122,9 @@ class CircleItem extends StatelessWidget {
   final int totalItems;
   final double radius;
   final bool isShowTooltip;
+  final DateTime date;
 
-  CircleItem({required this.index, required this.totalItems, required this.radius, required this.isShowTooltip});
+  CircleItem({required this.index, required this.totalItems, required this.radius, required this.isShowTooltip, required this.date});
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +135,9 @@ class CircleItem extends StatelessWidget {
       offset: Offset(x, y),
       child: GestureDetector(
         onTap: () {
-
+          Get.to(() => InputInfoMoodWidget(moodIndex: index,date: date,),
+              transition: Transition.downToUp,duration: 350.milliseconds,
+              curve: Curves.easeInOut);
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
