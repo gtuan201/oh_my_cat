@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -169,9 +168,10 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                         Text("${DateTimeHelper.dateTimeToString(widget.date)}\n${DateTimeHelper.getWeekdayName(widget.date.weekday)}",
                           style: TextStyle(color: Colors.grey.shade300,fontSize: 14,decoration: TextDecoration.underline),
                         ),
+                        if(widget.mood != null)
                         InkWell(
                           onTap: (){
-
+                            showOptionsBottomSheet(context);
                           },
                           child: Icon(Icons.more_vert,color: Colors.grey.shade300)
                         )
@@ -404,6 +404,72 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                     ),
                   );
                 },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+  void showOptionsBottomSheet(BuildContext contextParent) {
+    showModalBottomSheet(
+      context: contextParent,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.all(16),
+          margin: const EdgeInsets.only(bottom: 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  color: ColorName.darkBlue,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Column(
+                  children: [
+                    ListTile(
+                      title: const Text('Xóa', textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.red,fontWeight: FontWeight.w600),),
+                      onTap: () {
+                        Navigator.pop(context);
+                         showDeleteConfirmationDialog(context).then((value) async {
+                          if(value == true){
+                            await contextParent.read<HomeProvider>().removeMood(widget.mood!);
+                            Get.back();
+                          }
+                        });
+                      },
+                      visualDensity: const VisualDensity(vertical: -2),
+                    ),
+                    Divider(height: 1,color: Colors.lightBlue.shade300,),
+                    ListTile(
+                      title: const Text('Chia sẻ', textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600)),
+                      onTap: () {
+                        // Xử lý khi chọn chia sẻ
+                        Navigator.pop(context);
+                      },
+                      visualDensity: const VisualDensity(vertical: -2),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.teal,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: ListTile(
+                  title: const Text('Đóng', textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600)),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  visualDensity: const VisualDensity(vertical: -2),
+                ),
               ),
             ],
           ),
