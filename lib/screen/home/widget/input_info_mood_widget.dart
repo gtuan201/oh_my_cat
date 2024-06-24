@@ -1,4 +1,6 @@
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -13,7 +15,6 @@ import 'package:mood_press/ulti/constant.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:mood_press/ulti/function.dart';
 import 'package:provider/provider.dart';
-import 'package:geolocator/geolocator.dart';
 
 class InputInfoMoodWidget extends StatefulWidget {
   final int moodIndex;
@@ -46,6 +47,9 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
         context.read<HomeProvider>().setUpInfoMood(widget.mood!);
         noteController.text = widget.mood?.note ?? '';
         alignType.value = widget.mood?.align ?? Constant.ALIGN_CENTER;
+        if(widget.mood!.location != null && widget.mood!.location!.isNotEmpty) {
+          context.read<HomeProvider>().selectLocation(widget.mood!.location!);
+        }
         timeNow.value = widget.date;
         isSpecial.value = widget.mood?.isSpecial == 1 ? true : false;
       }
@@ -56,6 +60,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorName.colorPrimary,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: ColorName.colorPrimary,
         elevation: 0,
@@ -91,6 +96,9 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
         ],
       ),
       bottomNavigationBar: Container(
+        margin: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom
+        ),
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
         color: Colors.blueGrey.shade900,
         child: Row(
@@ -122,8 +130,10 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
             const SizedBox(width: 10,),
             IconButton(
                 onPressed: () async {
-                  Position position = await _getCurrentLocation();
-                  Get.to(() => MapWidget(position: position,),transition: Transition.downToUp,curve: Curves.easeInOut);
+                  bool permissionGranted = await handleLocationPermission(context);
+                  if(permissionGranted){
+                    Get.to(() => const MapWidget(),transition: Transition.downToUp,curve: Curves.easeInOut);
+                  }
                 },
                 visualDensity: const VisualDensity(horizontal: -4,vertical: -4),
                 icon: ShaderMask(
@@ -315,29 +325,15 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
       align: alignType.value,
     );
     context.read<HomeProvider>().updateMood(mood);
-    showCustomToast(context: context, message: 'Vâng! Đã cập nhật thành công', imagePath: Assets.image.logo.path);
-  }
-
-  Future<Position> _getCurrentLocation() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return Future.error('Dịch vụ vị trí bị tắt.');
+    if(noteFocusNode.hasFocus){
+      noteFocusNode.unfocus();
+      Timer(500.milliseconds, (){
+        showCustomToast(context: context, message: 'Vâng! Đã cập nhật thành công', imagePath: Assets.image.logo.path);
+      });
     }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error('Quyền truy cập vị trí bị từ chối');
-      }
+    else{
+      showCustomToast(context: context, message: 'Vâng! Đã cập nhật thành công', imagePath: Assets.image.logo.path);
     }
-
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error('Quyền truy cập vị trí bị từ chối vĩnh viễn.');
-    }
-    return await Geolocator.getCurrentPosition();
   }
 
   void showGridBottomSheet(BuildContext context) {

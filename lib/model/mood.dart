@@ -26,7 +26,7 @@ class Mood {
       'note': note,
       'date': date.toIso8601String(),
       'location': location,
-      'imagePath': imagePath != null && imagePath!.isNotEmpty ? imagePath?.join(",") : [],
+      'imagePath': imagePath != null && imagePath!.isNotEmpty ? imagePath?.join(",") : "",
       'isSpecial' : isSpecial,
       'align' : align
     };
@@ -44,7 +44,9 @@ class Mood {
       note: map['note'],
       date: DateTime.parse(map['date']),
       location: map['location'],
-      imagePath: map['imagePath'] != null && map['imagePath'].isNotEmpty ? map['imagePath'].split(",") : [],
+      imagePath: map['imagePath'] != null && map['imagePath'].isNotEmpty
+          ? map['imagePath'].split(",")
+          : null,
       isSpecial: map['isSpecial'],
       align: map['align']
     );

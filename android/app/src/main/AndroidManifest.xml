@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <application
-        android:label="mood_press"
+        android:label="Oh My Cat"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
