@@ -1,5 +1,7 @@
 
 import 'dart:async';
+import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,7 +16,10 @@ import 'package:mood_press/screen/home/widget/map_widget.dart';
 import 'package:mood_press/ulti/constant.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:mood_press/ulti/function.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:share_plus/share_plus.dart';
 
 class InputInfoMoodWidget extends StatefulWidget {
   final int moodIndex;
@@ -34,6 +39,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
   var indexOfMood = 0.obs;
   TextEditingController noteController = TextEditingController();
   FocusNode noteFocusNode = FocusNode();
+  ScreenshotController _screenshotController = ScreenshotController();
 
   @override
   void initState() {
@@ -155,101 +161,100 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
           context.read<HomeProvider>().clear();
         },
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(horizontal: 32,vertical: 20),
-                padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey.shade900,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    width: 2,
-                    color: Colors.blueGrey
-                  )
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("${DateTimeHelper.dateTimeToString(widget.date)}\n${DateTimeHelper.getWeekdayName(widget.date.weekday)}",
-                          style: TextStyle(color: Colors.grey.shade300,fontSize: 14,decoration: TextDecoration.underline),
-                        ),
-                        if(widget.mood != null)
-                        InkWell(
-                          onTap: (){
-                            showOptionsBottomSheet(context);
-                          },
-                          child: Icon(Icons.more_vert,color: Colors.grey.shade300)
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 16,),
-                    Obx(() => InkWell(
-                        onTap: (){
-                          showGridBottomSheet(context);
-                        },
-                        child: Constant.listEmoji[indexOfMood.value].svg(width: 80,height: 80)
-                    ),),
-                    const SizedBox(height: 16,),
-                    Obx(() => Text(Constant.listEmojiNames[indexOfMood.value],
-                      style: TextStyle(color: Colors.grey.shade300,fontSize: 20,fontWeight: FontWeight.w600),
-                    ),),
-                    const SizedBox(height: 16,),
-                    InkWell(
-                      onTap: showTimePicker,
-                      child: Obx(() => Text("-- ${DateTimeHelper.formatTimeHHMM(timeNow.value)} --",
-                        style: TextStyle(color: Colors.grey.shade300,fontSize: 20),))
-                    ),
-                    Consumer<HomeProvider>(builder: (context, homeProvider, child){
-                      return ListView.builder(
-                        itemCount: homeProvider.listImage.length,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context,index){
-                        return ItemImage(file: homeProvider.listImage[index], index: index,);
-                      });
-                    }),
-                    Obx(() => TextField(
-                      controller: noteController,
-                      focusNode: noteFocusNode,
-                      style: TextStyle(
-                          color: Colors.grey.shade300,
-                          fontSize: 16
-                      ),
-                      maxLines: null,
-                      minLines: 1,
-                      textAlign: textAlign(alignType.value),
-                      cursorWidth: 3,
-                      cursorColor: Colors.green.shade700,
-                      decoration: const InputDecoration(
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none
-                      ),
-                    )),
-                    Consumer<HomeProvider>(
-                      builder: (context, homeProvider, child) {
-                        return homeProvider.selectedLocation.isNotEmpty ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.location_on_sharp,color: Colors.white,size: 20,),
-                            const SizedBox(width: 6,),
-                            Expanded(
-                              child: Text(homeProvider.selectedLocation,
-                                style: TextStyle(color: Colors.grey.shade300,fontSize: 16),
-                              ),
-                            ),
-                          ],
-                        ) : const SizedBox();
-                      },
-                    )
-                  ],
-                ),
+          child: Screenshot(
+            controller: _screenshotController,
+            child: Container(
+              width: double.infinity,
+              margin: const EdgeInsets.symmetric(horizontal: 32,vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
+              decoration: BoxDecoration(
+                color: Colors.blueGrey.shade900,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  width: 2,
+                  color: Colors.blueGrey
+                )
               ),
-            ],
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("${DateTimeHelper.dateTimeToString(widget.date)}\n${DateTimeHelper.getWeekdayName(widget.date.weekday)}",
+                        style: TextStyle(color: Colors.grey.shade300,fontSize: 14,decoration: TextDecoration.underline),
+                      ),
+                      if(widget.mood != null)
+                      InkWell(
+                        onTap: (){
+                          showOptionsBottomSheet(context);
+                        },
+                        child: Icon(Icons.more_vert,color: Colors.grey.shade300)
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 16,),
+                  Obx(() => InkWell(
+                      onTap: (){
+                        showGridBottomSheet(context);
+                      },
+                      child: Constant.listEmoji[indexOfMood.value].svg(width: 80,height: 80)
+                  ),),
+                  const SizedBox(height: 16,),
+                  Obx(() => Text(Constant.listEmojiNames[indexOfMood.value],
+                    style: TextStyle(color: Colors.grey.shade300,fontSize: 20,fontWeight: FontWeight.w600),
+                  ),),
+                  const SizedBox(height: 16,),
+                  InkWell(
+                    onTap: showTimePicker,
+                    child: Obx(() => Text("-- ${DateTimeHelper.formatTimeHHMM(timeNow.value)} --",
+                      style: TextStyle(color: Colors.grey.shade300,fontSize: 20),))
+                  ),
+                  Consumer<HomeProvider>(builder: (context, homeProvider, child){
+                    return ListView.builder(
+                      itemCount: homeProvider.listImage.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context,index){
+                      return ItemImage(file: homeProvider.listImage[index], index: index,);
+                    });
+                  }),
+                  Obx(() => TextField(
+                    controller: noteController,
+                    focusNode: noteFocusNode,
+                    style: TextStyle(
+                        color: Colors.grey.shade300,
+                        fontSize: 16
+                    ),
+                    maxLines: null,
+                    minLines: 1,
+                    textAlign: textAlign(alignType.value),
+                    cursorWidth: 3,
+                    cursorColor: Colors.green.shade700,
+                    decoration: const InputDecoration(
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none
+                    ),
+                  )),
+                  Consumer<HomeProvider>(
+                    builder: (context, homeProvider, child) {
+                      return homeProvider.selectedLocation.isNotEmpty ? Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.location_on_sharp,color: Colors.white,size: 20,),
+                          const SizedBox(width: 6,),
+                          Expanded(
+                            child: Text(homeProvider.selectedLocation,
+                              style: TextStyle(color: Colors.grey.shade300,fontSize: 16),
+                            ),
+                          ),
+                        ],
+                      ) : const SizedBox();
+                    },
+                  )
+                ],
+              ),
+            ),
           ),
         ),
       ),
@@ -443,8 +448,8 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                     ListTile(
                       title: const Text('Chia sẻ', textAlign: TextAlign.center,
                           style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600)),
-                      onTap: () {
-                        // Xử lý khi chọn chia sẻ
+                      onTap: ()  {
+                        captureAndShareScreen();
                         Navigator.pop(context);
                       },
                       visualDensity: const VisualDensity(vertical: -2),
@@ -472,5 +477,16 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
         );
       },
     );
+  }
+  Future<void> captureAndShareScreen() async {
+    final Uint8List? imageBytes = await _screenshotController.capture();
+    if (imageBytes != null) {
+      final directory = await getTemporaryDirectory();
+      final imagePath = await File('${directory.path}/screenshot.png').create();
+      await imagePath.writeAsBytes(imageBytes);
+
+      final xFile = XFile(imagePath.path);
+      await Share.shareXFiles([xFile]);
+    }
   }
 }

@@ -89,7 +89,14 @@ class CalendarPageState extends State<CalendarPage> {
                 ),
               ),
               const SizedBox(height: 4,),
-              Text('${day.day}',style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w600),)
+              Text('${day.day}',style: TextStyle(color: mood != null && mood.isSpecial == 1 ? Colors.yellow : Colors.white,fontWeight: FontWeight.w600,
+                shadows: mood != null && mood.isSpecial == 1 ? [
+                  for (int i = 1; i < 8; i++)
+                    Shadow(
+                      color: Colors.orange.withOpacity(0.5),
+                      blurRadius: (5 * i).toDouble(),
+                    ),
+                ] : [] ,),)
             ],
           );
         },
