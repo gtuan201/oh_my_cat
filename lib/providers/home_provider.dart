@@ -44,14 +44,18 @@ class HomeProvider with ChangeNotifier {
     notifyListeners();
   }
   Future<void> insertMood(Mood mood)async {
-    mood.imagePath = listImage.map((e) => e.path).toList();
+    if(listImage.isNotEmpty) {
+      mood.imagePath = listImage.map((e) => e.path).toList();
+    }
     mood.location = selectedLocation;
     await Get.find<DatabaseHelper>().insertMood(mood);
     await getMoods();
   }
 
   Future<void> updateMood(Mood mood)async {
-    mood.imagePath = listImage.map((e) => e.path).toList();
+    if(listImage.isNotEmpty) {
+      mood.imagePath = listImage.map((e) => e.path).toList();
+    }
     mood.location = selectedLocation;
     await Get.find<DatabaseHelper>().updateMood(mood);
     await getMoods();

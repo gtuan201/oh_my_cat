@@ -1,5 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
+
+import '../gen/colors.gen.dart';
 
 Future<bool?> showDeleteConfirmationDialog(BuildContext context) {
   const backgroundColor = Color(0xFF292929);
@@ -98,6 +104,80 @@ void showCustomToast({
     child: toast,
     gravity: ToastGravity.BOTTOM,
     toastDuration: duration,
+  );
+}
+
+Future<bool> handleLocationPermission(BuildContext context) async {
+  bool serviceEnabled;
+  LocationPermission permission;
+
+  serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  if (!serviceEnabled) {
+    final bool? openSettings = await showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        backgroundColor: ColorName.darkBlue,
+        title: const Text('Dịch vụ vị trí chưa được bật',style: TextStyle(color: Colors.white),),
+        content: const Text('Ứng dụng cần truy cập vị trí của bạn để cung cấp các tính năng dựa trên vị trí. Bạn có muốn bật dịch vụ vị trí không?',style: TextStyle(color: Colors.white)),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Không',style: TextStyle(color: Colors.grey)),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: const Text('Có',style: TextStyle(color: Colors.lightBlue)),
+          ),
+        ],
+      ),
+    );
+
+    if (openSettings == true) {
+      if (Platform.isAndroid) {
+        await Geolocator.openLocationSettings();
+      } else if (Platform.isIOS) {
+        await Geolocator.openAppSettings();
+      }
+      serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    }
+
+    if (!serviceEnabled) {
+      return false;
+    }
+  }
+
+  permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      return false;
+    }
+  }
+
+  if (permission == LocationPermission.deniedForever) {
+    return false;
+  }
+
+  return true;
+}
+
+showLoadingDialog({String message = 'Đang tải...'}) {
+  Get.dialog(
+    Dialog(
+      backgroundColor: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const CircularProgressIndicator(color: ColorName.darkBlue,),
+            const SizedBox(height: 15),
+            Text(message),
+          ],
+        ),
+      ),
+    ),
+    barrierDismissible: false,
   );
 }
 
