@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => HomeProvider())
+        ChangeNotifierProvider(create: (_) => HomeProvider(repo: Get.find()))
       ],
       child: GetMaterialApp(
         theme: ThemeData(

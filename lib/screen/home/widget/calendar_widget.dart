@@ -7,7 +7,8 @@ import 'package:mood_press/screen/home/widget/add_emotion_widget.dart';
 import 'package:mood_press/screen/home/widget/input_info_mood_widget.dart';
 import 'package:mood_press/ulti/constant.dart';
 import 'package:provider/provider.dart';
-import '../../../model/mood.dart';
+import '../../../data/model/mood.dart';
+import '../../../ulti/function.dart';
 
 class CalendarPage extends StatefulWidget {
   final int month;
@@ -106,7 +107,7 @@ class CalendarPageState extends State<CalendarPage> {
   Mood? moodOfDay(DateTime day,List<Mood> listMood){
     return listMood.firstWhereOrNull((mood) => DateTimeHelper.areDatesEqual(day, mood.date));
   }
-  void navigationToMood(DateTime day,Mood? mood){
+  void navigationToMood(DateTime day,Mood? mood) {
     Navigator.of(context).push(
       PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => mood != null
@@ -123,6 +124,12 @@ class CalendarPageState extends State<CalendarPage> {
           );
         },
       ),
-    );
+    ).then((result){
+      if (result != null && result is Map<String, dynamic>) {
+        if (result['showToast'] == true) {
+          showCustomToast(context: context, message: result['message']);
+        }
+      }
+    });
   }
 }

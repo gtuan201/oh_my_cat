@@ -1,14 +1,14 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:mood_press/gen/assets.gen.dart';
 import 'package:mood_press/gen/colors.gen.dart';
-import 'package:mood_press/providers/home_provider.dart';
-import 'package:mood_press/ulti/function.dart';
+import 'package:google_geocoding_api/google_geocoding_api.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:geocoding/geocoding.dart';
+import '../../../providers/home_provider.dart';
+import '../../../ulti/function.dart';
 
 
 class MapWidget extends StatefulWidget {
@@ -23,7 +23,10 @@ class _MapWidgetState extends State<MapWidget> {
   var lat = 0.0.obs;
   var long = 0.0.obs;
   var loading = false.obs;
+  double zoom = 16;
   var loadingChooseAddress = false.obs;
+  final geocoding = GoogleGeocodingApi('AIzaSyC1sswvFkexF72r2-UWCwPM1vPmW_QHo84');
+  final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
 
   @override
   void initState() {
@@ -43,38 +46,30 @@ class _MapWidgetState extends State<MapWidget> {
           ? const Center(child: CircularProgressIndicator(color: ColorName.darkBlue,),) 
           : Opacity(
             opacity: loadingChooseAddress.value ? 0.5 : 1,
-            child: FlutterMap(
-              options: MapOptions(
-                  initialCenter: LatLng(lat.value, long.value),
-                  initialZoom: 13,
-                  onPositionChanged: (m,b) async {
-                    lat.value = m.center.latitude;
-                    long.value = m.center.longitude;
-                  }
-              ),
+            child: Obx(() => Stack(
               children: [
-                TileLayer(
-                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  userAgentPackageName: 'com.example.app',
+                GoogleMap(
+                  mapType: MapType.normal,
+                  initialCameraPosition: CameraPosition(
+                    target: LatLng(lat.value, long.value),
+                    zoom: 16,
+                  ),
+                  minMaxZoomPreference: const MinMaxZoomPreference(0, 16),
+                  zoomGesturesEnabled: true,
+                  myLocationButtonEnabled: true,
+                  zoomControlsEnabled: true,
+                  indoorViewEnabled: true,
+                  myLocationEnabled: true,
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller.complete(controller);
+                  },
+                  onCameraMove: (cameraPosition){
+                    lat.value = cameraPosition.target.latitude;
+                    long.value = cameraPosition.target.longitude;
+                    zoom = cameraPosition.zoom;
+                  },
                 ),
-                MarkerLayer(
-                  markers: [
-                    Marker(
-                      point: LatLng(lat.value, long.value),
-                      width: 80,
-                      height: 80,
-                      child: const Icon(Icons.location_on_sharp,color: Colors.red,size: 30,),
-                    ),
-                  ],
-                ),
-                RichAttributionWidget(
-                  attributions: [
-                    TextSourceAttribution(
-                      'OpenStreetMap contributors',
-                      onTap: () => launchUrl(Uri.parse('https://openstreetmap.org/copyright')),
-                    ),
-                  ],
-                ),
+                const Center(child: Icon(Icons.location_on_sharp,color: Colors.red,size: 34,),),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Container(
@@ -95,10 +90,15 @@ class _MapWidgetState extends State<MapWidget> {
                           onPressed: () {
                             loadingChooseAddress.value = true;
                             showLoadingDialog(message: 'Vui lòng đợi...');
-                            getAddressFromLatLng(lat.value, long.value).then((location){
-                              context.read<HomeProvider>().selectLocation(location);
-                              Get.back();
-                              Get.back();
+                            context.read<HomeProvider>().getAddress(lat.value, long.value, zoom).then((location){
+                              if(location != null){
+                                context.read<HomeProvider>().selectLocation(location);
+                                Get.back();
+                                Get.back();
+                              }
+                              else{
+                                showCustomToast(context: context, message: 'Không tìm thấy địa chỉ');
+                              }
                             });
                           },
                           style: ElevatedButton.styleFrom(
@@ -106,24 +106,27 @@ class _MapWidgetState extends State<MapWidget> {
                           ),
                           child: const Text('Chọn địa điểm')
                       ),
-                    )
-                )
+                    ))
               ],
-            ),
+            ),),
           )
       ),
     );
   }
-  Future<String> getAddressFromLatLng(double lat, double lng) async {
+  Future<String> getAddressFromLatLng(double latitude, double longitude) async {
     try {
-      List<Placemark> placemarks = await placemarkFromCoordinates(lat, lng);
-      if (placemarks.isNotEmpty) {
-        Placemark place = placemarks[0];
-        return "${place.street}${place.street!.isNotEmpty ? ", " :""}${place.locality}, ${place.country}";
+      final response = await geocoding.reverse(
+        '$latitude,$longitude',
+        language: 'vi'
+      );
+
+      if (response.results.isNotEmpty) {
+        return response.results.first.formattedAddress;
+      } else {
+        return 'Không tìm thấy địa chỉ';
       }
-      return "Không tìm thấy địa chỉ";
     } catch (e) {
-      return "Lỗi: $e";
+      return 'Lỗi: $e';
     }
   }
 }

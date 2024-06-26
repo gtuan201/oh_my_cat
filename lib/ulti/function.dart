@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:mood_press/gen/assets.gen.dart';
 
 import '../gen/colors.gen.dart';
 
@@ -67,7 +68,7 @@ Future<bool?> showDeleteConfirmationDialog(BuildContext context) {
 void showCustomToast({
   required BuildContext context,
   required String message,
-  required String imagePath,
+  String? imagePath,
   Color backgroundColor = Colors.black54,
   Color textColor = Colors.white,
   Duration duration = const Duration(seconds: 2),
@@ -85,7 +86,7 @@ void showCustomToast({
       mainAxisSize: MainAxisSize.min,
       children: [
         Image.asset(
-          imagePath,
+          imagePath ?? Assets.image.logo.path,
           width: 24.0,
           height: 24.0,
         ),
