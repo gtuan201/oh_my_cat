@@ -3,14 +3,19 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mood_press/model/mood.dart';
+import 'package:mood_press/data/model/address.dart';
+import 'package:mood_press/data/repository/home_repo.dart';
 
+import '../data/model/mood.dart';
 import '../helper/database_helper.dart';
 
 class HomeProvider with ChangeNotifier {
+  final HomeRepo repo;
   String _selectedLocation = "";
   List<File> listImage = [];
   List<Mood> listMood = [];
+
+  HomeProvider({required this.repo});
 
   String get selectedLocation => _selectedLocation;
 
@@ -70,6 +75,16 @@ class HomeProvider with ChangeNotifier {
     listMood = await Get.find<DatabaseHelper>().getMoods();
     notifyListeners();
   }
+
+  Future<String?> getAddress(double lat, double long, double zoom) async {
+    Response response = await repo.getAddress(lat, long, zoom);
+    if(response.isOk){
+      LocationDetail locationDetail = LocationDetail.fromJson(response.body);
+      return locationDetail.displayName ?? '';
+    }
+    return null;
+  }
+
   void clear(){
     _selectedLocation = "";
     listImage.clear();

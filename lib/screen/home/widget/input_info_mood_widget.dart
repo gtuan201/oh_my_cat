@@ -1,15 +1,12 @@
-
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/gen/assets.gen.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/helper/date_time_helper.dart';
-import 'package:mood_press/model/mood.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/screen/home/widget/item_image.dart';
 import 'package:mood_press/screen/home/widget/map_widget.dart';
@@ -20,6 +17,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
+import '../../../data/model/mood.dart';
 
 class InputInfoMoodWidget extends StatefulWidget {
   final int moodIndex;
@@ -39,7 +37,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
   var indexOfMood = 0.obs;
   TextEditingController noteController = TextEditingController();
   FocusNode noteFocusNode = FocusNode();
-  ScreenshotController _screenshotController = ScreenshotController();
+  final ScreenshotController _screenshotController = ScreenshotController();
 
   @override
   void initState() {
@@ -308,6 +306,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
     }
   }
   void insertMood(){
+    FocusScope.of(context).unfocus();
     Mood mood = Mood(
         mood: indexOfMood.value,
         note: noteController.text,
@@ -316,8 +315,8 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
         align: alignType.value,
     );
     context.read<HomeProvider>().insertMood(mood);
-    Get.back();
-    Get.back();
+    Navigator.of(context).pop();
+    Navigator.of(context).pop({'showToast': true, 'message': 'Vâng! Đã thêm thành công'});
   }
 
   void updateMood(){

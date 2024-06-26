@@ -2,6 +2,9 @@ import '../gen/assets.gen.dart';
 
 class Constant{
 
+  static const String BASE_URL_MAP = "https://nominatim.openstreetmap.org";
+  static const String GET_ADDRESS = "reverse.php";
+
   static const int ALIGN_CENTER = 0;
   static const int ALIGN_LEFT = 1;
   static const int ALIGN_RIGHT = 2;

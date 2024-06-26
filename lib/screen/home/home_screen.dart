@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     _pageController = PageController(initialPage: month.value - 1);
     super.initState();
-    // Get.find<DatabaseHelper>().removeAllMoods();
     context.read<HomeProvider>().getMoods();
   }
 
