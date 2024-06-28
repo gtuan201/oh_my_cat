@@ -4,24 +4,39 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/gen/colors.gen.dart';
+import 'package:mood_press/providers/emoji_provider.dart';
+import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/screen/home/widget/custom_tooltip.dart';
 import 'package:mood_press/screen/home/widget/input_info_mood_widget.dart';
 import 'package:mood_press/ulti/constant.dart';
-
+import 'package:provider/provider.dart';
+import '../../../data/model/mood.dart';
 import '../../../helper/date_time_helper.dart';
+import '../../../ulti/function.dart';
 
 class AddEmotionWidget extends StatefulWidget {
-  final DateTime date;
+  final DateTime? date;
 
   const AddEmotionWidget({super.key, required this.date});
   @override
-  _CircleListAnimationState createState() => _CircleListAnimationState();
+  CircleListAnimationState createState() => CircleListAnimationState();
 }
 
-class _CircleListAnimationState extends State<AddEmotionWidget> {
+class CircleListAnimationState extends State<AddEmotionWidget> {
   final int itemCount = 11;
   final double radius = 166;
+  var selectedDate = DateTime.now().obs;
   final isShowTooltip = false.obs;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if(widget.date != null){
+        selectedDate.value = widget.date!;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +74,11 @@ class _CircleListAnimationState extends State<AddEmotionWidget> {
             SizedBox(height: Get.height*0.08,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 64),
-              child: Text(DateTimeHelper.checkIsToday(widget.date) ? 'Yo! Hôm nay bạn cảm thấy thế nào?' : 'Bạn cảm thấy thế nào vào ngày hôm đó?',
+              child: Obx(() => Text(DateTimeHelper.checkIsToday(selectedDate.value)
+                  ? 'Yo! Hôm nay bạn cảm thấy thế nào?'
+                  : 'Bạn cảm thấy thế nào vào ngày hôm đó?',
                 style: TextStyle(color: Colors.grey.shade400,fontSize: 24,fontWeight: FontWeight.w800,),textAlign: TextAlign.center,
-              ),
+              ),)
             ),
             const SizedBox(height: 12,),
             Row(
@@ -71,11 +88,13 @@ class _CircleListAnimationState extends State<AddEmotionWidget> {
                 const SizedBox(width: 8,),
                 InkWell(
                   onTap: (){
-
+                    selectDate(context,initialDate: selectedDate.value, (date) async {
+                      selectedDate.value = date;
+                    });
                   },
-                  child: Text("Ngày ${DateTimeHelper.dateTimeToString(widget.date)}",
+                  child: Obx(() => Text("Ngày ${DateTimeHelper.dateTimeToString(selectedDate.value)}",
                     style: TextStyle(color: Colors.grey.shade400,fontSize: 20,fontWeight: FontWeight.w400,decoration: TextDecoration.underline),
-                  ),
+                  ),),
                 ),
               ],
             ),
@@ -101,7 +120,7 @@ class _CircleListAnimationState extends State<AddEmotionWidget> {
                               totalItems: itemCount,
                               radius: radius,
                               isShowTooltip: isShowTooltip.value,
-                              date: widget.date,
+                              date: selectedDate.value,
                           ),
                         );
                       }),
@@ -143,7 +162,9 @@ class CircleItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             isShowTooltip ? CustomTooltipShape(message: Constant.listEmojiNames[index]) : const SizedBox(height: 36,),
-            Constant.listEmoji[index].svg(width: 62,height: 62),
+            Consumer<EmojiProvider>(builder: (context,emojiProvider,child){
+              return emojiProvider.currentEmojiList[index].svg(height: 62,width: 62);
+            })
           ],
         ),
       ),

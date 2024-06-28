@@ -69,7 +69,9 @@ void showCustomToast({
   required BuildContext context,
   required String message,
   String? imagePath,
-  Color backgroundColor = Colors.black54,
+  Function()? action,
+  double? marginBottom,
+  Color backgroundColor = Colors.teal,
   Color textColor = Colors.white,
   Duration duration = const Duration(seconds: 2),
 }) {
@@ -77,6 +79,7 @@ void showCustomToast({
   fToast.init(context);
 
   Widget toast = Container(
+    margin: EdgeInsets.only(bottom: marginBottom ?? 24),
     padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(25.0),
@@ -97,6 +100,23 @@ void showCustomToast({
             style: TextStyle(color: textColor),
           ),
         ),
+        if(action != null)
+        const SizedBox(width: 12.0),
+        if(action != null)
+        InkWell(
+          onTap: (){
+            fToast.removeCustomToast();
+            action();
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 6),
+            decoration: BoxDecoration(
+              color: Colors.green.shade800,
+              borderRadius: BorderRadius.circular(12)
+            ),
+            child: const Text("Xem",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 12),),
+          ),
+        )
       ],
     ),
   );
@@ -180,6 +200,99 @@ showLoadingDialog({String message = 'Đang tải...'}) {
     ),
     barrierDismissible: false,
   );
+}
+
+void showCustomDialog(BuildContext context, GlobalKey widgetKey, Widget dialogContent) {
+  final RenderBox renderBox = widgetKey.currentContext!.findRenderObject() as RenderBox;
+  final size = renderBox.size;
+  final position = renderBox.localToGlobal(Offset.zero);
+
+  late final OverlayEntry overlayEntry;
+
+  overlayEntry = OverlayEntry(
+    builder: (context) => Stack(
+      children: [
+        Positioned.fill(
+          child: GestureDetector(
+            onTap: () => overlayEntry.remove(),
+            behavior: HitTestBehavior.opaque,
+            child: Container(
+              color: Colors.transparent,
+            ),
+          ),
+        ),
+        Positioned(
+          left: position.dx - 4,
+          top: position.dy + size.height - 10,
+          child: GestureDetector(
+            onTap: () {},
+            child: Material(
+              color: Colors.transparent,
+              child: dialogContent,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  Overlay.of(context).insert(overlayEntry);
+}
+
+Future<void> selectDate(BuildContext context, Function(DateTime) onDateSelected,{DateTime? initialDate}) async {
+  final DateTime? picked = await showDatePicker(
+    context: context,
+    initialDate: initialDate ?? DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime.now(),
+    builder: (context, child) {
+      return Theme(
+        data: Theme.of(context).copyWith(
+          dialogTheme: DialogTheme(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+          ),
+          colorScheme: const ColorScheme.light(
+            onPrimary: Colors.black, // selected text color
+            onSurface: Color(0xFFEAC057), // default text color
+            primary: Color(0xFFEAC057) // circle color
+          ),
+          textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.amberAccent, // button text color
+            ),
+          ),
+          dialogBackgroundColor:ColorName.colorPrimary,
+        ),
+        child: child!,
+      );
+    },
+  );
+  if (picked != null && picked != DateTime.now()) {
+    onDateSelected(picked);
+  }
+}
+
+MaterialColor getMaterialColor(Color color) {
+  final int red = color.red;
+  final int green = color.green;
+  final int blue = color.blue;
+  
+  final Map<int, Color> shades = {
+  50: Color.fromRGBO(red, green, blue, .1),
+  100: Color.fromRGBO(red, green, blue, .2),
+  200: Color.fromRGBO(red, green, blue, .3),
+  300: Color.fromRGBO(red, green, blue, .4),
+  400: Color.fromRGBO(red, green, blue, .5),
+  500: Color.fromRGBO(red, green, blue, .6),
+  600: Color.fromRGBO(red, green, blue, .7),
+  700: Color.fromRGBO(red, green, blue, .8),
+  800: Color.fromRGBO(red, green, blue, .9),
+  900: Color.fromRGBO(red, green, blue, 1),
+  };
+  
+  return MaterialColor(color.value, shades);
 }
 
 class _DialogButton extends StatelessWidget {

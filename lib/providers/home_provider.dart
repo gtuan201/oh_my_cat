@@ -85,6 +85,15 @@ class HomeProvider with ChangeNotifier {
     return null;
   }
 
+  Future<Mood?> getMoodFromDate(String date)async {
+    Mood? mood = await Get.find<DatabaseHelper>().getMoodFromDate(date);
+    return mood;
+  }
+
+  Future<List<Mood>> getListMoodFromDate(String date)async {
+    return await Get.find<DatabaseHelper>().getListMoodFromDate(date);
+  }
+
   void clear(){
     _selectedLocation = "";
     listImage.clear();

@@ -23,6 +23,20 @@ class Constant{
     Assets.image.heartEyes,
   ];
 
+  static List<SvgGenImage> listEmojiHuman = [
+    Assets.image.cry2,
+    Assets.image.sad2,
+    Assets.image.angry2,
+    Assets.image.annoyed2,
+    Assets.image.worry2,
+    Assets.image.confused2,
+    Assets.image.shocked2,
+    Assets.image.sleep2,
+    Assets.image.tears2,
+    Assets.image.happy2,
+    Assets.image.heartEyes2,
+  ];
+
   static List<String> listEmojiNames = [
     'Khóc',
     'Buồn',

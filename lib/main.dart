@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'helper/di.dart' as di;
 import 'package:intl/date_symbol_data_local.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => HomeProvider(repo: Get.find()))
+        ChangeNotifierProvider(create: (_) => HomeProvider(repo: Get.find())),
+        ChangeNotifierProvider(create: (_) => EmojiProvider())
       ],
       child: GetMaterialApp(
         theme: ThemeData(

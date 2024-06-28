@@ -8,6 +8,9 @@ import 'package:mood_press/screen/home/home_screen.dart';
 import 'package:mood_press/screen/setting/setting_screen.dart';
 import 'package:mood_press/screen/statistical/statistical_screen.dart';
 
+import '../../ulti/function.dart';
+import '../home/widget/add_emotion_widget.dart';
+
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({super.key});
 
@@ -31,7 +34,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       backgroundColor: ColorName.colorPrimary,
       body: Obx(()=> screens[_bottomNavIndex.value]),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {  },
+        onPressed: () {
+          navigationToMood();
+        },
         backgroundColor: Colors.brown,
         child: const Icon(Icons.add_reaction),
       ),
@@ -50,5 +55,28 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         //other params
       ),
     );
+  }
+  void navigationToMood() {
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) =>  AddEmotionWidget(date: DateTime.now(),),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(0.0, 1.0);
+          const end = Offset.zero;
+          const curve = Curves.ease;
+          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        },
+      ),
+    ).then((result){
+      if (result != null && result is Map<String, dynamic>) {
+        if (result['showToast'] == true) {
+          showCustomToast(context: context, message: result['message']);
+        }
+      }
+    });
   }
 }
