@@ -18,6 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../../data/model/mood.dart';
+import '../../../providers/emoji_provider.dart';
 
 class InputInfoMoodWidget extends StatefulWidget {
   final int moodIndex;
@@ -192,12 +193,12 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                     ],
                   ),
                   const SizedBox(height: 16,),
-                  Obx(() => InkWell(
+                  Consumer<EmojiProvider>(builder: (context,emojiProvider,_) => Obx(() => InkWell(
                       onTap: (){
                         showGridBottomSheet(context);
                       },
-                      child: Constant.listEmoji[indexOfMood.value].svg(width: 80,height: 80)
-                  ),),
+                      child: emojiProvider.currentEmojiList[indexOfMood.value].svg(width: 80,height: 80)
+                  ),),),
                   const SizedBox(height: 16,),
                   Obx(() => Text(Constant.listEmojiNames[indexOfMood.value],
                     style: TextStyle(color: Colors.grey.shade300,fontSize: 20,fontWeight: FontWeight.w600),
@@ -393,7 +394,9 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Constant.listEmoji[index].svg(width: 60,height: 60),
+                        Consumer<EmojiProvider>(builder: (context,emojiProvider,_){
+                          return emojiProvider.currentEmojiList[index].svg(width: 60,height: 60);
+                        }),
                         const SizedBox(height: 8),
                         Text(
                           Constant.listEmojiNames[index],
@@ -434,10 +437,10 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                         style: TextStyle(color: Colors.red,fontWeight: FontWeight.w600),),
                       onTap: () {
                         Navigator.pop(context);
-                         showDeleteConfirmationDialog(context).then((value) async {
+                         showDeleteConfirmationDialog(context).then((value) {
                           if(value == true){
-                            await contextParent.read<HomeProvider>().removeMood(widget.mood!);
-                            Get.back();
+                            contextParent.read<HomeProvider>().removeMood(widget.mood!);
+                            Navigator.of(contextParent).pop({'showToast': true, 'message': 'Đã xoá thành công'});
                           }
                         });
                       },

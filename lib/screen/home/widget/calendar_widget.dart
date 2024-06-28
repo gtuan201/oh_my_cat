@@ -1,7 +1,9 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/helper/date_time_helper.dart';
+import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/screen/home/widget/add_emotion_widget.dart';
 import 'package:mood_press/screen/home/widget/input_info_mood_widget.dart';
@@ -9,6 +11,7 @@ import 'package:mood_press/ulti/constant.dart';
 import 'package:provider/provider.dart';
 import '../../../data/model/mood.dart';
 import '../../../ulti/function.dart';
+import 'package:el_tooltip/el_tooltip.dart';
 
 class CalendarPage extends StatefulWidget {
   final int month;
@@ -54,14 +57,14 @@ class CalendarPageState extends State<CalendarPage> {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: daysInMonth.length,
           itemBuilder: (context, index) {
-            return _buildDayItem(daysInMonth[index]);
+            return _buildDayItem(daysInMonth[index],context);
           },
         ),
       ),
     );
   }
 
-  Widget _buildDayItem(DateTime? day) {
+  Widget _buildDayItem(DateTime? day,BuildContext context) {
     if (day == null) {
       return Container();
     }
@@ -70,28 +73,83 @@ class CalendarPageState extends State<CalendarPage> {
     bool afterNow = day.isAfter(DateTime.now());
 
     return Selector<HomeProvider,List<Mood>>(
-        builder: (context,listMood,child){
+        builder: (_,listMood,child){
           Mood? mood = moodOfDay(day, listMood);
+          ElTooltipController tooltipController = ElTooltipController();
+          final listMoodOfDay = listMood.where((mood) => DateTimeHelper.areDatesEqual(mood.date,day)).toList();
           return Column(
             children: [
               InkWell(
                 onTap: afterNow ? null : (){
-                  navigationToMood(day, mood);
+                  if(listMoodOfDay.isNotEmpty && listMoodOfDay.length > 1){
+                    tooltipController.show();
+                  }
+                  else{
+                    navigationToMood(day, mood);
+                  }
                 },
-                child: mood != null ? Constant.listEmoji[mood.mood].svg(width: 52,height: 52) : Container(
-                  height: 52,
-                  width: 52,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: isToday ? Colors.lightBlue : Colors.blueGrey.shade400,
+                child: listMoodOfDay.length == 1
+                  ? Consumer<EmojiProvider>(builder: (context,emojiProvider,_){
+                      return emojiProvider.currentEmojiList[mood!.mood].svg(width: 52,height: 52);
+                    })
+                  : listMoodOfDay.length > 1 ? ElTooltip(
+                      controller: tooltipController,
+                      position: ElTooltipPosition.bottomCenter,
+                      appearAnimationDuration: 300.milliseconds,
+                      disappearAnimationDuration: 300.milliseconds,
+                      content: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ...listMoodOfDay.map((m) =>
+                              InkWell(
+                                onTap: (){
+                                  navigationToMood(day, m);
+                                },
+                                child: Consumer<EmojiProvider>(builder: (context,emojiProvider,_){
+                                  return Container(
+                                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                                      child: emojiProvider.currentEmojiList[m.mood].svg(width: 40,height: 40));
+                                })
+                              )),
+                        ],
+                      ),
+                      child: SizedBox(
+                        width: 52,
+                        child: CarouselSlider(
+                          options: CarouselOptions(
+                            height: 52,
+                            autoPlay: true,
+                            viewportFraction: 1,
+                            animateToClosest: true,
+                            enableInfiniteScroll: true,
+                          ),
+                          items: listMoodOfDay.map((m) {
+                            return Builder(
+                              builder: (BuildContext context) {
+                                return Consumer<EmojiProvider>(builder: (context,emojiProvider,_){
+                                  return emojiProvider.currentEmojiList[mood!.mood].svg(width: 52,height: 52);
+                                });
+                              },
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    )
+                  : Container(
+                    height: 52,
+                    width: 52,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: isToday ? Colors.lightBlue : Colors.blueGrey.shade400,
+                    ),
+                    padding: EdgeInsets.all(afterNow ? 1 : 4),
+                    child: Icon(Icons.circle,color: isToday ? Colors.lightBlue.shade100 : afterNow ? ColorName.colorPrimary : Colors.blueGrey.shade500,size: afterNow ? 50 : 40,),
                   ),
-                  padding: EdgeInsets.all(afterNow ? 1 : 4),
-                  child: Icon(Icons.circle,color: isToday ? Colors.lightBlue.shade100 : afterNow ? ColorName.colorPrimary : Colors.blueGrey.shade500,size: afterNow ? 50 : 40,),
-                ),
               ),
               const SizedBox(height: 4,),
-              Text('${day.day}',style: TextStyle(color: mood != null && mood.isSpecial == 1 ? Colors.yellow : Colors.white,fontWeight: FontWeight.w600,
-                shadows: mood != null && mood.isSpecial == 1 ? [
+              Text('${day.day}',
+                style: TextStyle(color: listMoodOfDay.isNotEmpty && listMoodOfDay.every((mood) => mood.isSpecial == 1) ? Colors.yellow : Colors.white,fontWeight: FontWeight.w600,
+                shadows: listMoodOfDay.firstWhereOrNull((m) => m.isSpecial == 1) != null ? [
                   for (int i = 1; i < 8; i++)
                     Shadow(
                       color: Colors.orange.withOpacity(0.5),
@@ -127,7 +185,7 @@ class CalendarPageState extends State<CalendarPage> {
     ).then((result){
       if (result != null && result is Map<String, dynamic>) {
         if (result['showToast'] == true) {
-          showCustomToast(context: context, message: result['message']);
+          showCustomToast(context: context, message: result['message'],marginBottom: 62);
         }
       }
     });

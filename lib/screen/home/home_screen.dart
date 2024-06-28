@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mood_press/helper/database_helper.dart';
+import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/screen/home/widget/calendar_widget.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 IconButton(
                     onPressed: () {
-
+                      context.read<EmojiProvider>().toggleEmojiList();
                     },
                     icon: FaIcon(FontAwesomeIcons.list,color: Colors.grey.shade300,)
                 ),

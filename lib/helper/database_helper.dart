@@ -88,6 +88,41 @@ class DatabaseHelper{
     }
   }
 
+  Future<Mood?> getMoodFromDate(String date) async {
+    final db = await database;
+    final DateTime targetDate = DateTime.parse(date);
+
+    final List<Map<String, dynamic>> maps = await db.query('moods');
+
+    for (var map in maps) {
+      final DateTime moodDate = DateTime.parse(map['date']);
+      if (moodDate.year == targetDate.year &&
+          moodDate.month == targetDate.month &&
+          moodDate.day == targetDate.day) {
+        return Mood.fromMap(map);
+      }
+    }
+    return null;
+  }
+
+  Future<List<Mood>> getListMoodFromDate(String date) async {
+    final db = await database;
+    final DateTime targetDate = DateTime.parse(date);
+    List<Mood> listMood = [];
+
+    final List<Map<String, dynamic>> maps = await db.query('moods');
+
+    for (var map in maps) {
+      final DateTime moodDate = DateTime.parse(map['date']);
+      if (moodDate.year == targetDate.year &&
+          moodDate.month == targetDate.month &&
+          moodDate.day == targetDate.day) {
+        listMood.add(Mood.fromMap(map));
+      }
+    }
+    return listMood;
+  }
+
   Future<void> removeAllMoods() async {
     final db = await database;
     await db.delete('moods');
