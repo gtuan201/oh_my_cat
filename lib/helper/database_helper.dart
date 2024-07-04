@@ -36,7 +36,6 @@ class DatabaseHelper{
   }
   Future<void> insertMood(Mood mood) async {
     final db = await database;
-    print("Mood map before insert: ${mood.toMap()}");
     await db.insert(
       'moods',
       mood.toMap(),
@@ -55,7 +54,6 @@ class DatabaseHelper{
 
   Future<void> updateMood(Mood mood) async {
     final db = await database;
-    print("Mood map before insert: ${mood.toMap()}");
     await db.update(
       'moods',
       mood.toMap(),

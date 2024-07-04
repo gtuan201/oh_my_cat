@@ -12,8 +12,55 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
+class $AssetAudioGen {
+  const $AssetAudioGen();
+
+  /// File path: asset/audio/cat_sound.mp3
+  String get catSound => 'asset/audio/cat_sound.mp3';
+
+  /// File path: asset/audio/fireplace_sound.mp3
+  String get fireplaceSound => 'asset/audio/fireplace_sound.mp3';
+
+  /// File path: asset/audio/forest_sound.mp3
+  String get forestSound => 'asset/audio/forest_sound.mp3';
+
+  /// File path: asset/audio/guitar_sound.mp3
+  String get guitarSound => 'asset/audio/guitar_sound.mp3';
+
+  /// File path: asset/audio/piano_sound.mp3
+  String get pianoSound => 'asset/audio/piano_sound.mp3';
+
+  /// File path: asset/audio/rain_sound.mp3
+  String get rainSound => 'asset/audio/rain_sound.mp3';
+
+  /// File path: asset/audio/saxophone.mp3
+  String get saxophone => 'asset/audio/saxophone.mp3';
+
+  /// File path: asset/audio/suthanhhoa.mp3
+  String get suthanhhoa => 'asset/audio/suthanhhoa.mp3';
+
+  /// File path: asset/audio/wave_sound.mp3
+  String get waveSound => 'asset/audio/wave_sound.mp3';
+
+  /// List of all assets
+  List<String> get values => [
+        catSound,
+        fireplaceSound,
+        forestSound,
+        guitarSound,
+        pianoSound,
+        rainSound,
+        saxophone,
+        suthanhhoa,
+        waveSound
+      ];
+}
+
 class $AssetImageGen {
   const $AssetImageGen();
+
+  /// File path: asset/image/adhd.png
+  AssetGenImage get adhd => const AssetGenImage('asset/image/adhd.png');
 
   /// File path: asset/image/angry.svg
   SvgGenImage get angry => const SvgGenImage('asset/image/angry.svg');
@@ -26,6 +73,9 @@ class $AssetImageGen {
 
   /// File path: asset/image/annoyed2.svg
   SvgGenImage get annoyed2 => const SvgGenImage('asset/image/annoyed2.svg');
+
+  /// File path: asset/image/cat.jpeg
+  AssetGenImage get cat => const AssetGenImage('asset/image/cat.jpeg');
 
   /// File path: asset/image/confused.svg
   SvgGenImage get confused => const SvgGenImage('asset/image/confused.svg');
@@ -41,6 +91,21 @@ class $AssetImageGen {
 
   /// File path: asset/image/cry2.svg
   SvgGenImage get cry2 => const SvgGenImage('asset/image/cry2.svg');
+
+  /// File path: asset/image/depresstion.png
+  AssetGenImage get depresstion => const AssetGenImage('asset/image/depresstion.png');
+
+  /// File path: asset/image/emotion_test.png
+  AssetGenImage get emotionTest => const AssetGenImage('asset/image/emotion_test.png');
+
+  /// File path: asset/image/fireplace.jpeg
+  AssetGenImage get fireplace => const AssetGenImage('asset/image/fireplace.jpeg');
+
+  /// File path: asset/image/forest.jpeg
+  AssetGenImage get forest => const AssetGenImage('asset/image/forest.jpeg');
+
+  /// File path: asset/image/guitar.jpeg
+  AssetGenImage get guitar => const AssetGenImage('asset/image/guitar.jpeg');
 
   /// File path: asset/image/happy.svg
   SvgGenImage get happy => const SvgGenImage('asset/image/happy.svg');
@@ -66,11 +131,20 @@ class $AssetImageGen {
   /// File path: asset/image/party.svg
   SvgGenImage get party => const SvgGenImage('asset/image/party.svg');
 
+  /// File path: asset/image/piano.jpeg
+  AssetGenImage get piano => const AssetGenImage('asset/image/piano.jpeg');
+
+  /// File path: asset/image/rain.jpeg
+  AssetGenImage get rain => const AssetGenImage('asset/image/rain.jpeg');
+
   /// File path: asset/image/sad.svg
   SvgGenImage get sad => const SvgGenImage('asset/image/sad.svg');
 
   /// File path: asset/image/sad2.svg
   SvgGenImage get sad2 => const SvgGenImage('asset/image/sad2.svg');
+
+  /// File path: asset/image/saxophone.jpeg
+  AssetGenImage get saxophone => const AssetGenImage('asset/image/saxophone.jpeg');
 
   /// File path: asset/image/shocked.svg
   SvgGenImage get shocked => const SvgGenImage('asset/image/shocked.svg');
@@ -90,6 +164,9 @@ class $AssetImageGen {
   /// File path: asset/image/splash.png
   AssetGenImage get splash => const AssetGenImage('asset/image/splash.png');
 
+  /// File path: asset/image/suthanhhoa.jpeg
+  AssetGenImage get suthanhhoa => const AssetGenImage('asset/image/suthanhhoa.jpeg');
+
   /// File path: asset/image/tears.svg
   SvgGenImage get tears => const SvgGenImage('asset/image/tears.svg');
 
@@ -102,23 +179,36 @@ class $AssetImageGen {
   /// File path: asset/image/very_happy.svg
   SvgGenImage get veryHappy => const SvgGenImage('asset/image/very_happy.svg');
 
+  /// File path: asset/image/wave.jpeg
+  AssetGenImage get wave => const AssetGenImage('asset/image/wave.jpeg');
+
   /// File path: asset/image/worry.svg
   SvgGenImage get worry => const SvgGenImage('asset/image/worry.svg');
 
   /// File path: asset/image/worry2.svg
   SvgGenImage get worry2 => const SvgGenImage('asset/image/worry2.svg');
 
+  /// File path: asset/image/worry_test.png
+  AssetGenImage get worryTest => const AssetGenImage('asset/image/worry_test.png');
+
   /// List of all assets
   List<dynamic> get values => [
+        adhd,
         angry,
         angry2,
         annoyed,
         annoyed2,
+        cat,
         confused,
         confused2,
         cool,
         cry,
         cry2,
+        depresstion,
+        emotionTest,
+        fireplace,
+        forest,
+        guitar,
         happy,
         happy2,
         heartEyes,
@@ -127,27 +217,45 @@ class $AssetImageGen {
         mask,
         naughty,
         party,
+        piano,
+        rain,
         sad,
         sad2,
+        saxophone,
         shocked,
         shocked2,
         sleep,
         sleep2,
         smile,
         splash,
+        suthanhhoa,
         tears,
         tears2,
         think,
         veryHappy,
+        wave,
         worry,
-        worry2
+        worry2,
+        worryTest
       ];
+}
+
+class $AssetJsonGen {
+  const $AssetJsonGen();
+
+  /// File path: asset/json/test.json
+  String get test => 'asset/json/test.json';
+
+  /// List of all assets
+  List<String> get values => [test];
 }
 
 class Assets {
   Assets._();
 
+  static const $AssetAudioGen audio = $AssetAudioGen();
   static const $AssetImageGen image = $AssetImageGen();
+  static const $AssetJsonGen json = $AssetJsonGen();
 }
 
 class AssetGenImage {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "522609846946",
+    "project_id": "oh-my-cat-1c019",
+    "storage_bucket": "oh-my-cat-1c019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:522609846946:android:beaab090e98270fb3945fb",
+        "android_client_info": {
+          "package_name": "com.tuna.ohmycat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsjL9IlYROlV3u2o-GuJCDC0vnJTWW5BM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

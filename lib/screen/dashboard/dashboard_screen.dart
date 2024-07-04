@@ -37,7 +37,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         onPressed: () {
           navigationToMood();
         },
-        backgroundColor: Colors.brown,
+        backgroundColor: Colors.blueGrey,
         child: const Icon(Icons.add_reaction),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
