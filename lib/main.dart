@@ -15,7 +15,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await initializeDateFormatting('vi_VN', null);
-  await AudioService.init(
+  AudioHandler audioHandler =  await AudioService.init(
     builder: () => AudioPlayerHandler(),
     config: const AudioServiceConfig(
       androidNotificationChannelId: 'com.ohmycat.audio',
@@ -23,7 +23,7 @@ Future<void> main() async {
       androidNotificationOngoing: true,
     ),
   );
-  di.init();
+  di.init(audioHandler);
   runApp(const MyApp());
 }
 
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => HealingProvider(repo: Get.find())),
         ChangeNotifierProvider(create: (_) => HomeProvider(repo: Get.find())),
-        ChangeNotifierProvider(create: (_) => EmojiProvider())
+        ChangeNotifierProvider(create: (_) => EmojiProvider()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

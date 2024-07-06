@@ -1,4 +1,4 @@
-package com.tuna.ohmycat
+package com.tuna.oh_my_cat
 
 import io.flutter.embedding.android.FlutterActivity
 

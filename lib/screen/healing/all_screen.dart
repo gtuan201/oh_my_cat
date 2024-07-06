@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mood_press/data/model/self_care.dart';
 import 'package:mood_press/providers/healing_provider.dart';
 import 'package:mood_press/screen/healing/widget/item_all_music.dart';
 import 'package:mood_press/screen/healing/widget/item_test.dart';
@@ -27,7 +28,7 @@ class AllScreenState extends State<AllScreen> {
     super.initState();
     context.read<HealingProvider>().getListTest();
     context.read<HealingProvider>().getListQuotes();
-    for (int i = 0; i < 8; i += 2) {
+    for (int i = 0; i < 6; i += 2) {
       items.add(Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -81,16 +82,16 @@ class AllScreenState extends State<AllScreen> {
             ),
             SizedBox(
               width: Get.width,
-              height: 156,
+              height: 192,
               child: ListView.separated(
-                itemCount: 4,
+                itemCount: 5,
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 addAutomaticKeepAlives: true,
                 itemBuilder: (context,index)
                 => Container(
-                  padding: EdgeInsets.only(left: index == 0 ? 24 : 0, right: index == 3 ? 24 : 0),
-                    child: PdfThumbnail(pdfUrl: Constant.listSelfCare[index])),
+                  padding: EdgeInsets.only(left: index == 0 ? 24 : 0, right: index == 4 ? 24 : 0),
+                    child: PdfThumbnail(selfCare: createSelfCareList()[index])),
                 separatorBuilder: (BuildContext context, int index) {
                   return const SizedBox(width: 14,);
                 },
@@ -167,7 +168,7 @@ class AllScreenState extends State<AllScreen> {
                 },
                 selector: (context,provider) => provider.listQuotes
             ),
-            const SizedBox(height: 32,),
+            const SizedBox(height: 100,),
           ],
         ),
       ),

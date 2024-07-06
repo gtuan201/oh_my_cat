@@ -1,11 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:mood_press/gen/assets.gen.dart';
-
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:path_provider/path_provider.dart';
 import '../gen/colors.gen.dart';
 
 Future<bool?> showDeleteConfirmationDialog(BuildContext context) {
@@ -272,6 +275,19 @@ Future<void> selectDate(BuildContext context, Function(DateTime) onDateSelected,
   if (picked != null && picked != DateTime.now()) {
     onDateSelected(picked);
   }
+}
+
+Future<File> getFilePathFromUrl(String url) async {
+  final FileInfo fileInfo = await DefaultCacheManager().downloadFile(url);
+  return fileInfo.file;
+}
+
+Future<Duration> getAudioDuration(String audioPath) async {
+  final player = AudioPlayer();
+  await player.setFilePath(audioPath);
+  final duration = player.duration;
+  await player.dispose();
+  return duration ?? Duration.zero;
 }
 
 MaterialColor getMaterialColor(Color color) {

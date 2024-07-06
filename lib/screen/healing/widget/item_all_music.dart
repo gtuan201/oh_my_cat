@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/data/model/audio_model.dart';
-import 'package:mood_press/helper/audio_handler.dart';
 import 'package:mood_press/providers/healing_provider.dart';
+import 'package:mood_press/ulti/function.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -21,8 +21,16 @@ class ItemAllMusic extends StatelessWidget {
         final byteData = await rootBundle.load(audioModel.path);
         final file = File('${(await getTemporaryDirectory()).path}/${audioModel.id}.mp3');
         await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
-        Get.find<AudioPlayerHandler>().playMediaItem(
-            MediaItem(id: file.path, title: audioModel.name, extras: {'isLocal': true},)
+
+        Get.find<AudioHandler>().playMediaItem(
+            MediaItem(
+                id: file.path,
+                title: audioModel.name,
+                extras: {'isLocal': true},
+                artist: audioModel.type.displayName,
+                artUri: Uri.file(await getLocalImagePath(audioModel.image)),
+              duration: await getAudioDuration(file.path)
+            )
         ).then((_){
           context.read<HealingProvider>().setCurrentAudio(audioModel);
         });
@@ -59,5 +67,12 @@ class ItemAllMusic extends StatelessWidget {
           )
       ),
     );
+  }
+  Future<String> getLocalImagePath(String assetPath) async {
+    final byteData = await rootBundle.load(assetPath);
+    final tempDir = await getTemporaryDirectory();
+    final file = File('${tempDir.path}/${assetPath.split('/').last}');
+    await file.writeAsBytes(byteData.buffer.asUint8List());
+    return file.path;
   }
 }

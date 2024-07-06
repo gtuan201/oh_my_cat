@@ -1,7 +1,7 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
 
-class AudioPlayerHandler extends BaseAudioHandler {
+class AudioPlayerHandler extends BaseAudioHandler with SeekHandler{
   final _player = AudioPlayer();
 
   AudioPlayerHandler() {
@@ -52,27 +52,39 @@ class AudioPlayerHandler extends BaseAudioHandler {
   Future<void> seek(Duration position) => _player.seek(position);
 
   @override
-  Future<void> stop() => _player.stop();
+  Future<void> stop() async {
+    _player.stop();
+    _handleCompletion();
+  }
+
+  @override
+  Future<dynamic> customAction(String name, [Map<String, dynamic>? extras]) async {
+    if (name == 'toggleLoop') {
+      final loopMode = _player.loopMode == LoopMode.one ? LoopMode.off : LoopMode.one;
+      await _player.setLoopMode(loopMode);
+      return loopMode.toString();
+    }
+    return super.customAction(name, extras);
+  }
 
   @override
   Future<void> playMediaItem(MediaItem mediaItem) async {
+    this.mediaItem.add(mediaItem);
     await setAudioSource(mediaItem.id, isLocal: mediaItem.extras?['isLocal'] ?? false);
     play();
   }
+
 
   void _broadcastState(PlaybackEvent event) {
     final playing = _player.playing;
     playbackState.add(playbackState.value.copyWith(
       controls: [
-        MediaControl.rewind,
-        if (playing) MediaControl.pause else MediaControl.play,
         MediaControl.stop,
-        MediaControl.fastForward,
+        if (playing) MediaControl.pause else MediaControl.play,
       ],
-      systemActions: const {
-        MediaAction.seek,
-        MediaAction.seekForward,
-        MediaAction.seekBackward,
+      systemActions: {
+        MediaAction.stop,
+        if (playing) MediaAction.pause else MediaAction.play,
       },
       androidCompactActionIndices: const [0, 1, 3],
       processingState: const {

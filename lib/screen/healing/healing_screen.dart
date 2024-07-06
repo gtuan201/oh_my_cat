@@ -6,11 +6,10 @@ import 'package:mood_press/providers/healing_provider.dart';
 import 'package:mood_press/screen/healing/all_screen.dart';
 import 'package:mood_press/screen/healing/music_screen.dart';
 import 'package:mood_press/screen/healing/self_care_screen.dart';
-import 'package:mood_press/screen/healing/test_screen.dart';
 import 'package:mood_press/screen/healing/widget/item_current_audio.dart';
 import 'package:provider/provider.dart';
-
 import '../../gen/colors.gen.dart';
+import 'test/test_screen.dart';
 
 class HealingScreen extends StatefulWidget {
   const HealingScreen({super.key});
@@ -40,6 +39,7 @@ class _HealingScreenState extends State<HealingScreen>  with TickerProviderState
             return [
               SliverAppBar(
                 title: const Text('Khám phá'),
+                centerTitle: true,
                 pinned: true,
                 floating: true,
                 backgroundColor: ColorName.colorPrimary,
