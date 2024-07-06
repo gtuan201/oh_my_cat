@@ -146,6 +146,60 @@ class $AssetImageGen {
   /// File path: asset/image/saxophone.jpeg
   AssetGenImage get saxophone => const AssetGenImage('asset/image/saxophone.jpeg');
 
+  /// File path: asset/image/selfcare_poster1.png
+  AssetGenImage get selfcarePoster1 => const AssetGenImage('asset/image/selfcare_poster1.png');
+
+  /// File path: asset/image/selfcare_poster10.png
+  AssetGenImage get selfcarePoster10 => const AssetGenImage('asset/image/selfcare_poster10.png');
+
+  /// File path: asset/image/selfcare_poster11.png
+  AssetGenImage get selfcarePoster11 => const AssetGenImage('asset/image/selfcare_poster11.png');
+
+  /// File path: asset/image/selfcare_poster12.png
+  AssetGenImage get selfcarePoster12 => const AssetGenImage('asset/image/selfcare_poster12.png');
+
+  /// File path: asset/image/selfcare_poster13.png
+  AssetGenImage get selfcarePoster13 => const AssetGenImage('asset/image/selfcare_poster13.png');
+
+  /// File path: asset/image/selfcare_poster14.png
+  AssetGenImage get selfcarePoster14 => const AssetGenImage('asset/image/selfcare_poster14.png');
+
+  /// File path: asset/image/selfcare_poster15.png
+  AssetGenImage get selfcarePoster15 => const AssetGenImage('asset/image/selfcare_poster15.png');
+
+  /// File path: asset/image/selfcare_poster16.png
+  AssetGenImage get selfcarePoster16 => const AssetGenImage('asset/image/selfcare_poster16.png');
+
+  /// File path: asset/image/selfcare_poster17.png
+  AssetGenImage get selfcarePoster17 => const AssetGenImage('asset/image/selfcare_poster17.png');
+
+  /// File path: asset/image/selfcare_poster18.png
+  AssetGenImage get selfcarePoster18 => const AssetGenImage('asset/image/selfcare_poster18.png');
+
+  /// File path: asset/image/selfcare_poster2.png
+  AssetGenImage get selfcarePoster2 => const AssetGenImage('asset/image/selfcare_poster2.png');
+
+  /// File path: asset/image/selfcare_poster3.png
+  AssetGenImage get selfcarePoster3 => const AssetGenImage('asset/image/selfcare_poster3.png');
+
+  /// File path: asset/image/selfcare_poster4.png
+  AssetGenImage get selfcarePoster4 => const AssetGenImage('asset/image/selfcare_poster4.png');
+
+  /// File path: asset/image/selfcare_poster5.png
+  AssetGenImage get selfcarePoster5 => const AssetGenImage('asset/image/selfcare_poster5.png');
+
+  /// File path: asset/image/selfcare_poster6.png
+  AssetGenImage get selfcarePoster6 => const AssetGenImage('asset/image/selfcare_poster6.png');
+
+  /// File path: asset/image/selfcare_poster7.png
+  AssetGenImage get selfcarePoster7 => const AssetGenImage('asset/image/selfcare_poster7.png');
+
+  /// File path: asset/image/selfcare_poster8.png
+  AssetGenImage get selfcarePoster8 => const AssetGenImage('asset/image/selfcare_poster8.png');
+
+  /// File path: asset/image/selfcare_poster9.png
+  AssetGenImage get selfcarePoster9 => const AssetGenImage('asset/image/selfcare_poster9.png');
+
   /// File path: asset/image/shocked.svg
   SvgGenImage get shocked => const SvgGenImage('asset/image/shocked.svg');
 
@@ -222,6 +276,24 @@ class $AssetImageGen {
         sad,
         sad2,
         saxophone,
+        selfcarePoster1,
+        selfcarePoster10,
+        selfcarePoster11,
+        selfcarePoster12,
+        selfcarePoster13,
+        selfcarePoster14,
+        selfcarePoster15,
+        selfcarePoster16,
+        selfcarePoster17,
+        selfcarePoster18,
+        selfcarePoster2,
+        selfcarePoster3,
+        selfcarePoster4,
+        selfcarePoster5,
+        selfcarePoster6,
+        selfcarePoster7,
+        selfcarePoster8,
+        selfcarePoster9,
         shocked,
         shocked2,
         sleep,

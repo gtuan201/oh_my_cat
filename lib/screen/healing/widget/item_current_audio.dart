@@ -1,3 +1,4 @@
+import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
@@ -35,8 +36,8 @@ class ItemCurrentAudio extends StatelessWidget {
               builder: (context,snapshot){
                 final loopMode = snapshot.data;
                 return InkWell(
-                    onTap: (){
-                      Get.find<AudioPlayerHandler>().toggleLoopMode(loopMode != LoopMode.one);
+                    onTap: () async {
+                      await Get.find<AudioHandler>().customAction('toggleLoop');
                     },
                     child: Icon(
                       Icons.loop,
@@ -47,12 +48,12 @@ class ItemCurrentAudio extends StatelessWidget {
           ),
           const SizedBox(width: 20,),
           StreamBuilder(
-              stream: Get.find<AudioPlayerHandler>().playingStream,
+              stream: Get.find<AudioHandler>().playbackState,
               builder: (context,snapshot){
-                final playing = snapshot.data ?? false;
+                final playing = snapshot.data?.playing ?? false;
                 return InkWell(
                   onTap: (){
-                    playing ? Get.find<AudioPlayerHandler>().pause() : Get.find<AudioPlayerHandler>().play();
+                    playing ? Get.find<AudioHandler>().pause() : Get.find<AudioHandler>().play();
                   },
                   child: Icon(
                     playing ? Icons.pause : Icons.play_arrow,
@@ -62,15 +63,15 @@ class ItemCurrentAudio extends StatelessWidget {
               }
           ),
           StreamBuilder(
-              stream: Get.find<AudioPlayerHandler>().processingStateStream,
+              stream: Get.find<AudioHandler>().playbackState,
               builder: (context,snapshot){
-                final processState = snapshot.data;
-                  return processState != ProcessingState.idle ? Row(
+                final processState = snapshot.data?.processingState;
+                  return processState != AudioProcessingState.idle ? Row(
                     children: [
                       const SizedBox(width: 20,),
                       InkWell(
                           onTap: (){
-                            Get.find<AudioPlayerHandler>().stop();
+                            Get.find<AudioHandler>().stop();
                           },
                           child: const Icon(
                             Icons.stop,
