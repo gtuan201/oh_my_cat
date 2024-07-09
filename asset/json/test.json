@@ -1,41 +1,39 @@
 {
   "tests": [
     {
-      "id" : "1",
+      "id": "1",
       "title": "Bảng câu hỏi về trí tuệ cảm xúc",
-      "imageUrl" : "asset/image/emotion_test.png",
+      "imageUrl": "asset/image/emotion_test.png",
+      "note": "Hãy chọn đáp án phù hợp nhất với bản thân của bạn. Không có câu trả lời đúng hay sai tuyệt đối.",
       "description": "Đánh giá khả năng nhận biết, hiểu và quản lý cảm xúc của bản thân và người khác. Bài kiểm tra này giúp xác định điểm mạnh và điểm yếu trong các kỹ năng cảm xúc, từ đó có thể phát triển chiến lược để cải thiện trí tuệ cảm xúc tổng thể.",
       "source": "Dựa trên Mayer-Salovey-Caruso Emotional Intelligence Test (MSCEIT) và các nghiên cứu về trí tuệ cảm xúc của Daniel Goleman. Bài kiểm tra này đã được điều chỉnh để phù hợp với bối cảnh văn hóa và xã hội Việt Nam.",
       "questions": [
         {
           "text": "Khi bạn cảm thấy buồn, bạn thường làm gì?",
           "options": [
-            "Tìm hiểu nguyên nhân và tìm cách giải quyết",
             "Cố gắng tránh suy nghĩ về nó",
+            "Để mặc cảm xúc tự qua đi",
             "Chia sẻ cảm xúc với người khác",
-            "Để mặc cảm xúc tự qua đi"
-          ],
-          "correctOptionIndex": 0
+            "Tìm hiểu nguyên nhân và tìm cách giải quyết"
+          ]
         },
         {
           "text": "Bạn nhận thấy đồng nghiệp của mình có vẻ căng thẳng. Bạn sẽ làm gì?",
           "options": [
             "Không làm gì cả, đó không phải việc của bạn",
-            "Hỏi họ xem có cần giúp đỡ gì không",
+            "Báo cáo với cấp trên về tình trạng của họ",
             "Nói với họ rằng họ nên bình tĩnh lại",
-            "Báo cáo với cấp trên về tình trạng của họ"
-          ],
-          "correctOptionIndex": 1
+            "Hỏi họ xem có cần giúp đỡ gì không"
+          ]
         },
         {
           "text": "Trong một cuộc tranh luận, bạn thường làm gì?",
           "options": [
             "Cố gắng thắng bằng mọi giá",
+            "Đồng ý với người khác để kết thúc cuộc tranh luận",
             "Tránh tranh luận hoàn toàn",
-            "Lắng nghe và cố gắng hiểu quan điểm của người khác",
-            "Đồng ý với người khác để kết thúc cuộc tranh luận"
-          ],
-          "correctOptionIndex": 2
+            "Lắng nghe và cố gắng hiểu quan điểm của người khác"
+          ]
         },
         {
           "text": "Khi bạn gặp thất bại, bạn thường phản ứng như thế nào?",
@@ -44,266 +42,289 @@
             "Tìm kiếm lỗi ở người khác",
             "Cố gắng quên đi càng nhanh càng tốt",
             "Xem xét lại và học hỏi từ kinh nghiệm"
-          ],
-          "correctOptionIndex": 3
+          ]
         },
         {
           "text": "Bạn đánh giá khả năng kiểm soát cảm xúc của mình như thế nào?",
           "options": [
-            "Khá tốt, tôi có thể kiểm soát trong hầu hết tình huống",
-            "Rất kém, tôi thường bị cảm xúc chi phối",
             "Tuyệt vời, tôi luôn kiểm soát được cảm xúc của mình",
-            "Tôi không chắc chắn"
-          ],
-          "correctOptionIndex": 0
+            "Rất kém, tôi thường bị cảm xúc chi phối",
+            "Tôi không chắc chắn",
+            "Khá tốt, tôi có thể kiểm soát trong hầu hết tình huống"
+          ]
         },
         {
           "text": "Khi một người bạn chia sẻ về vấn đề của họ, bạn thường phản ứng như thế nào?",
           "options": [
-            "Lắng nghe và thể hiện sự đồng cảm",
             "Cố gắng đưa ra lời khuyên ngay lập tức",
+            "Nói với họ rằng mọi chuyện sẽ ổn thôi",
             "Thay đổi chủ đề để họ không cảm thấy buồn",
-            "Nói với họ rằng mọi chuyện sẽ ổn thôi"
-          ],
-          "correctOptionIndex": 0
+            "Lắng nghe và thể hiện sự đồng cảm"
+          ]
         },
         {
           "text": "Bạn nhận thức về cảm xúc của mình như thế nào?",
           "options": [
-            "Tôi thường nhầm lẫn về cảm xúc của mình",
-            "Tôi luôn biết chính xác mình đang cảm thấy gì",
             "Tôi hiếm khi nghĩ về cảm xúc của mình",
-            "Tôi có thể nhận biết cảm xúc của mình sau một thời gian"
-          ],
-          "correctOptionIndex": 1
+            "Tôi thường nhầm lẫn về cảm xúc của mình",
+            "Tôi có thể nhận biết cảm xúc của mình sau một thời gian",
+            "Tôi luôn biết chính xác mình đang cảm thấy gì"
+          ]
         },
         {
           "text": "Khi bạn cảm thấy tức giận, bạn thường làm gì?",
           "options": [
             "Bộc lộ sự tức giận ngay lập tức",
-            "Cố gắng kiềm chế và bình tĩnh lại",
             "Tránh tình huống và người gây ra sự tức giận",
-            "Chuyển hướng sự tức giận sang hoạt động khác"
-          ],
-          "correctOptionIndex": 1
+            "Chuyển hướng sự tức giận sang hoạt động khác",
+            "Cố gắng kiềm chế và bình tĩnh lại"
+          ]
         },
         {
           "text": "Bạn đánh giá khả năng đọc cảm xúc của người khác như thế nào?",
           "options": [
-            "Rất tốt, tôi luôn biết người khác đang cảm thấy gì",
-            "Khá tốt, nhưng đôi khi tôi cũng nhầm lẫn",
+            "Tôi không quan tâm đến cảm xúc của người khác",
             "Không tốt lắm, tôi thường không nhận ra cảm xúc của người khác",
-            "Tôi không quan tâm đến cảm xúc của người khác"
-          ],
-          "correctOptionIndex": 1
+            "Khá tốt, nhưng đôi khi tôi cũng nhầm lẫn",
+            "Rất tốt, tôi luôn biết người khác đang cảm thấy gì"
+          ]
         },
         {
           "text": "Trong tình huống căng thẳng, bạn thường xử lý như thế nào?",
           "options": [
             "Dễ dàng mất bình tĩnh và phản ứng thái quá",
-            "Cố gắng giữ bình tĩnh và suy nghĩ logic",
             "Tránh tình huống hoàn toàn",
-            "Để người khác xử lý tình huống"
-          ],
-          "correctOptionIndex": 1
+            "Để người khác xử lý tình huống",
+            "Cố gắng giữ bình tĩnh và suy nghĩ logic"
+          ]
         },
         {
           "text": "Bạn thường xử lý thế nào khi nhận được phản hồi tiêu cực?",
           "options": [
             "Cảm thấy bị xúc phạm và phản ứng một cách phòng thủ",
-            "Lắng nghe và cố gắng học hỏi từ phản hồi",
+            "Cảm thấy chán nản và mất động lực",
             "Bỏ qua hoàn toàn",
-            "Cảm thấy chán nản và mất động lực"
-          ],
-          "correctOptionIndex": 1
+            "Lắng nghe và cố gắng học hỏi từ phản hồi"
+          ]
         },
         {
           "text": "Khi làm việc trong một nhóm, bạn thường đóng vai trò gì?",
           "options": [
             "Người lãnh đạo, điều hành nhóm",
-            "Người hòa giải, giúp giải quyết xung đột",
+            "Người thực hiện, tập trung vào công việc được giao",
             "Người đóng góp ý tưởng sáng tạo",
-            "Người thực hiện, tập trung vào công việc được giao"
-          ],
-          "correctOptionIndex": 1
+            "Người hòa giải, giúp giải quyết xung đột"
+          ]
         },
         {
           "text": "Bạn đánh giá thế nào về khả năng thích nghi với sự thay đổi của mình?",
           "options": [
             "Rất khó khăn, tôi thích mọi thứ ổn định",
+            "Tùy thuộc vào loại thay đổi",
             "Khá tốt, tôi có thể thích nghi sau một thời gian",
-            "Rất tốt, tôi luôn sẵn sàng cho sự thay đổi",
-            "Tùy thuộc vào loại thay đổi"
-          ],
-          "correctOptionIndex": 2
+            "Rất tốt, tôi luôn sẵn sàng cho sự thay đổi"
+          ]
         },
         {
           "text": "Khi phải đối mặt với một thách thức lớn, bạn thường cảm thấy thế nào?",
           "options": [
             "Lo lắng và muốn tránh né",
-            "Hứng thú và xem đó là cơ hội để phát triển",
+            "Thờ ơ, không có cảm xúc đặc biệt",
             "Cảm thấy áp lực nhưng vẫn cố gắng đối mặt",
-            "Thờ ơ, không có cảm xúc đặc biệt"
-          ],
-          "correctOptionIndex": 1
+            "Hứng thú và xem đó là cơ hội để phát triển"
+          ]
         },
         {
           "text": "Bạn thường xử lý thế nào khi cảm thấy quá tải?",
           "options": [
-            "Cố gắng làm mọi thứ cùng một lúc",
-            "Ưu tiên và tập trung vào những việc quan trọng nhất",
             "Trì hoãn mọi thứ và hy vọng chúng sẽ tự giải quyết",
-            "Tìm kiếm sự giúp đỡ từ người khác"
-          ],
-          "correctOptionIndex": 1
+            "Cố gắng làm mọi thứ cùng một lúc",
+            "Tìm kiếm sự giúp đỡ từ người khác",
+            "Ưu tiên và tập trung vào những việc quan trọng nhất"
+          ]
         }
-      ]
+      ],
+      "conclude": {
+        "0-15": {
+          "scoringGuide" : "Kém",
+          "conclusion": "Trí tuệ cảm xúc của bạn đang ở mức thấp và cần được cải thiện đáng kể. Bạn có thể gặp khó khăn trong việc nhận biết, hiểu và quản lý cảm xúc của bản thân cũng như người khác. Điều này có thể ảnh hưởng đến các mối quan hệ cá nhân và nghề nghiệp của bạn.",
+          "strengths": "Bạn đã nhận thức được tầm quan trọng của trí tuệ cảm xúc bằng cách thực hiện bài kiểm tra này.",
+          "weaknesses": "Khả năng nhận biết cảm xúc, kiểm soát cảm xúc, đồng cảm, và kỹ năng xã hội có thể cần được cải thiện đáng kể.",
+          "recommendations": "Hãy bắt đầu bằng việc tập trung vào việc nhận biết cảm xúc của bản thân. Thử ghi chép nhật ký cảm xúc hàng ngày và tham gia các khóa học về phát triển trí tuệ cảm xúc."
+        },
+        "16-25": {
+          "scoringGuide" : "Trung bình",
+          "conclusion": "Bạn có khả năng cơ bản về trí tuệ cảm xúc. Bạn có thể nhận biết và quản lý cảm xúc ở mức độ cơ bản, nhưng vẫn còn nhiều cơ hội để phát triển và cải thiện kỹ năng này.",
+          "strengths": "Bạn có nền tảng tốt để tiếp tục phát triển trí tuệ cảm xúc của mình.",
+          "weaknesses": "Khả năng xử lý các tình huống cảm xúc phức tạp và hiểu sâu về cảm xúc của người khác có thể cần được cải thiện.",
+          "recommendations": "Tập trung vào việc phát triển kỹ năng lắng nghe tích cực và đồng cảm. Thực hành quản lý cảm xúc trong các tình huống căng thẳng."
+        },
+        "26-35": {
+          "scoringGuide" : "Khá",
+          "conclusion": "Bạn có trí tuệ cảm xúc khá tốt. Bạn có khả năng nhận biết, hiểu và quản lý cảm xúc của bản thân và người khác ở mức độ khá. Điều này giúp bạn xử lý tốt các tình huống xã hội và công việc.",
+          "strengths": "Khả năng đồng cảm tốt, có thể xử lý được nhiều tình huống cảm xúc phức tạp.",
+          "weaknesses": "Có thể còn gặp khó khăn trong một số tình huống cực kỳ căng thẳng hoặc phức tạp.",
+          "recommendations": "Tiếp tục phát triển kỹ năng lãnh đạo dựa trên cảm xúc và khả năng xử lý xung đột. Thử thách bản thân trong các tình huống mới và phức tạp hơn."
+        },
+        "36-45": {
+          "scoringGuide" : "Tốt",
+          "conclusion": "Bạn có trí tuệ cảm xúc xuất sắc. Bạn có khả năng nhận biết, hiểu và quản lý cảm xúc của bản thân và người khác ở mức độ cao. Điều này giúp bạn xuất sắc trong các mối quan hệ cá nhân và nghề nghiệp.",
+          "strengths": "Khả năng đọc và phản ứng với cảm xúc của người khác rất tốt, có thể xử lý hiệu quả các tình huống cảm xúc phức tạp.",
+          "recommendations": "Tập trung vào việc duy trì sự cân bằng cảm xúc và thiết lập ranh giới lành mạnh. Chia sẻ kiến thức và kỹ năng của bạn để giúp đỡ người khác phát triển trí tuệ cảm xúc của họ."
+        }
+      }
     },
     {
       "id": "2",
       "title": "Bảng câu hỏi rủi ro lo âu",
-      "imageUrl" : "asset/image/worry_test.png",
+      "note": "Trong 2 tuần vừa qua, bạn có bị làm phiền bởi những vấn đề sau không?",
+      "imageUrl": "asset/image/worry_test.png",
       "description": "Đánh giá mức độ lo âu và xác định các dấu hiệu của rối loạn lo âu. Bài kiểm tra này giúp người dùng nhận biết các triệu chứng lo âu và mức độ ảnh hưởng của chúng đến cuộc sống hàng ngày, từ đó có thể quyết định có nên tìm kiếm sự hỗ trợ chuyên môn hay không.",
       "source": "Dựa trên Generalized Anxiety Disorder 7-item (GAD-7) scale, một công cụ sàng lọc được sử dụng rộng rãi trong lâm sàng để đánh giá mức độ và mức độ nghiêm trọng của rối loạn lo âu. Bài kiểm tra đã được điều chỉnh và xác thực cho người Việt Nam.",
       "questions": [
         {
           "text": "Bạn có thường xuyên cảm thấy lo lắng quá mức về nhiều việc khác nhau không?",
           "options": [
-            "Hầu như lúc nào cũng vậy",
             "Không bao giờ",
             "Thỉnh thoảng",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 0
+            "Thường xuyên",
+            "Hầu như lúc nào cũng vậy"
+          ]
         },
         {
           "text": "Bạn có gặp khó khăn trong việc kiểm soát sự lo lắng của mình không?",
           "options": [
             "Không bao giờ",
-            "Luôn luôn",
             "Đôi khi",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 1
+            "Thường xuyên",
+            "Luôn luôn"
+          ]
         },
         {
           "text": "Bạn có thường xuyên cảm thấy bồn chồn, khó chịu hoặc căng thẳng không?",
           "options": [
+            "Hiếm khi",
             "Thỉnh thoảng",
             "Thường xuyên",
-            "Hầu như mọi lúc",
-            "Hiếm khi"
-          ],
-          "correctOptionIndex": 2
+            "Hầu như mọi lúc"
+          ]
         },
         {
           "text": "Bạn có gặp vấn đề về giấc ngủ (khó ngủ, ngủ không sâu giấc) do lo lắng không?",
           "options": [
+            "Không bao giờ",
             "Đôi khi",
             "Thường xuyên",
-            "Không bao giờ",
             "Hầu như mọi đêm"
-          ],
-          "correctOptionIndex": 3
+          ]
         },
         {
           "text": "Bạn có thường xuyên cảm thấy mệt mỏi hoặc yếu ớt không?",
           "options": [
-            "Hầu như mọi lúc",
             "Hiếm khi",
             "Đôi khi",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 0
+            "Thường xuyên",
+            "Hầu như mọi lúc"
+          ]
         },
         {
           "text": "Bạn có gặp khó khăn trong việc tập trung hoặc trí óc trống rỗng do lo lắng không?",
           "options": [
-            "Thỉnh thoảng",
-            "Liên tục",
             "Không bao giờ",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 1
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Liên tục"
+          ]
         },
         {
           "text": "Bạn có thường xuyên cảm thấy dễ cáu kỉnh hoặc khó chịu không?",
           "options": [
+            "Hiếm khi",
             "Đôi khi",
             "Thường xuyên",
-            "Hầu như lúc nào cũng vậy",
-            "Hiếm khi"
-          ],
-          "correctOptionIndex": 2
-        },
-        {
-          "text": "Bạn có thường xuyên trải qua các triệu chứng thể chất như đau đầu, đau bụng, hoặc căng cơ do lo lắng không?",
-          "options": [
-            "Thường xuyên",
-            "Không bao giờ",
-            "Thỉnh thoảng",
-            "Liên tục"
-          ],
-          "correctOptionIndex": 3
-        },
-        {
-          "text": "Bạn có thường xuyên tránh né các tình huống hoặc địa điểm do lo sợ không?",
-          "options": [
-            "Luôn luôn",
-            "Không bao giờ",
-            "Đôi khi",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 0
-        },
-        {
-          "text": "Lo lắng của bạn có ảnh hưởng đáng kể đến cuộc sống hàng ngày, công việc hoặc các mối quan hệ không?",
-          "options": [
-            "Ảnh hưởng vừa phải",
-            "Không ảnh hưởng",
-            "Ảnh hưởng nghiêm trọng",
-            "Ảnh hưởng nhẹ"
-          ],
-          "correctOptionIndex": 2
+            "Hầu như lúc nào cũng vậy"
+          ]
         }
-      ]
+      ],
+      "conclude": {
+        "0-4": {
+          "scoringGuide" : "Tối thiểu",
+          "conclusion": "Bạn có mức độ lo âu rất thấp, hầu như không đáng kể. Điều này cho thấy bạn đang có khả năng đối phó với stress và các tình huống căng thẳng một cách hiệu quả.",
+          "recommendations": "Duy trì lối sống cân bằng và các thói quen tốt đã giúp bạn giữ được trạng thái tâm lý ổn định. Tiếp tục thực hành các kỹ thuật thư giãn và quản lý stress để duy trì sức khỏe tâm thần tốt."
+        },
+        "5-9": {
+          "scoringGuide" : "Nhẹ",
+          "conclusion": "Bạn có một số triệu chứng lo âu nhẹ. Mức độ này thường gặp trong cuộc sống hàng ngày và có thể là phản ứng bình thường đối với stress.",
+          "recommendations": "Thực hành các kỹ thuật thư giãn như hít thở sâu hoặc thiền. Duy trì lối sống lành mạnh bao gồm ăn uống cân bằng, tập thể dục đều đặn và ngủ đủ giấc. Nếu các triệu chứng kéo dài hoặc trở nên nghiêm trọng hơn, hãy cân nhắc tìm kiếm sự hỗ trợ từ chuyên gia."
+        },
+        "10-14": {
+          "scoringGuide" : "Trung bình",
+          "conclusion": "Mức độ lo âu của bạn ở mức trung bình. Điều này có thể ảnh hưởng đến chất lượng cuộc sống và hiệu suất công việc của bạn.",
+          "recommendations": "Xem xét học các kỹ thuật quản lý stress như mindfulness hoặc yoga. Ưu tiên việc chăm sóc bản thân và tạo ra các ranh giới lành mạnh trong công việc và cuộc sống cá nhân. Nếu cảm thấy quá tải, đừng ngần ngại tìm kiếm sự hỗ trợ từ bạn bè, gia đình hoặc chuyên gia tâm lý."
+        },
+        "15-21": {
+          "scoringGuide" : "Nghiêm trọng",
+          "conclusion": "Bạn đang trải qua mức độ lo âu cao. Điều này có thể gây ra những tác động đáng kể đến sức khỏe tâm thần và thể chất, cũng như ảnh hưởng đến các mối quan hệ và công việc của bạn.",
+          "recommendations": "Tìm kiếm sự hỗ trợ từ chuyên gia sức khỏe tâm thần là rất quan trọng ở giai đoạn này. Họ có thể giúp bạn phát triển chiến lược đối phó hiệu quả và có thể đề xuất liệu pháp tâm lý hoặc điều trị y tế nếu cần. Trong khi đó, ưu tiên việc chăm sóc bản thân, tránh caffeine và rượu, và thực hành các kỹ thuật thư giãn hàng ngày."
+        }
+      }
     },
     {
       "id" : "3",
       "title": "Bảng câu hỏi về nguy cơ trầm cảm",
+      "note" : "Trong 2 tuần vừa qua, bạn có bị làm phiền bởi những vấn đề sau không?",
       "imageUrl" : "asset/image/depresstion.png",
       "description": "Đánh giá các triệu chứng và nguy cơ trầm cảm. Bài kiểm tra này giúp xác định mức độ nghiêm trọng của các triệu chứng trầm cảm, bao gồm cảm xúc, nhận thức và các triệu chứng thể chất. Kết quả có thể giúp người dùng quyết định có nên tìm kiếm sự hỗ trợ chuyên môn hay không.",
       "source": "Dựa trên Patient Health Questionnaire-9 (PHQ-9), một công cụ sàng lọc được sử dụng rộng rãi và đã được xác thực để đánh giá mức độ nghiêm trọng của trầm cảm. Bài kiểm tra đã được điều chỉnh và chuẩn hóa cho dân số Việt Nam.",
+      "conclude": {
+        "0-6": {
+          "scoringGuide" : "Bình thường",
+          "conclusion": "Bạn không có dấu hiệu đáng kể của trầm cảm. Điều này cho thấy bạn đang có trạng thái tâm lý tích cực và khả năng đối phó với stress tốt.",
+          "recommendations": "Tiếp tục duy trì lối sống lành mạnh và các hoạt động mang lại niềm vui cho bạn. Thực hành lòng biết ơn và duy trì các mối quan hệ xã hội tích cực để tiếp tục nâng cao sức khỏe tâm thần."
+        },
+        "7-12": {
+          "scoringGuide" : "Nhẹ",
+          "conclusion": "Bạn có một số triệu chứng trầm cảm nhẹ. Mặc dù chưa đến mức nghiêm trọng, nhưng điều này có thể ảnh hưởng đến chất lượng cuộc sống của bạn.",
+          "recommendations": "Tăng cường hoạt động thể chất và tiếp xúc với ánh nắng mặt trời. Thử thực hành các kỹ thuật tư duy tích cực và mindfulness. Nếu các triệu chứng kéo dài, hãy cân nhắc nói chuyện với một chuyên gia tư vấn hoặc bác sĩ tâm lý."
+        },
+        "13-18": {
+          "scoringGuide" : "Trung bình",
+          "conclusion": "Bạn có dấu hiệu trầm cảm ở mức trung bình. Điều này có thể đang gây ra những khó khăn đáng kể trong cuộc sống hàng ngày, công việc và các mối quan hệ của bạn.",
+          "recommendations": "Tìm kiếm sự hỗ trợ từ chuyên gia sức khỏe tâm thần là rất quan trọng ở giai đoạn này. Họ có thể giúp bạn xác định nguyên nhân và phát triển kế hoạch điều trị phù hợp. Trong khi đó, hãy duy trì kết nối với người thân và bạn bè, tham gia vào các hoạt động mà bạn từng yêu thích, và thử các kỹ thuật thư giãn như thiền hoặc yoga."
+        },
+        "19-27": {
+          "scoringGuide" : "Nặng",
+          "conclusion": "Bạn có nguy cơ trầm cảm nặng. Tình trạng này có thể gây ra những tác động nghiêm trọng đến sức khỏe tâm thần và thể chất, cũng như ảnh hưởng đáng kể đến chất lượng cuộc sống của bạn.",
+          "recommendations": "Cần tìm kiếm sự hỗ trợ từ chuyên gia sức khỏe tâm thần ngay lập tức. Họ có thể đánh giá tình trạng của bạn và đề xuất phương pháp điều trị phù hợp, có thể bao gồm liệu pháp tâm lý, thuốc, hoặc kết hợp cả hai. Đảm bảo rằng bạn không ở một mình và thông báo cho người thân hoặc bạn bè đáng tin cậy về tình trạng của bạn để nhận được sự hỗ trợ cần thiết."
+        }
+      },
       "questions": [
         {
           "text": "Bạn có thường xuyên cảm thấy buồn chán hoặc tuyệt vọng không?",
           "options": [
-            "Hầu như lúc nào cũng vậy",
             "Không bao giờ",
             "Thỉnh thoảng",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 0
+            "Thường xuyên",
+            "Hầu như lúc nào cũng vậy"
+          ]
         },
         {
           "text": "Bạn có mất hứng thú hoặc niềm vui trong các hoạt động mà bạn từng thích không?",
           "options": [
-            "Đôi khi",
-            "Luôn luôn",
             "Không",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 1
+            "Đôi khi",
+            "Thường xuyên",
+            "Luôn luôn"
+          ]
         },
         {
           "text": "Bạn có gặp vấn đề về giấc ngủ (ngủ quá nhiều hoặc quá ít) không?",
           "options": [
+            "Không bao giờ",
             "Thỉnh thoảng",
             "Thường xuyên",
-            "Hầu như mọi đêm",
-            "Không bao giờ"
-          ],
-          "correctOptionIndex": 2
+            "Hầu như mọi đêm"
+          ]
         },
         {
           "text": "Bạn có cảm thấy mệt mỏi hoặc thiếu năng lượng hầu như mọi ngày không?",
@@ -312,177 +333,241 @@
             "Đôi khi",
             "Thường xuyên",
             "Luôn luôn"
-          ],
-          "correctOptionIndex": 3
+          ]
         },
         {
           "text": "Bạn có cảm thấy vô giá trị hoặc tội lỗi quá mức không?",
           "options": [
-            "Hầu như lúc nào cũng vậy",
             "Không bao giờ",
             "Thỉnh thoảng",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 0
+            "Thường xuyên",
+            "Hầu như lúc nào cũng vậy"
+          ]
         },
         {
           "text": "Bạn có gặp khó khăn trong việc tập trung, suy nghĩ hoặc ra quyết định không?",
           "options": [
-            "Đôi khi",
-            "Luôn luôn",
             "Không",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 1
+            "Đôi khi",
+            "Thường xuyên",
+            "Luôn luôn"
+          ]
         },
         {
           "text": "Bạn có nghĩ về cái chết hoặc tự tử không?",
           "options": [
+            "Không bao giờ",
             "Hiếm khi",
             "Thỉnh thoảng",
-            "Thường xuyên",
-            "Không bao giờ"
-          ],
-          "correctOptionIndex": 2
+            "Thường xuyên"
+          ]
         },
         {
           "text": "Bạn có nhận thấy sự thay đổi đáng kể trong cảm giác thèm ăn hoặc cân nặng không?",
           "options": [
+            "Không",
             "Có một chút",
             "Khá nhiều",
-            "Không",
             "Rất nhiều"
-          ],
-          "correctOptionIndex": 3
+          ]
         },
         {
           "text": "Bạn có cảm thấy bồn chồn hoặc chậm chạp hơn bình thường không?",
           "options": [
-            "Hầu như lúc nào cũng vậy",
             "Không",
             "Đôi khi",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 0
-        },
-        {
-          "text": "Các triệu chứng trên có ảnh hưởng đáng kể đến cuộc sống hàng ngày, công việc hoặc các mối quan hệ của bạn không?",
-          "options": [
-            "Ảnh hưởng nhẹ",
-            "Ảnh hưởng nghiêm trọng",
-            "Không ảnh hưởng",
-            "Ảnh hưởng vừa phải"
-          ],
-          "correctOptionIndex": 1
+            "Thường xuyên",
+            "Hầu như lúc nào cũng vậy"
+          ]
         }
       ]
     },
     {
-      "id" : "4",
-      "title": "Bảng câu hỏi về rủi ro ADHD dành cho người lớn",
+      "id": "4",
+      "title": "Bảng câu hỏi về rủi ro ADHD dành cho người lớn (ASRS-v1.1)",
+      "note": "Vui lòng chọn câu trả lời mô tả đúng nhất cảm giác và hành vi của bạn trong 6 tháng qua.",
       "imageUrl": "asset/image/adhd.png",
       "description": "Đánh giá các triệu chứng và nguy cơ ADHD ở người lớn. Bài kiểm tra này giúp xác định các dấu hiệu của ADHD ở người trưởng thành, bao gồm khó khăn trong tập trung, tổ chức và kiểm soát xung động. Kết quả có thể chỉ ra liệu người dùng có nên tìm kiếm đánh giá chuyên sâu hơn từ các chuyên gia hay không.",
       "source": "Dựa trên Adult ADHD Self-Report Scale (ASRS-v1.1), một công cụ sàng lọc được Tổ chức Y tế Thế giới (WHO) phát triển để sàng lọc ADHD ở người lớn. Bài kiểm tra đã được điều chỉnh và xác thực cho bối cảnh Việt Nam.",
+      "conclude": {
+        "0-16": {
+          "scoringGuide" : "Ít khả năng",
+          "conclusion": "Bạn có ít dấu hiệu của ADHD. Các triệu chứng hiện tại, nếu có, có thể không liên quan đến ADHD hoặc có thể là biểu hiện bình thường của sự phân tâm hoặc thiếu tập trung thỉnh thoảng.",
+          "recommendations": "Tiếp tục duy trì các thói quen làm việc và học tập hiệu quả. Nếu bạn gặp khó khăn trong việc tập trung, hãy thử các kỹ thuật quản lý thời gian và tổ chức công việc. Thực hành mindfulness có thể giúp cải thiện khả năng tập trung."
+        },
+        "17-23": {
+          "scoringGuide" : "Có khả năng",
+          "conclusion": "Bạn có một số dấu hiệu của ADHD. Mặc dù chưa đủ để chẩn đoán, nhưng những triệu chứng này có thể ảnh hưởng đến hiệu suất công việc hoặc học tập của bạn.",
+          "recommendations": "Theo dõi các triệu chứng và tác động của chúng đến cuộc sống hàng ngày. Thử áp dụng các chiến lược quản lý thời gian và tổ chức công việc. Nếu các triệu chứng tiếp tục gây khó khăn, hãy cân nhắc trao đổi với chuyên gia sức khỏe tâm thần để được đánh giá chuyên sâu hơn."
+        },
+        "24-72": {
+          "scoringGuide" : "Khả năng cao",
+          "conclusion": "Bạn có nhiều dấu hiệu của ADHD. Những triệu chứng này có thể đang gây ra những khó khăn đáng kể trong cuộc sống, công việc hoặc học tập của bạn.",
+          "recommendations": "Tìm kiếm đánh giá chuyên sâu từ chuyên gia để xác định chính xác và có phương pháp hỗ trợ phù hợp. Một chuyên gia có thể giúp bạn phát triển chiến lược đối phó, cân nhắc các phương pháp điều trị khác nhau, và cung cấp hỗ trợ để cải thiện chất lượng cuộc sống. Trong khi chờ đợi đánh giá chuyên sâu, hãy thử áp dụng các kỹ thuật tổ chức và quản lý thời gian, tạo môi trường làm việc ít phân tâm, và thực hành các bài tập tăng cường khả năng tập trung."
+        }
+      },
       "questions": [
         {
           "text": "Bạn có thường xuyên gặp khó khăn trong việc tập trung vào các chi tiết hoặc mắc lỗi do bất cẩn không?",
           "options": [
-            "Rất thường xuyên",
             "Hiếm khi",
             "Thỉnh thoảng",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 0
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
         },
         {
           "text": "Bạn có gặp khó khăn trong việc duy trì sự chú ý khi làm việc hoặc trong các hoạt động giải trí không?",
           "options": [
-            "Thỉnh thoảng",
-            "Rất thường xuyên",
             "Hiếm khi",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 1
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
         },
         {
           "text": "Bạn có thường xuyên cảm thấy không lắng nghe khi người khác nói chuyện trực tiếp với bạn không?",
           "options": [
             "Hiếm khi",
             "Thỉnh thoảng",
-            "Rất thường xuyên",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 2
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
+        },
+        {
+          "text": "Bạn có gặp khó khăn trong việc làm theo hướng dẫn và hoàn thành công việc không?",
+          "options": [
+            "Hiếm khi",
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
         },
         {
           "text": "Bạn có gặp khó khăn trong việc tổ chức công việc và quản lý thời gian không?",
           "options": [
+            "Hiếm khi",
             "Thỉnh thoảng",
             "Thường xuyên",
-            "Hiếm khi",
             "Rất thường xuyên"
-          ],
-          "correctOptionIndex": 3
+          ]
         },
         {
           "text": "Bạn có thường xuyên trì hoãn hoặc tránh các công việc đòi hỏi nỗ lực tinh thần kéo dài không?",
           "options": [
-            "Rất thường xuyên",
             "Hiếm khi",
             "Thỉnh thoảng",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 0
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
         },
         {
           "text": "Bạn có thường xuyên đánh mất đồ vật cần thiết cho công việc hoặc hoạt động hàng ngày không?",
           "options": [
-            "Thỉnh thoảng",
-            "Rất thường xuyên",
             "Hiếm khi",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 1
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
         },
         {
           "text": "Bạn có dễ bị phân tâm bởi các kích thích bên ngoài không?",
           "options": [
             "Hiếm khi",
             "Thỉnh thoảng",
-            "Rất thường xuyên",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 2
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
+        },
+        {
+          "text": "Bạn có hay quên các hoạt động hàng ngày không?",
+          "options": [
+            "Hiếm khi",
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
         },
         {
           "text": "Bạn có thường xuyên cảm thấy bồn chồn hoặc không thể ngồi yên không?",
           "options": [
+            "Hiếm khi",
             "Thỉnh thoảng",
             "Thường xuyên",
-            "Hiếm khi",
             "Rất thường xuyên"
-          ],
-          "correctOptionIndex": 3
+          ]
         },
         {
-          "text": "Bạn có gặp khó khăn trong việc chờ đợi đến lượt mình không?",
+          "text": "Bạn có thường xuyên cảm thấy bất an hoặc 'lên dây cót' không?",
           "options": [
-            "Rất thường xuyên",
             "Hiếm khi",
             "Thỉnh thoảng",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 0
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
+        },
+        {
+          "text": "Bạn có gặp khó khăn trong việc thư giãn trong thời gian rảnh rỗi không?",
+          "options": [
+            "Hiếm khi",
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
+        },
+        {
+          "text": "Bạn có thường xuyên nói quá nhiều trong các tình huống xã hội không?",
+          "options": [
+            "Hiếm khi",
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
         },
         {
           "text": "Bạn có thường xuyên ngắt lời hoặc xen vào cuộc trò chuyện của người khác không?",
           "options": [
-            "Thỉnh thoảng",
-            "Rất thường xuyên",
             "Hiếm khi",
-            "Thường xuyên"
-          ],
-          "correctOptionIndex": 1
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
+        },
+        {
+          "text": "Bạn có gặp khó khăn trong việc chờ đợi đến lượt mình không?",
+          "options": [
+            "Hiếm khi",
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
+        },
+        {
+          "text": "Bạn có thường xuyên ngắt lời người khác khi họ đang bận không?",
+          "options": [
+            "Hiếm khi",
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
+        },
+        {
+          "text": "Bạn có thường xuyên hành động mà không suy nghĩ không?",
+          "options": [
+            "Hiếm khi",
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
+        },
+        {
+          "text": "Bạn có thường xuyên chuyển từ việc này sang việc khác mà không hoàn thành không?",
+          "options": [
+            "Hiếm khi",
+            "Thỉnh thoảng",
+            "Thường xuyên",
+            "Rất thường xuyên"
+          ]
         }
       ]
     }

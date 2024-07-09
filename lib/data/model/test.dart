@@ -4,6 +4,9 @@ class Test {
   final String description;
   final String source;
   final String? imageUrl;
+  final String? note;
+  final List<Question> questions;
+  final ConcludeDetail conclude;
 
   Test({
     required this.id,
@@ -11,6 +14,9 @@ class Test {
     required this.description,
     required this.source,
     this.imageUrl,
+    this.note,
+    required this.questions,
+    required this.conclude
   });
 
   factory Test.fromMap(Map<String, dynamic> map) {
@@ -20,6 +26,11 @@ class Test {
       description: map['description'],
       source: map['source'],
       imageUrl: map['imageUrl'],
+      note: map['note'],
+      questions: (map['questions'] as List<dynamic>)
+          .map((q) => Question.fromMap(q))
+          .toList(),
+      conclude: ConcludeDetail.fromMap(map['conclude']),
     );
   }
 
@@ -30,32 +41,83 @@ class Test {
       'description': description,
       'source': source,
       'imageUrl': imageUrl,
+      'note': note,
+      'questions': questions.map((q) => q.toMap()).toList(),
+      'conclude': conclude.toMap(),
+    };
+  }
+
+  void clearAllAnswers() {
+    for (var question in questions) {
+      question.selectedOptionIndex = null;
+    }
+  }
+}
+
+class ConcludeDetail {
+  final Map<String, LevelDetail> levels;
+
+  ConcludeDetail({required this.levels});
+
+  factory ConcludeDetail.fromMap(Map<String, dynamic> map) {
+    return ConcludeDetail(
+      levels: Map<String, LevelDetail>.from(
+          map.map((key, value) => MapEntry(key, LevelDetail.fromMap(value)))
+      ),
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return levels.map((key, value) => MapEntry(key, value.toMap()));
+  }
+}
+
+class LevelDetail {
+  final String conclusion;
+  final String? strengths;
+  final String? weaknesses;
+  final String scoringGuide;
+  final String recommendations;
+
+  LevelDetail({
+    required this.conclusion,
+    this.strengths,
+    this.weaknesses,
+    required this.recommendations,
+    required this.scoringGuide
+  });
+
+  factory LevelDetail.fromMap(Map<String, dynamic> map) {
+    return LevelDetail(
+      conclusion: map['conclusion'],
+      strengths: map['strengths'],
+      weaknesses: map['weaknesses'],
+      recommendations: map['recommendations'],
+      scoringGuide : map['scoringGuide']
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'conclusion': conclusion,
+      'strengths': strengths,
+      'weaknesses': weaknesses,
+      'recommendations': recommendations,
+      'scoringGuide' : scoringGuide
     };
   }
 }
 
 class Question {
-  final int? id;
-  final int testId;
   final String text;
   final List<String> options;
-  final int correctOptionIndex;
-  final String? imageUrl;
   int? selectedOptionIndex;
 
   Question({
-    this.id,
-    required this.testId,
     required this.text,
     required this.options,
-    required this.correctOptionIndex,
-    this.imageUrl,
     this.selectedOptionIndex,
   });
-
-  bool isCorrect() {
-    return selectedOptionIndex == correctOptionIndex;
-  }
 
   void selectOption(int index) {
     selectedOptionIndex = index;
@@ -63,24 +125,16 @@ class Question {
 
   factory Question.fromMap(Map<String, dynamic> map) {
     return Question(
-      id: map['id'],
-      testId: map['testId'],
       text: map['text'],
-      options: (map['options'] as String).split('|'),
-      correctOptionIndex: map['correctOptionIndex'],
-      imageUrl: map['imageUrl'],
+      options: List<String>.from(map['options']),
       selectedOptionIndex: map['selectedOptionIndex'],
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
-      'testId': testId,
       'text': text,
-      'options': options.join('|'),
-      'correctOptionIndex': correctOptionIndex,
-      'imageUrl': imageUrl,
+      'options': options,
       'selectedOptionIndex': selectedOptionIndex,
     };
   }

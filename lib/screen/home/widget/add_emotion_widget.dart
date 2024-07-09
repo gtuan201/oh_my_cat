@@ -5,12 +5,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/providers/emoji_provider.dart';
-import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/screen/home/widget/custom_tooltip.dart';
 import 'package:mood_press/screen/home/widget/input_info_mood_widget.dart';
 import 'package:mood_press/ulti/constant.dart';
 import 'package:provider/provider.dart';
-import '../../../data/model/mood.dart';
 import '../../../helper/date_time_helper.dart';
 import '../../../ulti/function.dart';
 

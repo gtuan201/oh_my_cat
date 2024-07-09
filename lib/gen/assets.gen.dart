@@ -56,6 +56,19 @@ class $AssetAudioGen {
       ];
 }
 
+class $AssetFontGen {
+  const $AssetFontGen();
+
+  /// File path: asset/font/OpenSans-Regular.ttf
+  String get openSansRegular => 'asset/font/OpenSans-Regular.ttf';
+
+  /// File path: asset/font/RobotoSerif.ttf
+  String get robotoSerif => 'asset/font/RobotoSerif.ttf';
+
+  /// List of all assets
+  List<String> get values => [openSansRegular, robotoSerif];
+}
+
 class $AssetImageGen {
   const $AssetImageGen();
 
@@ -326,6 +339,7 @@ class Assets {
   Assets._();
 
   static const $AssetAudioGen audio = $AssetAudioGen();
+  static const $AssetFontGen font = $AssetFontGen();
   static const $AssetImageGen image = $AssetImageGen();
   static const $AssetJsonGen json = $AssetJsonGen();
 }
