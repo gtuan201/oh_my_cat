@@ -14,6 +14,16 @@ class DateTimeHelper{
       return DateFormat('dd/MM/yyyy').format(date);
     }
   }
+
+  static String dateTimeToStringWithMinute(DateTime? date){
+    if(date == null){
+      return '--/--/----';
+    }
+    else{
+      return DateFormat('ddMMyyyy_HHmm').format(date);
+    }
+  }
+
   static String formatTimeHHMM(DateTime dateTime) {
     final formatter = DateFormat('HH:mm');
     return formatter.format(dateTime);

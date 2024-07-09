@@ -71,6 +71,8 @@ dependencies:
   just_audio: ^0.9.34
   audio_service: ^0.18.10
   permission_handler: ^10.0.0
+  pdf: ^3.11.0
+  printing: ^5.13.1
 
 
 dev_dependencies:
@@ -124,6 +126,11 @@ flutter:
     - asset/image/
     - asset/audio/
     - asset/json/
+    - asset/font/
+  fonts:
+    - family: OpenSans
+      fonts:
+        - asset: asset/font/OpenSans-Regular.ttf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
