@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/data/model/self_care.dart';
 import 'package:mood_press/providers/healing_provider.dart';
-import 'package:mood_press/screen/healing/widget/item_all_music.dart';
-import 'package:mood_press/screen/healing/widget/item_test.dart';
 import 'package:provider/provider.dart';
-import '../../data/model/test.dart';
-import '../../ulti/audio.dart';
-import '../../ulti/constant.dart';
+import '../../../data/model/test.dart';
+import '../../../ulti/audio.dart';
+import 'widget/item_all_music.dart';
 import 'widget/item_pdf_thumnail.dart';
 import 'widget/item_quote.dart';
+import 'widget/item_test.dart';
 
 class AllScreen extends StatefulWidget {
-  const AllScreen({super.key});
+  final Function(int) changeTab;
+  const AllScreen({super.key, required this.changeTab});
 
   @override
   AllScreenState createState() => AllScreenState();
 }
 
-class AllScreenState extends State<AllScreen> {
+class AllScreenState extends State<AllScreen> with AutomaticKeepAliveClientMixin {
 
   List<Widget> items = [];
 
@@ -43,20 +43,25 @@ class AllScreenState extends State<AllScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SingleChildScrollView(
-      physics: const NeverScrollableScrollPhysics(),
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Âm thanh thư giãn',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
-                  Icon(Icons.arrow_forward,color: Colors.white,)
+                  InkWell(
+                    onTap: (){
+                      widget.changeTab(1);
+                    },
+                    child: Icon(Icons.arrow_forward,color: Colors.white,)
+                  )
                 ],
               ),
             ),
@@ -174,4 +179,7 @@ class AllScreenState extends State<AllScreen> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/healing_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
+import 'package:mood_press/providers/music_provider.dart';
 import 'package:mood_press/providers/test_provider.dart';
 import 'helper/audio_handler.dart';
 import 'helper/di.dart' as di;
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => HomeProvider(repo: Get.find())),
         ChangeNotifierProvider(create: (_) => EmojiProvider()),
         ChangeNotifierProvider(create: (_) => TestProvider()),
+        ChangeNotifierProvider(create: (_) => MusicProvider()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

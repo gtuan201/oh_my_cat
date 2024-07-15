@@ -7,7 +7,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import 'package:share_plus/share_plus.dart';
-
+import 'package:open_file/open_file.dart';
 import '../helper/date_time_helper.dart';
 
 class TestProvider extends ChangeNotifier{
@@ -111,6 +111,7 @@ class TestProvider extends ChangeNotifier{
                   ),
                   if(test.questions.length <= 14)
                   pw.Column(
+                    crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
                       pw.Text("Lời khuyên", style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold, font: fontBold)),
                       pw.SizedBox(height: 8,),
@@ -218,6 +219,10 @@ class TestProvider extends ChangeNotifier{
     final Directory dir = await getApplicationDocumentsDirectory();
     final File file = File('${dir.path}/ohmycat_${DateTimeHelper.dateTimeToStringWithMinute(DateTime.now())}.pdf');
     await file.writeAsBytes(await doc.save());
-    await Share.shareXFiles([XFile(file.path)]);
+    await Share.shareXFiles([XFile(file.path)]).then((result){
+      if(result.status == ShareResultStatus.success){
+        OpenFile.open(file.path);
+      }
+    });
   }
 }

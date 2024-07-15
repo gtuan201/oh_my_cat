@@ -68,11 +68,4 @@ class ItemAllMusic extends StatelessWidget {
       ),
     );
   }
-  Future<String> getLocalImagePath(String assetPath) async {
-    final byteData = await rootBundle.load(assetPath);
-    final tempDir = await getTemporaryDirectory();
-    final file = File('${tempDir.path}/${assetPath.split('/').last}');
-    await file.writeAsBytes(byteData.buffer.asUint8List());
-    return file.path;
-  }
 }

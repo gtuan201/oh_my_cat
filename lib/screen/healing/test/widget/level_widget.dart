@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:get/get.dart';
+import 'package:mood_press/screen/healing/test/infomation_test_screen.dart';
 import '../../../../data/model/test.dart';
 import '../../../home/widget/custom_tooltip.dart';
 
@@ -19,16 +20,25 @@ class LevelWidget extends StatelessWidget {
             children: test.conclude.levels.values.toList().asMap().entries.map((entry){
               int index = entry.key;
               String level = entry.value.scoringGuide;
-              return determineScoreLevel(index) ? CustomTooltipShape(
-                color: Colors.teal.shade400,
-                child: Row(
-                  children: [
-                    Text(level,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
-                    const SizedBox(width: 10,),
-                    const FaIcon(FontAwesomeIcons.solidCircleQuestion,color: Colors.white,)
-                  ],
-                ),
-              ) : const Expanded(child: SizedBox());
+              if (determineScoreLevel(index)) {
+                return InkWell(
+                  onTap: (){
+                    Get.to(() => InformationTestScreen(test: test,indexResult: index,));
+                  },
+                  child: CustomTooltipShape(
+                  color: Colors.teal.shade400,
+                  child: Row(
+                    children: [
+                      Text(level,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
+                      const SizedBox(width: 10,),
+                      const FaIcon(FontAwesomeIcons.solidCircleQuestion,color: Colors.white,)
+                    ],
+                  ),
+                                ),
+                );
+              } else {
+                return const Expanded(child: SizedBox());
+              }
             }).toList(),
           ),
         ),
