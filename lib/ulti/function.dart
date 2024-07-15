@@ -290,6 +290,14 @@ Future<Duration> getAudioDuration(String audioPath) async {
   return duration ?? Duration.zero;
 }
 
+Future<String> getLocalImagePath(String assetPath) async {
+  final byteData = await rootBundle.load(assetPath);
+  final tempDir = await getTemporaryDirectory();
+  final file = File('${tempDir.path}/${assetPath.split('/').last}');
+  await file.writeAsBytes(byteData.buffer.asUint8List());
+  return file.path;
+}
+
 MaterialColor getMaterialColor(Color color) {
   final int red = color.red;
   final int green = color.green;

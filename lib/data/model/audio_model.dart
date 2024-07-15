@@ -1,4 +1,5 @@
 enum AudioType {
+  all('Tất cả'),
   animal('Động vật'),
   nature('Thiên nhiên'),
   musical('Âm nhạc'),

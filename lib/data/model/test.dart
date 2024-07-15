@@ -78,13 +78,15 @@ class LevelDetail {
   final String? weaknesses;
   final String scoringGuide;
   final String recommendations;
+  final String description;
 
   LevelDetail({
     required this.conclusion,
     this.strengths,
     this.weaknesses,
     required this.recommendations,
-    required this.scoringGuide
+    required this.scoringGuide,
+    required this.description
   });
 
   factory LevelDetail.fromMap(Map<String, dynamic> map) {
@@ -93,7 +95,8 @@ class LevelDetail {
       strengths: map['strengths'],
       weaknesses: map['weaknesses'],
       recommendations: map['recommendations'],
-      scoringGuide : map['scoringGuide']
+      scoringGuide : map['scoringGuide'],
+      description : map['description']
     );
   }
 
@@ -103,7 +106,8 @@ class LevelDetail {
       'strengths': strengths,
       'weaknesses': weaknesses,
       'recommendations': recommendations,
-      'scoringGuide' : scoringGuide
+      'scoringGuide' : scoringGuide,
+      'description' : description
     };
   }
 }
