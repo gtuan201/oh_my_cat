@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-import '../../ulti/function.dart';
+import '../../../ulti/function.dart';
 
 class PdfSelfCareScreen extends StatelessWidget {
   final String pdfUrl;

@@ -51,16 +51,16 @@ class AllScreenState extends State<AllScreen> with AutomaticKeepAliveClientMixin
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Âm thanh thư giãn',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
+                  const Text('Âm thanh thư giãn',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
                   InkWell(
                     onTap: (){
                       widget.changeTab(1);
                     },
-                    child: Icon(Icons.arrow_forward,color: Colors.white,)
+                    child: const Icon(Icons.arrow_forward,color: Colors.white,)
                   )
                 ],
               ),
@@ -75,13 +75,17 @@ class AllScreenState extends State<AllScreen> with AutomaticKeepAliveClientMixin
               ),
               items: items,
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24,vertical: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Tự chăm sóc',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
-                  Icon(Icons.arrow_forward,color: Colors.white,)
+                  const Text('Tự chăm sóc',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
+                  InkWell(
+                    onTap: (){
+                      widget.changeTab(2);
+                    },
+                    child: const Icon(Icons.arrow_forward,color: Colors.white,))
                 ],
               ),
             ),
@@ -110,7 +114,7 @@ class AllScreenState extends State<AllScreen> with AutomaticKeepAliveClientMixin
                   const Text('Bài kiểm tra',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
                   InkWell(
                       onTap: () {
-
+                        widget.changeTab(3);
                       },
                       child: const Icon(Icons.arrow_forward,color: Colors.white,))
                 ],

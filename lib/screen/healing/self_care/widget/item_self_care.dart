@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mood_press/data/model/self_care.dart';
-import 'package:mood_press/screen/healing/self_care/pdf_self_care_screen.dart';
 
+import '../pdf_self_care_screen.dart';
 
-class PdfThumbnail extends StatelessWidget {
+class ItemSelfCare extends StatelessWidget {
   final SelfCare selfCare;
-
-  const PdfThumbnail({super.key, required this.selfCare});
+  const ItemSelfCare({super.key, required this.selfCare});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: (){
         Navigator.of(context).push(
           PageRouteBuilder(
@@ -33,19 +32,9 @@ class PdfThumbnail extends StatelessWidget {
           ),
         );
       },
-      child: SizedBox(
-        width: 110,
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: selfCare.image.image(),
-            ),
-            const SizedBox(height: 6,),
-            Text(selfCare.title,
-              style: TextStyle(color: Colors.blueGrey.shade100,fontSize: 11,fontWeight: FontWeight.w600),maxLines: 1, overflow: TextOverflow.ellipsis,)
-          ],
-        ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: selfCare.image.image(fit: BoxFit.cover,),
       ),
     );
   }
