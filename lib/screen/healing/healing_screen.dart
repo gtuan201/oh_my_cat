@@ -87,7 +87,7 @@ class _HealingScreenState extends State<HealingScreen> with TickerProviderStateM
                                 color: Colors.blue
                             ),
                             onTap: (i) {
-                              // selectedIndex.value = i;
+                              musicSelectedIndex.value = i;
                               context.read<MusicProvider>().changeTypeListAudio(AudioType.values[i]);
                             },
                             tabs: AudioType.values.map((type) => Tab(
