@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import 'package:mood_press/data/model/audio_model.dart';
 import 'package:mood_press/screen/healing/all/all_screen.dart';
 import 'package:mood_press/screen/healing/music/music_screen.dart';
-import 'package:mood_press/screen/healing/self_care_screen.dart';
 import 'package:provider/provider.dart';
 import '../../gen/colors.gen.dart';
 import '../../providers/healing_provider.dart';
 import '../../providers/music_provider.dart';
+import 'self_care/self_care_screen.dart';
 import 'test/test_screen.dart';
 import 'widget/item_current_audio.dart';
 
@@ -117,11 +117,12 @@ class _HealingScreenState extends State<HealingScreen> with TickerProviderStateM
             children: [
               TabBarView(
                   controller: tabController,
+                  physics: const NeverScrollableScrollPhysics(),
                   children:  [
                     AllScreen(changeTab: (i) => changeTab(i)),
-                    MusicScreen(),
-                    SelfCareScreen(),
-                    TestScreen(),
+                    const MusicScreen(),
+                    const SelfCareScreen(),
+                    const TestScreen(),
                   ]
               ),
               Positioned(
