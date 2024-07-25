@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mood_press/helper/database_helper.dart';
 import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
+import 'package:mood_press/providers/theme_provider.dart';
 import 'package:mood_press/screen/home/widget/calendar_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -34,10 +35,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Assets.image.imageBackground.image(
-          width: Get.width,
-          height: Get.height,
-          fit: BoxFit.cover
+        Consumer<ThemeProvider>(
+          builder: (context,themeProvider,_){
+            return themeProvider.imageBackground != null
+                ? themeProvider.imageBackground!.image(
+                  width: Get.width,height: Get.height,fit: BoxFit.cover
+                )
+                : const SizedBox();
+          }
         ),
         Scaffold(
           backgroundColor: Colors.transparent,

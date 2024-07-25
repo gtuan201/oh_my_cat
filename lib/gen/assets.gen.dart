@@ -132,9 +132,6 @@ class $AssetImageGen {
   /// File path: asset/image/heartEyes2.svg
   SvgGenImage get heartEyes2 => const SvgGenImage('asset/image/heartEyes2.svg');
 
-  /// File path: asset/image/image_background.png
-  AssetGenImage get imageBackground => const AssetGenImage('asset/image/image_background.png');
-
   /// File path: asset/image/logo.png
   AssetGenImage get logo => const AssetGenImage('asset/image/logo.png');
 
@@ -143,6 +140,9 @@ class $AssetImageGen {
 
   /// File path: asset/image/naughty.svg
   SvgGenImage get naughty => const SvgGenImage('asset/image/naughty.svg');
+
+  /// File path: asset/image/noel_image.png
+  AssetGenImage get noelImage => const AssetGenImage('asset/image/noel_image.png');
 
   /// File path: asset/image/party.svg
   SvgGenImage get party => const SvgGenImage('asset/image/party.svg');
@@ -283,10 +283,10 @@ class $AssetImageGen {
         happy2,
         heartEyes,
         heartEyes2,
-        imageBackground,
         logo,
         mask,
         naughty,
+        noelImage,
         party,
         piano,
         rain,

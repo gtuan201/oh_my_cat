@@ -148,7 +148,8 @@ class CalendarPageState extends State<CalendarPage> {
               ),
               const SizedBox(height: 4,),
               Text('${day.day}',
-                style: TextStyle(color: listMoodOfDay.isNotEmpty && listMoodOfDay.every((mood) => mood.isSpecial == 1) ? Colors.yellow : Colors.yellowAccent.shade100,fontWeight: FontWeight.w600,
+                style: TextStyle(color: listMoodOfDay.isNotEmpty && listMoodOfDay.every((mood) => mood.isSpecial == 1)
+                    ? Colors.yellow : Theme.of(context).textTheme.bodySmall?.color,fontWeight: FontWeight.w600,
                 shadows: listMoodOfDay.firstWhereOrNull((m) => m.isSpecial == 1) != null ? [
                   for (int i = 1; i < 8; i++)
                     Shadow(
