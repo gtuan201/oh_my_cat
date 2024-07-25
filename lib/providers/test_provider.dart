@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mood_press/data/model/test.dart';
+import 'package:mood_press/helper/database_helper.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -17,6 +19,10 @@ class TestProvider extends ChangeNotifier{
   void changeStatusTest(Test test) {
     endTest = test.questions.every((e) => e.selectedOptionIndex != null);
     notifyListeners();
+  }
+
+  Future<void> addTestResult(Test test) async {
+    await Get.find<DatabaseHelper>().insertTest(test);
   }
 
   Future<void> generatePdf(LevelDetail levelDetail, Test test) async {

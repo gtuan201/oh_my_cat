@@ -9,8 +9,9 @@ import '../../../data/model/test.dart';
 
 class ResultScreen extends StatelessWidget {
   final Test test;
+  final Function()? onBack;
 
-  const ResultScreen({super.key, required this.test});
+  const ResultScreen({super.key, required this.test, this.onBack});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class ResultScreen extends StatelessWidget {
         backgroundColor: ColorName.colorPrimary,
         automaticallyImplyLeading: false,
         leading: IconButton(
-            onPressed: () {
+            onPressed: onBack ?? () {
               Get.back();
               Get.back();
               test.clearAllAnswers();
@@ -43,12 +44,12 @@ class ResultScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12,),
             Text(
-              "${result()}",
+              "${test.result()}",
               style: const TextStyle(
                   color: Colors.white, fontWeight: FontWeight.w700, fontSize: 54),
               textAlign: TextAlign.center,
             ),
-            LevelWidget(test: test, result: result()),
+            LevelWidget(test: test, result: test.result()),
             Container(
               margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
               child: Column(
@@ -93,19 +94,12 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  int result() {
-    int total = 0;
-    for (var q in test.questions) {
-      total += q.selectedOptionIndex!;
-    }
-    return total;
-  }
   LevelDetail? levelDetail(){
     for (var r in test.conclude.levels.keys) {
       List<String> range = r.split("-");
       int minScore = int.parse(range[0]);
       int maxScore = int.parse(range[1]);
-      if(result() >= minScore && result() <= maxScore){
+      if(test.result() >= minScore && test.result() <= maxScore){
         return test.conclude.levels[r];
       }
     }

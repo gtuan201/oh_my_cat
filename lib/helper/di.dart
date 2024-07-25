@@ -2,6 +2,7 @@ import 'package:audio_service/audio_service.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/data/repository/healing_repo.dart';
 import 'package:mood_press/data/repository/home_repo.dart';
+import 'package:mood_press/data/repository/statistical_repo.dart';
 import 'package:mood_press/helper/api_client.dart';
 import 'package:mood_press/helper/audio_handler.dart';
 import 'package:mood_press/helper/database_helper.dart';
@@ -17,4 +18,5 @@ init(AudioHandler audioHandler){
   //Repository
   Get.lazyPut(() => HomeRepo(api: Get.find()));
   Get.lazyPut(() => HealingRepo());
+  Get.lazyPut(() => StatisticalRepo());
 }

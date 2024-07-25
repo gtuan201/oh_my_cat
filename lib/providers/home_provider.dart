@@ -1,11 +1,10 @@
+import 'dart:developer';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mood_press/data/model/address.dart';
 import 'package:mood_press/data/repository/home_repo.dart';
-
 import '../data/model/mood.dart';
 import '../helper/database_helper.dart';
 
@@ -30,7 +29,7 @@ class HomeProvider with ChangeNotifier {
       listImage.addAll(images.map((xFile) => File(xFile.path)).toList());
       notifyListeners();
     } catch (e) {
-      print('Error picking multiple images: $e');
+      log('Error picking multiple images: $e');
     }
   }
 
