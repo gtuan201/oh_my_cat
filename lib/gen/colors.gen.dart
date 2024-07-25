@@ -13,6 +13,12 @@ import 'package:flutter/material.dart';
 class ColorName {
   ColorName._();
 
+  /// Color: #E57373
+  static const Color angry = Color(0xFFE57373);
+
+  /// Color: #FFB74D
+  static const Color annoyed = Color(0xFFFFB74D);
+
   /// Color: #03DAC5
   static const Color colorAccent = Color(0xFF03DAC5);
 
@@ -43,6 +49,33 @@ class ColorName {
   /// Color: #FFFF00
   static const Color colorYellow = Color(0xFFFFFF00);
 
+  /// Color: #BA68C8
+  static const Color confused = Color(0xFFBA68C8);
+
+  /// Color: #4A90E2
+  static const Color cry = Color(0xFF4A90E2);
+
   /// Color: #1B2F3B
   static const Color darkBlue = Color(0xFF1B2F3B);
+
+  /// Color: #FFB300
+  static const Color happy = Color(0xFFFFB300);
+
+  /// Color: #EC407A
+  static const Color heartEyes = Color(0xFFEC407A);
+
+  /// Color: #5C6BC0
+  static const Color sad = Color(0xFF5C6BC0);
+
+  /// Color: #FFD54F
+  static const Color shocked = Color(0xFFFFD54F);
+
+  /// Color: #90A4AE
+  static const Color sleep = Color(0xFF90A4AE);
+
+  /// Color: #4DD0E1
+  static const Color tears = Color(0xFF4DD0E1);
+
+  /// Color: #81C784
+  static const Color worry = Color(0xFF81C784);
 }

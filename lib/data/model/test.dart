@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Test {
   final String id;
   final String title;
@@ -7,6 +9,7 @@ class Test {
   final String? note;
   final List<Question> questions;
   final ConcludeDetail conclude;
+  DateTime? dateCompleted;
 
   Test({
     required this.id,
@@ -16,7 +19,8 @@ class Test {
     this.imageUrl,
     this.note,
     required this.questions,
-    required this.conclude
+    required this.conclude,
+    this.dateCompleted,
   });
 
   factory Test.fromMap(Map<String, dynamic> map) {
@@ -47,10 +51,49 @@ class Test {
     };
   }
 
+  factory Test.fromJson(Map<String, dynamic> map) {
+    return Test(
+      id: map['id'],
+      title: map['title'],
+      description: map['description'],
+      source: map['source'],
+      imageUrl: map['imageUrl'],
+      note: map['note'],
+      questions: (jsonDecode(map['questions']) as List<dynamic>)
+          .map((q) => Question.fromMap(q))
+          .toList(),
+      conclude: ConcludeDetail.fromMap(jsonDecode(map['conclude'])),
+      dateCompleted: map['dateCompleted'] != null
+          ? DateTime.parse(map['dateCompleted'])
+          : null,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'source': source,
+      'imageUrl': imageUrl,
+      'note': note,
+      'questions': jsonEncode(questions.map((q) => q.toMap()).toList()),
+      'conclude': jsonEncode(conclude.toMap()),
+      'dateCompleted': dateCompleted?.toIso8601String(),
+    };
+  }
+
   void clearAllAnswers() {
     for (var question in questions) {
       question.selectedOptionIndex = null;
     }
+  }
+  int result() {
+    int total = 0;
+    for (var q in questions) {
+      total += q.selectedOptionIndex!;
+    }
+    return total;
   }
 }
 

@@ -46,7 +46,7 @@ class CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Colors.transparent,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
@@ -127,7 +127,7 @@ class CalendarPageState extends State<CalendarPage> {
                             return Builder(
                               builder: (BuildContext context) {
                                 return Consumer<EmojiProvider>(builder: (context,emojiProvider,_){
-                                  return emojiProvider.currentEmojiList[mood!.mood].svg(width: 52,height: 52);
+                                  return emojiProvider.currentEmojiList[m.mood].svg(width: 52,height: 52);
                                 });
                               },
                             );
@@ -148,7 +148,7 @@ class CalendarPageState extends State<CalendarPage> {
               ),
               const SizedBox(height: 4,),
               Text('${day.day}',
-                style: TextStyle(color: listMoodOfDay.isNotEmpty && listMoodOfDay.every((mood) => mood.isSpecial == 1) ? Colors.yellow : Colors.white,fontWeight: FontWeight.w600,
+                style: TextStyle(color: listMoodOfDay.isNotEmpty && listMoodOfDay.every((mood) => mood.isSpecial == 1) ? Colors.yellow : Colors.yellowAccent.shade100,fontWeight: FontWeight.w600,
                 shadows: listMoodOfDay.firstWhereOrNull((m) => m.isSpecial == 1) != null ? [
                   for (int i = 1; i < 8; i++)
                     Shadow(

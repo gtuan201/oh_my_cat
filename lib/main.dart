@@ -6,7 +6,9 @@ import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/healing_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/providers/music_provider.dart';
+import 'package:mood_press/providers/statisticaL_provider.dart';
 import 'package:mood_press/providers/test_provider.dart';
+import 'package:mood_press/providers/theme_provider.dart';
 import 'helper/audio_handler.dart';
 import 'helper/di.dart' as di;
 import 'package:intl/date_symbol_data_local.dart';
@@ -41,26 +43,17 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => EmojiProvider()),
         ChangeNotifierProvider(create: (_) => TestProvider()),
         ChangeNotifierProvider(create: (_) => MusicProvider()),
+        ChangeNotifierProvider(create: (_) => StatisticalProvider(repo: Get.find())),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
-      child: GetMaterialApp(
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: false,
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue, // Màu nền khi active
-              foregroundColor: Colors.white, // Màu chữ khi active
-              disabledBackgroundColor: Colors.grey[500], // Màu nền khi disabled
-              disabledForegroundColor: Colors.black45, // Màu chữ khi disabled
-              elevation: 3,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-          ),
-        ),
-        debugShowCheckedModeBanner: false,
-        home: const SplashScreen(),
+      child: Consumer<ThemeProvider>(
+          builder: (context,themeProvider,_){
+            return GetMaterialApp(
+              theme: themeProvider.themeData,
+              debugShowCheckedModeBanner: false,
+              home: const SplashScreen(),
+            );
+          }
       ),
     );
   }

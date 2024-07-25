@@ -58,6 +58,8 @@ class _TestDetailScreenState extends State<TestDetailScreen> {
                   builder: (context,enable,child) => ElevatedButton(
                       onPressed: enable ? (){
                         Get.off(() => ResultScreen(test: widget.test,));
+                        widget.test.dateCompleted = DateTime.now();
+                        context.read<TestProvider>().addTestResult(widget.test);
                       } : null,
                       style: ElevatedButton.styleFrom(
                           backgroundColor: enable ? Colors.green : Colors.grey,

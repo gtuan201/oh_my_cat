@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:mood_press/gen/assets.gen.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mood_press/helper/database_helper.dart';
@@ -31,54 +32,63 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return Stack(
+      children: [
+        Assets.image.imageBackground.image(
+          width: Get.width,
+          height: Get.height,
+          fit: BoxFit.cover
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body: SafeArea(
+            child: Column(
               children: [
-                IconButton(
-                    onPressed: () {
-                      
-                    }, 
-                    icon: FaIcon(FontAwesomeIcons.rectangleAd,color: Colors.grey.shade300,)
-                ),
-                Obx(() => Text('Tháng ${month.value} năm $year',
-                  style: TextStyle(color: Colors.grey.shade300,fontSize: 19,fontWeight: FontWeight.w600),)
-                ),
-                IconButton(
-                    onPressed: () {
-                      context.read<EmojiProvider>().toggleEmojiList();
-                    },
-                    icon: FaIcon(FontAwesomeIcons.list,color: Colors.grey.shade300,)
-                ),
-                IconButton(
-                    onPressed: () {
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    IconButton(
+                        onPressed: () {
 
-                    },
-                    icon: FaIcon(FontAwesomeIcons.brush,color: Colors.grey.shade300,)
+                        },
+                        icon: FaIcon(FontAwesomeIcons.rectangleAd,color: Colors.grey.shade300,)
+                    ),
+                    Obx(() => Text('Tháng ${month.value} năm $year',
+                      style: Theme.of(context).textTheme.bodyLarge,)
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          context.read<EmojiProvider>().toggleEmojiList();
+                        },
+                        icon: FaIcon(FontAwesomeIcons.list,color: Colors.grey.shade300,)
+                    ),
+                    IconButton(
+                        onPressed: () {
+
+                        },
+                        icon: FaIcon(FontAwesomeIcons.brush,color: Colors.grey.shade300,)
+                    ),
+                  ],
                 ),
+                const SizedBox(height: 24,),
+                _buildDaysOfWeek(),
+                Expanded(
+                  child: PageView.builder(
+                    itemCount: 12,
+                    controller: _pageController,
+                    scrollDirection: Axis.vertical,
+                    onPageChanged: (i){
+                      month.value = i + 1;
+                    },
+                    itemBuilder: (context,index) =>
+                        CalendarPage(month: index + 1,)
+                  ),
+                )
               ],
             ),
-            const SizedBox(height: 24,),
-            _buildDaysOfWeek(),
-            Expanded(
-              child: PageView.builder(
-                itemCount: 12,
-                controller: _pageController,
-                scrollDirection: Axis.vertical,
-                onPageChanged: (i){
-                  month.value = i + 1;
-                },
-                itemBuilder: (context,index) =>
-                    CalendarPage(month: index + 1,)
-              ),
-            )
-          ],
+          )
         ),
-      )
+      ],
     );
   }
 

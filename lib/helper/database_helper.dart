@@ -2,6 +2,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../data/model/mood.dart';
+import '../data/model/test.dart';
 
 class DatabaseHelper{
   static Database? _database;
@@ -32,6 +33,18 @@ class DatabaseHelper{
         imagePath TEXT,
         isSpecial INTEGER,
         align INTEGER
+      )''');
+
+    await db.execute('''CREATE TABLE tests (
+        id TEXT,
+        title TEXT,
+        description TEXT,
+        source TEXT,
+        imageUrl TEXT,
+        note TEXT,
+        questions TEXT,
+        conclude TEXT,
+        dateCompleted TEXT PRIMARY KEY
       )''');
   }
   Future<void> insertMood(Mood mood) async {
@@ -124,5 +137,57 @@ class DatabaseHelper{
   Future<void> removeAllMoods() async {
     final db = await database;
     await db.delete('moods');
+  }
+
+  Future<void> insertTest(Test test) async {
+    final db = await database;
+    await db.insert(
+      'tests',
+      test.toJson(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<List<Test>> getTests() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query('tests');
+
+    return List.generate(maps.length, (i) {
+      return Test.fromJson(maps[i]);
+    });
+  }
+
+  Future<Test?> getTest(String id) async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query(
+      'tests',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+
+    if (maps.isNotEmpty) {
+      return Test.fromJson(maps.first);
+    } else {
+      return null;
+    }
+  }
+
+  Future<void> updateTest(Test test) async {
+    final db = await database;
+    await db.update(
+      'tests',
+      test.toMap(),
+      where: 'id = ?',
+      whereArgs: [test.id],
+    );
+  }
+
+  Future<void> deleteTest(String id) async {
+    final db = await database;
+    await db.delete(
+      'tests',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 }

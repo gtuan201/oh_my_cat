@@ -132,6 +132,9 @@ class $AssetImageGen {
   /// File path: asset/image/heartEyes2.svg
   SvgGenImage get heartEyes2 => const SvgGenImage('asset/image/heartEyes2.svg');
 
+  /// File path: asset/image/image_background.png
+  AssetGenImage get imageBackground => const AssetGenImage('asset/image/image_background.png');
+
   /// File path: asset/image/logo.png
   AssetGenImage get logo => const AssetGenImage('asset/image/logo.png');
 
@@ -280,6 +283,7 @@ class $AssetImageGen {
         happy2,
         heartEyes,
         heartEyes2,
+        imageBackground,
         logo,
         mask,
         naughty,

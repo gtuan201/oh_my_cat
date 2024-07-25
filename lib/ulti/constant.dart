@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:mood_press/gen/colors.gen.dart';
+
 import '../gen/assets.gen.dart';
 
 class Constant{
@@ -50,4 +53,22 @@ class Constant{
     'Vui vẻ',
     'Yêu',
   ];
+  static List<Color> moodColor = [
+    ColorName.cry,
+    ColorName.sad,
+    ColorName.angry,
+    ColorName.annoyed,
+    ColorName.worry,
+    ColorName.confused,
+    ColorName.shocked,
+    ColorName.sleep,
+    ColorName.tears,
+    ColorName.happy,
+    ColorName.heartEyes,
+  ];
+
+  static String emotionTestID = "1";
+  static String worryTestID = "2";
+  static String depressionTestID = "3";
+  static String adhdTestID = "4";
 }
