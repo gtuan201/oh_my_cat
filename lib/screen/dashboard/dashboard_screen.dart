@@ -35,7 +35,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorName.colorPrimary,
-      body: Obx(()=> screens[_bottomNavIndex.value]),
+      body: Obx(() => IndexedStack(
+        index: _bottomNavIndex.value,
+        children: screens,
+      )),
       floatingActionButton: Container(
         margin: const EdgeInsets.only(top: 10),
         height: 64,
