@@ -2,10 +2,12 @@ import 'package:audio_service/audio_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mood_press/helper/notification_helper.dart';
 import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/healing_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/providers/music_provider.dart';
+import 'package:mood_press/providers/reminder_provider.dart';
 import 'package:mood_press/providers/statisticaL_provider.dart';
 import 'package:mood_press/providers/test_provider.dart';
 import 'package:mood_press/providers/theme_provider.dart';
@@ -28,6 +30,7 @@ Future<void> main() async {
     ),
   );
   di.init(audioHandler);
+  Get.find<NotificationHelper>().initializeNotification();
   runApp(const MyApp());
 }
 
@@ -45,6 +48,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MusicProvider()),
         ChangeNotifierProvider(create: (_) => StatisticalProvider(repo: Get.find())),
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => ReminderProvider(repo: Get.find())),
       ],
       child: Consumer<ThemeProvider>(
           builder: (context,themeProvider,_){

@@ -2,10 +2,12 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../data/model/mood.dart';
+import '../data/model/reminder.dart';
 import '../data/model/test.dart';
 
 class DatabaseHelper{
   static Database? _database;
+  static const int DEFAULT_REMINDER_ID = 0;
   DatabaseHelper(){
     database;
   }
@@ -46,6 +48,24 @@ class DatabaseHelper{
         conclude TEXT,
         dateCompleted TEXT PRIMARY KEY
       )''');
+
+    await db.execute('''CREATE TABLE reminders (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT,
+        body TEXT,
+        enable INTEGER,
+        time TEXT,
+        isDefault INTEGER
+      )''');
+
+    await db.insert('reminders', {
+      'id': DEFAULT_REMINDER_ID,
+      'title': 'Viết nhật ký',
+      'body': 'Hôm nay tâm tâm trạng của bạn như thế nào? Hãy thêm nhật ký ngày hôm nay nhé!',
+      'enable': 0,
+      'time': '21:32',
+      'isDefault': 1
+    });
   }
   Future<void> insertMood(Mood mood) async {
     final db = await database;
@@ -187,6 +207,61 @@ class DatabaseHelper{
     await db.delete(
       'tests',
       where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+
+  Future<void> insertReminder(Reminder reminder) async {
+    final db = await database;
+    await db.insert(
+      'reminders',
+      reminder.toMap()..['isDefault'] = 0,
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<List<Reminder>> getReminders() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query('reminders', orderBy: 'isDefault DESC, time ASC');
+
+    return List.generate(maps.length, (i) {
+      return Reminder.fromMap(maps[i]);
+    });
+  }
+
+  Future<Reminder?> getReminder(int id) async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query(
+      'reminders',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+
+    if (maps.isNotEmpty) {
+      return Reminder.fromMap(maps.first);
+    } else {
+      return null;
+    }
+  }
+
+  Future<void> updateReminder(Reminder reminder) async {
+    final db = await database;
+    await db.update(
+      'reminders',
+      reminder.toMap(),
+      where: 'id = ?',
+      whereArgs: [reminder.id],
+    );
+  }
+
+  Future<void> deleteReminder(int id) async {
+    if (id == DEFAULT_REMINDER_ID) {
+      throw Exception('Không thể xóa bản ghi mặc định');
+    }
+    final db = await database;
+    await db.delete(
+      'reminders',
+      where: 'id = ? AND isDefault = 0',
       whereArgs: [id],
     );
   }

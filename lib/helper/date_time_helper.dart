@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class DateTimeHelper{
@@ -32,6 +33,12 @@ class DateTimeHelper{
     return date1.year == date2.year &&
         date1.month == date2.month &&
         date1.day == date2.day;
+  }
+
+  static String formatTimeOfDay(TimeOfDay time) {
+    final hours = time.hour.toString().padLeft(2, '0');
+    final minutes = time.minute.toString().padLeft(2, '0');
+    return '$hours:$minutes';
   }
   static String getWeekdayName(int weekday) {
     if (weekday < 1 || weekday > 7) {

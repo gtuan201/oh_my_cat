@@ -30,7 +30,7 @@ class MusicScreenState extends State<MusicScreen> with AutomaticKeepAliveClientM
                   crossAxisCount: 3,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
-                  childAspectRatio: 0.9,
+                  childAspectRatio: 0.87,
                 ),
                 delegate: SliverChildBuilderDelegate(
                       (context, index) => ItemMusic(audioModel: listAudio[index]),

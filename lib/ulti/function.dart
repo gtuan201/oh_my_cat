@@ -100,7 +100,7 @@ void showCustomToast({
         Flexible(
           child: Text(
             message,
-            style: TextStyle(color: textColor),
+            style: TextStyle(color: textColor,fontWeight: FontWeight.w500),
           ),
         ),
         if(action != null)
