@@ -8,6 +8,7 @@ import 'package:mood_press/gen/assets.gen.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/helper/date_time_helper.dart';
 import 'package:mood_press/providers/home_provider.dart';
+import 'package:mood_press/providers/statisticaL_provider.dart';
 import 'package:mood_press/screen/home/widget/item_image.dart';
 import 'package:mood_press/screen/home/widget/map_widget.dart';
 import 'package:mood_press/ulti/constant.dart';
@@ -316,6 +317,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
         align: alignType.value,
     );
     context.read<HomeProvider>().insertMood(mood);
+    context.read<StatisticalProvider>().percentOfMood();
     Navigator.of(context).pop();
     Navigator.of(context).pop({'showToast': true, 'message': 'Vâng! Đã thêm thành công'});
   }

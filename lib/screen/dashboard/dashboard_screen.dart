@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:mood_press/gen/colors.gen.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/screen/healing/healing_screen.dart';
 import 'package:mood_press/screen/home/home_screen.dart';
