@@ -102,7 +102,8 @@ class CalendarPageState extends State<CalendarPage> {
                         children: [
                           ...listMoodOfDay.map((m) =>
                               InkWell(
-                                onTap: (){
+                                onTap: () async {
+                                  await tooltipController.hide();
                                   navigationToMood(day, m);
                                 },
                                 child: Consumer<EmojiProvider>(builder: (context,emojiProvider,_){
