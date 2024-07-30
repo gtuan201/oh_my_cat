@@ -114,7 +114,7 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
                           child: ToggleSwitch(
                             minWidth: 40.0,
                             minHeight: 30.0,
-                            initialLabelIndex: 0,
+                            initialLabelIndex: toggleChart.value ? 0 : 1,
                             cornerRadius: 10,
                             activeFgColor: Colors.white,
                             inactiveBgColor: ColorName.darkBlue,
