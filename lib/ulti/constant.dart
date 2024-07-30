@@ -71,4 +71,7 @@ class Constant{
   static String worryTestID = "2";
   static String depressionTestID = "3";
   static String adhdTestID = "4";
+
+  //ID notification
+  static int NOTIFICATION_MOOD = 0;
 }

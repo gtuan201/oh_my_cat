@@ -189,17 +189,20 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
                   Selector<StatisticalProvider,bool>(
                     builder: (context,enable,_) => Visibility(
                       visible: !enable,
-                      child: ElevatedButton(
-                          onPressed: (){
-                            navigationToMood();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.teal,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)
-                            )
-                          ),
-                          child: const Text('Thêm nhật ký cảm xúc'),
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 12),
+                        child: ElevatedButton(
+                            onPressed: (){
+                              navigationToMood();
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.teal,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)
+                              )
+                            ),
+                            child: const Text('Thêm nhật ký cảm xúc'),
+                        ),
                       ),
                     ),
                     selector: (context,provider) => provider.enableChart

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:mood_press/helper/notification_helper.dart';
+import 'package:mood_press/screen/setting/daily_reminder/daily_reminder_screen.dart';
 import 'package:mood_press/screen/setting/widget/item_setting.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:workmanager/workmanager.dart';
 
 import '../../gen/colors.gen.dart';
 
@@ -42,11 +46,15 @@ class _SettingScreenState extends State<SettingScreen> {
               decoration: decoration,
               child: Column(
                 children: [
-                  const ItemSetting(title: 'Nhắc nhở hàng ngày', icon: Icons.notifications),
+                  ItemSetting(title: 'Nhắc nhở hàng ngày', icon: Icons.notifications, onTap: () async {
+                    Get.to(() => const DailyReminderScreen());
+                  },),
                   Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
-                  const ItemSetting(title: 'Khoá bảo mật', icon: Icons.lock),
+                  ItemSetting(title: 'Khoá bảo mật', icon: Icons.lock, onTap: () {
+
+                  },),
                   Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
-                  const ItemSetting(title: 'Sao lưu & Khôi phục', icon: Icons.cloud),
+                  ItemSetting(title: 'Sao lưu & Khôi phục', icon: Icons.cloud, onTap: () {  },),
                 ],
               ),
             ),
@@ -56,11 +64,11 @@ class _SettingScreenState extends State<SettingScreen> {
               decoration: decoration,
               child: Column(
                 children: [
-                  const ItemSetting(title: 'Chủ đề', icon: Icons.format_paint_sharp),
+                  ItemSetting(title: 'Chủ đề', icon: Icons.format_paint_sharp, onTap: () {  },),
                   Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
-                  const ItemSetting(title: 'Biểu tượng cảm xúc', icon: Icons.emoji_emotions),
+                  ItemSetting(title: 'Biểu tượng cảm xúc', icon: Icons.emoji_emotions, onTap: () {  },),
                   Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
-                  const ItemSetting(title: 'Widget', icon: Icons.widgets),
+                  ItemSetting(title: 'Widget', icon: Icons.widgets, onTap: () {  },),
                 ],
               ),
             ),
@@ -70,11 +78,11 @@ class _SettingScreenState extends State<SettingScreen> {
               decoration: decoration,
               child: Column(
                 children: [
-                  const ItemSetting(title: 'Ngôn ngữ', icon: Icons.translate_rounded),
+                  ItemSetting(title: 'Ngôn ngữ', icon: Icons.translate_rounded, onTap: () {  },),
                   Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
-                  const ItemSetting(title: 'Trung tâm trợ giúp', icon: Icons.help),
+                  ItemSetting(title: 'Trung tâm trợ giúp', icon: Icons.help, onTap: () {  },),
                   Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
-                  const ItemSetting(title: 'Liên hệ với chúng tôi', icon: Icons.contact_page),
+                  ItemSetting(title: 'Liên hệ với chúng tôi', icon: Icons.contact_page, onTap: () {  },),
                 ],
               ),
             ),

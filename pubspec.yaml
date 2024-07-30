@@ -70,7 +70,6 @@ dependencies:
   cached_network_image: ^3.3.1
   just_audio: ^0.9.34
   audio_service: ^0.18.10
-  permission_handler: ^10.0.0
   pdf: ^3.11.0
   printing: ^5.13.1
   open_file: ^3.3.2
@@ -78,6 +77,12 @@ dependencies:
   fl_chart: ^0.68.0
   percent_indicator: ^4.2.3
   toggle_switch: ^2.3.0
+  flutter_local_notifications: ^17.2.1+2
+  timezone: ^0.9.4
+  flutter_timezone: ^2.1.0
+  permission_handler: ^11.3.1
+  workmanager: ^0.5.2
+  awesome_notifications: ^0.9.3+1
 
 
 dev_dependencies:
