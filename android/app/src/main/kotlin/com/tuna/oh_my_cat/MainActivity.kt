@@ -1,5 +1,6 @@
 package com.tuna.oh_my_cat
 
-import io.flutter.embedding.android.FlutterActivity
+import com.ryanheise.audioservice.AudioServiceFragmentActivity
 
-class MainActivity: FlutterActivity()
+
+class MainActivity : AudioServiceFragmentActivity()

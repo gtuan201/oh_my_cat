@@ -7,7 +7,6 @@ import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/screen/home/widget/add_emotion_widget.dart';
 import 'package:mood_press/screen/home/widget/input_info_mood_widget.dart';
-import 'package:mood_press/ulti/constant.dart';
 import 'package:provider/provider.dart';
 import '../../../data/model/mood.dart';
 import '../../../ulti/function.dart';
@@ -103,8 +102,8 @@ class CalendarPageState extends State<CalendarPage> {
                           ...listMoodOfDay.map((m) =>
                               InkWell(
                                 onTap: () async {
-                                  await tooltipController.hide();
                                   navigationToMood(day, m);
+                                  await tooltipController.hide();
                                 },
                                 child: Consumer<EmojiProvider>(builder: (context,emojiProvider,_){
                                   return Container(

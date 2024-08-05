@@ -205,43 +205,6 @@ showLoadingDialog({String message = 'Đang tải...'}) {
   );
 }
 
-void showCustomDialog(BuildContext context, GlobalKey widgetKey, Widget dialogContent) {
-  final RenderBox renderBox = widgetKey.currentContext!.findRenderObject() as RenderBox;
-  final size = renderBox.size;
-  final position = renderBox.localToGlobal(Offset.zero);
-
-  late final OverlayEntry overlayEntry;
-
-  overlayEntry = OverlayEntry(
-    builder: (context) => Stack(
-      children: [
-        Positioned.fill(
-          child: GestureDetector(
-            onTap: () => overlayEntry.remove(),
-            behavior: HitTestBehavior.opaque,
-            child: Container(
-              color: Colors.transparent,
-            ),
-          ),
-        ),
-        Positioned(
-          left: position.dx - 4,
-          top: position.dy + size.height - 10,
-          child: GestureDetector(
-            onTap: () {},
-            child: Material(
-              color: Colors.transparent,
-              child: dialogContent,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-
-  Overlay.of(context).insert(overlayEntry);
-}
-
 Future<void> selectDate(BuildContext context, Function(DateTime) onDateSelected,{DateTime? initialDate}) async {
   final DateTime? picked = await showDatePicker(
     context: context,

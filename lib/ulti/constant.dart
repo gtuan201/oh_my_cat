@@ -71,6 +71,9 @@ class Constant{
   static String worryTestID = "2";
   static String depressionTestID = "3";
   static String adhdTestID = "4";
+  static const String enableLocalAuth = "enable_local_auth";
+  static const String enableAuthBiometric = "enable_auth_biometric";
+  static const String password = "password";
 
   //ID notification
   static int NOTIFICATION_MOOD = 0;
