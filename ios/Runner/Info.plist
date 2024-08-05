@@ -12,6 +12,8 @@
     <string>This app needs photos access to get images from photo library</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>This app needs microphone access to record videos</string>
+    <key>NSFaceIDUsageDescription</key>
+    <string>Ứng dụng này sử dụng Face ID để xác thực người dùng và bảo vệ dữ liệu cá nhân của bạn.</string>
     <key>UIBackgroundModes</key>
     <array>
       <string>audio</string>

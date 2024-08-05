@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:get/get.dart';
+import 'package:mood_press/providers/local_auth_provider.dart';
 import 'package:mood_press/screen/healing/healing_screen.dart';
 import 'package:mood_press/screen/home/home_screen.dart';
+import 'package:mood_press/screen/setting/local_auth/password_screen.dart';
 import 'package:mood_press/screen/setting/setting_screen.dart';
 import 'package:mood_press/screen/statistical/statistical_screen.dart';
 import 'package:provider/provider.dart';
@@ -19,15 +21,47 @@ class DashBoardScreen extends StatefulWidget {
   State<DashBoardScreen> createState() => _DashBoardScreenState();
 }
 
-class _DashBoardScreenState extends State<DashBoardScreen> {
+class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingObserver {
 
   final _bottomNavIndex = 0.obs;
+  late LocalAuthProvider localAuthProvider;
+  DateTime? _pausedTime;
   List<Widget> screens = [
     const HomeScreen(),
     const HealingScreen(),
     const StatisticalScreen(),
     const SettingScreen()
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    localAuthProvider = context.read<LocalAuthProvider>();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused) {
+      _pausedTime = DateTime.now();
+    } else if (state == AppLifecycleState.resumed) {
+      if (_pausedTime != null) {
+        final pauseDuration = DateTime.now().difference(_pausedTime!);
+        if (pauseDuration > const Duration(seconds: 5)) {
+          if(localAuthProvider.enableAuth){
+            Get.to(() => PasswordScreen(isAuth: true, authAction: () { Get.back(); },));
+          }
+        }
+      }
+      _pausedTime = null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

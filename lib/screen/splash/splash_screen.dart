@@ -1,10 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:mood_press/gen/assets.gen.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:get/get.dart';
+import 'package:mood_press/providers/local_auth_provider.dart';
 import 'package:mood_press/screen/dashboard/dashboard_screen.dart';
+import 'package:mood_press/screen/setting/local_auth/password_screen.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,11 +19,18 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
+  final LocalAuthentication auth = LocalAuthentication();
+
   @override
   void initState() {
     super.initState();
+    context.read<LocalAuthProvider>().getStatusLocalAuth();
+    context.read<LocalAuthProvider>().getStatusAuthBio();
     Timer(1.5.seconds, (){
-      Get.off(() => const DashBoardScreen());
+      Get.off(() => context.read<LocalAuthProvider>().enableAuth
+          ? PasswordScreen(isAuth: true,authAction: (){Get.off(() => const DashBoardScreen());},)
+          : const DashBoardScreen()
+      );
     });
   }
 

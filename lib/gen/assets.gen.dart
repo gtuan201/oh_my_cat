@@ -87,6 +87,9 @@ class $AssetImageGen {
   /// File path: asset/image/annoyed2.svg
   SvgGenImage get annoyed2 => const SvgGenImage('asset/image/annoyed2.svg');
 
+  /// File path: asset/image/backspace.svg
+  SvgGenImage get backspace => const SvgGenImage('asset/image/backspace.svg');
+
   /// File path: asset/image/cat.jpeg
   AssetGenImage get cat => const AssetGenImage('asset/image/cat.jpeg');
 
@@ -110,6 +113,9 @@ class $AssetImageGen {
 
   /// File path: asset/image/emotion_test.png
   AssetGenImage get emotionTest => const AssetGenImage('asset/image/emotion_test.png');
+
+  /// File path: asset/image/faceid.svg
+  SvgGenImage get faceid => const SvgGenImage('asset/image/faceid.svg');
 
   /// File path: asset/image/fireplace.jpeg
   AssetGenImage get fireplace => const AssetGenImage('asset/image/fireplace.jpeg');
@@ -268,6 +274,7 @@ class $AssetImageGen {
         angry2,
         annoyed,
         annoyed2,
+        backspace,
         cat,
         confused,
         confused2,
@@ -276,6 +283,7 @@ class $AssetImageGen {
         cry2,
         depresstion,
         emotionTest,
+        faceid,
         fireplace,
         forest,
         guitar,
