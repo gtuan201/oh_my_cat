@@ -439,7 +439,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                         style: TextStyle(color: Colors.red,fontWeight: FontWeight.w600),),
                       onTap: () {
                         Navigator.pop(context);
-                         showDeleteConfirmationDialog(context).then((value) {
+                         showConfirmationDialog(context).then((value) {
                           if(value == true){
                             contextParent.read<HomeProvider>().removeMood(widget.mood!);
                             Navigator.of(contextParent).pop({'showToast': true, 'message': 'Đã xoá thành công'});

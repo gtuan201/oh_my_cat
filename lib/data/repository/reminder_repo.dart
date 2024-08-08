@@ -24,6 +24,18 @@ class ReminderRepo {
 
   // Update
   Future<void> updateReminder(Reminder reminder) async {
+    if(reminder.enable){
+      Get.find<NotificationHelper>().schedulePeriodicNotification(
+        id: reminder.id!,
+        hour: reminder.time.hour,
+        minute: reminder.time.minute,
+        title: reminder.title,
+        body: reminder.body,
+      );
+    }
+    else{
+      Get.find<NotificationHelper>().cancelNotification(reminder.id!);
+    }
     await db.updateReminder(reminder);
   }
 
@@ -52,11 +64,12 @@ class ReminderRepo {
       reminder.enable = !reminder.enable;
       if(reminder.enable){
         Get.find<NotificationHelper>().schedulePeriodicNotification(
-            id,
-            reminder.time.hour,
-            reminder.time.minute,
-            reminder.title,
-            reminder.body);
+          id: id,
+          hour: reminder.time.hour,
+          minute: reminder.time.minute,
+          title: reminder.title,
+          body: reminder.body,
+        );
       }
       else{
         Get.find<NotificationHelper>().cancelNotification(id);

@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:mood_press/gen/assets.gen.dart';
+import 'package:mood_press/screen/setting/backup/backup_screen.dart';
 import 'package:mood_press/screen/setting/daily_reminder/daily_reminder_screen.dart';
 import 'package:mood_press/screen/setting/local_auth/local_auth_screen.dart';
 import 'package:mood_press/screen/setting/widget/item_setting.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../gen/colors.gen.dart';
+import '../../helper/google_drive_helper.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -57,7 +60,9 @@ class _SettingScreenState extends State<SettingScreen> {
                     Get.to(() => const LocalAuthScreen());
                   },),
                   Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
-                  ItemSetting(title: 'Sao lưu & Khôi phục', icon: Icons.cloud, onTap: () {  },),
+                  ItemSetting(title: 'Sao lưu & Khôi phục', icon: Icons.cloud, onTap: () async {
+                    Get.to(() => const BackupScreen());
+                  },),
                 ],
               ),
             ),

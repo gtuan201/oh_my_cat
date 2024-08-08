@@ -2,7 +2,9 @@ import 'package:audio_service/audio_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mood_press/firebase_options.dart';
 import 'package:mood_press/helper/notification_helper.dart';
+import 'package:mood_press/providers/backup_provider.dart';
 import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/healing_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
@@ -20,7 +22,9 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
   await initializeDateFormatting('vi_VN', null);
   AudioHandler audioHandler =  await AudioService.init(
     builder: () => AudioPlayerHandler(),
@@ -51,6 +55,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => ReminderProvider(repo: Get.find())),
         ChangeNotifierProvider(create: (_) => LocalAuthProvider(repo: Get.find())),
+        ChangeNotifierProvider(create: (_) => BackupProvider(repo: Get.find(), notificationHelper: Get.find())),
       ],
       child: Consumer<ThemeProvider>(
           builder: (context,themeProvider,_){

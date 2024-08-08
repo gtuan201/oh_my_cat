@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:get/get.dart';
+import 'package:mood_press/providers/backup_provider.dart';
 import 'package:mood_press/providers/local_auth_provider.dart';
 import 'package:mood_press/screen/healing/healing_screen.dart';
 import 'package:mood_press/screen/home/home_screen.dart';
@@ -37,6 +38,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
   void initState() {
     super.initState();
     localAuthProvider = context.read<LocalAuthProvider>();
+    context.read<BackupProvider>().getListFile();
     WidgetsBinding.instance.addObserver(this);
   }
 
