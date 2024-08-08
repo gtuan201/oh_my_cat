@@ -29,6 +29,12 @@ class DateTimeHelper{
     final formatter = DateFormat('HH:mm');
     return formatter.format(dateTime);
   }
+
+  static String formatDateTimeToDDMMYYYYHHMMSS(DateTime dateTime) {
+    final DateFormat formatter = DateFormat('dd/MM/yyyy HH:mm:ss');
+    return formatter.format(dateTime);
+  }
+
   static bool areDatesEqual(DateTime date1, DateTime date2) {
     return date1.year == date2.year &&
         date1.month == date2.month &&

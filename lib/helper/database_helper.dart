@@ -1,6 +1,9 @@
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+import 'dart:convert';
 
+import 'package:get/get.dart';
+import 'package:path/path.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite/sqflite.dart';
 import '../data/model/mood.dart';
 import '../data/model/reminder.dart';
 import '../data/model/test.dart';
@@ -63,7 +66,7 @@ class DatabaseHelper{
       'title': 'Viết nhật ký',
       'body': 'Hôm nay tâm tâm trạng của bạn như thế nào? Hãy thêm nhật ký ngày hôm nay nhé!',
       'enable': 0,
-      'time': '21:32',
+      'time': '20:00',
       'isDefault': 1
     });
   }
@@ -264,5 +267,49 @@ class DatabaseHelper{
       where: 'id = ? AND isDefault = 0',
       whereArgs: [id],
     );
+  }
+
+  Future<String> getDataAsJsonString() async {
+    final db = await database;
+
+    final List<Map<String, dynamic>> moods = await db.query('moods');
+    final List<Map<String, dynamic>> tests = await db.query('tests');
+    final List<Map<String, dynamic>> reminders = await db.query('reminders');
+
+
+    final Map<String, dynamic> allData = {
+      'moods': moods,
+      'tests': tests,
+      'reminders': reminders,
+    };
+    return jsonEncode(allData);
+  }
+
+  Future<void> updateDatabaseFromJsonString(String jsonString) async {
+    final db = await database;
+    final Map<String, dynamic> allData = jsonDecode(jsonString);
+
+    await db.transaction((txn) async {
+      if (allData.containsKey('moods')) {
+        await txn.delete('moods');
+        for (var mood in allData['moods']) {
+          await txn.insert('moods', mood);
+        }
+      }
+
+      if (allData.containsKey('tests')) {
+        await txn.delete('tests');
+        for (var test in allData['tests']) {
+          await txn.insert('tests', test);
+        }
+      }
+
+      if (allData.containsKey('reminders')) {
+        await txn.delete('reminders');
+        for (var reminder in allData['reminders']) {
+          await txn.insert('reminders', reminder);
+        }
+      }
+    });
   }
 }

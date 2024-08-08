@@ -41,7 +41,7 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
       appBar: AppBar(
         backgroundColor: ColorName.colorPrimary,
         elevation: 0,
-        title: const Text('Khoá mật mã',style: TextStyle(fontSize: 20),),
+        title: const Text('Khoá mật mã',),
         centerTitle: false,
       ),
       body: Padding(

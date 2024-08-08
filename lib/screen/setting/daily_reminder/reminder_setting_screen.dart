@@ -85,7 +85,7 @@ class _ReminderSettingScreenState extends State<ReminderSettingScreen> {
                 minute: minute),
             ElevatedButton(
               onPressed: () {
-                showDeleteConfirmationDialog(context).then((confirm){
+                showConfirmationDialog(context).then((confirm){
                   if(confirm == true){
                     reminderProvider.deleteReminder(widget.reminder.id!).then((canDelete){
                       if(!canDelete){

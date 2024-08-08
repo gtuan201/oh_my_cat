@@ -29,7 +29,7 @@ class ItemImage extends StatelessWidget {
           right: 20,
           child: InkWell(
             onTap: () {
-              showDeleteConfirmationDialog(context).then((confirmDelete){
+              showConfirmationDialog(context).then((confirmDelete){
                 if(confirmDelete != null && confirmDelete){
                   context.read<HomeProvider>().deleteImage(index);
                 }

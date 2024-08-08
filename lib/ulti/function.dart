@@ -11,7 +11,7 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:path_provider/path_provider.dart';
 import '../gen/colors.gen.dart';
 
-Future<bool?> showDeleteConfirmationDialog(BuildContext context) {
+Future<bool?> showConfirmationDialog(BuildContext context,{Widget? icon,String? title,String? content,String? confirm,String? nameDelete}) {
   const backgroundColor = Color(0xFF292929);
   const textColor = Colors.white;
   const accentColor = Colors.redAccent;
@@ -27,19 +27,28 @@ Future<bool?> showDeleteConfirmationDialog(BuildContext context) {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.delete_forever, color: accentColor, size: 56),
+            icon ?? const Icon(Icons.delete_forever, color: accentColor, size: 56),
             const SizedBox(height: 16),
-            const Text(
-              'Xóa mục này?',
-              style: TextStyle(
+            Text(
+              title ?? 'Xóa mục này?',
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: textColor,
               ),
             ),
+            if(nameDelete != null)
+              Container(
+                margin: const EdgeInsets.only(top: 8),
+                child: Text(
+                  nameDelete,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.grey[400]),
+                ),
+              ),
             const SizedBox(height: 8),
             Text(
-              'Bạn không thể hoàn tác hành động này.',
+              content ?? 'Bạn không thể hoàn tác hành động này.',
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.grey[400]),
             ),
@@ -55,7 +64,7 @@ Future<bool?> showDeleteConfirmationDialog(BuildContext context) {
                 ),
                 _DialogButton(
                   onPressed: () => Navigator.of(context).pop(true),
-                  text: 'Xóa',
+                  text: confirm ?? 'Xóa',
                   color: accentColor,
                   textColor: textColor,
                 ),

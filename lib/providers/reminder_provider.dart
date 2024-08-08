@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mood_press/data/repository/reminder_repo.dart';
 import 'package:mood_press/data/model/reminder.dart';
 import 'package:mood_press/helper/notification_helper.dart';
+import 'package:mood_press/ulti/constant.dart';
 
 class ReminderProvider extends ChangeNotifier {
   final ReminderRepo repo;
@@ -72,5 +73,23 @@ class ReminderProvider extends ChangeNotifier {
       final reminderTime = TimeOfDay(hour: reminder.time.hour, minute: reminder.time.minute);
       return reminderTime.hour == date.hour && reminderTime.minute == date.minute;
     }).toList();
+  }
+
+  void syncReminderNotification(){
+    Get.find<NotificationHelper>().cancelAllNotificationsExceptOne(exceptNotificationId: Constant.NOTIFICATION_BACKUP);
+    for (var reminder in _reminders) {
+      if(reminder.enable){
+        Get.find<NotificationHelper>().schedulePeriodicNotification(
+          id: reminder.id!,
+          hour: reminder.time.hour,
+          minute: reminder.time.minute,
+          title: reminder.title,
+          body: reminder.body,
+        );
+      }
+      else{
+        Get.find<NotificationHelper>().cancelNotification(reminder.id!);
+      }
+    }
   }
 }

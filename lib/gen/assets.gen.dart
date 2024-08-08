@@ -111,6 +111,9 @@ class $AssetImageGen {
   /// File path: asset/image/depresstion.png
   AssetGenImage get depresstion => const AssetGenImage('asset/image/depresstion.png');
 
+  /// File path: asset/image/drive.svg
+  SvgGenImage get drive => const SvgGenImage('asset/image/drive.svg');
+
   /// File path: asset/image/emotion_test.png
   AssetGenImage get emotionTest => const AssetGenImage('asset/image/emotion_test.png');
 
@@ -140,6 +143,9 @@ class $AssetImageGen {
 
   /// File path: asset/image/logo.png
   AssetGenImage get logo => const AssetGenImage('asset/image/logo.png');
+
+  /// File path: asset/image/logout.svg
+  SvgGenImage get logout => const SvgGenImage('asset/image/logout.svg');
 
   /// File path: asset/image/mask.svg
   SvgGenImage get mask => const SvgGenImage('asset/image/mask.svg');
@@ -282,6 +288,7 @@ class $AssetImageGen {
         cry,
         cry2,
         depresstion,
+        drive,
         emotionTest,
         faceid,
         fireplace,
@@ -292,6 +299,7 @@ class $AssetImageGen {
         heartEyes,
         heartEyes2,
         logo,
+        logout,
         mask,
         naughty,
         noelImage,

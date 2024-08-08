@@ -14,6 +14,21 @@
     <string>This app needs microphone access to record videos</string>
     <key>NSFaceIDUsageDescription</key>
     <string>Ứng dụng này sử dụng Face ID để xác thực người dùng và bảo vệ dữ liệu cá nhân của bạn.</string>
+    <key>GIDClientID</key>
+    <string>522609846946-jffkk6mm6re8h04pb6f2imf00j4kcjv4.apps.googleusercontent.com</string>
+    <!-- Put me in the [my_project]/ios/Runner/Info.plist file -->
+    <!-- Google Sign-in Section -->
+    <key>CFBundleURLTypes</key>
+    <array>
+    	<dict>
+    		<key>CFBundleTypeRole</key>
+    		<string>Editor</string>
+    		<key>CFBundleURLSchemes</key>
+    		<array>
+    			<string>com.googleusercontent.apps.522609846946-jffkk6mm6re8h04pb6f2imf00j4kcjv4</string>
+    		</array>
+    	</dict>
+    </array>
     <key>UIBackgroundModes</key>
     <array>
       <string>audio</string>

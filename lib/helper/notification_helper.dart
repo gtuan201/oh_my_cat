@@ -3,6 +3,24 @@ import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
+enum NotificationInterval implements Comparable <NotificationInterval> {
+  none(message: 'Không'),
+  daily(message: 'Hàng ngày'),
+  every3Days(message: '3 Ngày'),
+  weekly(message: 'Hàng tuần'),
+  monthly(message: 'Hàng tháng');
+
+  const NotificationInterval({
+    required this.message,
+  });
+
+  final String message;
+
+
+  @override
+  int compareTo(NotificationInterval other) => message.compareTo(other.message);
+}
+
 class NotificationHelper{
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
   FlutterLocalNotificationsPlugin();
@@ -29,13 +47,14 @@ class NotificationHelper{
     await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
 
-  Future<void> schedulePeriodicNotification(
-      int id,
-      int hour,
-      int minute,
-      String title,
-      String body
-      ) async {
+  Future<void> schedulePeriodicNotification({
+    required int id,
+    required int hour,
+    required int minute,
+    required String title,
+    required String body,
+    NotificationInterval? interval,
+  }) async {
     var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
       'oh_my_cat',
       'oh_my_cat',
@@ -48,15 +67,37 @@ class NotificationHelper{
       iOS: iOSPlatformChannelSpecifics,
     );
 
+    tz.TZDateTime scheduledDate = _nextInstanceOfTime(hour, minute);
+    DateTimeComponents? dateTimeComponents;
+
+    switch (interval) {
+      case NotificationInterval.every3Days:
+        scheduledDate = _getNext3DayInstance(scheduledDate);
+        break;
+      case NotificationInterval.weekly:
+        dateTimeComponents = DateTimeComponents.dayOfWeekAndTime;
+        break;
+      case NotificationInterval.monthly:
+        dateTimeComponents = DateTimeComponents.dayOfMonthAndTime;
+        break;
+      case NotificationInterval.daily:
+      case null:
+        dateTimeComponents = DateTimeComponents.time;
+        break;
+      case NotificationInterval.none:
+        break;
+    }
+
     await flutterLocalNotificationsPlugin.zonedSchedule(
       id,
       title,
       body,
-      _nextInstanceOfTime(hour, minute),
+      scheduledDate,
       platformChannelSpecifics,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time,
+      matchDateTimeComponents: dateTimeComponents,
+      payload: interval?.toString(),
     );
   }
 
@@ -76,8 +117,28 @@ class NotificationHelper{
     return scheduledDate;
   }
 
+  tz.TZDateTime _getNext3DayInstance(tz.TZDateTime scheduledDate) {
+    final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
+    while (scheduledDate.isBefore(now)) {
+      scheduledDate = scheduledDate.add(const Duration(days: 3));
+    }
+    return scheduledDate;
+  }
+
   Future<void> cancelNotification(int id) async {
     await flutterLocalNotificationsPlugin.cancel(id);
+  }
+
+  Future<void> cancelAllNotificationsExceptOne({required int exceptNotificationId}) async {
+    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    final List<PendingNotificationRequest> pendingNotifications =
+    await flutterLocalNotificationsPlugin.pendingNotificationRequests();
+
+    for (var notification in pendingNotifications) {
+      if (notification.id != exceptNotificationId) {
+        await flutterLocalNotificationsPlugin.cancel(notification.id);
+      }
+    }
   }
 
   Future<void> showNotification({
