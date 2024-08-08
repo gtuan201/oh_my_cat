@@ -9,10 +9,23 @@
       "client_info": {
         "mobilesdk_app_id": "1:522609846946:android:beaab090e98270fb3945fb",
         "android_client_info": {
-          "package_name": "com.tuna.oh_my_cat"
+          "package_name": "com.tuna.ohmycat"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "522609846946-9idvvif7boof4nu3i3945osqt3parots.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tuna.ohmycat",
+            "certificate_hash": "2f06fc0596756be5579ae2a03a85e25f201cb755"
+          }
+        },
+        {
+          "client_id": "522609846946-m3s64dhjh9neql56ot0e0pvafqfq5a6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDsjL9IlYROlV3u2o-GuJCDC0vnJTWW5BM"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "522609846946-m3s64dhjh9neql56ot0e0pvafqfq5a6h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "522609846946-jffkk6mm6re8h04pb6f2imf00j4kcjv4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.moodPress"
+              }
+            }
+          ]
         }
       }
     }

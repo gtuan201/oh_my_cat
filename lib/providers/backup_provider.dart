@@ -23,6 +23,7 @@ class BackupProvider extends ChangeNotifier{
   Future<void> googleSignIn()async {
     await repo.googleSignIn();
     getCurrentUser();
+    await getListFile();
   }
   Future<void> checkSignInOnStartup()async {
     await repo.checkSignInOnStartup();
@@ -31,6 +32,8 @@ class BackupProvider extends ChangeNotifier{
   Future<void> googleSignOut() async {
     await repo.googleSignOut();
     getCurrentUser();
+    files = [];
+    notifyListeners();
   }
   Future<void> uploadFile(String filePath, String fileName)async {
     await repo.uploadFile(filePath, fileName);

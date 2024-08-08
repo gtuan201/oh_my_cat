@@ -2061,14 +2061,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
-  wheel_picker:
-    dependency: "direct main"
-    description:
-      name: wheel_picker
-      sha256: b79513613020b6d8f27f9f029cd2c69be87396c5264f9ff4a1e7c10c6cfc2de5
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.5"
   win32:
     dependency: transitive
     description:

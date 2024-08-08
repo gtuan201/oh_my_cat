@@ -1,4 +1,4 @@
-package com.tuna.oh_my_cat
+package com.tuna.ohmycat
 
 import com.ryanheise.audioservice.AudioServiceFragmentActivity
 

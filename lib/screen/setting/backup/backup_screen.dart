@@ -63,11 +63,16 @@ class _BackupScreenState extends State<BackupScreen> {
                             : 'Chưa có dữ liệu sao lưu',
                     iconData: Icons.backup,
                   onTap: () async {
-                    showLoadingDialog(message: "Sao lưu dữ liệu...");
-                    backupProvider.uploadFile("", "${DateTimeHelper.formatDateTimeToDDMMYYYYHHMMSS(DateTime.now())}.json").then((value){
-                      Get.back();
-                      showCustomToast(context: context, message: "Sao lưu thành công");
-                    });
+                    if(backupProvider.currentUser != null){
+                      showLoadingDialog(message: "Sao lưu dữ liệu...");
+                      backupProvider.uploadFile("", "${DateTimeHelper.formatDateTimeToDDMMYYYYHHMMSS(DateTime.now())}.json").then((value){
+                        Get.back();
+                        showCustomToast(context: context, message: "Sao lưu thành công");
+                      });
+                    }
+                    else{
+                      showCustomToast(context: context, message: 'Bạn chưa đăng nhập tài khoản Google');
+                    }
                   },
                 );
               },
