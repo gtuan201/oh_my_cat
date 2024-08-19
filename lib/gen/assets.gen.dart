@@ -81,14 +81,29 @@ class $AssetImageGen {
   /// File path: asset/image/angry2.svg
   SvgGenImage get angry2 => const SvgGenImage('asset/image/angry2.svg');
 
+  /// File path: asset/image/angry3.svg
+  SvgGenImage get angry3 => const SvgGenImage('asset/image/angry3.svg');
+
   /// File path: asset/image/annoyed.svg
   SvgGenImage get annoyed => const SvgGenImage('asset/image/annoyed.svg');
 
   /// File path: asset/image/annoyed2.svg
   SvgGenImage get annoyed2 => const SvgGenImage('asset/image/annoyed2.svg');
 
+  /// File path: asset/image/annoyed3.svg
+  SvgGenImage get annoyed3 => const SvgGenImage('asset/image/annoyed3.svg');
+
   /// File path: asset/image/backspace.svg
   SvgGenImage get backspace => const SvgGenImage('asset/image/backspace.svg');
+
+  /// File path: asset/image/bear.png
+  AssetGenImage get bear => const AssetGenImage('asset/image/bear.png');
+
+  /// File path: asset/image/bearPreview.png
+  AssetGenImage get bearPreview => const AssetGenImage('asset/image/bearPreview.png');
+
+  /// File path: asset/image/bear_thumb.png
+  AssetGenImage get bearThumb => const AssetGenImage('asset/image/bear_thumb.png');
 
   /// File path: asset/image/cat.jpeg
   AssetGenImage get cat => const AssetGenImage('asset/image/cat.jpeg');
@@ -99,6 +114,9 @@ class $AssetImageGen {
   /// File path: asset/image/confused2.svg
   SvgGenImage get confused2 => const SvgGenImage('asset/image/confused2.svg');
 
+  /// File path: asset/image/confused3.svg
+  SvgGenImage get confused3 => const SvgGenImage('asset/image/confused3.svg');
+
   /// File path: asset/image/cool.svg
   SvgGenImage get cool => const SvgGenImage('asset/image/cool.svg');
 
@@ -107,6 +125,9 @@ class $AssetImageGen {
 
   /// File path: asset/image/cry2.svg
   SvgGenImage get cry2 => const SvgGenImage('asset/image/cry2.svg');
+
+  /// File path: asset/image/cry3.svg
+  SvgGenImage get cry3 => const SvgGenImage('asset/image/cry3.svg');
 
   /// File path: asset/image/depresstion.png
   AssetGenImage get depresstion => const AssetGenImage('asset/image/depresstion.png');
@@ -135,11 +156,17 @@ class $AssetImageGen {
   /// File path: asset/image/happy2.svg
   SvgGenImage get happy2 => const SvgGenImage('asset/image/happy2.svg');
 
+  /// File path: asset/image/happy3.svg
+  SvgGenImage get happy3 => const SvgGenImage('asset/image/happy3.svg');
+
   /// File path: asset/image/heartEyes.svg
   SvgGenImage get heartEyes => const SvgGenImage('asset/image/heartEyes.svg');
 
   /// File path: asset/image/heartEyes2.svg
   SvgGenImage get heartEyes2 => const SvgGenImage('asset/image/heartEyes2.svg');
+
+  /// File path: asset/image/heartEyes3.svg
+  SvgGenImage get heartEyes3 => const SvgGenImage('asset/image/heartEyes3.svg');
 
   /// File path: asset/image/logo.png
   AssetGenImage get logo => const AssetGenImage('asset/image/logo.png');
@@ -170,6 +197,9 @@ class $AssetImageGen {
 
   /// File path: asset/image/sad2.svg
   SvgGenImage get sad2 => const SvgGenImage('asset/image/sad2.svg');
+
+  /// File path: asset/image/sad3.svg
+  SvgGenImage get sad3 => const SvgGenImage('asset/image/sad3.svg');
 
   /// File path: asset/image/saxophone.jpeg
   AssetGenImage get saxophone => const AssetGenImage('asset/image/saxophone.jpeg');
@@ -234,11 +264,17 @@ class $AssetImageGen {
   /// File path: asset/image/shocked2.svg
   SvgGenImage get shocked2 => const SvgGenImage('asset/image/shocked2.svg');
 
+  /// File path: asset/image/shocked3.svg
+  SvgGenImage get shocked3 => const SvgGenImage('asset/image/shocked3.svg');
+
   /// File path: asset/image/sleep.svg
   SvgGenImage get sleep => const SvgGenImage('asset/image/sleep.svg');
 
   /// File path: asset/image/sleep2.svg
   SvgGenImage get sleep2 => const SvgGenImage('asset/image/sleep2.svg');
+
+  /// File path: asset/image/sleep3.svg
+  SvgGenImage get sleep3 => const SvgGenImage('asset/image/sleep3.svg');
 
   /// File path: asset/image/smile.svg
   SvgGenImage get smile => const SvgGenImage('asset/image/smile.svg');
@@ -255,6 +291,9 @@ class $AssetImageGen {
   /// File path: asset/image/tears2.svg
   SvgGenImage get tears2 => const SvgGenImage('asset/image/tears2.svg');
 
+  /// File path: asset/image/tears3.svg
+  SvgGenImage get tears3 => const SvgGenImage('asset/image/tears3.svg');
+
   /// File path: asset/image/think.svg
   SvgGenImage get think => const SvgGenImage('asset/image/think.svg');
 
@@ -270,6 +309,9 @@ class $AssetImageGen {
   /// File path: asset/image/worry2.svg
   SvgGenImage get worry2 => const SvgGenImage('asset/image/worry2.svg');
 
+  /// File path: asset/image/worry3.svg
+  SvgGenImage get worry3 => const SvgGenImage('asset/image/worry3.svg');
+
   /// File path: asset/image/worry_test.png
   AssetGenImage get worryTest => const AssetGenImage('asset/image/worry_test.png');
 
@@ -278,15 +320,22 @@ class $AssetImageGen {
         adhd,
         angry,
         angry2,
+        angry3,
         annoyed,
         annoyed2,
+        annoyed3,
         backspace,
+        bear,
+        bearPreview,
+        bearThumb,
         cat,
         confused,
         confused2,
+        confused3,
         cool,
         cry,
         cry2,
+        cry3,
         depresstion,
         drive,
         emotionTest,
@@ -296,8 +345,10 @@ class $AssetImageGen {
         guitar,
         happy,
         happy2,
+        happy3,
         heartEyes,
         heartEyes2,
+        heartEyes3,
         logo,
         logout,
         mask,
@@ -308,6 +359,7 @@ class $AssetImageGen {
         rain,
         sad,
         sad2,
+        sad3,
         saxophone,
         selfcarePoster1,
         selfcarePoster10,
@@ -329,18 +381,22 @@ class $AssetImageGen {
         selfcarePoster9,
         shocked,
         shocked2,
+        shocked3,
         sleep,
         sleep2,
+        sleep3,
         smile,
         splash,
         suthanhhoa,
         tears,
         tears2,
+        tears3,
         think,
         veryHappy,
         wave,
         worry,
         worry2,
+        worry3,
         worryTest
       ];
 }

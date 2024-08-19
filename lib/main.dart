@@ -52,13 +52,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => TestProvider()),
         ChangeNotifierProvider(create: (_) => MusicProvider()),
         ChangeNotifierProvider(create: (_) => StatisticalProvider(repo: Get.find())),
-        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => ThemeProvider(storage: Get.find())),
         ChangeNotifierProvider(create: (_) => ReminderProvider(repo: Get.find())),
         ChangeNotifierProvider(create: (_) => LocalAuthProvider(repo: Get.find())),
         ChangeNotifierProvider(create: (_) => BackupProvider(repo: Get.find(), notificationHelper: Get.find())),
       ],
       child: Consumer<ThemeProvider>(
           builder: (context,themeProvider,_){
+            themeProvider.getTheme();
             return GetMaterialApp(
               theme: themeProvider.themeData,
               debugShowCheckedModeBanner: false,

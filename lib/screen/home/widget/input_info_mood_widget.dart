@@ -65,10 +65,10 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         automaticallyImplyLeading: false,
         toolbarHeight: 60,
@@ -106,7 +106,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
           bottom: MediaQuery.of(context).viewInsets.bottom
         ),
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
-        color: Colors.blueGrey.shade900,
+        color: Theme.of(context).cardColor,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -168,11 +168,11 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
               margin: const EdgeInsets.symmetric(horizontal: 32,vertical: 20),
               padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
               decoration: BoxDecoration(
-                color: Colors.blueGrey.shade900,
+                color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
                   width: 2,
-                  color: Colors.blueGrey
+                  color: Theme.of(context).cardTheme.shadowColor!
                 )
               ),
               child: Column(

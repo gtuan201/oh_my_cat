@@ -29,7 +29,7 @@ class TextFieldCustomState extends State<TextFieldCustom> {
     return Stack(
       children: [
         TextField(
-          cursorColor: Colors.teal,
+          cursorColor: Theme.of(context).splashColor,
           controller: widget.controller,
           focusNode: widget.focusNode,
           style: TextStyle(color: Colors.blueGrey.shade100),
@@ -44,20 +44,20 @@ class TextFieldCustomState extends State<TextFieldCustom> {
             hintText: widget.hint,
             contentPadding: const EdgeInsets.fromLTRB(12, 12, 12, 30),
             hintStyle: TextStyle(color: Colors.blueGrey.shade200),
-            border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              borderSide: BorderSide(color: ColorName.darkBlue),
+            border: OutlineInputBorder(
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+              borderSide: BorderSide(color: Theme.of(context).cardColor),
             ),
-            enabledBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              borderSide: BorderSide(color: ColorName.darkBlue),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+              borderSide: BorderSide(color: Theme.of(context).cardColor),
             ),
-            focusedBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              borderSide: BorderSide(color: ColorName.darkBlue),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+              borderSide: BorderSide(color: Theme.of(context).cardColor),
             ),
             filled: true,
-            fillColor: ColorName.darkBlue,
+            fillColor: Theme.of(context).cardColor,
             counterText: ''
           ),
         ),
@@ -65,7 +65,10 @@ class TextFieldCustomState extends State<TextFieldCustom> {
         Obx(() => Positioned(
           right: 10,
           bottom: 10,
-          child: Text('${counter.value} / ${widget.maxLength}',style: const TextStyle(color: Colors.tealAccent),),
+          child: Text('${counter.value} / ${widget.maxLength}',style: TextStyle(color: Theme.of(context)
+              .switchTheme
+              .thumbColor
+              ?.resolve({WidgetState.selected})),),
         ),)
       ],
     );

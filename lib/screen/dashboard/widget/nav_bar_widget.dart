@@ -18,12 +18,12 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       elevation: 0.0,
-      color: ColorName.colorBackground,
+      color: Theme.of(context).bottomAppBarTheme.color,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Container(
           height: 60,
-          color: ColorName.colorBackground,
+          color: Theme.of(context).bottomAppBarTheme.color,
           child: Row(
             children: [
               navItem(

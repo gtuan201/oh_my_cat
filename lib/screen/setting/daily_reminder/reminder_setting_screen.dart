@@ -46,10 +46,10 @@ class _ReminderSettingScreenState extends State<ReminderSettingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         title: Text(widget.reminder.title),
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         centerTitle: false,
         elevation: 0,
         actions: [
@@ -65,7 +65,7 @@ class _ReminderSettingScreenState extends State<ReminderSettingScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16)
                 ),
-                backgroundColor: Colors.teal
+                backgroundColor: Theme.of(context).splashColor
               ),
               child: const Text('Lưu',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
             ),

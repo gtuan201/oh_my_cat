@@ -37,12 +37,12 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       body: CustomScrollView(
         slivers: [
-          const SliverAppBar(
-            backgroundColor: ColorName.colorPrimary,
-            title: Text('Thống kê'),
+          SliverAppBar(
+            backgroundColor: Theme.of(context).primaryColor,
+            title: const Text('Thống kê'),
             centerTitle: true,
             pinned: true,
             floating: true,
@@ -53,10 +53,10 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
               margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                  color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),
+                  color: Theme.of(context).cardTheme.color,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                      color: Colors.blueGrey.withBlue(140),
+                      color: Theme.of(context).cardTheme.shadowColor!,
                       width: 3
                   )
               ),
@@ -87,10 +87,10 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
               margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                  color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),
+                  color: Theme.of(context).cardTheme.color,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                      color: Colors.blueGrey.withBlue(140),
+                      color: Theme.of(context).cardTheme.shadowColor!,
                       width: 3
                   )
               ),
@@ -117,16 +117,16 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
                             initialLabelIndex: toggleChart.value ? 0 : 1,
                             cornerRadius: 10,
                             activeFgColor: Colors.white,
-                            inactiveBgColor: ColorName.darkBlue,
-                            inactiveFgColor: Colors.blueGrey.shade300,
+                            inactiveBgColor: Theme.of(context).cardColor,
+                            inactiveFgColor: Colors.white,
                             totalSwitches: 2,
                             icons: const [
                               FontAwesomeIcons.chartPie,
                               FontAwesomeIcons.solidChartBar,
                             ],
                             borderWidth: 4.0,
-                            borderColor: const [ColorName.darkBlue],
-                            activeBgColors: const [[Colors.teal], [Colors.teal]],
+                            borderColor: [Theme.of(context).cardColor],
+                            activeBgColors: [[Theme.of(context).splashColor], [Theme.of(context).splashColor]],
                             onToggle: (index) {
                               if(index == 1){
                                 itemLength.value = 5;

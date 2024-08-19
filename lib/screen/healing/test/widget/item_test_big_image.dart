@@ -10,7 +10,7 @@ class ItemTestBigImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final BorderSide borderSide = BorderSide(
-        color: Colors.blueGrey.withBlue(140),
+        color: Theme.of(context).cardTheme.shadowColor!,
         width: 3
     );
     return InkWell(
@@ -35,7 +35,7 @@ class ItemTestBigImage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16,vertical:20),
               decoration: BoxDecoration(
-                  color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),
+                  color: Theme.of(context).cardColor,
                   borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(12),bottomRight: Radius.circular(12)),
                   border: Border(
                     left: borderSide,
@@ -46,9 +46,9 @@ class ItemTestBigImage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(test.title,style: TextStyle(color: Colors.blueGrey.shade100,fontWeight: FontWeight.w600,fontSize: 16),),
+                  Text(test.title,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 16),),
                   const SizedBox(height: 12,),
-                  Text(test.description.substring(0,test.description.indexOf(".") + 1),style: TextStyle(color: Colors.blueGrey.shade300,fontWeight: FontWeight.w600,fontSize: 16),),
+                  Text(test.description.substring(0,test.description.indexOf(".") + 1),style: const TextStyle(color: Colors.white70,fontWeight: FontWeight.w600,fontSize: 16),),
                 ],
               ))
           ],

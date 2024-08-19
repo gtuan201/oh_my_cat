@@ -37,9 +37,9 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         title: const Text('Khoá mật mã',),
         centerTitle: false,
@@ -52,10 +52,10 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),
+                  color: Theme.of(context).cardTheme.color,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                      color: Colors.blueGrey.withBlue(140),
+                      color: Theme.of(context).cardTheme.shadowColor!,
                       width: 3
                   )
               ),
@@ -71,7 +71,6 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
                           const Expanded(child: Text('Thiết lập mật mã',style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.w600),)),
                           Obx(() => Switch(
                               value: enableLocalAuth.value,
-                              activeColor: Colors.tealAccent,
                               onChanged: (value) async {
                                 enableLocalAuth.value = value;
                                 if(value){
@@ -105,7 +104,6 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
                                   builder: (context,enableBiometric,_){
                                     return Switch(
                                         value: enableBiometric,
-                                        activeColor: Colors.tealAccent,
                                         onChanged: (value) async {
                                           localAuthProvider.toggleBiometricAuth(value);
                                           authBiometric(enable: value);

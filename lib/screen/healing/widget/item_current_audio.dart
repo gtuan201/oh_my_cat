@@ -1,10 +1,7 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:mood_press/data/model/audio_model.dart';
-import 'package:mood_press/gen/colors.gen.dart';
-import 'package:mood_press/helper/audio_handler.dart';
 
 class ItemCurrentAudio extends StatelessWidget {
   final AudioModel audio;
@@ -16,8 +13,8 @@ class ItemCurrentAudio extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-          color: ColorName.darkBlue.withOpacity(0.6),
-          border: Border.all(color: Colors.blueGrey,width: 2),
+          color: Theme.of(context).cardColor.withOpacity(0.6),
+          border: Border.all(color: Theme.of(context).cardTheme.shadowColor!,width: 2),
           borderRadius: BorderRadius.circular(10)
       ),
       child: Row(
@@ -32,16 +29,16 @@ class ItemCurrentAudio extends StatelessWidget {
           ),
           const Spacer(),
           StreamBuilder(
-              stream: Get.find<AudioPlayerHandler>().loopStream,
+              stream: Get.find<AudioHandler>().playbackState,
               builder: (context,snapshot){
-                final loopMode = snapshot.data;
+                final loopMode = snapshot.data?.repeatMode;
                 return InkWell(
                     onTap: () async {
                       await Get.find<AudioHandler>().customAction('toggleLoop');
                     },
                     child: Icon(
                       Icons.loop,
-                      color: loopMode == LoopMode.one ? Colors.lightBlue : Colors.white,
+                      color: loopMode == AudioServiceRepeatMode.one ? Theme.of(context).splashColor : Colors.white,
                     )
                 );
               }

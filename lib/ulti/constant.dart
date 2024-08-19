@@ -40,6 +40,20 @@ class Constant{
     Assets.image.heartEyes2,
   ];
 
+  static List<SvgGenImage> listEmojiBear = [
+    Assets.image.cry3,
+    Assets.image.sad3,
+    Assets.image.angry3,
+    Assets.image.annoyed3,
+    Assets.image.worry3,
+    Assets.image.confused3,
+    Assets.image.shocked3,
+    Assets.image.sleep3,
+    Assets.image.tears3,
+    Assets.image.happy3,
+    Assets.image.heartEyes3,
+  ];
+
   static List<String> listEmojiNames = [
     'Khóc',
     'Buồn',
@@ -71,6 +85,7 @@ class Constant{
   static const String enableAuthBiometric = "enable_auth_biometric";
   static const String password = "password";
   static const String reminderBackup = "reminder_backup";
+  static const String theme = "theme";
 
   //ID notification
   static int NOTIFICATION_BACKUP = 101;

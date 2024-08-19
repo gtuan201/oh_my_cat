@@ -116,9 +116,9 @@ class KeypadButton extends StatelessWidget {
       onPressed: onPressed,
       child: Container(
         padding: const EdgeInsets.all(30),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Colors.blueGrey
+          color: Theme.of(context).cardTheme.color
         ),
         child: Text(
           text,

@@ -26,11 +26,22 @@ class LevelWidget extends StatelessWidget {
                     Get.to(() => InformationTestScreen(test: test,indexResult: index,));
                   },
                   child: CustomTooltipShape(
-                  color: Colors.teal.shade400,
+                  color: Theme.of(context).splashColor,
                   child: Row(
                     children: [
-                      Text(level,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
-                      const SizedBox(width: 10,),
+                        Text(
+                          level,
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              shadows: [
+                                Shadow(
+                                    color: Colors.black38,
+                                    offset: Offset(0, 1),
+                                    blurRadius: 1)
+                              ]),
+                        ),
+                        const SizedBox(width: 10,),
                       const FaIcon(FontAwesomeIcons.solidCircleQuestion,color: Colors.white,)
                     ],
                   ),
@@ -66,7 +77,7 @@ class LevelWidget extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: determineScoreLevel(index) ? Colors.teal.shade400 : Colors.teal.shade900,
+                          color: determineScoreLevel(index) ? Theme.of(context).splashColor : Theme.of(context).splashColor.withOpacity(0.3),
                           borderRadius: borderRadius,
                         ),
                         margin: const EdgeInsets.only(right: 6),
