@@ -140,11 +140,21 @@ class CalendarPageState extends State<CalendarPage> {
                     width: 52,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: isToday ? Colors.lightBlue : Colors.blueGrey.shade400,
+                      color: isToday ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.secondary,
                     ),
                     padding: EdgeInsets.all(afterNow ? 1 : 4),
-                    child: Icon(Icons.circle,color: isToday ? Colors.lightBlue.shade100 : afterNow ? ColorName.colorPrimary : Colors.blueGrey.shade500,size: afterNow ? 50 : 40,),
-                  ),
+                            child: Icon(
+                              Icons.circle,
+                              color: isToday
+                                  ? Theme.of(context).colorScheme.onPrimary
+                                  : afterNow
+                                      ? Theme.of(context).primaryColor
+                                      : Theme.of(context)
+                                          .colorScheme
+                                          .onSecondary,
+                              size: afterNow ? 50 : 40,
+                            ),
+                          ),
               ),
               const SizedBox(height: 4,),
               Text('${day.day}',

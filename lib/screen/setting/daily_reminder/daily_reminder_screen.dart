@@ -28,11 +28,11 @@ class _DailyReminderScreenState extends State<DailyReminderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         title: const Text('Thiết lập nhắc nhở'),
         elevation: 0,
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         centerTitle: true,
       ),
       body: Column(
@@ -67,9 +67,9 @@ class _DailyReminderScreenState extends State<DailyReminderScreen> {
               },
               style: ElevatedButton.styleFrom(
                   fixedSize: Size(Get.width, 42),
-                  backgroundColor: Colors.teal
+                  backgroundColor: Theme.of(context).splashColor
               ),
-              child: const Text('Thêm nhắc nhở hàng ngày'),
+              child: const Text('Thêm nhắc nhở hàng ngày',),
             ),
           ),
         ],
@@ -96,42 +96,44 @@ class _DailyReminderScreenState extends State<DailyReminderScreen> {
       isScrollControlled: false,
         Container(
           height: 450,
-        color: ColorName.colorPrimary,
+        color: Theme.of(context).primaryColor,
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Container(width: 40,height: 4,color: Colors.blueGrey.shade100,),
-            InfoReminderWidget(reminder: newReminder,
-              titleController: titleController,
-              bodyController: bodyController,
-              titleFocusNode: titleFocusNode,
-              bodyFocusNode: bodyFocusNode,
-              hour: hour,
-              minute: minute),
-            const SizedBox(height: 10,),
-            ElevatedButton(
-              onPressed: (){
-                if(titleController.text.isEmpty || bodyController.text.isEmpty){
-                  showCustomToast(
-                  context: context,
-                  message: 'Hãy điền đầy đủ thông tin',
-                  backgroundColor: Colors.redAccent);
-                }
-                else{
-                  newReminder..time = TimeOfDay(hour: hour.value, minute: minute.value)
-                    ..title = titleController.text
-                    ..body = bodyController.text;
-                  _reminderProvider.addReminder(newReminder);
-                  Get.back();
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
-                fixedSize: Size(Get.width, 42)
-              ),
-              child: const Text("Thêm nhắc nhở")
-            )
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(width: 40,height: 4,color: Colors.blueGrey.shade100,),
+              InfoReminderWidget(reminder: newReminder,
+                titleController: titleController,
+                bodyController: bodyController,
+                titleFocusNode: titleFocusNode,
+                bodyFocusNode: bodyFocusNode,
+                hour: hour,
+                minute: minute),
+              const SizedBox(height: 10,),
+              ElevatedButton(
+                onPressed: (){
+                  if(titleController.text.isEmpty || bodyController.text.isEmpty){
+                    showCustomToast(
+                    context: context,
+                    message: 'Hãy điền đầy đủ thông tin',
+                    backgroundColor: Colors.redAccent);
+                  }
+                  else{
+                    newReminder..time = TimeOfDay(hour: hour.value, minute: minute.value)
+                      ..title = titleController.text
+                      ..body = bodyController.text;
+                    _reminderProvider.addReminder(newReminder);
+                    Get.back();
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).splashColor,
+                  fixedSize: Size(Get.width, 42)
+                ),
+                child: const Text("Thêm nhắc nhở")
+              )
+            ],
+          ),
         ),
       )
     );

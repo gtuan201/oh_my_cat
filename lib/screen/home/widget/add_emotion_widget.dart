@@ -39,9 +39,9 @@ class CircleListAnimationState extends State<AddEmotionWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         automaticallyImplyLeading: false,
         toolbarHeight: 40,

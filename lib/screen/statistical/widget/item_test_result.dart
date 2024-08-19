@@ -31,7 +31,7 @@ class ItemTestResult extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-            color: ColorName.darkBlue,
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(12),
         ),
         child: Column(

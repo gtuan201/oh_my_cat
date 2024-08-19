@@ -62,6 +62,9 @@ class AudioPlayerHandler extends BaseAudioHandler with SeekHandler{
     if (name == 'toggleLoop') {
       final loopMode = _player.loopMode == LoopMode.one ? LoopMode.off : LoopMode.one;
       await _player.setLoopMode(loopMode);
+      playbackState.add(playbackState.value.copyWith(
+        repeatMode: loopMode == LoopMode.one ? AudioServiceRepeatMode.one : AudioServiceRepeatMode.none,
+      ));
       return loopMode.toString();
     }
     return super.customAction(name, extras);
@@ -86,6 +89,7 @@ class AudioPlayerHandler extends BaseAudioHandler with SeekHandler{
         MediaAction.stop,
         if (playing) MediaAction.pause else MediaAction.play,
       },
+      repeatMode: _player.loopMode == LoopMode.one ? AudioServiceRepeatMode.one : AudioServiceRepeatMode.none,
       androidCompactActionIndices: const [0, 1, 3],
       processingState: const {
         ProcessingState.idle: AudioProcessingState.idle,

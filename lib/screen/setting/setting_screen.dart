@@ -1,18 +1,11 @@
-import 'dart:io';
-
-import 'package:android_intent_plus/android_intent.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:local_auth/local_auth.dart';
-import 'package:mood_press/gen/assets.gen.dart';
 import 'package:mood_press/screen/setting/backup/backup_screen.dart';
 import 'package:mood_press/screen/setting/daily_reminder/daily_reminder_screen.dart';
 import 'package:mood_press/screen/setting/local_auth/local_auth_screen.dart';
+import 'package:mood_press/screen/setting/theme/theme_screen.dart';
 import 'package:mood_press/screen/setting/widget/item_setting.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../gen/colors.gen.dart';
-import '../../helper/google_drive_helper.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -23,21 +16,20 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> {
 
-  BoxDecoration decoration = BoxDecoration(
-      color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),
-      borderRadius: BorderRadius.circular(12),
-      border: Border.all(
-          color: Colors.blueGrey.withBlue(140),
-          width: 3
-      )
-  );
-
   @override
   Widget build(BuildContext context) {
+    BoxDecoration decoration = BoxDecoration(
+        color: Theme.of(context).cardTheme.color,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+            color: Theme.of(context).cardTheme.shadowColor!,
+            width: 3
+        )
+    );
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         title: const Text('Cài đặt'),
         centerTitle: true,
@@ -45,22 +37,21 @@ class _SettingScreenState extends State<SettingScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 20,),
             Container(
               width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 8),
               decoration: decoration,
               child: Column(
                 children: [
-                  ItemSetting(title: 'Nhắc nhở hàng ngày', icon: Icons.notifications, onTap: () async {
+                  ItemSetting(title: 'Nhắc nhở hàng ngày', icon: Icons.notifications, onTap: ()  {
                     Get.to(() => const DailyReminderScreen());
                   },),
-                  Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
+                  const Divider(thickness: 2,),
                   ItemSetting(title: 'Khoá bảo mật', icon: Icons.lock, onTap: () {
                     Get.to(() => const LocalAuthScreen());
                   },),
-                  Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
-                  ItemSetting(title: 'Sao lưu & Khôi phục', icon: Icons.cloud, onTap: () async {
+                  const Divider(thickness: 2,),
+                  ItemSetting(title: 'Sao lưu & Khôi phục', icon: Icons.cloud, onTap: ()  {
                     Get.to(() => const BackupScreen());
                   },),
                 ],
@@ -72,10 +63,12 @@ class _SettingScreenState extends State<SettingScreen> {
               decoration: decoration,
               child: Column(
                 children: [
-                  ItemSetting(title: 'Chủ đề', icon: Icons.format_paint_sharp, onTap: () {  },),
-                  Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
+                  ItemSetting(title: 'Chủ đề', icon: Icons.format_paint_sharp, onTap: () {
+                    Get.to(() => const ThemeScreen());
+                  },),
+                  const Divider(thickness: 2,),
                   ItemSetting(title: 'Biểu tượng cảm xúc', icon: Icons.emoji_emotions, onTap: () {  },),
-                  Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
+                  const Divider(thickness: 2,),
                   ItemSetting(title: 'Widget', icon: Icons.widgets, onTap: () {  },),
                 ],
               ),
@@ -87,9 +80,9 @@ class _SettingScreenState extends State<SettingScreen> {
               child: Column(
                 children: [
                   ItemSetting(title: 'Ngôn ngữ', icon: Icons.translate_rounded, onTap: () {  },),
-                  Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
+                  const Divider(thickness: 2,),
                   ItemSetting(title: 'Trung tâm trợ giúp', icon: Icons.help, onTap: () {  },),
-                  Divider(color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),thickness: 2,),
+                  const Divider(thickness: 2,),
                   ItemSetting(title: 'Liên hệ với chúng tôi', icon: Icons.contact_page, onTap: () {  },),
                 ],
               ),

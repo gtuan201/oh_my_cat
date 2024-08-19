@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/providers/backup_provider.dart';
 import 'package:mood_press/providers/local_auth_provider.dart';
@@ -9,7 +8,6 @@ import 'package:mood_press/screen/setting/local_auth/password_screen.dart';
 import 'package:mood_press/screen/setting/setting_screen.dart';
 import 'package:mood_press/screen/statistical/statistical_screen.dart';
 import 'package:provider/provider.dart';
-
 import '../../providers/statisticaL_provider.dart';
 import '../../ulti/function.dart';
 import '../home/widget/add_emotion_widget.dart';
@@ -68,7 +66,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       body: Obx(() => IndexedStack(
         index: _bottomNavIndex.value,
         children: screens,
@@ -78,7 +76,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
         height: 64,
         width: 64,
         child: FloatingActionButton(
-          backgroundColor: Colors.teal,
+          backgroundColor: Theme.of(context).splashColor,
           elevation: 0,
           onPressed: (){
             navigationToMood();

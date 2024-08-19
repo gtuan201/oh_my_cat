@@ -18,10 +18,10 @@ class ItemTest extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 5.0),
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-              color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),
+              color: Theme.of(context).cardTheme.color,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                  color: Colors.blueGrey.withBlue(140),
+                  color: Theme.of(context).cardTheme.shadowColor!,
                   width: 3
               )
           ),

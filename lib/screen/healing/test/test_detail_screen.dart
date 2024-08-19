@@ -7,6 +7,7 @@ import 'package:mood_press/screen/healing/test/widget/item_question.dart';
 import 'package:provider/provider.dart';
 
 import '../../../data/model/test.dart';
+import '../../../providers/statisticaL_provider.dart';
 
 class TestDetailScreen extends StatefulWidget {
   final Test test;
@@ -56,10 +57,11 @@ class _TestDetailScreenState extends State<TestDetailScreen> {
               ),
               Selector<TestProvider,bool>(
                   builder: (context,enable,child) => ElevatedButton(
-                      onPressed: enable ? (){
+                      onPressed: enable ? () async {
                         Get.off(() => ResultScreen(test: widget.test,));
                         widget.test.dateCompleted = DateTime.now();
-                        context.read<TestProvider>().addTestResult(widget.test);
+                        await context.read<TestProvider>().addTestResult(widget.test);
+                        context.read<StatisticalProvider>().getListTestResult();
                       } : null,
                       style: ElevatedButton.styleFrom(
                           backgroundColor: enable ? Colors.green : Colors.grey,

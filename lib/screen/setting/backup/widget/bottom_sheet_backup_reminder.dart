@@ -32,7 +32,7 @@ class BottomSheetBackupReminderState extends State<BottomSheetBackupReminder> {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      color: ColorName.darkBlue,
+      color: Theme.of(context).cardColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -63,7 +63,7 @@ class BottomSheetBackupReminderState extends State<BottomSheetBackupReminder> {
               children: NotificationInterval.values.map((interval) {
                 return Container(
                   decoration: BoxDecoration(
-                    color: _selectedInterval == interval ? Colors.blue.withOpacity(0.2) : Colors.transparent,
+                    color: _selectedInterval == interval ? Theme.of(context).cardTheme.color : Colors.transparent,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(

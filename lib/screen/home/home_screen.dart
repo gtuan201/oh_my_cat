@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:mood_press/gen/assets.gen.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mood_press/helper/database_helper.dart';
 import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/providers/theme_provider.dart';
@@ -59,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         icon: FaIcon(FontAwesomeIcons.rectangleAd,color: Colors.grey.shade300,)
                     ),
                     Obx(() => Text('Tháng ${month.value} năm $year',
-                      style: Theme.of(context).textTheme.bodyLarge,)
+                      style: Theme.of(context).appBarTheme.titleTextStyle,)
                     ),
                     IconButton(
                         onPressed: () {
@@ -105,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Center(
             child: Text(
               DateFormat.E('vi_VN').format(DateTime(2021, 1, index + 4)),
-              style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
+              style: TextStyle(fontWeight: FontWeight.bold,color: Theme.of(context).textTheme.bodySmall?.color),
             ),
           ),
         );

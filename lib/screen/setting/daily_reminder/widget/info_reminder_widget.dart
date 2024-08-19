@@ -2,10 +2,9 @@ import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/data/model/reminder.dart';
-
 import '../../../../gen/colors.gen.dart';
 import '../../../../helper/date_time_helper.dart';
-import '../../../widget_global/text_field_custom.dart';
+import '../../../components/text_field_custom.dart';
 
 class InfoReminderWidget extends StatefulWidget {
   final Reminder reminder;
@@ -34,16 +33,6 @@ class InfoReminderWidget extends StatefulWidget {
 
 class _InfoReminderWidgetState extends State<InfoReminderWidget> {
 
-  final BoxDecoration decoration = BoxDecoration(
-      color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),
-      borderRadius: BorderRadius.circular(12),
-      border: Border.all(
-          color: Colors.blueGrey.withBlue(140),
-          width: 3
-      )
-  );
-
-
   @override
   void initState() {
     super.initState();
@@ -55,6 +44,14 @@ class _InfoReminderWidgetState extends State<InfoReminderWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final BoxDecoration decoration = BoxDecoration(
+        color: Theme.of(context).cardTheme.color,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+            color: Theme.of(context).cardTheme.shadowColor!,
+            width: 3
+        )
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
