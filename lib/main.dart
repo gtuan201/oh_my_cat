@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => HealingProvider(repo: Get.find())),
         ChangeNotifierProvider(create: (_) => HomeProvider(repo: Get.find())),
-        ChangeNotifierProvider(create: (_) => EmojiProvider()),
+        ChangeNotifierProvider(create: (_) => EmojiProvider(storage: Get.find())),
         ChangeNotifierProvider(create: (_) => TestProvider()),
         ChangeNotifierProvider(create: (_) => MusicProvider()),
         ChangeNotifierProvider(create: (_) => StatisticalProvider(repo: Get.find())),

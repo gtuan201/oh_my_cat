@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/screen/setting/backup/backup_screen.dart';
 import 'package:mood_press/screen/setting/daily_reminder/daily_reminder_screen.dart';
+import 'package:mood_press/screen/setting/emoji/emoji_screen.dart';
 import 'package:mood_press/screen/setting/local_auth/local_auth_screen.dart';
 import 'package:mood_press/screen/setting/theme/theme_screen.dart';
 import 'package:mood_press/screen/setting/widget/item_setting.dart';
@@ -67,7 +68,9 @@ class _SettingScreenState extends State<SettingScreen> {
                     Get.to(() => const ThemeScreen());
                   },),
                   const Divider(thickness: 2,),
-                  ItemSetting(title: 'Biểu tượng cảm xúc', icon: Icons.emoji_emotions, onTap: () {  },),
+                  ItemSetting(title: 'Biểu tượng cảm xúc', icon: Icons.emoji_emotions, onTap: () {
+                    Get.to(() => const EmojiScreen());
+                  },),
                   const Divider(thickness: 2,),
                   ItemSetting(title: 'Widget', icon: Icons.widgets, onTap: () {  },),
                 ],

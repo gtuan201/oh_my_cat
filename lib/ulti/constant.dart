@@ -86,6 +86,7 @@ class Constant{
   static const String password = "password";
   static const String reminderBackup = "reminder_backup";
   static const String theme = "theme";
+  static const String emoji = "emoji";
 
   //ID notification
   static int NOTIFICATION_BACKUP = 101;

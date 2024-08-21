@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/statisticaL_provider.dart';
 import 'package:mood_press/screen/statistical/widget/item_mood_percent.dart';
 import 'package:mood_press/screen/statistical/widget/item_test_result.dart';
@@ -150,11 +151,15 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
                                     padding: EdgeInsets.zero,
                                     physics: const NeverScrollableScrollPhysics(),
                                     itemBuilder: (context,index){
-                                      return ItemMoodPercent(
-                                        imageGen: Constant.listEmoji[index],
-                                        percent: listPercent[index],
-                                        color: Constant.moodColor[index],
-                                        mood: Constant.listEmojiNames[index],
+                                      return Consumer<EmojiProvider>(
+                                        builder: (context,emojiProvider,_){
+                                          return ItemMoodPercent(
+                                            imageGen: emojiProvider.currentEmojiList[index],
+                                            percent: listPercent[index],
+                                            color: Constant.moodColor[index],
+                                            mood: Constant.listEmojiNames[index],
+                                          );
+                                        }
                                       );
                                     },
                                     separatorBuilder: (context,index) => const SizedBox(height: 8,),
@@ -163,7 +168,7 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
                               },
                               selector: (context,provider) => provider.moodPercents
                           ),
-                          Divider(color: Colors.blueGrey.withBlue(140),thickness: 2,),
+                          Divider(thickness: 2,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
