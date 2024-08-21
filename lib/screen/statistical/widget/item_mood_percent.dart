@@ -28,7 +28,7 @@ class ItemMoodPercent extends StatelessWidget {
                 trailing: Text("${percent.round()} %",style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w500)),
                 barRadius: const Radius.circular(12),
                 progressColor: color,
-                backgroundColor: ColorName.darkBlue,
+                backgroundColor: Theme.of(context).cardColor,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),

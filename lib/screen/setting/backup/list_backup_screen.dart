@@ -15,10 +15,10 @@ class _ListBackupScreenState extends State<ListBackupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         title: const Text('Bản sao lưu hiện có'),
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         centerTitle: false,
       ),

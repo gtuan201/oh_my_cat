@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../providers/statisticaL_provider.dart';
 import '../../../ulti/constant.dart';
@@ -17,33 +18,37 @@ class MoodPieChartWidget extends StatelessWidget {
               opacity: provider.enableChart ? 1 : 0.3,
               child: AspectRatio(
                 aspectRatio: 1.1,
-                child: PieChart(
-                  PieChartData(
-                    sectionsSpace: 1,
-                    centerSpaceRadius: 0,
-                    borderData: FlBorderData(
-                      show: false,
-                    ),
-                    sections: provider.moodPercents.asMap().map((index, moodPercent) {
-                      return MapEntry(
-                          index,
-                          PieChartSectionData(
-                            value: moodPercent,
-                            title: '${moodPercent.round()}%',
-                            radius: 160,
-                            titleStyle: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xffffffff),
-                              shadows: [Shadow(color: Colors.black, blurRadius: 5)],
-                            ),
-                            color: Constant.moodColor[index],
-                            badgeWidget: Constant.listEmoji[index].svg(width: 30),
-                            badgePositionPercentageOffset: .8,
-                          )
-                      );
-                    }).values.toList(),
-                  ),
+                child: Consumer<EmojiProvider>(
+                  builder: (context,emojiProvider,_){
+                    return PieChart(
+                      PieChartData(
+                        sectionsSpace: 1,
+                        centerSpaceRadius: 0,
+                        borderData: FlBorderData(
+                          show: false,
+                        ),
+                        sections: provider.moodPercents.asMap().map((index, moodPercent) {
+                          return MapEntry(
+                              index,
+                              PieChartSectionData(
+                                value: moodPercent,
+                                title: '${moodPercent.round()}%',
+                                radius: 160,
+                                titleStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xffffffff),
+                                  shadows: [Shadow(color: Colors.black, blurRadius: 5)],
+                                ),
+                                color: Constant.moodColor[index],
+                                badgeWidget: emojiProvider.currentEmojiList[index].svg(width: 30),
+                                badgePositionPercentageOffset: .8,
+                              )
+                          );
+                        }).values.toList(),
+                      ),
+                    );
+                  }
                 ),
               ),
             ),

@@ -6,6 +6,7 @@ import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/providers/theme_provider.dart';
 import 'package:mood_press/screen/home/widget/calendar_widget.dart';
+import 'package:mood_press/screen/setting/theme/theme_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -60,13 +61,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     IconButton(
                         onPressed: () {
-                          context.read<EmojiProvider>().toggleEmojiList();
+
                         },
                         icon: FaIcon(FontAwesomeIcons.list,color: Colors.grey.shade300,)
                     ),
                     IconButton(
                         onPressed: () {
-
+                          Get.to(() => const ThemeScreen());
                         },
                         icon: FaIcon(FontAwesomeIcons.brush,color: Colors.grey.shade300,)
                     ),
