@@ -91,6 +91,8 @@ dependencies:
   googleapis_auth: ^1.6.0
   google_sign_in: ^6.2.1
   firebase_auth: any
+  home_widget: ^0.2.1
+  video_player: ^2.9.1
 
 
 dev_dependencies:
@@ -145,6 +147,7 @@ flutter:
     - asset/audio/
     - asset/json/
     - asset/font/
+    - asset/video/
   fonts:
     - family: OpenSans
       fonts:

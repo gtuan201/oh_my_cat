@@ -67,7 +67,7 @@ class NavBar extends StatelessWidget {
             ),
             if(selected)
               Container(
-                margin: EdgeInsets.only(top: 4),
+                margin: const EdgeInsets.only(top: 4),
                 width: 10,
                 height: 4,
                 decoration: BoxDecoration(

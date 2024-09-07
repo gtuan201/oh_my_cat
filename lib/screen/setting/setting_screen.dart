@@ -6,6 +6,7 @@ import 'package:mood_press/screen/setting/emoji/emoji_screen.dart';
 import 'package:mood_press/screen/setting/local_auth/local_auth_screen.dart';
 import 'package:mood_press/screen/setting/theme/theme_screen.dart';
 import 'package:mood_press/screen/setting/widget/item_setting.dart';
+import 'package:mood_press/screen/setting/widget_screen/widget_screen.dart';
 import '../../gen/colors.gen.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -72,7 +73,9 @@ class _SettingScreenState extends State<SettingScreen> {
                     Get.to(() => const EmojiScreen());
                   },),
                   const Divider(thickness: 2,),
-                  ItemSetting(title: 'Widget', icon: Icons.widgets, onTap: () {  },),
+                  ItemSetting(title: 'Widget', icon: Icons.widgets, onTap: () {
+                    Get.to(() => const WidgetScreen());
+                  },),
                 ],
               ),
             ),

@@ -1,16 +1,23 @@
+import 'dart:async';
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/helper/date_time_helper.dart';
 import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/screen/home/widget/add_emotion_widget.dart';
 import 'package:mood_press/screen/home/widget/input_info_mood_widget.dart';
+import 'package:mood_press/ulti/constant.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:screenshot/screenshot.dart';
 import '../../../data/model/mood.dart';
 import '../../../ulti/function.dart';
 import 'package:el_tooltip/el_tooltip.dart';
+import 'package:home_widget/home_widget.dart';
 
 class CalendarPage extends StatefulWidget {
   final int month;
@@ -23,12 +30,46 @@ class CalendarPage extends StatefulWidget {
 class CalendarPageState extends State<CalendarPage> {
   DateTime currentDate = DateTime.now();
   List<DateTime?> daysInMonth = [];
+  ScreenshotController screenshotController = ScreenshotController();
 
   @override
   void initState() {
     super.initState();
     _generateDaysInMonth();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Timer(3.seconds, (){
+        screenshotController.capture().then((capturedImage) async {
+          final directory = (await getApplicationDocumentsDirectory()).path;
+          String fileName = '$directory/${DateTime.now().toIso8601String()}.png';
+          File imgFile = File(fileName);
+          if(capturedImage != null){
+            imgFile.writeAsBytes(capturedImage).then((file) async {
+              await _updateHomeWidget(file.path);
+            });
+          }
+        });
+      });
+    });
   }
+
+  Future<void> _updateHomeWidget(String filePath) async {
+    int year = DateTime.now().year;
+    int month = DateTime.now().month;
+    try {
+      await HomeWidget.saveWidgetData<String>('imagePath', filePath).then((value) async {
+        await HomeWidget.saveWidgetData<String>('widgetColor', colorToHexNoAlpha(Theme.of(context).primaryColor));
+      });
+      await HomeWidget.saveWidgetData<String>('dateTime', 'Tháng $month năm $year');
+
+      await HomeWidget.updateWidget(
+        name: Constant.androidWidget,
+        androidName: Constant.androidWidget,
+      );
+    } catch (e) {
+      log('Error updating widget: $e');
+    }
+  }
+
 
   void _generateDaysInMonth() {
     daysInMonth.clear();
@@ -48,16 +89,20 @@ class CalendarPageState extends State<CalendarPage> {
       backgroundColor: Colors.transparent,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 7,
-            childAspectRatio: 0.7
+        child: Screenshot(
+          controller: screenshotController,
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 7,
+              childAspectRatio: 0.7
+            ),
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: daysInMonth.length,
+            itemBuilder: (context, index) {
+              return _buildDayItem(daysInMonth[index],context);
+            },
           ),
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: daysInMonth.length,
-          itemBuilder: (context, index) {
-            return _buildDayItem(daysInMonth[index],context);
-          },
         ),
       ),
     );
