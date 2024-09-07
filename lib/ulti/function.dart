@@ -140,6 +140,10 @@ void showCustomToast({
   );
 }
 
+String colorToHexNoAlpha(Color color) {
+  return '#${color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
+}
+
 Future<bool> handleLocationPermission(BuildContext context) async {
   bool serviceEnabled;
   LocationPermission permission;

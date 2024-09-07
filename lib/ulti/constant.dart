@@ -88,6 +88,9 @@ class Constant{
   static const String theme = "theme";
   static const String emoji = "emoji";
 
+  //widget
+  static const String androidWidget = "CalendarEmojiWidget";
+
   //ID notification
   static int NOTIFICATION_BACKUP = 101;
 }
