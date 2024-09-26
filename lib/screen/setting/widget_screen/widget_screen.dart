@@ -1,9 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:mood_press/gen/assets.gen.dart';
 import 'package:video_player/video_player.dart';
+import '../../../generated/l10n.dart';
 
 class WidgetScreen extends StatefulWidget {
   const WidgetScreen({super.key});
@@ -13,19 +11,25 @@ class WidgetScreen extends StatefulWidget {
 }
 
 class _WidgetScreenState extends State<WidgetScreen> {
-
   late VideoPlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset(Assets.video.previewVideo)..initialize().then((_) {
-      setState(() {
-        _controller.play();
-      });
-    })
-    ..setVolume(0)
-    ..setLooping(true);
+    _controller = VideoPlayerController.asset(Assets.video.previewVideo)
+      ..initialize().then((_) {
+        setState(() {
+          _controller.play();
+        });
+      })
+      ..setVolume(0)
+      ..setLooping(true);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 
   @override
@@ -35,7 +39,7 @@ class _WidgetScreenState extends State<WidgetScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        title: const Text('Widget'),
+        title: Text(S.of(context).widgetTitle), // S.of(context) for title
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -50,19 +54,19 @@ class _WidgetScreenState extends State<WidgetScreen> {
                 child: Center(
                   child: SizedBox(
                     height: 433,
-                      width: 234,
-                      child: VideoPlayer(_controller)
+                    width: 234,
+                    child: VideoPlayer(_controller),
                   ),
                 ),
               ),
               const SizedBox(height: 20,),
-              const Text('Hướng dẫn thêm widget vào màn hình chính của bạn',style: TextStyle(color: Colors.white,fontSize: 16),),
+              Text(S.of(context).widgetInstructions, style: const TextStyle(color: Colors.white, fontSize: 16),), // S.of(context) for instructions
               const SizedBox(height: 20,),
-              const Text('1. Ở màn hình chính, nhấn và giữ ở một vùng trống cho tới khi một menu xuất hiện.',style: TextStyle(color: Colors.white),),
+              Text(S.of(context).widgetStep1, style: const TextStyle(color: Colors.white),), // Step 1
               const SizedBox(height: 10,),
-              const Text('2. Nhấn vào Widget.',style: TextStyle(color: Colors.white),),
+              Text(S.of(context).widgetStep2, style: const TextStyle(color: Colors.white),), // Step 2
               const SizedBox(height: 10,),
-              const Text('3. Tìm widgets được cung cấp bởi Oh My Cat. Nhấn và giữ widget mà bạn muốn thêm, rồi kéo và thả widget đến vùng thích hợp.',style: TextStyle(color: Colors.white),),
+              Text(S.of(context).widgetStep3, style: const TextStyle(color: Colors.white),), // Step 3
             ],
           ),
         ),

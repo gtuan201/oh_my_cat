@@ -46,7 +46,7 @@ class StatisticalProvider extends ChangeNotifier{
   }
 
   Future<void> getListTestResult() async {
-    listTestResult = await repo.getListTestResult();
+    listTestResult = await repo.getListTestResult(listTest);
     for (int i = 0; i< dateComplete.length; i++) {
       dateComplete[i] = timeResult("${i + 1}");
     }

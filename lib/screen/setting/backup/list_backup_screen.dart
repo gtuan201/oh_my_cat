@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/providers/backup_provider.dart';
 import 'package:mood_press/screen/setting/backup/widget/item_backup_data.dart';
 import 'package:provider/provider.dart';
+
+import '../../../generated/l10n.dart';
 
 class ListBackupScreen extends StatefulWidget {
   const ListBackupScreen({super.key});
@@ -17,7 +18,7 @@ class _ListBackupScreenState extends State<ListBackupScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        title: const Text('Bản sao lưu hiện có'),
+        title: Text(S.of(context).existingBackup), // Localized title
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         centerTitle: false,
@@ -28,7 +29,7 @@ class _ListBackupScreenState extends State<ListBackupScreen> {
               itemBuilder:(context,index) => ItemBackupData(file: provider.files[index],),
               separatorBuilder: (context,index) => Divider(color: Colors.blueGrey.shade100,),
               itemCount: provider.files.length
-          ) : Center(child: Text('Không có bản ghi nào',style: TextStyle(color: Colors.blueGrey.shade100,fontSize: 16),),);
+          ) : Center(child: Text(S.of(context).noRecords,style: TextStyle(color: Colors.blueGrey.shade100,fontSize: 16),),);
         }
       ),
     );

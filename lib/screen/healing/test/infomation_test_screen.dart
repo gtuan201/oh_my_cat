@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import '../../../data/model/test.dart';
+import '../../../generated/l10n.dart';
 
 class InformationTestScreen extends StatelessWidget {
   final Test test;
@@ -10,11 +10,11 @@ class InformationTestScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        title: const Text("Mô tả"),
+        title: Text(S.of(context).description),
         centerTitle: true,
       ),
       body: Padding(
@@ -29,7 +29,7 @@ class InformationTestScreen extends StatelessWidget {
                   itemBuilder: (context,index){
                     MapEntry<String,LevelDetail> itemConclude = test.conclude.levels.entries.elementAt(index);
                     return Text(
-                      "Từ ${itemConclude.key}: ${itemConclude.value.description}",
+                      "${S.of(context).from} ${itemConclude.key}: ${itemConclude.value.description}",
                       style: TextStyle(color: index == indexResult ? Colors.yellow : Colors.blueGrey.shade100),
                     );
                   },

@@ -22,9 +22,9 @@ class ItemCurrentAudio extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(audio.name,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w800,fontSize: 16),),
+              Text(audio.name[Get.locale!.languageCode]!,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w800,fontSize: 16),),
               const SizedBox(height: 4,),
-              Text(audio.type.displayName,style: TextStyle(color: Colors.grey.shade400,fontWeight: FontWeight.w600),),
+              Text(audio.type.getDisplayName(Get.locale!.languageCode),style: TextStyle(color: Colors.grey.shade400,fontWeight: FontWeight.w600),),
             ],
           ),
           const Spacer(),

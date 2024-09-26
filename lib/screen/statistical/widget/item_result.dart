@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/helper/date_time_helper.dart';
 import 'package:mood_press/screen/healing/test/result_sceen.dart';
 import '../../../data/model/test.dart';

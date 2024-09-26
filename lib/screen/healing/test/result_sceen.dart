@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/providers/test_provider.dart';
 import 'package:mood_press/screen/healing/test/widget/conclude_widget.dart';
 import 'package:mood_press/screen/healing/test/widget/level_widget.dart';
 import 'package:provider/provider.dart';
 import '../../../data/model/test.dart';
+import '../../../generated/l10n.dart';
 
 class ResultScreen extends StatelessWidget {
   final Test test;
@@ -16,9 +16,9 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: IconButton(
             onPressed: onBack ?? () {
@@ -37,10 +37,10 @@ class ResultScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              "Kểt quả của bạn",
+            Text(
+              S.of(context).your_result,
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 24),
+              style: const TextStyle(color: Colors.white, fontSize: 24),
             ),
             const SizedBox(height: 12,),
             Text(
@@ -55,9 +55,9 @@ class ResultScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Kết luận",
-                    style: TextStyle(
+                  Text(
+                    S.of(context).conclusion,
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w600
@@ -79,15 +79,15 @@ class ResultScreen extends StatelessWidget {
                   onPressed: () async {
                     context.read<TestProvider>().generatePdf(levelDetail()!, test);
                   },
-                  child: const Text("Xuất Pdf")
+                  child: Text(S.of(context).export_pdf)
                 ),
               ),
             ),
-            ConcludeWidget(title: "Lời khuyên", content: levelDetail()?.recommendations ?? ''),
+            ConcludeWidget(title: S.of(context).advice, content: levelDetail()?.recommendations ?? ''),
             if(levelDetail()?.strengths != null)
-              ConcludeWidget(title: "Điểm mạnh", content: levelDetail()?.strengths ?? ''),
+              ConcludeWidget(title: S.of(context).strengths, content: levelDetail()?.strengths ?? ''),
             if(levelDetail()?.weaknesses != null)
-              ConcludeWidget(title: "Điểm yếu", content: levelDetail()?.weaknesses ?? ''),
+              ConcludeWidget(title: S.of(context).weaknesses, content: levelDetail()?.weaknesses ?? ''),
           ],
         ),
       ),

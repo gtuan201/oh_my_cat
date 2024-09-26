@@ -4,6 +4,8 @@ import 'package:mood_press/providers/test_provider.dart';
 import 'package:mood_press/screen/healing/test/widget/item_option.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../generated/l10n.dart';
+
 class ItemQuestion extends StatefulWidget {
   final Question question;
   final int index;
@@ -22,13 +24,13 @@ class _ItemQuestionState extends State<ItemQuestion> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.blueGrey.shade700.withGreen(100).withOpacity(0.6),
+        color: Theme.of(context).cardTheme.color,
         borderRadius: BorderRadius.circular(12)
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Câu hỏi ${widget.index + 1} / ${widget.length}",style: TextStyle(color: Colors.blueGrey.shade100),),
+          Text("${S.of(context).question} ${widget.index + 1} / ${widget.length}",style: TextStyle(color: Colors.blueGrey.shade100),),
           const SizedBox(height: 6,),
           Text(widget.question.text,style: const TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.w600),),
           Divider(color: Colors.blueGrey.shade100,),

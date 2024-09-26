@@ -1,8 +1,5 @@
 import 'dart:convert';
-
-import 'package:get/get.dart';
 import 'package:path/path.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import '../data/model/mood.dart';
 import '../data/model/reminder.dart';
@@ -171,12 +168,23 @@ class DatabaseHelper{
     );
   }
 
-  Future<List<Test>> getTests() async {
+  Future<List<Test>> getTests(List<Test> baseListTest) async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query('tests');
 
     return List.generate(maps.length, (i) {
-      return Test.fromJson(maps[i]);
+      Test testDb = Test.fromJson(maps[i]);
+      Test test = baseListTest.firstWhere((t) => t.id == testDb.id);
+      testDb..conclude = test.conclude
+            ..description = test.description
+            ..note = test.note
+            ..source = test.source
+            ..title = test.title;
+      for(int i = 0; i < testDb.questions.length; i++){
+        test.questions[i]..text = test.questions[i].text
+        ..options = test.questions[i].options;
+      }
+      return testDb;
     });
   }
 

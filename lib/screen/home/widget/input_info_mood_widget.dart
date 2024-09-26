@@ -19,6 +19,7 @@ import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../../data/model/mood.dart';
+import '../../../generated/l10n.dart';
 import '../../../providers/emoji_provider.dart';
 
 class InputInfoMoodWidget extends StatefulWidget {
@@ -96,7 +97,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                   ),
                   backgroundColor: Colors.green.shade700
                 ),
-                child: const Text('Lưu')
+                child: Text(S.of(context).save)
             ),
           )
         ],
@@ -181,7 +182,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("${DateTimeHelper.dateTimeToString(widget.date)}\n${DateTimeHelper.getWeekdayName(widget.date.weekday)}",
+                      Text("${DateTimeHelper.dateTimeToString(widget.date)}\n${DateTimeHelper.getWeekdayName(widget.date.weekday,Get.locale!.languageCode)}",
                         style: TextStyle(color: Colors.grey.shade300,fontSize: 14,decoration: TextDecoration.underline),
                       ),
                       if(widget.mood != null)
@@ -201,7 +202,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                       child: emojiProvider.currentEmojiList[indexOfMood.value].svg(width: 80,height: 80)
                   ),),),
                   const SizedBox(height: 16,),
-                  Obx(() => Text(Constant.listEmojiNames[indexOfMood.value],
+                  Obx(() => Text(Constant.emojiNames[Get.locale!.languageCode]![indexOfMood.value],
                     style: TextStyle(color: Colors.grey.shade300,fontSize: 20,fontWeight: FontWeight.w600),
                   ),),
                   const SizedBox(height: 16,),
@@ -265,8 +266,8 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
         showPicker(
           context: context,
           is24HrFormat: true,
-          cancelText: 'Đóng',
-          okText: 'Chọn',
+          cancelText: S.of(context).close,
+          okText: S.of(context).select,
           backgroundColor: ColorName.colorPrimary,
           accentColor: Colors.white,
           okStyle: const TextStyle(color: Colors.lightBlue,fontWeight: FontWeight.w800,fontSize: 18),
@@ -319,7 +320,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
     context.read<HomeProvider>().insertMood(mood);
     context.read<StatisticalProvider>().percentOfMood();
     Navigator.of(context).pop();
-    Navigator.of(context).pop({'showToast': true, 'message': 'Vâng! Đã thêm thành công'});
+    Navigator.of(context).pop({Constant.showToast: true, Constant.message : S.of(context).success_add});
   }
 
   void updateMood(){
@@ -335,18 +336,18 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
     if(noteFocusNode.hasFocus){
       noteFocusNode.unfocus();
       Timer(500.milliseconds, (){
-        showCustomToast(context: context, message: 'Vâng! Đã cập nhật thành công', imagePath: Assets.image.logo.path);
+        showCustomToast(context: context, message: S.of(context).success_update, imagePath: Assets.image.logo.path);
       });
     }
     else{
-      showCustomToast(context: context, message: 'Vâng! Đã cập nhật thành công', imagePath: Assets.image.logo.path);
+      showCustomToast(context: context, message: S.of(context).success_update, imagePath: Assets.image.logo.path);
     }
   }
 
   void showGridBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: ColorName.darkBlue,
+      backgroundColor: Theme.of(context).cardColor,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -360,13 +361,13 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Bạn cảm thấy thế nào?',
-                          style: TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.w600),
+                          S.of(context).how_you_feel,
+                          style: const TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
@@ -384,6 +385,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                   crossAxisCount: 4,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
+                  childAspectRatio: 0.9
                 ),
                 itemCount: Constant.listEmoji.length,
                 shrinkWrap: true,
@@ -401,7 +403,7 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                         }),
                         const SizedBox(height: 8),
                         Text(
-                          Constant.listEmojiNames[index],
+                          Constant.emojiNames[Get.locale!.languageCode]![index],
                           textAlign: TextAlign.center,
                           style: const TextStyle(fontSize: 14,color: Colors.white,fontWeight: FontWeight.w600),
                         ),
@@ -429,29 +431,29 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(
-                  color: ColorName.darkBlue,
+                  color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
                   children: [
                     ListTile(
-                      title: const Text('Xóa', textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.red,fontWeight: FontWeight.w600),),
+                      title: Text(S.of(context).delete, textAlign: TextAlign.center,
+                        style: const TextStyle(color: Colors.red,fontWeight: FontWeight.w600),),
                       onTap: () {
                         Navigator.pop(context);
                          showConfirmationDialog(context).then((value) {
                           if(value == true){
                             contextParent.read<HomeProvider>().removeMood(widget.mood!);
-                            Navigator.of(contextParent).pop({'showToast': true, 'message': 'Đã xoá thành công'});
+                            Navigator.of(contextParent).pop({Constant.showToast: true, Constant.message: S.of(context).success_delete});
                           }
                         });
                       },
                       visualDensity: const VisualDensity(vertical: -2),
                     ),
-                    Divider(height: 1,color: Colors.lightBlue.shade300,),
+                    const Divider(height: 1,color: Colors.grey,),
                     ListTile(
-                      title: const Text('Chia sẻ', textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600)),
+                      title: Text(S.of(context).share, textAlign: TextAlign.center,
+                          style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w600)),
                       onTap: ()  {
                         captureAndShareScreen();
                         Navigator.pop(context);
@@ -464,12 +466,12 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
               const SizedBox(height: 8),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.teal,
+                  color: Theme.of(context).splashColor,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: ListTile(
-                  title: const Text('Đóng', textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600)),
+                  title: Text(S.of(context).close, textAlign: TextAlign.center,
+                      style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w600)),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -486,7 +488,8 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
     final Uint8List? imageBytes = await _screenshotController.capture();
     if (imageBytes != null) {
       final directory = await getTemporaryDirectory();
-      final imagePath = await File('${directory.path}/screenshot.png').create();
+      final timestamp = DateTime.now().millisecond;
+      final imagePath = await File('${directory.path}/$timestamp.png').create();
       await imagePath.writeAsBytes(imageBytes);
 
       final xFile = XFile(imagePath.path);

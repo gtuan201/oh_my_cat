@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/get.dart';
 import 'package:mood_press/gen/assets.gen.dart';
 import 'package:mood_press/ulti/constant.dart';
 
@@ -48,6 +49,7 @@ class ThemeProvider with ChangeNotifier {
   final FlutterSecureStorage storage;
   AppTheme _currentTheme = AppTheme.normal;
   AssetGenImage? _imageBackground;
+  Locale? locale;
 
   ThemeProvider({required this.storage});
 
@@ -86,5 +88,19 @@ class ThemeProvider with ChangeNotifier {
       _currentTheme = AppTheme.normal;
     }
     notifyListeners();
+  }
+
+  void setLocale(Locale l){
+    locale = l;
+    Get.updateLocale(locale!);
+    storage.write(key: Constant.languages, value: l.languageCode);
+  }
+
+  Future<void> getLocale() async {
+    String? languageCode = await storage.read(key: Constant.languages);
+    if(languageCode != null && languageCode.isNotEmpty){
+      locale = Locale(languageCode);
+      Get.updateLocale(locale!);
+    }
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/helper/date_time_helper.dart';
 import 'package:mood_press/providers/backup_provider.dart';
 import 'package:mood_press/screen/setting/backup/list_backup_screen.dart';
@@ -10,6 +9,7 @@ import 'package:mood_press/screen/setting/backup/widget/google_user_widget.dart'
 import 'package:mood_press/ulti/function.dart';
 import 'package:provider/provider.dart';
 import 'package:googleapis/drive/v3.dart' as drive;
+import '../../../generated/l10n.dart';
 
 class BackupScreen extends StatefulWidget {
   const BackupScreen({super.key});
@@ -19,7 +19,6 @@ class BackupScreen extends StatefulWidget {
 }
 
 class _BackupScreenState extends State<BackupScreen> {
-
   late BackupProvider backupProvider;
 
   @override
@@ -28,7 +27,7 @@ class _BackupScreenState extends State<BackupScreen> {
     backupProvider = context.read<BackupProvider>();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       backupProvider.getListFile();
-      backupProvider.getReminderType();
+      backupProvider.getReminderType(context);
     });
   }
 
@@ -37,7 +36,7 @@ class _BackupScreenState extends State<BackupScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        title: const Text('Sao lưu & Khôi phục'),
+        title: Text(S.of(context).backup_restore),
         centerTitle: false,
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
@@ -47,62 +46,58 @@ class _BackupScreenState extends State<BackupScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text('Sao lưu dữ liệu của bạn vào Google Drive trong trường hợp bạn quân mật khẩu hoặc mất dữ liệu.',style: TextStyle(
-              color: Colors.white
-            ),),
-            const SizedBox(height: 16,),
+            Text(S.of(context).backup_data, style: const TextStyle(color: Colors.white)),
+            const SizedBox(height: 16),
             const GoogleUserWidget(),
-            Divider(color: Colors.blueGrey.shade100,height: 32,),
-            Selector<BackupProvider,List<drive.File>>(
-              builder: (context,listFile,_){
+            Divider(color: Colors.blueGrey.shade100, height: 32),
+            Selector<BackupProvider, List<drive.File>>(
+              builder: (context, listFile, _) {
                 return FunctionWidget(
-                  title: 'Sao lưu dữ liệu',
-                    content:
-                        (listFile.isNotEmpty && listFile.first.name != null)
-                            ? listFile.first.name!.substring(0,listFile.first.name!.lastIndexOf('.'))
-                            : 'Chưa có dữ liệu sao lưu',
-                    iconData: Icons.backup,
+                  title: S.of(context).backup_data,
+                  content: (listFile.isNotEmpty && listFile.first.name != null)
+                      ? listFile.first.name!.substring(0, listFile.first.name!.lastIndexOf('.'))
+                      : S.of(context).no_backup_data,
+                  iconData: Icons.backup,
                   onTap: () async {
-                    if(backupProvider.currentUser != null){
-                      showLoadingDialog(message: "Sao lưu dữ liệu...");
-                      backupProvider.uploadFile("", "${DateTimeHelper.formatDateTimeToDDMMYYYYHHMMSS(DateTime.now())}.json").then((value){
+                    if (backupProvider.currentUser != null) {
+                      showLoadingDialog(message: S.of(context).backing_up_data);
+                      backupProvider.uploadFile("", "${DateTimeHelper.formatDateTimeToDDMMYYYYHHMMSS(DateTime.now())}.json").then((value) {
                         Get.back();
-                        showCustomToast(context: context, message: "Sao lưu thành công");
+                        showCustomToast(context: context, message: S.of(context).backup_success);
                       });
-                    }
-                    else{
-                      showCustomToast(context: context, message: 'Bạn chưa đăng nhập tài khoản Google');
+                    } else {
+                      showCustomToast(context: context, message: S.of(context).not_logged_in);
                     }
                   },
                 );
               },
-              selector: (context,backupProvider) => backupProvider.files
+              selector: (context, backupProvider) => backupProvider.files,
             ),
-            Selector<BackupProvider,String>(
-              builder: (context,reminderType,_){
+            Selector<BackupProvider, String>(
+              builder: (context, reminderType, _) {
                 return FunctionWidget(
-                  title: 'Nhắc nhở sao lưu',
+                  title: S.of(context).reminder_backup,
                   content: reminderType,
                   iconData: Icons.notifications_active,
-                  onTap: (){
+                  onTap: () {
                     Get.bottomSheet(const BottomSheetBackupReminder());
                   },
                 );
               },
-                selector: (context,backupProvider) => backupProvider.reminderType
+              selector: (context, backupProvider) => backupProvider.reminderType,
             ),
-            Selector<BackupProvider,List<drive.File>>(
-              builder: (context,listFile,_){
+            Selector<BackupProvider, List<drive.File>>(
+              builder: (context, listFile, _) {
                 return FunctionWidget(
-                  title: 'Bản sao lưu hiện có',
-                  content: 'Có ${listFile.length} bản ghi',
+                  title: S.of(context).existing_backups,
+                  content: S.of(context).backup_count(listFile.length.toString()),
                   iconData: Icons.list,
-                  onTap: (){
+                  onTap: () {
                     Get.to(() => const ListBackupScreen());
                   },
                 );
               },
-              selector: (context,backupProvider) => backupProvider.files
+              selector: (context, backupProvider) => backupProvider.files,
             ),
           ],
         ),

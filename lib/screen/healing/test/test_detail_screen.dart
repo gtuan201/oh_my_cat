@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/providers/test_provider.dart';
 import 'package:mood_press/screen/healing/test/result_sceen.dart';
 import 'package:mood_press/screen/healing/test/widget/item_question.dart';
 import 'package:provider/provider.dart';
 
 import '../../../data/model/test.dart';
+import '../../../generated/l10n.dart';
 import '../../../providers/statisticaL_provider.dart';
 
 class TestDetailScreen extends StatefulWidget {
@@ -22,9 +22,9 @@ class _TestDetailScreenState extends State<TestDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
       ),
       body: PopScope(
@@ -69,7 +69,7 @@ class _TestDetailScreenState extends State<TestDetailScreen> {
                               borderRadius: BorderRadius.circular(10)
                           )
                       ),
-                      child: const Text("Làm xong")
+                      child: Text(S.of(context).complete)
                   ),
                   selector: (_,provider) => provider.endTest
               )

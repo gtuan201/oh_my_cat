@@ -40,7 +40,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   font_awesome_flutter: ^10.7.0
   flutter_launcher_icons: ^0.13.1
-  intl: ^0.19.0
+  intl: any
   sqflite: ^2.3.3+1
   path: any
   day_night_time_picker: ^1.3.1
@@ -93,6 +93,9 @@ dependencies:
   firebase_auth: any
   home_widget: ^0.2.1
   video_player: ^2.9.1
+  intl_utils: ^2.6.1
+  flutter_localizations:
+    sdk: flutter
 
 
 dev_dependencies:
@@ -177,3 +180,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true
+  class_name: S # Tên lớp để truy cập các chuỗi đã được bản địa hóa
+  main_locale: en # Ngôn ngữ chính
+  arb_dir: lib/l10n # Thư mục chứa các file .arb
+  output_dir: lib/generated # Thư mục đầu ra cho các file được tạo

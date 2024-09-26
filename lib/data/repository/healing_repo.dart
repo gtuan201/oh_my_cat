@@ -1,12 +1,16 @@
 import 'dart:convert';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:get/get.dart';
 import 'package:mood_press/data/model/test.dart';
 import 'package:mood_press/gen/assets.gen.dart';
 
 class HealingRepo{
   Future<List<Test>> getListTest() async {
-    String jsonString = await rootBundle.loadString(Assets.json.test);
+    String jsonString = await rootBundle.loadString(
+        Get.locale!.languageCode == "vi"
+            ? Assets.json.testVi
+            : Assets.json.testEn);
     final jsonResponse = json.decode(jsonString);
 
     List<Test> tests = (jsonResponse['tests'] as List)

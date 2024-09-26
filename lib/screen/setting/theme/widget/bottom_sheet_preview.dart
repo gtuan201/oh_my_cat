@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/gen/assets.gen.dart';
 
+import '../../../../generated/l10n.dart';
+
 class BottomSheetPreview extends StatelessWidget {
   final AssetGenImage imagePreview;
   final Function() onPress;
@@ -14,7 +16,7 @@ class BottomSheetPreview extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        title: const Text('Xem trước hình nền chủ đề'),
+        title: Text(S.of(context).preview_theme_wallpaper),
         centerTitle: false,
       ),
       body: Padding(
@@ -42,7 +44,7 @@ class BottomSheetPreview extends StatelessWidget {
                   backgroundColor: Theme.of(context).splashColor,
                   fixedSize: Size(Get.width, 42)
               ),
-              child: const Text('Dùng chủ đề')
+              child: Text(S.of(context).apply_theme)
             )
           ],
         ),

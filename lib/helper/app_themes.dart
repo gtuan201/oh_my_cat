@@ -59,6 +59,14 @@ class AppThemes {
       }),
       overlayColor: WidgetStateProperty.all(Colors.blue.withOpacity(0.5)),
     ),
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return Colors.teal;
+        }
+        return Colors.grey;
+      }),
+    ),
     bottomAppBarTheme: const BottomAppBarTheme(
       color: ColorName.colorBackground
     ),
@@ -120,6 +128,14 @@ class AppThemes {
           return Colors.grey.shade200;
         }),
         overlayColor: WidgetStateProperty.all(Colors.blue.withOpacity(0.5)),
+      ),
+      radioTheme: RadioThemeData(
+        fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+          if (states.contains(WidgetState.selected)) {
+            return const Color(0xfffda84a);
+          }
+          return Colors.grey;
+        }),
       ),
     bottomAppBarTheme: const BottomAppBarTheme(
       color: Color(0xff413730)

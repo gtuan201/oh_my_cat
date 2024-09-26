@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/screen/healing/test/test_detail_screen.dart';
 import '../../../data/model/test.dart';
+import '../../../generated/l10n.dart';
 
 class TestDescriptionScreen extends StatelessWidget {
   final Test test;
@@ -11,9 +11,9 @@ class TestDescriptionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
       ),
       body: Container(
@@ -40,7 +40,7 @@ class TestDescriptionScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                   )
                 ),
-                child: const Text('Bắt đầu bài kiểm tra')
+                child: Text(S.of(context).start_quiz)
             ),
             const SizedBox(height: 12,),
           ],

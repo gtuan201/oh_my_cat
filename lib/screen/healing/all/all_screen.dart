@@ -5,6 +5,7 @@ import 'package:mood_press/data/model/self_care.dart';
 import 'package:mood_press/providers/healing_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../data/model/test.dart';
+import '../../../generated/l10n.dart';
 import '../../../ulti/audio.dart';
 import 'widget/item_all_music.dart';
 import 'widget/item_pdf_thumnail.dart';
@@ -55,7 +56,7 @@ class AllScreenState extends State<AllScreen> with AutomaticKeepAliveClientMixin
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Âm thanh thư giãn',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
+                  Text(S.of(context).relaxing_sounds,style: const TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
                   InkWell(
                     onTap: (){
                       widget.changeTab(1);
@@ -80,7 +81,7 @@ class AllScreenState extends State<AllScreen> with AutomaticKeepAliveClientMixin
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Tự chăm sóc',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
+                  Text(S.of(context).self_care,style: const TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
                   InkWell(
                     onTap: (){
                       widget.changeTab(2);
@@ -111,7 +112,7 @@ class AllScreenState extends State<AllScreen> with AutomaticKeepAliveClientMixin
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Bài kiểm tra',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
+                  Text(S.of(context).quiz,style: const TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
                   InkWell(
                       onTap: () {
                         widget.changeTab(3);
@@ -151,7 +152,7 @@ class AllScreenState extends State<AllScreen> with AutomaticKeepAliveClientMixin
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Quote về sức khỏe tinh thần',style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
+                  Text(S.of(context).mental_health_quote,style: const TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
                   InkWell(
                       onTap: () {
 

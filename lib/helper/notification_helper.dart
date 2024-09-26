@@ -1,25 +1,43 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
-enum NotificationInterval implements Comparable <NotificationInterval> {
-  none(message: 'Không'),
-  daily(message: 'Hàng ngày'),
-  every3Days(message: '3 Ngày'),
-  weekly(message: 'Hàng tuần'),
-  monthly(message: 'Hàng tháng');
+import '../generated/l10n.dart';
+
+enum NotificationInterval implements Comparable<NotificationInterval> {
+  none(type: 'none'),
+  daily(type: 'daily'),
+  every3Days(type: 'every3Days'),
+  weekly(type: 'weekly'),
+  monthly(type: 'monthly');
 
   const NotificationInterval({
-    required this.message,
+    required this.type,
   });
 
-  final String message;
+  final String type; // Type field
 
+  String getLocalizedMessage(BuildContext context) {
+    switch (this) {
+      case NotificationInterval.none:
+        return S.of(context).no;
+      case NotificationInterval.daily:
+        return S.of(context).daily;
+      case NotificationInterval.every3Days:
+        return S.of(context).every3Days;
+      case NotificationInterval.weekly:
+        return S.of(context).weekly;
+      case NotificationInterval.monthly:
+        return S.of(context).monthly;
+    }
+  }
 
   @override
-  int compareTo(NotificationInterval other) => message.compareTo(other.message);
+  int compareTo(NotificationInterval other) => type.compareTo(other.type);
 }
+
 
 class NotificationHelper{
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -32,7 +50,6 @@ class NotificationHelper{
         .resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>()
         ?.requestPermissions(alert: true, badge: true, sound: true,);
 
-    final AndroidFlutterLocalNotificationsPlugin? androidImplementation =
     flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation
     <AndroidFlutterLocalNotificationsPlugin>();
     const DarwinInitializationSettings initializationSettingsIOS = DarwinInitializationSettings();

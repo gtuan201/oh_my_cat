@@ -3,6 +3,8 @@ import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/screen/setting/emoji/widget/item_emoji_type.dart';
 import 'package:provider/provider.dart';
 
+import '../../../generated/l10n.dart';
+
 class EmojiScreen extends StatefulWidget {
   const EmojiScreen({super.key});
 
@@ -18,7 +20,7 @@ class _EmojiScreenState extends State<EmojiScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        title: const Text('Biểu tượng cảm xúc'),
+        title: Text(S.of(context).emoji),
         centerTitle: false,
       ),
       body: Padding(

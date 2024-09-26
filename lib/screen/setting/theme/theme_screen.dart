@@ -8,6 +8,8 @@ import 'package:mood_press/screen/setting/theme/widget/bottom_sheet_preview.dart
 import 'package:mood_press/ulti/function.dart';
 import 'package:provider/provider.dart';
 
+import '../../../generated/l10n.dart';
+
 class ThemeScreen extends StatefulWidget {
   const ThemeScreen({super.key});
 
@@ -22,7 +24,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: const Text('Chủ đề'),
+        title: Text(S.of(context).theme),
         centerTitle: false,
         elevation: 0,
       ),
@@ -44,7 +46,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
                               imagePreview: theme.imagePreview,
                               onPress: () {
                                 context.read<ThemeProvider>().setTheme(theme);
-                                showLoadingDialog(message: 'Vui lòng đợi...');
+                                showLoadingDialog(message: S.of(context).please_wait);
                                 Timer(2.seconds, (){
                                   Get.back();
                                   Get.back();
@@ -80,7 +82,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
                   ),
                   backgroundColor: Theme.of(context).splashColor
               ),
-              child: const Text('Đặt lại chủ đề',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
+              child: Text(S.of(context).reset_theme,style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
             ),
           ],
         ),

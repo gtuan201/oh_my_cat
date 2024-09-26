@@ -6,6 +6,7 @@ import 'package:mood_press/screen/healing/all/all_screen.dart';
 import 'package:mood_press/screen/healing/music/music_screen.dart';
 import 'package:provider/provider.dart';
 import '../../gen/colors.gen.dart';
+import '../../generated/l10n.dart';
 import '../../providers/healing_provider.dart';
 import '../../providers/music_provider.dart';
 import 'self_care/self_care_screen.dart';
@@ -40,7 +41,7 @@ class _HealingScreenState extends State<HealingScreen> with TickerProviderStateM
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              title: const Text('Khám phá'),
+              title: Text(S.of(context).explore),
               centerTitle: true,
               pinned: true,
               floating: true,
@@ -53,6 +54,7 @@ class _HealingScreenState extends State<HealingScreen> with TickerProviderStateM
                     TabBar(
                         controller: tabController,
                         isScrollable: true,
+                        labelPadding: const EdgeInsets.symmetric(horizontal: 20.0),
                         indicator: const UnderlineTabIndicator(
                             borderSide: BorderSide(width: 4.0, color: Colors.blue),
                             borderRadius: BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12))
@@ -62,11 +64,11 @@ class _HealingScreenState extends State<HealingScreen> with TickerProviderStateM
                           context.read<MusicProvider>().updateToolbarHeight(i == 1 ? 118 : 48);
                         },
                         indicatorSize: TabBarIndicatorSize.label,
-                        tabs: const [
-                          Tab(text: "Tất cả"),
-                          Tab(text: "Âm thanh thư giãn"),
-                          Tab(text: "Tự chăm sóc"),
-                          Tab(text: "Bài kiểm tra"),
+                        tabs: [
+                          Tab(text: S.of(context).all),
+                          Tab(text: S.of(context).relaxing_sounds),
+                          Tab(text: S.of(context).self_care),
+                          Tab(text: S.of(context).quiz),
                         ]
                     ),
                     Obx(() => Visibility(
@@ -98,7 +100,7 @@ class _HealingScreenState extends State<HealingScreen> with TickerProviderStateM
                                     Container(
                                         margin: const EdgeInsets.only(right: 6),
                                         child: const Icon(Icons.check, size: 18,)),
-                                  Text(type.displayName, style: const TextStyle(fontWeight: FontWeight.w600),),
+                                  Text(type.getDisplayName(Get.locale!.languageCode), style: const TextStyle(fontWeight: FontWeight.w600),),
                                 ],
                               )),
                             ),

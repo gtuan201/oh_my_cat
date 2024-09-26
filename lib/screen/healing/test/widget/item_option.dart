@@ -32,7 +32,7 @@ class _ItemOptionState extends State<ItemOption> {
             groupValue: widget.selectedOption,
             fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
               if (states.contains(WidgetState.selected)) {
-                return Colors.greenAccent;
+                return Theme.of(context).splashColor;
               }
               return Colors.white;
             }),
