@@ -404,11 +404,14 @@ class $AssetImageGen {
 class $AssetJsonGen {
   const $AssetJsonGen();
 
-  /// File path: asset/json/test.json
-  String get test => 'asset/json/test.json';
+  /// File path: asset/json/test_en.json
+  String get testEn => 'asset/json/test_en.json';
+
+  /// File path: asset/json/test_vi.json
+  String get testVi => 'asset/json/test_vi.json';
 
   /// List of all assets
-  List<String> get values => [test];
+  List<String> get values => [testEn, testVi];
 }
 
 class $AssetVideoGen {

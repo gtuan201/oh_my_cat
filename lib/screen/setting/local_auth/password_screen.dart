@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/providers/local_auth_provider.dart';
 import 'package:mood_press/screen/setting/local_auth/widget/numberic_keypad.dart';
 import 'package:mood_press/screen/setting/local_auth/widget/pin_code_widget.dart';
 import 'package:mood_press/ulti/function.dart';
 import 'package:provider/provider.dart';
+
+import '../../../generated/l10n.dart';
 
 class PasswordScreen extends StatefulWidget {
   final bool isAuth;
@@ -17,9 +18,6 @@ class PasswordScreen extends StatefulWidget {
 }
 
 class _PasswordScreenState extends State<PasswordScreen> {
-
-
-
   RxString pin = "".obs;
   RxBool confirmPassword = false.obs;
   String password = "";
@@ -35,21 +33,21 @@ class _PasswordScreenState extends State<PasswordScreen> {
         automaticallyImplyLeading: !widget.isAuth,
       ),
       body: PopScope(
-        onPopInvoked: (b){
+        onPopInvoked: (b) {
           context.read<LocalAuthProvider>().getStatusLocalAuth();
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Obx(() => Text(
-                  confirmPassword.value ? 'Xác nhận mật khẩu' : 'Nhập mật khẩu gồm 4 chữ số',
-                  style: TextStyle(color: Colors.blueGrey.shade100, fontSize: 18),
-                )
+              confirmPassword.value ? S.of(context).confirm_password : S.of(context).enter_password,
+              style: TextStyle(color: Colors.blueGrey.shade100, fontSize: 18),
+            )
             ),
             PinCodeInput(pin: pin,),
             NumericKeypad(
               isAuth: widget.isAuth,
-              onKeyPress: (i){
+              onKeyPress: (i) {
                 addDigit(i);
               },
               onDelete: removeDigit,
@@ -62,20 +60,19 @@ class _PasswordScreenState extends State<PasswordScreen> {
       ),
     );
   }
-  void addDigit(int i){
-    if(pin.value.length < 4){
+
+  void addDigit(int i) {
+    if (pin.value.length < 4) {
       pin.value += "$i";
     }
-    if(pin.value.length == 4){
-      if(widget.isAuth){
+    if (pin.value.length == 4) {
+      if (widget.isAuth) {
         auth();
-      }
-      else{
-        if(confirmPassword.value){
+      } else {
+        if (confirmPassword.value) {
           rePassword = pin.value;
           checkEqualPassword();
-        }
-        else{
+        } else {
           password = pin.value;
           pin.value = "";
           confirmPassword.value = true;
@@ -83,30 +80,31 @@ class _PasswordScreenState extends State<PasswordScreen> {
       }
     }
   }
-  void removeDigit(){
+
+  void removeDigit() {
     if (pin.value.isNotEmpty) {
       pin.value = pin.value.substring(0, pin.value.length - 1);
     }
   }
+
   void checkEqualPassword() {
-    if(password == rePassword){
+    if (password == rePassword) {
       context.read<LocalAuthProvider>().savePassword(password);
       context.read<LocalAuthProvider>().enableLocalAuth();
       Get.back();
-    }
-    else{
+    } else {
       pin.value = "";
-      showCustomToast(context: context, message: 'Mật khẩu không khớp',backgroundColor: Colors.red);
+      showCustomToast(context: context, message: S.of(context).password_mismatch, backgroundColor: Colors.red); 
     }
   }
+
   Future<void> auth() async {
     String? password = await context.read<LocalAuthProvider>().getPassword();
-    if(pin.value == password){
+    if (pin.value == password) {
       widget.authAction();
-    }
-    else{
+    } else {
       pin.value = "";
-      showCustomToast(context: context, message: "Xác thực không thành công",backgroundColor: Colors.red);
+      showCustomToast(context: context, message: S.of(context).authentication_failed, backgroundColor: Colors.red); 
     }
   }
 }

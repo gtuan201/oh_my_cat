@@ -1,6 +1,7 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/firebase_options.dart';
 import 'package:mood_press/helper/notification_helper.dart';
@@ -14,6 +15,7 @@ import 'package:mood_press/providers/reminder_provider.dart';
 import 'package:mood_press/providers/statisticaL_provider.dart';
 import 'package:mood_press/providers/test_provider.dart';
 import 'package:mood_press/providers/theme_provider.dart';
+import 'generated/l10n.dart';
 import 'helper/audio_handler.dart';
 import 'helper/di.dart' as di;
 import 'package:intl/date_symbol_data_local.dart';
@@ -51,19 +53,31 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => EmojiProvider(storage: Get.find())),
         ChangeNotifierProvider(create: (_) => TestProvider()),
         ChangeNotifierProvider(create: (_) => MusicProvider()),
-        ChangeNotifierProvider(create: (_) => StatisticalProvider(repo: Get.find())),
-        ChangeNotifierProvider(create: (_) => ThemeProvider(storage: Get.find())),
+        ChangeNotifierProvider(create: (_) {
+          ThemeProvider themeProvider = ThemeProvider(storage: Get.find());
+          themeProvider.getLocale();
+          themeProvider.getTheme();
+          return themeProvider;
+        }),
         ChangeNotifierProvider(create: (_) => ReminderProvider(repo: Get.find())),
         ChangeNotifierProvider(create: (_) => LocalAuthProvider(repo: Get.find())),
         ChangeNotifierProvider(create: (_) => BackupProvider(repo: Get.find(), notificationHelper: Get.find())),
+        ChangeNotifierProvider(create: (_) => StatisticalProvider(repo: Get.find())),
       ],
       child: Consumer<ThemeProvider>(
           builder: (context,themeProvider,_){
-            themeProvider.getTheme();
             return GetMaterialApp(
               theme: themeProvider.themeData,
               debugShowCheckedModeBanner: false,
               home: const SplashScreen(),
+              locale: themeProvider.locale ?? const Locale("vi"),
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
             );
           }
       ),

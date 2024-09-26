@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/data/model/audio_model.dart';
+import 'package:mood_press/ulti/constant.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -26,9 +27,9 @@ class ItemMusic extends StatelessWidget {
         Get.find<AudioHandler>().playMediaItem(
             MediaItem(
                 id: file.path,
-                title: audioModel.name,
-                extras: {'isLocal': true},
-                artist: audioModel.type.displayName,
+                title: audioModel.name[Get.locale!.languageCode]!,
+                extras: {Constant.isLocal: true},
+                artist: audioModel.type.getDisplayName(Get.locale!.languageCode),
                 artUri: Uri.file(await getLocalImagePath(audioModel.image)),
                 duration: await getAudioDuration(file.path)
             )
@@ -56,7 +57,7 @@ class ItemMusic extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            audioModel.name,
+            audioModel.name[Get.locale!.languageCode]!,
             style: TextStyle(color: Colors.blueGrey.shade100),
           ),
         ],

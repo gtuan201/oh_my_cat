@@ -10,7 +10,7 @@ import 'package:mood_press/ulti/constant.dart';
 class BackupProvider extends ChangeNotifier{
   final BackupRepo repo;
   GoogleSignInAccount? currentUser;
-  String reminderType = NotificationInterval.none.message;
+  String reminderType = NotificationInterval.none.name;
   NotificationHelper notificationHelper;
   List<drive.File> files = [];
 
@@ -43,7 +43,7 @@ class BackupProvider extends ChangeNotifier{
     files = await repo.getListFile();
     notifyListeners();
   }
-  Future<void> saveReminderType(String type) async {
+  Future<void> saveReminderType(String type, BuildContext context) async {
     DateTime now = DateTime.now();
     notificationHelper.schedulePeriodicNotification(
         id: Constant.NOTIFICATION_BACKUP,
@@ -54,10 +54,10 @@ class BackupProvider extends ChangeNotifier{
         interval: NotificationInterval.values.firstWhere((interval) => interval.name == type)
     );
     await repo.saveReminderType(type);
-    getReminderType();
+    getReminderType(context);
   }
-  void getReminderType() {
-    reminderType = NotificationInterval.values.firstWhere((interval) => interval.name == repo.getReminderType()).message;
+  void getReminderType(BuildContext context) {
+    reminderType = NotificationInterval.values.firstWhere((interval) => interval.name == repo.getReminderType()).getLocalizedMessage(context);
     notifyListeners();
   }
   Future<bool> deleteFileFromDrive(String fileId) async{

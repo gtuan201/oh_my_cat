@@ -1,0 +1,590 @@
+{
+  "tests": [
+    {
+      "id": "1",
+      "title": "Emotional Intelligence Questionnaire",
+      "imageUrl": "asset/image/emotion_test.png",
+      "note": "Please choose the answer that best fits you. There are no absolutely right or wrong answers.",
+      "description": "Assess your ability to recognize, understand, and manage your own emotions and those of others. This test helps identify strengths and weaknesses in emotional skills, providing strategies for overall emotional intelligence improvement.",
+      "source": "Based on the Mayer-Salovey-Caruso Emotional Intelligence Test (MSCEIT) and Daniel Goleman's emotional intelligence research. This test has been adapted to fit the cultural and social context of Vietnam.",
+      "questions": [
+        {
+          "text": "When you feel sad, what do you usually do?",
+          "options": [
+            "Try to avoid thinking about it",
+            "Let the emotion pass on its own",
+            "Share your feelings with someone",
+            "Find the cause and seek a solution"
+          ]
+        },
+        {
+          "text": "You notice a colleague seems stressed. What do you do?",
+          "options": [
+            "Do nothing, it's not your business",
+            "Report their condition to a superior",
+            "Tell them they should calm down",
+            "Ask if they need any help"
+          ]
+        },
+        {
+          "text": "In an argument, what do you usually do?",
+          "options": [
+            "Try to win at all costs",
+            "Agree with the other person to end the argument",
+            "Avoid arguments altogether",
+            "Listen and try to understand the other's point of view"
+          ]
+        },
+        {
+          "text": "When you face failure, how do you usually react?",
+          "options": [
+            "Feel hopeless and give up",
+            "Blame others",
+            "Try to forget about it as quickly as possible",
+            "Reflect and learn from the experience"
+          ]
+        },
+        {
+          "text": "How do you assess your ability to control your emotions?",
+          "options": [
+            "Excellent, I always control my emotions",
+            "Very poor, I often let emotions control me",
+            "I’m not sure",
+            "Quite good, I can control them in most situations"
+          ]
+        },
+        {
+          "text": "When a friend shares their problems with you, how do you usually respond?",
+          "options": [
+            "Try to give advice immediately",
+            "Tell them everything will be okay",
+            "Change the subject to avoid making them feel sad",
+            "Listen and show empathy"
+          ]
+        },
+        {
+          "text": "How aware are you of your own emotions?",
+          "options": [
+            "I rarely think about my emotions",
+            "I often get confused about my emotions",
+            "I can recognize my emotions after some time",
+            "I always know exactly how I feel"
+          ]
+        },
+        {
+          "text": "When you feel angry, what do you usually do?",
+          "options": [
+            "Express your anger immediately",
+            "Avoid the situation and the person causing the anger",
+            "Redirect your anger to another activity",
+            "Try to calm down and stay composed"
+          ]
+        },
+        {
+          "text": "How would you rate your ability to read other people's emotions?",
+          "options": [
+            "I don't care about others' emotions",
+            "Not very good, I often fail to notice others' emotions",
+            "Quite good, but I sometimes get it wrong",
+            "Very good, I always know how others are feeling"
+          ]
+        },
+        {
+          "text": "How do you usually handle stressful situations?",
+          "options": [
+            "Easily lose your temper and overreact",
+            "Avoid the situation altogether",
+            "Let others handle the situation",
+            "Try to stay calm and think logically"
+          ]
+        },
+        {
+          "text": "How do you usually respond to negative feedback?",
+          "options": [
+            "Feel insulted and react defensively",
+            "Feel discouraged and lose motivation",
+            "Completely ignore it",
+            "Listen and try to learn from the feedback"
+          ]
+        },
+        {
+          "text": "When working in a team, what role do you usually take?",
+          "options": [
+            "Leader, directing the team",
+            "Doer, focusing on assigned tasks",
+            "Creative contributor, bringing new ideas",
+            "Mediator, helping resolve conflicts"
+          ]
+        },
+        {
+          "text": "How would you rate your adaptability to change?",
+          "options": [
+            "Very difficult, I prefer things to stay stable",
+            "It depends on the type of change",
+            "Quite good, I can adapt after a while",
+            "Very good, I am always ready for change"
+          ]
+        },
+        {
+          "text": "When faced with a big challenge, how do you usually feel?",
+          "options": [
+            "Anxious and wanting to avoid it",
+            "Indifferent, with no particular emotions",
+            "Feel pressured but still try to face it",
+            "Excited and see it as an opportunity for growth"
+          ]
+        },
+        {
+          "text": "How do you usually handle feeling overwhelmed?",
+          "options": [
+            "Procrastinate and hope things will resolve on their own",
+            "Try to do everything at once",
+            "Seek help from others",
+            "Prioritize and focus on the most important tasks"
+          ]
+        }
+      ],
+      "conclude": {
+        "0-15": {
+          "scoringGuide": "Poor",
+          "conclusion": "Your emotional intelligence is at a low level and needs significant improvement. You may struggle with recognizing, understanding, and managing your emotions as well as those of others. This can affect your personal and professional relationships.",
+          "strengths": "You have recognized the importance of emotional intelligence by taking this test.",
+          "weaknesses": "Your ability to recognize emotions, control them, empathize, and handle social skills may need significant improvement.",
+          "recommendations": "Start by focusing on identifying your own emotions. Try keeping a daily emotional journal and consider taking emotional intelligence development courses.",
+          "description": "At this level, emotions are often a mystery to you. You may feel overwhelmed by strong emotions and unsure how to manage them. In social situations, you might feel awkward and uncertain about how to respond appropriately."
+        },
+        "16-25": {
+          "scoringGuide": "Average",
+          "conclusion": "You have basic emotional intelligence. You can recognize and manage emotions to some extent, but there is plenty of room for growth and improvement.",
+          "strengths": "You have a solid foundation to continue developing your emotional intelligence.",
+          "weaknesses": "Your ability to handle complex emotional situations and deeply understand others' emotions may need improvement.",
+          "recommendations": "Focus on developing active listening and empathy skills. Practice managing emotions in stressful situations.",
+          "description": "You are an 'apprentice' on your emotional journey. Like someone learning to drive, you understand the basics but still have much to learn. You can read clear emotional signals but might miss more subtle ones."
+        },
+        "26-35": {
+          "scoringGuide": "Good",
+          "conclusion": "You have good emotional intelligence. You can recognize, understand, and manage your own emotions and others' at a fairly high level, helping you navigate social and professional situations well.",
+          "strengths": "You have strong empathy and can handle many complex emotional situations.",
+          "weaknesses": "You may still struggle in extremely stressful or complex situations.",
+          "recommendations": "Continue developing emotional leadership and conflict resolution skills. Challenge yourself with new and more complex situations.",
+          "description": "You are an 'amateur athlete' in the field of emotions. You have good skills and can handle most situations confidently. However, when faced with highly complex emotional challenges, you may still feel a bit unsure."
+        },
+        "36-45": {
+          "scoringGuide": "Excellent",
+          "conclusion": "You have excellent emotional intelligence. You can recognize, understand, and manage emotions at a high level, making you excel in personal and professional relationships.",
+          "strengths": "You have a great ability to read and respond to others' emotions, effectively handling complex emotional situations.",
+          "recommendations": "Focus on maintaining emotional balance and setting healthy boundaries. Share your knowledge and skills to help others develop their emotional intelligence.",
+          "description": "You are an 'emotional maestro.' Like a conductor guiding an orchestra, you masterfully manage both your own and others' emotions. You can read and respond to subtle signals, creating harmony in relationships and your surroundings."
+        }
+      }
+    },
+    {
+      "id": "2",
+      "title": "Anxiety Risk Questionnaire",
+      "note": "In the past two weeks, have you been bothered by any of the following issues?",
+      "imageUrl": "asset/image/worry_test.png",
+      "description": "Assess the level of anxiety and identify signs of anxiety disorders. This test helps users recognize anxiety symptoms and how much they impact daily life, aiding in the decision of whether to seek professional support.",
+      "source": "Based on the Generalized Anxiety Disorder 7-item (GAD-7) scale, a widely used clinical screening tool to assess the severity and intensity of anxiety disorders. The test has been adapted and validated for Vietnamese individuals.",
+      "questions": [
+        {
+          "text": "Do you often feel excessively worried about various things?",
+          "options": [
+            "Never",
+            "Sometimes",
+            "Often",
+            "Almost always"
+          ]
+        },
+        {
+          "text": "Do you have difficulty controlling your worry?",
+          "options": [
+            "Never",
+            "Occasionally",
+            "Frequently",
+            "Always"
+          ]
+        },
+        {
+          "text": "Do you often feel restless, uneasy, or tense?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Often",
+            "Almost all the time"
+          ]
+        },
+        {
+          "text": "Do you have trouble sleeping (difficulty falling asleep, staying asleep) due to worry?",
+          "options": [
+            "Never",
+            "Sometimes",
+            "Often",
+            "Almost every night"
+          ]
+        },
+        {
+          "text": "Do you often feel tired or weak?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Often",
+            "Almost all the time"
+          ]
+        },
+        {
+          "text": "Do you have difficulty concentrating or find your mind going blank due to worry?",
+          "options": [
+            "Never",
+            "Sometimes",
+            "Often",
+            "Constantly"
+          ]
+        },
+        {
+          "text": "Do you often feel easily irritable or annoyed?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Often",
+            "Almost always"
+          ]
+        }
+      ],
+      "conclude": {
+        "0-4": {
+          "scoringGuide": "Minimal",
+          "conclusion": "You have a very low level of anxiety, almost negligible. This indicates that you are effectively coping with stress and managing stressful situations well.",
+          "recommendations": "Continue maintaining a balanced lifestyle and healthy habits that help you stay mentally stable. Keep practicing relaxation and stress management techniques to maintain good mental health.",
+          "description": "You are like a steady rock amidst a rushing stream. Stress and pressure seem to pass by without leaving a mark. You have an admirable ability to stay calm in most situations."
+        },
+        "5-9": {
+          "scoringGuide": "Mild",
+          "conclusion": "You experience some mild anxiety symptoms. This level is common in daily life and may be a normal response to stress.",
+          "recommendations": "Practice relaxation techniques such as deep breathing or meditation. Maintain a healthy lifestyle with balanced meals, regular exercise, and adequate sleep. If symptoms persist or worsen, consider seeking support from a professional.",
+          "description": "You are like a leaf gently floating on the water. Occasionally, small ripples of anxiety appear, but you usually regain balance naturally. Anxiety is just a small part of your everyday experience."
+        },
+        "10-14": {
+          "scoringGuide": "Moderate",
+          "conclusion": "Your anxiety level is moderate. This may affect your quality of life and work performance.",
+          "recommendations": "Consider learning stress management techniques like mindfulness or yoga. Prioritize self-care and establish healthy boundaries in work and personal life. If feeling overwhelmed, don’t hesitate to seek support from friends, family, or a mental health professional.",
+          "description": "You are like a boat in a mild storm. Anxiety is creating significant waves in your life. While you can still maintain direction, navigating has become more difficult and requires more effort."
+        },
+        "15-21": {
+          "scoringGuide": "Severe",
+          "conclusion": "You are experiencing a high level of anxiety. This may have significant effects on your mental and physical health, as well as on your relationships and work.",
+          "recommendations": "Seeking support from a mental health professional is crucial at this stage. They can help you develop effective coping strategies and may suggest therapy or medical treatment if necessary. Meanwhile, prioritize self-care, avoid caffeine and alcohol, and practice daily relaxation techniques.",
+          "description": "You are in the eye of the anxiety storm. Like a ship in a major storm, you are struggling to keep balance. Anxiety dominates your life, affecting almost every aspect and daily decision."
+        }
+      }
+    },
+    {
+      "id": "3",
+      "title": "Depression Risk Questionnaire",
+      "note": "In the past two weeks, have you been bothered by any of the following issues?",
+      "imageUrl": "asset/image/depresstion.png",
+      "description": "Assess symptoms and risk of depression. This test helps identify the severity of depression symptoms, including emotional, cognitive, and physical symptoms. The results can help users decide whether to seek professional support.",
+      "source": "Based on the Patient Health Questionnaire-9 (PHQ-9), a widely used and validated screening tool to assess the severity of depression. The test has been adapted and standardized for the Vietnamese population.",
+      "conclude": {
+        "0-6": {
+          "scoringGuide": "Normal",
+          "conclusion": "You show no significant signs of depression. This suggests that you are in a positive psychological state and are coping well with stress.",
+          "recommendations": "Continue maintaining a healthy lifestyle and engaging in activities that bring you joy. Practice gratitude and maintain positive social relationships to further improve your mental health.",
+          "description": "You are like a sunny day. Your mood is often positive, and you have the ability to fully enjoy life. Temporary difficulties are like small clouds passing through your clear blue sky."
+        },
+        "7-12": {
+          "scoringGuide": "Mild",
+          "conclusion": "You have some mild symptoms of depression. While not yet severe, this may be affecting your quality of life.",
+          "recommendations": "Increase physical activity and get more exposure to sunlight. Try practicing positive thinking techniques and mindfulness. If symptoms persist, consider speaking to a counselor or psychologist.",
+          "description": "You are going through a cloudy day. While there are still moments of sunshine, you sometimes feel the darkness approaching. Your mood may shift, but you can still see the light behind the clouds."
+        },
+        "13-18": {
+          "scoringGuide": "Moderate",
+          "conclusion": "You have moderate signs of depression. This may be causing significant difficulties in your daily life, work, and relationships.",
+          "recommendations": "Seeking support from a mental health professional is important at this stage. They can help you identify the causes and develop an appropriate treatment plan. Meanwhile, stay connected with loved ones, engage in activities you used to enjoy, and try relaxation techniques such as meditation or yoga.",
+          "description": "You are in a persistent rainstorm. The gloom seems to overshadow your life, making everything appear gray and heavy. Though there are moments of calm, you frequently feel drenched and uncomfortable."
+        },
+        "19-27": {
+          "scoringGuide": "Severe",
+          "conclusion": "You are at risk of severe depression. This condition may have serious effects on your mental and physical health, as well as a significant impact on your quality of life.",
+          "recommendations": "It is crucial to seek support from a mental health professional immediately. They can assess your condition and recommend appropriate treatments, which may include therapy, medication, or a combination of both. Ensure you are not alone and inform trusted family or friends about your condition to receive the necessary support.",
+          "description": "You are in the midst of a severe storm. Darkness and heaviness seem to envelop every aspect of your life. Like in a powerful storm, you may feel lost and find it difficult to see the path ahead."
+        }
+      },
+      "questions": [
+        {
+          "text": "Do you often feel sad or hopeless?",
+          "options": [
+            "Never",
+            "Sometimes",
+            "Often",
+            "Almost always"
+          ]
+        },
+        {
+          "text": "Have you lost interest or pleasure in activities you once enjoyed?",
+          "options": [
+            "No",
+            "Occasionally",
+            "Often",
+            "Always"
+          ]
+        },
+        {
+          "text": "Do you have trouble sleeping (sleeping too much or too little)?",
+          "options": [
+            "Never",
+            "Sometimes",
+            "Often",
+            "Almost every night"
+          ]
+        },
+        {
+          "text": "Do you feel tired or have little energy almost every day?",
+          "options": [
+            "No",
+            "Occasionally",
+            "Often",
+            "Always"
+          ]
+        },
+        {
+          "text": "Do you feel worthless or excessively guilty?",
+          "options": [
+            "Never",
+            "Sometimes",
+            "Often",
+            "Almost always"
+          ]
+        },
+        {
+          "text": "Do you have difficulty concentrating, thinking, or making decisions?",
+          "options": [
+            "No",
+            "Occasionally",
+            "Often",
+            "Always"
+          ]
+        },
+        {
+          "text": "Do you have thoughts about death or suicide?",
+          "options": [
+            "Never",
+            "Rarely",
+            "Sometimes",
+            "Often"
+          ]
+        },
+        {
+          "text": "Have you noticed significant changes in your appetite or weight?",
+          "options": [
+            "No",
+            "A little",
+            "Quite a lot",
+            "A lot"
+          ]
+        },
+        {
+          "text": "Do you feel more restless or slower than usual?",
+          "options": [
+            "No",
+            "Occasionally",
+            "Often",
+            "Almost always"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Adult ADHD Risk Questionnaire (ASRS-v1.1)",
+      "note": "Please select the answer that best describes your feelings and behaviors over the past 6 months.",
+      "imageUrl": "asset/image/adhd.png",
+      "description": "Assess the symptoms and risk of ADHD in adults. This test helps identify signs of ADHD in adults, including difficulties in concentration, organization, and impulse control. The results may indicate whether the user should seek further evaluation from professionals.",
+      "source": "Based on the Adult ADHD Self-Report Scale (ASRS-v1.1), a screening tool developed by the World Health Organization (WHO) to screen for ADHD in adults. The test has been adapted and validated for the Vietnamese context.",
+      "conclude": {
+        "0-16": {
+          "scoringGuide": "Low likelihood",
+          "conclusion": "You have few signs of ADHD. Current symptoms, if any, may not be related to ADHD or may be normal expressions of occasional distraction or lack of focus.",
+          "recommendations": "Continue to maintain effective work and study habits. If you find it hard to concentrate, try time management and organization techniques. Practicing mindfulness may help improve your focus.",
+          "description": "You are like a well-oiled machine, operating smoothly and efficiently. Your focus and organization are usually stable, allowing you to navigate tasks and responsibilities with ease. Distractions are merely ripples on a calm lake for you."
+        },
+        "17-23": {
+          "scoringGuide": "Moderate likelihood",
+          "conclusion": "You have some signs of ADHD. While not sufficient for a diagnosis, these symptoms may affect your work or academic performance.",
+          "recommendations": "Monitor the symptoms and their impact on your daily life. Try applying time management and organization strategies. If the symptoms continue to pose difficulties, consider discussing with a mental health professional for a more in-depth evaluation.",
+          "description": "Your mind is like a radio searching for signals. Sometimes you catch a clear and focused frequency, but at other times, it is static and distracting. You may find yourself switching between 'channels' of thought, sometimes struggling to maintain a steady frequency."
+        },
+        "24-72": {
+          "scoringGuide": "High likelihood",
+          "conclusion": "You show many signs of ADHD. These symptoms may be causing significant difficulties in your life, work, or studies.",
+          "recommendations": "Seek a thorough evaluation from a professional to accurately diagnose and develop appropriate support methods. A professional can help you develop coping strategies, consider different treatment options, and provide support to improve your quality of life. While waiting for an in-depth evaluation, try applying organizational and time management techniques, creating a less distracting work environment, and practicing exercises to enhance focus.",
+          "description": "Your mind is like a whirlwind of ideas and impulses. Like a leaf caught in a tornado, your attention is often pulled in many different directions. Maintaining focus can feel like trying to catch grains of sand in a desert storm."
+        }
+      },
+      "questions": [
+        {
+          "text": "Do you often have difficulty focusing on details or make careless mistakes?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you struggle to maintain attention when working or in leisure activities?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you often feel like you are not listening when others speak to you directly?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you have difficulty following instructions and completing tasks?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you have trouble organizing tasks and managing your time?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you often procrastinate or avoid tasks that require prolonged mental effort?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you often lose necessary items for work or daily activities?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Are you easily distracted by external stimuli?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you often forget daily activities?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you often feel restless or unable to sit still?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you often feel anxious or 'on edge'?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you have difficulty relaxing during your free time?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you often talk excessively in social situations?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you often interrupt or intrude on others' conversations?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you have difficulty waiting your turn?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you often interrupt others when they are busy?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you often act without thinking?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        },
+        {
+          "text": "Do you often shift from one unfinished task to another?",
+          "options": [
+            "Rarely",
+            "Sometimes",
+            "Frequently",
+            "Very often"
+          ]
+        }
+      ]
+    }
+  ]
+}

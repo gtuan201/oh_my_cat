@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:mood_press/screen/setting/daily_reminder/widget/info_reminder_widget.dart';
 import 'package:mood_press/ulti/function.dart';
 import 'package:provider/provider.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/screen/setting/daily_reminder/widget/item_reminder.dart';
 import 'package:mood_press/data/model/reminder.dart';
+import '../../../generated/l10n.dart';
 import '../../../providers/reminder_provider.dart';
 
 class DailyReminderScreen extends StatefulWidget {
@@ -30,7 +30,7 @@ class _DailyReminderScreenState extends State<DailyReminderScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        title: const Text('Thiết lập nhắc nhở'),
+        title: Text(S.of(context).setup_reminder),
         elevation: 0,
         backgroundColor: Theme.of(context).primaryColor,
         centerTitle: true,
@@ -69,7 +69,7 @@ class _DailyReminderScreenState extends State<DailyReminderScreen> {
                   fixedSize: Size(Get.width, 42),
                   backgroundColor: Theme.of(context).splashColor
               ),
-              child: const Text('Thêm nhắc nhở hàng ngày',),
+              child: Text(S.of(context).add_daily_reminder,),
             ),
           ),
         ],
@@ -115,7 +115,7 @@ class _DailyReminderScreenState extends State<DailyReminderScreen> {
                   if(titleController.text.isEmpty || bodyController.text.isEmpty){
                     showCustomToast(
                     context: context,
-                    message: 'Hãy điền đầy đủ thông tin',
+                    message: S.of(context).fill_all_info,
                     backgroundColor: Colors.redAccent);
                   }
                   else{
@@ -130,7 +130,7 @@ class _DailyReminderScreenState extends State<DailyReminderScreen> {
                   backgroundColor: Theme.of(context).splashColor,
                   fixedSize: Size(Get.width, 42)
                 ),
-                child: const Text("Thêm nhắc nhở")
+                child: Text(S.of(context).add_reminder)
               )
             ],
           ),

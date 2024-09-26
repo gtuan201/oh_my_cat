@@ -54,19 +54,35 @@ class Constant{
     Assets.image.heartEyes3,
   ];
 
-  static List<String> listEmojiNames = [
-    'Khóc',
-    'Buồn',
-    'Giận dữ',
-    'Khó chịu',
-    'Lo lắng',
-    'Bối rối',
-    'Sốc',
-    'Buồn ngủ',
-    'Xúc động',
-    'Vui vẻ',
-    'Yêu',
-  ];
+  static Map<String, List<String>> emojiNames = {
+    'vi': [
+      'Khóc',
+      'Buồn',
+      'Giận dữ',
+      'Khó chịu',
+      'Lo lắng',
+      'Bối rối',
+      'Sốc',
+      'Buồn ngủ',
+      'Xúc động',
+      'Vui vẻ',
+      'Yêu',
+    ],
+    'en': [
+      'Crying',
+      'Sad',
+      'Angry',
+      'Annoyed',
+      'Worried',
+      'Confused',
+      'Shocked',
+      'Sleepy',
+      'Emotional',
+      'Happy',
+      'Love',
+    ],
+  };
+
   static List<Color> moodColor = [
     ColorName.cry,
     ColorName.sad,
@@ -87,6 +103,16 @@ class Constant{
   static const String reminderBackup = "reminder_backup";
   static const String theme = "theme";
   static const String emoji = "emoji";
+  static const String imagePath = "imagePath";
+  static const String widgetColor = "widgetColor";
+  static const String dateTime = "dateTime";
+  static const String showToast = "showToast";
+  static const String message = "message";
+  static const String isLocal = "isLocal";
+  static const String notAvailable = "NotAvailable";
+  static const String notEnrolled = "NotEnrolled";
+  static const String languages = "Languages";
+  static const String googleApiKey = "AIzaSyC1sswvFkexF72r2-UWCwPM1vPmW_QHo84";
 
   //widget
   static const String androidWidget = "CalendarEmojiWidget";

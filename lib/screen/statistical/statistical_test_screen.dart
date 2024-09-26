@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mood_press/helper/date_time_helper.dart';
 import 'package:mood_press/screen/statistical/widget/item_result.dart';
 import '../../data/model/test.dart';
-import '../../gen/colors.gen.dart';
+import '../../generated/l10n.dart';
 import '../healing/test/widget/level_widget.dart';
 
 class StatisticalTestScreen extends StatefulWidget {
@@ -26,9 +26,9 @@ class _StatisticalTestScreenState extends State<StatisticalTestScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.colorPrimary,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        backgroundColor: ColorName.colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -36,7 +36,7 @@ class _StatisticalTestScreenState extends State<StatisticalTestScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Kểt quả ngày ${DateTimeHelper.dateTimeToString(test.dateCompleted)}",
+              "${S.of(context).daily_results} ${DateTimeHelper.dateTimeToString(test.dateCompleted)}",
               textAlign: TextAlign.center,
               style: const TextStyle(color: Colors.white, fontSize: 24),
             ),
@@ -53,9 +53,9 @@ class _StatisticalTestScreenState extends State<StatisticalTestScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Kết luận",
-                    style: TextStyle(
+                  Text(
+                    S.of(context).conclusion,
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w600
@@ -83,7 +83,7 @@ class _StatisticalTestScreenState extends State<StatisticalTestScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Thống kê kết quả kiểm tra',style: TextStyle(
+                  Text(S.of(context).test_result_statistics,style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.w600

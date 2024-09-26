@@ -7,6 +7,7 @@ import 'package:mood_press/providers/reminder_provider.dart';
 import 'package:mood_press/ulti/function.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../../providers/statisticaL_provider.dart';
 
 class ItemBackupData extends StatelessWidget {
@@ -26,12 +27,12 @@ class ItemBackupData extends StatelessWidget {
           const Spacer(),
           IconButton(
               onPressed: () {
-                showLoadingDialog(message: 'Đang đồng bộ dữ liệu...');
+                showLoadingDialog(message: S.of(context).syncing_data);
                 context.read<BackupProvider>().sync(file.id ?? '').then((success){
                   Get.back();
                   getDataSync(context);
                   showCustomToast(context: context,
-                      message: success ? 'Đồng bộ hoàn tất' : 'Lỗi! Vui lòng thử lại sau',
+                      message: success ? S.of(context).sync_completed : S.of(context).sync_error,
                       backgroundColor: success ? Colors.teal : Colors.red
                   );
                 });
@@ -44,11 +45,11 @@ class ItemBackupData extends StatelessWidget {
           IconButton(
               onPressed: () {
                 showConfirmationDialog(context,
-                        nameDelete: file.name?.substring(0, file.name?.lastIndexOf('.')))
+                    nameDelete: file.name?.substring(0, file.name?.lastIndexOf('.')))
                     .then((confirm) {
-                      if(confirm!){
-                        delete(context);
-                      }
+                  if(confirm!){
+                    delete(context);
+                  }
                 });
               },
               icon: const Icon(
@@ -61,15 +62,15 @@ class ItemBackupData extends StatelessWidget {
     );
   }
   delete(BuildContext context) async {
-    showLoadingDialog(message: 'Đang xoá dữ liệu...');
+    showLoadingDialog(message: S.of(context).deleting_data);
     context.read<BackupProvider>().deleteFileFromDrive(file.id ?? '').then((value) async {
       await context.read<BackupProvider>().getListFile();
       Get.back();
       if (context.mounted) {
         showCustomToast(context: context,
-          message: value ? 'Đã xoá' : 'Lỗi! Vui lòng thử lại sau',
-          backgroundColor: value ? Colors.teal : Colors.red
-      );
+            message: value ? S.of(context).deleted_success : S.of(context).delete_error,
+            backgroundColor: value ? Colors.teal : Colors.red
+        );
       }
     });
   }

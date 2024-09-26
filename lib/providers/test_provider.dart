@@ -10,6 +10,7 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:open_file/open_file.dart';
+import '../generated/l10n.dart';
 import '../helper/date_time_helper.dart';
 
 class TestProvider extends ChangeNotifier{
@@ -37,7 +38,7 @@ class TestProvider extends ChangeNotifier{
                 children: [
                   pw.Align(
                     alignment: pw.Alignment.centerRight,
-                    child: pw.Text("Ngày ${DateTimeHelper.dateTimeToString(DateTime.now())}", style: pw.TextStyle(fontSize: 8, font: font)),
+                    child: pw.Text(DateTimeHelper.dateTimeToString(DateTime.now()), style: pw.TextStyle(fontSize: 8, font: font)),
                   ),
                   pw.Divider(color: PdfColors.grey, thickness: 1,),
                   pw.Row(
@@ -47,7 +48,7 @@ class TestProvider extends ChangeNotifier{
                         child: pw.Column(
                           crossAxisAlignment: pw.CrossAxisAlignment.start,
                           children: [
-                            pw.Text("Về ${test.title}", style: pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold, font: fontBold)),
+                            pw.Text(test.title, style: pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold, font: fontBold)),
                             pw.SizedBox(height: 8,),
                             pw.Text(test.description, style: pw.TextStyle(fontSize: 10, font: font))
                           ],
@@ -58,7 +59,7 @@ class TestProvider extends ChangeNotifier{
                         child: pw.Column(
                           crossAxisAlignment: pw.CrossAxisAlignment.start,
                           children: [
-                            pw.Text("Kết luận", style: pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold, font: fontBold)),
+                            pw.Text(S.of(Get.context!).conclusion, style: pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold, font: fontBold)),
                             pw.SizedBox(height: 8,),
                             pw.Text(levelDetail.conclusion, style: pw.TextStyle(fontSize: 10, font: font))
                           ],
@@ -67,8 +68,10 @@ class TestProvider extends ChangeNotifier{
                     ],
                   ),
                   pw.SizedBox(height: 10,),
-                  pw.Text("Đánh giá được thực hiện vào ngày ${DateTimeHelper.dateTimeToString(DateTime.now())}", style: pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold, font: fontBold)),
-                  pw.SizedBox(height: 10,),
+                  pw.Text(
+                      S.of(Get.context!).evaluation_date(DateTimeHelper.dateTimeToString(DateTime.now())),
+                      style: pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold, font: fontBold)
+                  ),  pw.SizedBox(height: 10,),
                   pw.Text(test.title, style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold, font: fontBold)),
                   pw.SizedBox(height: 10,),
                   pw.Table(
@@ -119,7 +122,7 @@ class TestProvider extends ChangeNotifier{
                   pw.Column(
                     crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
-                      pw.Text("Lời khuyên", style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold, font: fontBold)),
+                      pw.Text(S.of(Get.context!).advice, style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold, font: fontBold)),
                       pw.SizedBox(height: 8,),
                       pw.Text(levelDetail.recommendations, style: pw.TextStyle(fontSize: 10, font: font)),
                     ]
@@ -143,7 +146,7 @@ class TestProvider extends ChangeNotifier{
               children: [
                 pw.Align(
                   alignment: pw.Alignment.centerRight,
-                  child: pw.Text("Ngày ${DateTimeHelper.dateTimeToString(DateTime.now())}", style: pw.TextStyle(fontSize: 8, font: font)),
+                  child: pw.Text(DateTimeHelper.dateTimeToString(DateTime.now()), style: pw.TextStyle(fontSize: 8, font: font)),
                 ),
                 pw.Divider(color: PdfColors.grey, thickness: 1,),
                 pw.Table(
@@ -194,22 +197,21 @@ class TestProvider extends ChangeNotifier{
                   pw.Column(
                     crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
-                      pw.Text("Điểm mạnh", style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold, font: fontBold)),
-                      pw.SizedBox(height: 8,),
+                      pw.Text(S.of(Get.context!).strengths, style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold, font: fontBold)),
                       pw.Text(levelDetail.strengths ?? '', style: pw.TextStyle(fontSize: 10, font: font)),
+                      pw.SizedBox(height: 8,),
                     ]
                   ),
                 if(levelDetail.weaknesses != null)
                   pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
                       children: [
-                        pw.Text("Điểm yếu", style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold, font: fontBold)),
-                        pw.SizedBox(height: 8,),
+                        pw.Text(S.of(Get.context!).weaknesses, style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold, font: fontBold)),
                         pw.Text(levelDetail.weaknesses ?? '', style: pw.TextStyle(fontSize: 10, font: font)),
+                        pw.SizedBox(height: 8,),
                       ]
                   ),
-                pw.Text("Lời khuyên", style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold, font: fontBold)),
-                pw.SizedBox(height: 8,),
+                pw.Text(S.of(Get.context!).advice, style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold, font: fontBold)),
                 pw.Text(levelDetail.recommendations, style: pw.TextStyle(fontSize: 10, font: font)),
                 pw.Spacer(),
                 pw.Divider(color: PdfColors.grey, thickness: 1,),

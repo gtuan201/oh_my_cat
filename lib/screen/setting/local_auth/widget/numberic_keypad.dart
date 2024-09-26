@@ -8,6 +8,8 @@ import 'package:mood_press/gen/assets.gen.dart';
 import 'package:mood_press/helper/platform_check.dart';
 import 'package:mood_press/providers/local_auth_provider.dart';
 import 'package:provider/provider.dart';
+import '../../../../generated/l10n.dart';
+import '../../../../ulti/constant.dart';
 import '../../../../ulti/function.dart';
 
 class NumericKeypad extends StatelessWidget {
@@ -70,7 +72,7 @@ class NumericKeypad extends StatelessWidget {
     try{
       final auth = LocalAuthentication();
       bool authenticated = await auth.authenticate(
-        localizedReason: 'Xác thực để truy cập ứng dụng',
+        localizedReason: S.of(context).auth_to_access,
         options: const AuthenticationOptions(
           biometricOnly: true,
         ),
@@ -79,26 +81,26 @@ class NumericKeypad extends StatelessWidget {
         authAction();
       }
     }on PlatformException catch (e) {
-      if (e.code == 'NotAvailable') {
-        log('Xác thực bị hủy bỏ: ${e.message}');
+      if (e.code == Constant.notAvailable) {
+        log('Authentication cancelled: ${e.message}');
         Future.delayed(1.seconds,(){
-          showCustomToast(context: context, message: 'Xác thực bị hủy bỏ');
+          showCustomToast(context: context, message: S.of(context).authentication_cancelled);
         });
-      } else if (e.code == 'NotEnrolled') {
-        log('Thiết bị chưa đăng ký xác thực sinh trắc học: ${e.message}');
+      } else if (e.code == Constant.notAvailable) {
+        log('Device not enrolled for biometric authentication: ${e.message}');
         Future.delayed(1.seconds,(){
-          showCustomToast(context: context, message: 'Thiết bị chưa đăng ký xác thực sinh trắc học');
+          showCustomToast(context: context, message: S.of(context).device_not_enrolled);
         });
       } else {
-        log('Lỗi xác thực: ${e.code} - ${e.message}');
+        log('Authentication error: ${e.code} - ${e.message}');
         Future.delayed(1.seconds,(){
-          showCustomToast(context: context, message: 'Lỗi xác thực');
+          showCustomToast(context: context, message: S.of(context).authentication_error);
         });
       }
     } catch (e) {
-      log('Lỗi không xác định: $e');
-      Future.delayed(1.seconds,(){
-        showCustomToast(context: context, message: 'Lỗi không xác định');
+      log('Unknown error: $e');
+      Future.delayed(1.seconds, () {
+        showCustomToast(context: context, message: S.of(context).unknown_error); // Localized string
       });
     }
   }

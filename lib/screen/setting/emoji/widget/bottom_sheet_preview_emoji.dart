@@ -7,6 +7,8 @@ import 'package:mood_press/ulti/constant.dart';
 import 'package:mood_press/ulti/function.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../generated/l10n.dart';
+
 
 class BottomSheetPreviewEmoji extends StatelessWidget {
   final EmojiType emojiType;
@@ -19,7 +21,7 @@ class BottomSheetPreviewEmoji extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        title: const Text('Xem trước biểu tượng cảm xúc'),
+        title: Text(S.of(context).preview_emoji),
         centerTitle: false,
       ),
       body: Padding(
@@ -47,7 +49,7 @@ class BottomSheetPreviewEmoji extends StatelessWidget {
                       element.svg(width: 52,height: 52),
                       const SizedBox(height: 12,),
                       Text(
-                        Constant.listEmojiNames[emojiType.listEmoji.indexOf(element)],
+                        Constant.emojiNames[Get.locale!.languageCode]![emojiType.listEmoji.indexOf(element)],
                         style: TextStyle(
                             color: Theme.of(context)
                                 .textTheme
@@ -65,7 +67,7 @@ class BottomSheetPreviewEmoji extends StatelessWidget {
             ElevatedButton(
                 onPressed: (){
                   context.read<EmojiProvider>().changeEmoji(emojiType);
-                  showLoadingDialog(message: 'Vui lòng đợi');
+                  showLoadingDialog(message: S.of(context).please_wait);
                   Timer(2.seconds,(){
                     Get.back();
                     Get.back();
@@ -75,7 +77,7 @@ class BottomSheetPreviewEmoji extends StatelessWidget {
                     backgroundColor: Theme.of(context).splashColor,
                     fixedSize: Size(Get.width, 42)
                 ),
-                child: const Text('Dùng nó')
+                child: Text(S.of(context).use_it)
             )
           ],
         ),

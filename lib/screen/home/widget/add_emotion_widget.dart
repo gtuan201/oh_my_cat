@@ -3,12 +3,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/providers/emoji_provider.dart';
 import 'package:mood_press/screen/home/widget/custom_tooltip.dart';
 import 'package:mood_press/screen/home/widget/input_info_mood_widget.dart';
+import 'package:mood_press/screen/setting/emoji/emoji_screen.dart';
 import 'package:mood_press/ulti/constant.dart';
 import 'package:provider/provider.dart';
+import '../../../generated/l10n.dart';
 import '../../../helper/date_time_helper.dart';
 import '../../../ulti/function.dart';
 
@@ -59,7 +60,7 @@ class CircleListAnimationState extends State<AddEmotionWidget> {
             margin: const EdgeInsets.only(right: 6),
             child: IconButton(
               onPressed: (){
-
+                Get.to(() => const EmojiScreen());
               },
               icon: FaIcon(FontAwesomeIcons.sliders,color: Colors.grey.shade400)
             ),
@@ -73,8 +74,8 @@ class CircleListAnimationState extends State<AddEmotionWidget> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 64),
               child: Obx(() => Text(DateTimeHelper.checkIsToday(selectedDate.value)
-                  ? 'Yo! Hôm nay bạn cảm thấy thế nào?'
-                  : 'Bạn cảm thấy thế nào vào ngày hôm đó?',
+                  ? S.of(context).feeling_today
+                  : S.of(context).feel_that_day ,
                 style: TextStyle(color: Colors.grey.shade400,fontSize: 24,fontWeight: FontWeight.w800,),textAlign: TextAlign.center,
               ),)
             ),
@@ -90,7 +91,7 @@ class CircleListAnimationState extends State<AddEmotionWidget> {
                       selectedDate.value = date;
                     });
                   },
-                  child: Obx(() => Text("Ngày ${DateTimeHelper.dateTimeToString(selectedDate.value)}",
+                  child: Obx(() => Text(DateTimeHelper.formatDate(selectedDate.value,Get.locale!.languageCode),
                     style: TextStyle(color: Colors.grey.shade400,fontSize: 20,fontWeight: FontWeight.w400,decoration: TextDecoration.underline),
                   ),),
                 ),
@@ -141,7 +142,7 @@ class CircleItem extends StatelessWidget {
   final bool isShowTooltip;
   final DateTime date;
 
-  CircleItem({required this.index, required this.totalItems, required this.radius, required this.isShowTooltip, required this.date});
+  const CircleItem({super.key, required this.index, required this.totalItems, required this.radius, required this.isShowTooltip, required this.date});
 
   @override
   Widget build(BuildContext context) {
@@ -159,7 +160,7 @@ class CircleItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            isShowTooltip ? CustomTooltipShape(message: Constant.listEmojiNames[index]) : const SizedBox(height: 36,),
+            isShowTooltip ? CustomTooltipShape(message: Constant.emojiNames[Get.locale!.languageCode]![index]) : const SizedBox(height: 36,),
             Consumer<EmojiProvider>(builder: (context,emojiProvider,child){
               return emojiProvider.currentEmojiList[index].svg(height: 62,width: 62);
             })
@@ -175,13 +176,13 @@ class DelayedAnimation extends StatefulWidget {
   final Widget child;
   final int delay;
 
-  DelayedAnimation({required this.child, required this.delay});
+  const DelayedAnimation({super.key, required this.child, required this.delay});
 
   @override
-  _DelayedAnimationState createState() => _DelayedAnimationState();
+  DelayedAnimationState createState() => DelayedAnimationState();
 }
 
-class _DelayedAnimationState extends State<DelayedAnimation> with SingleTickerProviderStateMixin {
+class DelayedAnimationState extends State<DelayedAnimation> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 

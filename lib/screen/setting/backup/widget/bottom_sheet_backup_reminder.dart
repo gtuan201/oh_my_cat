@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/providers/backup_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../../helper/notification_helper.dart';
 
 class BottomSheetBackupReminder extends StatefulWidget {
@@ -20,10 +20,10 @@ class BottomSheetBackupReminderState extends State<BottomSheetBackupReminder> {
 
   @override
   void initState() {
-    _selectedInterval =
-    NotificationInterval.values.firstWhere((interval) => interval.message == context.read<BackupProvider>().reminderType);
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      _selectedInterval =
+          NotificationInterval.values.firstWhere((interval) => interval.getLocalizedMessage(context) == context.read<BackupProvider>().reminderType);
       _controller.jumpToItem(NotificationInterval.values.indexOf(_selectedInterval));
     });
   }
@@ -40,11 +40,11 @@ class BottomSheetBackupReminderState extends State<BottomSheetBackupReminder> {
             contentPadding: const EdgeInsets.symmetric(horizontal: 16),
             titleAlignment: ListTileTitleAlignment.center,
             leading: const Icon(Icons.star,color: Colors.transparent,),
-            title: const Center(child: Text('Chọn thời gian nhắc nhở',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),)),
+            title: Center(child: Text(S.of(context).selectReminderTime,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w600),)),
             trailing: InkWell(
               onTap: (){
                 Get.back();
-                context.read<BackupProvider>().saveReminderType(_selectedInterval.name);
+                context.read<BackupProvider>().saveReminderType(_selectedInterval.name,context);
               },
               child: const Icon(Icons.check,color: Colors.white,)),
           ),
@@ -68,7 +68,7 @@ class BottomSheetBackupReminderState extends State<BottomSheetBackupReminder> {
                   ),
                   child: Center(
                     child: Text(
-                      interval.message,
+                      interval.getLocalizedMessage(context),
                       style: TextStyle(
                         fontSize: 18,
                         color: _selectedInterval == interval ? Colors.white : Colors.blueGrey.shade100,

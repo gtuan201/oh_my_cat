@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/data/model/reminder.dart';
 import '../../../../gen/colors.gen.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../helper/date_time_helper.dart';
 import '../../../components/text_field_custom.dart';
 
@@ -68,7 +69,7 @@ class _InfoReminderWidgetState extends State<InfoReminderWidget> {
               children: [
                 Expanded(
                     child: Text(
-                      'Thời gian nhắc nhở',
+                      S.of(context).reminder_time,
                       style: TextStyle(
                           color: Colors.blueGrey.shade100,
                           fontSize: 16,
@@ -93,13 +94,13 @@ class _InfoReminderWidgetState extends State<InfoReminderWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Tiêu đề',style: TextStyle(color: Colors.blueGrey.shade100,fontSize: 16,fontWeight: FontWeight.w500),),
+              Text(S.of(context).title,style: TextStyle(color: Colors.blueGrey.shade100,fontSize: 16,fontWeight: FontWeight.w500),),
               const SizedBox(height: 10,),
-              TextFieldCustom(controller: widget.titleController,hint: "Nhập văn bản",maxLength: 30,focusNode: widget.titleFocusNode,),
+              TextFieldCustom(controller: widget.titleController,hint: S.of(context).enter_text,maxLength: 30,focusNode: widget.titleFocusNode,),
               const SizedBox(height: 10,),
-              Text('Nội dung thông báo',style: TextStyle(color: Colors.blueGrey.shade100,fontSize: 16,fontWeight: FontWeight.w500),),
+              Text(S.of(context).notification_content,style: TextStyle(color: Colors.blueGrey.shade100,fontSize: 16,fontWeight: FontWeight.w500),),
               const SizedBox(height: 10,),
-              TextFieldCustom(controller: widget.bodyController,hint: "Nhập văn bản",maxLength: 200,focusNode: widget.bodyFocusNode,),
+              TextFieldCustom(controller: widget.bodyController,hint: S.of(context).enter_text,maxLength: 200,focusNode: widget.bodyFocusNode,),
             ],
           ),
         ),
@@ -112,8 +113,8 @@ class _InfoReminderWidgetState extends State<InfoReminderWidget> {
         showPicker(
           context: context,
           is24HrFormat: true,
-          cancelText: 'Đóng',
-          okText: 'Chọn',
+          cancelText: S.of(context).close,
+          okText: S.of(context).select,
           backgroundColor: ColorName.colorPrimary,
           accentColor: Colors.white,
           okStyle: const TextStyle(color: Colors.lightBlue,fontWeight: FontWeight.w800,fontSize: 18),

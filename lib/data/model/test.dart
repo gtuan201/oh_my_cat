@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 class Test {
-  final String id;
-  final String title;
-  final String description;
-  final String source;
-  final String? imageUrl;
-  final String? note;
-  final List<Question> questions;
-  final ConcludeDetail conclude;
+  String id;
+  String title;
+  String description;
+  String source;
+  String? imageUrl;
+  String? note;
+  List<Question> questions;
+  ConcludeDetail conclude;
   DateTime? dateCompleted;
 
   Test({
@@ -156,8 +156,8 @@ class LevelDetail {
 }
 
 class Question {
-  final String text;
-  final List<String> options;
+  String text;
+  List<String> options;
   int? selectedOptionIndex;
 
   Question({

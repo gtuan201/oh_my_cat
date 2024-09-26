@@ -1,11 +1,11 @@
 import 'dart:io';
-
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/data/model/audio_model.dart';
 import 'package:mood_press/providers/healing_provider.dart';
+import 'package:mood_press/ulti/constant.dart';
 import 'package:mood_press/ulti/function.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
@@ -25,9 +25,9 @@ class ItemAllMusic extends StatelessWidget {
         Get.find<AudioHandler>().playMediaItem(
             MediaItem(
                 id: file.path,
-                title: audioModel.name,
-                extras: {'isLocal': true},
-                artist: audioModel.type.displayName,
+                title: audioModel.name[Get.locale!.languageCode]!,
+                extras: {Constant.isLocal: true},
+                artist: audioModel.type.getDisplayName(Get.locale!.languageCode),
                 artUri: Uri.file(await getLocalImagePath(audioModel.image)),
               duration: await getAudioDuration(file.path)
             )
@@ -58,9 +58,9 @@ class ItemAllMusic extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(audioModel.name,style: TextStyle(color: Colors.blueGrey.shade100,fontWeight: FontWeight.w800,fontSize: 16),),
+                  Text(audioModel.name[Get.locale!.languageCode]!,style: TextStyle(color: Colors.blueGrey.shade100,fontWeight: FontWeight.w800,fontSize: 16),),
                   const SizedBox(height: 2,),
-                  Text(audioModel.type.displayName,style: TextStyle(color: Colors.grey.shade400),),
+                  Text(audioModel.type.getDisplayName(Get.locale!.languageCode),style: TextStyle(color: Colors.grey.shade400),),
                 ],
               )
             ],

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mood_press/gen/assets.gen.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class ItemMoodPercent extends StatelessWidget {

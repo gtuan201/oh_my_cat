@@ -10,7 +10,7 @@ import 'package:mood_press/ulti/constant.dart';
 import 'package:provider/provider.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import '../../data/model/test.dart';
-import '../../gen/colors.gen.dart';
+import '../../generated/l10n.dart';
 import '../../ulti/function.dart';
 import '../home/widget/add_emotion_widget.dart';
 
@@ -31,8 +31,9 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
   void initState() {
     super.initState();
     context.read<StatisticalProvider>().percentOfMood();
-    context.read<StatisticalProvider>().getListTest();
-    context.read<StatisticalProvider>().getListTestResult();
+    context.read<StatisticalProvider>().getListTest().then((_){
+      context.read<StatisticalProvider>().getListTestResult();
+    });
   }
 
   @override
@@ -43,7 +44,7 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
         slivers: [
           SliverAppBar(
             backgroundColor: Theme.of(context).primaryColor,
-            title: const Text('Thống kê'),
+            title: Text(S.of(context).statistics),
             centerTitle: true,
             pinned: true,
             floating: true,
@@ -64,9 +65,9 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("Kết quả bài kiểm tra",style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
+                  Text(S.of(context).test_results,style: const TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
                   const SizedBox(height: 4,),
-                  const Text("Điểm số của các bài kiểm tra sẽ được thống kê ở đây",style: TextStyle(color: Colors.white70),),
+                  Text(S.of(context).test_scores_note,style: const TextStyle(color: Colors.white70),),
                   const SizedBox(height: 10,),
                   ListView.separated(
                       shrinkWrap: true,
@@ -101,12 +102,12 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Thống kê tâm trạng",style: TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
-                          SizedBox(height: 4,),
-                          Text("Dựa trên dữ liệu hàng ngày của bạn",style: TextStyle(color: Colors.white70,),),
+                          Text(S.of(context).mood_statistics,style: const TextStyle(color: Colors.white70,fontWeight: FontWeight.w700,fontSize: 16),),
+                          const SizedBox(height: 4,),
+                          Text(S.of(context).daily_data_note,style: const TextStyle(color: Colors.white70,),),
                         ],
                       ),
                       Selector<StatisticalProvider,bool>(
@@ -157,7 +158,7 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
                                             imageGen: emojiProvider.currentEmojiList[index],
                                             percent: listPercent[index],
                                             color: Constant.moodColor[index],
-                                            mood: Constant.listEmojiNames[index],
+                                            mood: Constant.emojiNames[Get.locale!.languageCode]![index],
                                           );
                                         }
                                       );
@@ -168,11 +169,11 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
                               },
                               selector: (context,provider) => provider.moodPercents
                           ),
-                          Divider(thickness: 2,),
+                          const Divider(thickness: 2,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("${itemLength.value} trong tổng số 11",style: const TextStyle(color: Colors.white70,),),
+                              Text("${itemLength.value} ${S.of(context).out_of_total}",style: const TextStyle(color: Colors.white70,),),
                               InkWell(
                                 onTap: (){
                                   if(itemLength.value == 5){
@@ -182,7 +183,7 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
                                     itemLength.value = 5;
                                   }
                                 },
-                                child: Text(itemLength.value == 5 ? "Hiển thị tất cả" : "Thu gọn",
+                                child: Text(itemLength.value == 5 ? S.of(context).show_all : S.of(context).collapse,
                                     style: const TextStyle(color: Colors.white70,)
                                 )
                               ),
@@ -206,7 +207,7 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
                                 borderRadius: BorderRadius.circular(12)
                               )
                             ),
-                            child: const Text('Thêm nhật ký cảm xúc'),
+                            child: Text(S.of(context).add_mood_log),
                         ),
                       ),
                     ),
@@ -240,9 +241,9 @@ class _StatisticalScreenState extends State<StatisticalScreen> {
       ),
     ).then((result){
       if (result != null && result is Map<String, dynamic>) {
-        if (result['showToast'] == true) {
+        if (result[Constant.showToast] == true) {
           context.read<StatisticalProvider>().percentOfMood();
-          showCustomToast(context: context, message: result['message']);
+          showCustomToast(context: context, message: result[Constant.message]);
         }
       }
     });

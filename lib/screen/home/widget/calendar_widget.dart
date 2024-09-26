@@ -56,10 +56,10 @@ class CalendarPageState extends State<CalendarPage> {
     int year = DateTime.now().year;
     int month = DateTime.now().month;
     try {
-      await HomeWidget.saveWidgetData<String>('imagePath', filePath).then((value) async {
-        await HomeWidget.saveWidgetData<String>('widgetColor', colorToHexNoAlpha(Theme.of(context).primaryColor));
+      await HomeWidget.saveWidgetData<String>(Constant.imagePath, filePath).then((value) async {
+        await HomeWidget.saveWidgetData<String>(Constant.widgetColor, colorToHexNoAlpha(Theme.of(context).primaryColor));
       });
-      await HomeWidget.saveWidgetData<String>('dateTime', 'Tháng $month năm $year');
+      await HomeWidget.saveWidgetData<String>(Constant.dateTime, DateTimeHelper.getLocalizedDate(DateTime(year,month),Get.locale!.languageCode));
 
       await HomeWidget.updateWidget(
         name: Constant.androidWidget,
@@ -240,8 +240,8 @@ class CalendarPageState extends State<CalendarPage> {
       ),
     ).then((result){
       if (result != null && result is Map<String, dynamic>) {
-        if (result['showToast'] == true) {
-          showCustomToast(context: context, message: result['message'],marginBottom: 62);
+        if (result[Constant.showToast] == true) {
+          showCustomToast(context: context, message: result[Constant.message],marginBottom: 62);
         }
       }
     });

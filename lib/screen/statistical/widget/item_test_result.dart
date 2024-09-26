@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/screen/statistical/statistical_test_screen.dart';
 import 'package:mood_press/ulti/function.dart';
 import 'package:provider/provider.dart';
 import '../../../data/model/test.dart';
+import '../../../generated/l10n.dart';
 import '../../../providers/statisticaL_provider.dart';
 
 class ItemTestResult extends StatelessWidget {
@@ -25,7 +25,7 @@ class ItemTestResult extends StatelessWidget {
           Get.to(() => StatisticalTestScreen(listTestResult: listTestResult));
         }
         else{
-          showCustomToast(context: context, message: "Bạn chưa làm bài kiểm tra này lần nào!");
+          showCustomToast(context: context, message: S.of(context).no_test_taken);
         }
       },
       child: Container(
@@ -51,7 +51,7 @@ class ItemTestResult extends StatelessWidget {
             const SizedBox(height: 8,),
             Row(
               children: [
-                Expanded(child: Text('Kết quả gần nhất',style: TextStyle(color: Colors.blueGrey.shade100),)),
+                Expanded(child: Text(S.of(context).latest_result,style: TextStyle(color: Colors.blueGrey.shade100),)),
                 Selector<StatisticalProvider,List<String>>(
                     builder: (context,listDateComplete,_){
                       return Text(listDateComplete[index],style: TextStyle(color: Colors.blueGrey.shade100));

@@ -11,6 +11,7 @@ import 'package:mood_press/providers/local_auth_provider.dart';
 import 'package:mood_press/screen/dashboard/dashboard_screen.dart';
 import 'package:mood_press/screen/setting/local_auth/password_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -26,6 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    FirebaseAuth.instance.signInAnonymously();
     context.read<LocalAuthProvider>().getStatusLocalAuth();
     context.read<LocalAuthProvider>().getStatusAuthBio();
     context.read<BackupProvider>().checkSignInOnStartup();

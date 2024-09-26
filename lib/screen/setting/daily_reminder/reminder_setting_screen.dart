@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/data/model/reminder.dart';
-import 'package:mood_press/gen/colors.gen.dart';
 import 'package:mood_press/providers/reminder_provider.dart';
 import 'package:mood_press/screen/setting/daily_reminder/widget/info_reminder_widget.dart';
 import 'package:mood_press/ulti/function.dart';
 import 'package:provider/provider.dart';
+import '../../../generated/l10n.dart';
 
 class ReminderSettingScreen extends StatefulWidget {
   final Reminder reminder;
@@ -67,7 +67,7 @@ class _ReminderSettingScreenState extends State<ReminderSettingScreen> {
                 ),
                 backgroundColor: Theme.of(context).splashColor
               ),
-              child: const Text('Lưu',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
+              child: Text(S.of(context).save,style: const TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
             ),
           ),
         ],
@@ -89,7 +89,7 @@ class _ReminderSettingScreenState extends State<ReminderSettingScreen> {
                   if(confirm == true){
                     reminderProvider.deleteReminder(widget.reminder.id!).then((canDelete){
                       if(!canDelete){
-                        showCustomToast(context: context, message: 'Không thể xoá mục này');
+                        showCustomToast(context: context, message: S.of(context).cannot_delete);
                       }
                       else{
                         Get.back();
@@ -102,7 +102,7 @@ class _ReminderSettingScreenState extends State<ReminderSettingScreen> {
                 backgroundColor: Colors.red,
                 fixedSize: Size(Get.width, 42)
               ),
-              child: const Text('Xoá',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),)
+              child: Text(S.of(context).delete,style: const TextStyle(fontSize: 16,fontWeight: FontWeight.w500),)
             )
           ],
         ),
@@ -114,7 +114,7 @@ class _ReminderSettingScreenState extends State<ReminderSettingScreen> {
     if(titleController.text.isEmpty || bodyController.text.isEmpty){
       showCustomToast(
           context: context,
-          message: 'Hãy điền đầy đủ thông tin',
+          message: S.of(context).fill_all_info,
           backgroundColor: Colors.redAccent);
     }
     else{
@@ -122,7 +122,7 @@ class _ReminderSettingScreenState extends State<ReminderSettingScreen> {
         ..title = titleController.text
         ..body = bodyController.text;
       reminderProvider.updateReminder(widget.reminder);
-      showCustomToast(context: context, message: "Cập nhật thành công");
+      showCustomToast(context: context, message: S.of(context).success_update);
       titleFocusNode.unfocus();
       bodyFocusNode.unfocus();
     }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mood_press/helper/date_time_helper.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/providers/theme_provider.dart';
 import 'package:mood_press/screen/home/widget/calendar_widget.dart';
@@ -20,16 +21,18 @@ class _HomeScreenState extends State<HomeScreen> {
   int year = DateTime.now().year;
   var month = DateTime.now().month.obs;
   late PageController _pageController;
+  late Locale locale;
 
   @override
   void initState() {
-    _pageController = PageController(initialPage: month.value - 1);
     super.initState();
     context.read<HomeProvider>().getMoods();
+    _pageController = PageController(initialPage: month.value - 1);
   }
 
   @override
   Widget build(BuildContext context) {
+    locale = Get.locale!;
     return Stack(
       children: [
         Consumer<ThemeProvider>(
@@ -55,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         icon: FaIcon(FontAwesomeIcons.rectangleAd,color: Colors.grey.shade300,)
                     ),
-                    Obx(() => Text('Tháng ${month.value} năm $year',
+                    Obx(() => Text(DateTimeHelper.getLocalizedDate(DateTime(year,month.value),locale.languageCode),
                       style: Theme.of(context).appBarTheme.titleTextStyle,)
                     ),
                     IconButton(
@@ -76,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 _buildDaysOfWeek(),
                 Expanded(
                   child: PageView.builder(
-                    itemCount: 12,
+                    itemCount: DateTime.now().month,
                     controller: _pageController,
                     scrollDirection: Axis.vertical,
                     onPageChanged: (i){
@@ -101,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Expanded(
           child: Center(
             child: Text(
-              DateFormat.E('vi_VN').format(DateTime(2021, 1, index + 4)),
+              DateFormat.E(locale.languageCode).format(DateTime(2021, 1, index + 4)),
               style: TextStyle(fontWeight: FontWeight.bold,color: Theme.of(context).textTheme.bodySmall?.color),
             ),
           ),

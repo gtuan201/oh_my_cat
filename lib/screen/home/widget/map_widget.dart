@@ -6,7 +6,9 @@ import 'package:geolocator/geolocator.dart';
 import 'package:mood_press/gen/assets.gen.dart';
 import 'package:mood_press/gen/colors.gen.dart';
 import 'package:google_geocoding_api/google_geocoding_api.dart';
+import 'package:mood_press/ulti/constant.dart';
 import 'package:provider/provider.dart';
+import '../../../generated/l10n.dart';
 import '../../../providers/home_provider.dart';
 import '../../../ulti/function.dart';
 
@@ -25,7 +27,7 @@ class _MapWidgetState extends State<MapWidget> {
   var loading = false.obs;
   double zoom = 16;
   var loadingChooseAddress = false.obs;
-  final geocoding = GoogleGeocodingApi('AIzaSyC1sswvFkexF72r2-UWCwPM1vPmW_QHo84');
+  final geocoding = GoogleGeocodingApi(Constant.googleApiKey);
   final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
 
   @override
@@ -89,7 +91,7 @@ class _MapWidgetState extends State<MapWidget> {
                       child: ElevatedButton(
                           onPressed: () {
                             loadingChooseAddress.value = true;
-                            showLoadingDialog(message: 'Vui lòng đợi...');
+                            showLoadingDialog(message: S.of(context).please_wait);
                             context.read<HomeProvider>().getAddress(lat.value, long.value, zoom).then((location){
                               if(location != null){
                                 context.read<HomeProvider>().selectLocation(location);
@@ -97,14 +99,14 @@ class _MapWidgetState extends State<MapWidget> {
                                 Get.back();
                               }
                               else{
-                                showCustomToast(context: context, message: 'Không tìm thấy địa chỉ');
+                                showCustomToast(context: context, message: S.of(context).address_not_found);
                               }
                             });
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.green.shade700
                           ),
-                          child: const Text('Chọn địa điểm')
+                          child: Text(S.of(context).select_location)
                       ),
                     ))
               ],
@@ -117,16 +119,16 @@ class _MapWidgetState extends State<MapWidget> {
     try {
       final response = await geocoding.reverse(
         '$latitude,$longitude',
-        language: 'vi'
+        language: Get.locale!.languageCode
       );
 
       if (response.results.isNotEmpty) {
         return response.results.first.formattedAddress;
       } else {
-        return 'Không tìm thấy địa chỉ';
+        return S.of(context).address_not_found;
       }
     } catch (e) {
-      return 'Lỗi: $e';
+      return '${S.of(context).error}: $e';
     }
   }
 }
