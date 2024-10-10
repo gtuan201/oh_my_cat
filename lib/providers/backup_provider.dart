@@ -71,4 +71,7 @@ class BackupProvider extends ChangeNotifier{
     }
     return false;
   }
+  Future<void> cleanAllData() async {
+    await repo.cleanAllData();
+  }
 }

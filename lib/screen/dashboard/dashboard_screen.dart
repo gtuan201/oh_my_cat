@@ -4,17 +4,20 @@ import 'package:mood_press/providers/backup_provider.dart';
 import 'package:mood_press/providers/local_auth_provider.dart';
 import 'package:mood_press/screen/healing/healing_screen.dart';
 import 'package:mood_press/screen/home/home_screen.dart';
+import 'package:mood_press/screen/setting/backup/backup_screen.dart';
 import 'package:mood_press/screen/setting/local_auth/password_screen.dart';
 import 'package:mood_press/screen/setting/setting_screen.dart';
 import 'package:mood_press/screen/statistical/statistical_screen.dart';
 import 'package:provider/provider.dart';
+import '../../generated/l10n.dart';
 import '../../providers/statisticaL_provider.dart';
 import '../../ulti/function.dart';
 import '../home/widget/add_emotion_widget.dart';
 import 'widget/nav_bar_widget.dart';
 
 class DashBoardScreen extends StatefulWidget {
-  const DashBoardScreen({super.key});
+  final bool isRestart;
+  const DashBoardScreen({super.key, required this.isRestart});
 
   @override
   State<DashBoardScreen> createState() => _DashBoardScreenState();
@@ -38,6 +41,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
     localAuthProvider = context.read<LocalAuthProvider>();
     context.read<BackupProvider>().getListFile();
     WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if(widget.isRestart){
+        showDialogRestoreData();
+      }
+    });
   }
 
   @override
@@ -122,6 +130,44 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
           showCustomToast(context: context, message: result['message']);
         }
       }
+    });
+  }
+  void showDialogRestoreData(){
+    showDialog(context: context, builder: (context){
+      return Dialog(
+        backgroundColor: Theme.of(context).primaryColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(24, 24, 24, 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(S.of(context).restore_your_data_now,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16),),
+              const SizedBox(height: 16,),
+              Text(S.of(context).login_then_restore_data,style: const TextStyle(color: Colors.white)),
+              Row(
+                children: [
+                  const Spacer(),
+                  TextButton(
+                    onPressed: (){
+                      Get.back();
+                    },
+                    child: Text(S.of(context).cancel)
+                  ),
+                  TextButton(
+                      onPressed: (){
+                        Get.back();
+                        Get.to(() => const BackupScreen());
+                      },
+                      child: Text(S.of(context).restore)
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+      );
     });
   }
 }

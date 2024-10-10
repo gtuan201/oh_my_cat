@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/providers/local_auth_provider.dart';
+import 'package:mood_press/screen/setting/local_auth/widget/dialog_reset_password.dart';
 import 'package:mood_press/screen/setting/local_auth/widget/numberic_keypad.dart';
 import 'package:mood_press/screen/setting/local_auth/widget/pin_code_widget.dart';
 import 'package:mood_press/ulti/function.dart';
@@ -54,6 +55,13 @@ class _PasswordScreenState extends State<PasswordScreen> {
               authAction: () {
                 widget.authAction();
               },
+            ),
+            if(widget.isAuth)
+            TextButton(
+              onPressed: (){
+                showDialog(context: context, builder: (context) => const DialogResetPassword());
+              },
+              child: Text(S.of(context).forgot_password)
             )
           ],
         ),
@@ -104,7 +112,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
       widget.authAction();
     } else {
       pin.value = "";
-      showCustomToast(context: context, message: S.of(context).authentication_failed, backgroundColor: Colors.red); 
+      if(mounted){
+        showCustomToast(context: context, message: S.of(context).authentication_failed, backgroundColor: Colors.red);
+      }
     }
   }
 }

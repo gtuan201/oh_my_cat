@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mood_press/providers/healing_provider.dart';
 import 'package:mood_press/providers/statisticaL_provider.dart';
 import 'package:mood_press/providers/theme_provider.dart';
+import 'package:mood_press/screen/setting/help_center/help_center_screen.dart';
 import 'package:mood_press/screen/setting/widget_screen/widget_screen.dart';
 import 'package:provider/provider.dart';
 import '../../generated/l10n.dart';
@@ -122,8 +123,9 @@ class _SettingScreenState extends State<SettingScreen> {
                         (String selectedLanguage) {
                           context.read<ThemeProvider>().setLocale(Locale(selectedLanguage));
                           context.read<HealingProvider>().getListTest();
-                          context.read<StatisticalProvider>().getListTest();
-                          context.read<StatisticalProvider>().getListTestResult();
+                          context.read<StatisticalProvider>().getListTest().then((_){
+                            context.read<StatisticalProvider>().getListTestResult();
+                          });
                         },
                       );
                     },
@@ -132,7 +134,9 @@ class _SettingScreenState extends State<SettingScreen> {
                   ItemSetting(
                     title: S.of(context).help_center,
                     icon: Icons.help,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const HelpCenterScreen());
+                    },
                   ),
                   const Divider(thickness: 2,),
                   ItemSetting(
@@ -153,7 +157,10 @@ class _SettingScreenState extends State<SettingScreen> {
 
     Get.dialog(
       AlertDialog(
-        backgroundColor: Get.theme.primaryColor,
+        backgroundColor: Get.theme.cardColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16)
+        ),
         title: Text(S.of(context).chooseLanguage,style: const TextStyle(color: Colors.white)),
         content: Column(
           mainAxisSize: MainAxisSize.min,

@@ -1,3 +1,4 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:mood_press/helper/api_client.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/ulti/constant.dart';
@@ -15,5 +16,17 @@ class HomeRepo{
       "format" : "jsonv2"
     };
     return await api.get(Constant.GET_ADDRESS,queryParams: query);
+  }
+  Future<List<String>> getVideoUrls() async {
+    List<String> videoUrls = [];
+    FirebaseStorage storage = FirebaseStorage.instance;
+    ListResult result = await storage.ref('video').listAll();
+
+    for (var item in result.items) {
+      String downloadUrl = await item.getDownloadURL();
+      videoUrls.add(downloadUrl);
+    }
+
+    return videoUrls;
   }
 }

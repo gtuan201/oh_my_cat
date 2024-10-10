@@ -33,5 +33,9 @@ Future<void> init(AudioHandler audioHandler) async {
   Get.lazyPut(() => StatisticalRepo());
   Get.lazyPut(() => ReminderRepo(db: Get.find()));
   Get.lazyPut(() => LocalAuthRepo(storage: Get.find(),prefs: Get.find()));
-  Get.lazyPut(() => BackupRepo(googleDriveService: Get.find(), prefs: Get.find()));
+  Get.lazyPut(() => BackupRepo(
+      googleDriveService: Get.find(),
+      prefs: Get.find(),
+      storage: Get.find(),
+      db: Get.find()));
 }

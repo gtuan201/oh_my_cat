@@ -1,16 +1,20 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mood_press/helper/google_drive_helper.dart';
 import 'package:googleapis/drive/v3.dart' as drive;
 import 'package:mood_press/ulti/constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../helper/database_helper.dart';
 import '../../helper/notification_helper.dart';
 
 class BackupRepo{
   final GoogleDriveService googleDriveService;
   final SharedPreferences prefs;
+  final FlutterSecureStorage storage;
+  final DatabaseHelper db;
 
-  BackupRepo({required this.googleDriveService,required this.prefs});
+  BackupRepo({required this.googleDriveService,required this.prefs,required this.storage, required this.db});
 
   GoogleSignInAccount? currentUser(){
     return googleDriveService.currentUser();
@@ -41,5 +45,8 @@ class BackupRepo{
   }
   Future<String?> getFileContent(String fileId) async {
     return await googleDriveService.getFileContent(fileId);
+  }
+  Future<void> cleanAllData() async {
+    Future.wait([storage.deleteAll(),prefs.clear(),db.deleteDatabaseData()]);
   }
 }

@@ -113,6 +113,12 @@ class Constant{
   static const String notEnrolled = "NotEnrolled";
   static const String languages = "Languages";
   static const String googleApiKey = "AIzaSyC1sswvFkexF72r2-UWCwPM1vPmW_QHo84";
+  static const int addMood = 0;
+  static const int widget = 1;
+  static const int forgotPassword = 2;
+  static const int backup = 3;
+  static const int changeEmoji = 4;
+  static const int changeTheme = 5;
 
   //widget
   static const String androidWidget = "CalendarEmojiWidget";

@@ -150,7 +150,6 @@ flutter:
     - asset/audio/
     - asset/json/
     - asset/font/
-    - asset/video/
   fonts:
     - family: OpenSans
       fonts:

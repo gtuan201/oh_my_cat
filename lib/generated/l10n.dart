@@ -1289,6 +1289,216 @@ class S {
       args: [],
     );
   }
+
+  /// `Delete this item?`
+  String get deleteThisItem {
+    return Intl.message(
+      'Delete this item?',
+      name: 'deleteThisItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You cannot undo this action.`
+  String get cannotUndoAction {
+    return Intl.message(
+      'You cannot undo this action.',
+      name: 'cannotUndoAction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How to add an emotion diary?`
+  String get howToAddEmotionDiary {
+    return Intl.message(
+      'How to add an emotion diary?',
+      name: 'howToAddEmotionDiary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Guide to add widget to home screen`
+  String get addWidgetToHomeScreen {
+    return Intl.message(
+      'Guide to add widget to home screen',
+      name: 'addWidgetToHomeScreen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot password when app is locked?`
+  String get forgotPasswordWhenAppLocked {
+    return Intl.message(
+      'Forgot password when app is locked?',
+      name: 'forgotPasswordWhenAppLocked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How to backup data?`
+  String get howToBackupData {
+    return Intl.message(
+      'How to backup data?',
+      name: 'howToBackupData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How to change emotion icons?`
+  String get howToChangeEmotionIcon {
+    return Intl.message(
+      'How to change emotion icons?',
+      name: 'howToChangeEmotionIcon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How to change the app theme?`
+  String get changeAppTheme {
+    return Intl.message(
+      'How to change the app theme?',
+      name: 'changeAppTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password?`
+  String get forgot_password {
+    return Intl.message(
+      'Forgot Password?',
+      name: 'forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please log in to your personal account in [Backup and Restore] and back up your data, in case you forget your password or lose your data.`
+  String get backup_restore_message {
+    return Intl.message(
+      'Please log in to your personal account in [Backup and Restore] and back up your data, in case you forget your password or lose your data.',
+      name: 'backup_restore_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follow these steps to access your data`
+  String get instruction {
+    return Intl.message(
+      'Follow these steps to access your data',
+      name: 'instruction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1. Sync your data to Google Drive`
+  String get sync_to_drive {
+    return Intl.message(
+      '1. Sync your data to Google Drive',
+      name: 'sync_to_drive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2. Delete OhMyCat data from your device`
+  String get delete_ohmycat_data {
+    return Intl.message(
+      '2. Delete OhMyCat data from your device',
+      name: 'delete_ohmycat_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3. Restart`
+  String get restart_and_sign_in {
+    return Intl.message(
+      '3. Restart',
+      name: 'restart_and_sign_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear app data`
+  String get clear_app_data {
+    return Intl.message(
+      'Clear app data',
+      name: 'clear_app_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restart`
+  String get restart {
+    return Intl.message(
+      'Restart',
+      name: 'restart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You haven't logged into your Google account!`
+  String get google_not_logged_in {
+    return Intl.message(
+      'You haven\'t logged into your Google account!',
+      name: 'google_not_logged_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restore your data now?`
+  String get restore_your_data_now {
+    return Intl.message(
+      'Restore your data now?',
+      name: 'restore_your_data_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First, log in to your account, then restore your data from the most recent available backup.`
+  String get login_then_restore_data {
+    return Intl.message(
+      'First, log in to your account, then restore your data from the most recent available backup.',
+      name: 'login_then_restore_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restore`
+  String get restore {
+    return Intl.message(
+      'Restore',
+      name: 'restore',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -10,6 +10,7 @@ import 'package:mood_press/gen/assets.gen.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:path_provider/path_provider.dart';
 import '../gen/colors.gen.dart';
+import '../generated/l10n.dart';
 
 Future<bool?> showConfirmationDialog(BuildContext context,{Widget? icon,String? title,String? content,String? confirm,String? nameDelete}) {
   const backgroundColor = Color(0xFF292929);
@@ -30,7 +31,7 @@ Future<bool?> showConfirmationDialog(BuildContext context,{Widget? icon,String? 
             icon ?? const Icon(Icons.delete_forever, color: accentColor, size: 56),
             const SizedBox(height: 16),
             Text(
-              title ?? 'Xóa mục này?',
+              title ?? S.of(context).deleteThisItem,
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -48,7 +49,7 @@ Future<bool?> showConfirmationDialog(BuildContext context,{Widget? icon,String? 
               ),
             const SizedBox(height: 8),
             Text(
-              content ?? 'Bạn không thể hoàn tác hành động này.',
+              content ?? S.of(context).cannotUndoAction,
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.grey[400]),
             ),
@@ -58,13 +59,13 @@ Future<bool?> showConfirmationDialog(BuildContext context,{Widget? icon,String? 
               children: [
                 _DialogButton(
                   onPressed: () => Navigator.of(context).pop(false),
-                  text: 'Hủy',
+                  text: S.of(context).cancel,
                   color: Colors.grey[800]!,
                   textColor: textColor,
                 ),
                 _DialogButton(
                   onPressed: () => Navigator.of(context).pop(true),
-                  text: confirm ?? 'Xóa',
+                  text: confirm ?? S.of(context).delete,
                   color: accentColor,
                   textColor: textColor,
                 ),

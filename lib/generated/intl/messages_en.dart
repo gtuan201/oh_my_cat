@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addWidgetToHomeScreen": MessageLookupByLibrary.simpleMessage(
+            "Guide to add widget to home screen"),
         "add_daily_reminder":
             MessageLookupByLibrary.simpleMessage("Add Daily Reminder"),
         "add_mood_log": MessageLookupByLibrary.simpleMessage("Add Mood Diary"),
@@ -50,16 +52,25 @@ class MessageLookup extends MessageLookupByLibrary {
             "Backup your data to Google Drive in case you forget your password or lose your data."),
         "backup_restore":
             MessageLookupByLibrary.simpleMessage("Backup & Restore"),
+        "backup_restore_message": MessageLookupByLibrary.simpleMessage(
+            "Please log in to your personal account in [Backup and Restore] and back up your data, in case you forget your password or lose your data."),
         "backup_success":
             MessageLookupByLibrary.simpleMessage("Backup successful"),
         "backup_to_google_drive":
             MessageLookupByLibrary.simpleMessage("Backup to Google Drive"),
         "biometric_auth_message": MessageLookupByLibrary.simpleMessage(
             "To use this feature, you need to enable biometric authentication in system settings."),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cannotUndoAction": MessageLookupByLibrary.simpleMessage(
+            "You cannot undo this action."),
         "cannot_delete":
             MessageLookupByLibrary.simpleMessage("Cannot delete this item"),
+        "changeAppTheme": MessageLookupByLibrary.simpleMessage(
+            "How to change the app theme?"),
         "chooseLanguage":
             MessageLookupByLibrary.simpleMessage("Choose Language"),
+        "clear_app_data":
+            MessageLookupByLibrary.simpleMessage("Clear app data"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "collapse": MessageLookupByLibrary.simpleMessage("Collapse"),
         "complete": MessageLookupByLibrary.simpleMessage("Complete"),
@@ -75,8 +86,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Daily Reminder"),
         "daily_results": MessageLookupByLibrary.simpleMessage("Results for"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "deleteThisItem":
+            MessageLookupByLibrary.simpleMessage("Delete this item?"),
         "delete_error": MessageLookupByLibrary.simpleMessage(
             "Error! Please try again later"),
+        "delete_ohmycat_data": MessageLookupByLibrary.simpleMessage(
+            "2. Delete OhMyCat data from your device"),
         "deleted_success":
             MessageLookupByLibrary.simpleMessage("Deleted successfully"),
         "deleting_data":
@@ -107,16 +122,32 @@ class MessageLookup extends MessageLookupByLibrary {
             "Yo! How are you feeling today?"),
         "fill_all_info": MessageLookupByLibrary.simpleMessage(
             "Please fill in all information"),
+        "forgotPasswordWhenAppLocked": MessageLookupByLibrary.simpleMessage(
+            "Forgot password when app is locked?"),
+        "forgot_password":
+            MessageLookupByLibrary.simpleMessage("Forgot Password?"),
         "from": MessageLookupByLibrary.simpleMessage("From"),
+        "google_not_logged_in": MessageLookupByLibrary.simpleMessage(
+            "You haven\'t logged into your Google account!"),
         "help_center": MessageLookupByLibrary.simpleMessage("Help Center"),
+        "howToAddEmotionDiary": MessageLookupByLibrary.simpleMessage(
+            "How to add an emotion diary?"),
+        "howToBackupData":
+            MessageLookupByLibrary.simpleMessage("How to backup data?"),
+        "howToChangeEmotionIcon": MessageLookupByLibrary.simpleMessage(
+            "How to change emotion icons?"),
         "how_you_feel":
             MessageLookupByLibrary.simpleMessage("How do you feel?"),
+        "instruction": MessageLookupByLibrary.simpleMessage(
+            "Follow these steps to access your data"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "later": MessageLookupByLibrary.simpleMessage("Later"),
         "latest_result": MessageLookupByLibrary.simpleMessage("Latest Result"),
         "local_auth":
             MessageLookupByLibrary.simpleMessage("Local Authentication"),
         "lock_code": MessageLookupByLibrary.simpleMessage("Lock Code"),
+        "login_then_restore_data": MessageLookupByLibrary.simpleMessage(
+            "First, log in to your account, then restore your data from the most recent available backup."),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "logout_confirm": MessageLookupByLibrary.simpleMessage("Logout"),
         "logout_confirmation": MessageLookupByLibrary.simpleMessage(
@@ -155,6 +186,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Backup Reminder"),
         "reminder_time": MessageLookupByLibrary.simpleMessage("Reminder Time"),
         "reset_theme": MessageLookupByLibrary.simpleMessage("Reset theme"),
+        "restart": MessageLookupByLibrary.simpleMessage("Restart"),
+        "restart_and_sign_in":
+            MessageLookupByLibrary.simpleMessage("3. Restart"),
+        "restore": MessageLookupByLibrary.simpleMessage("Restore"),
+        "restore_your_data_now":
+            MessageLookupByLibrary.simpleMessage("Restore your data now?"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "select": MessageLookupByLibrary.simpleMessage("Select"),
         "selectReminderTime":
@@ -181,6 +218,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sync completed"),
         "sync_error": MessageLookupByLibrary.simpleMessage(
             "Error! Please try again later"),
+        "sync_to_drive": MessageLookupByLibrary.simpleMessage(
+            "1. Sync your data to Google Drive"),
         "syncing_data": MessageLookupByLibrary.simpleMessage("Syncing data..."),
         "tap_to_connect_account":
             MessageLookupByLibrary.simpleMessage("Tap to connect your account"),

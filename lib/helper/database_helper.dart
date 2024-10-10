@@ -25,6 +25,22 @@ class DatabaseHelper{
       onCreate: _createDatabase,
     );
   }
+
+  Future<void> deleteDatabaseData() async {
+    final db = await database;
+
+    await db.delete('moods');
+
+    await db.delete('tests');
+
+    await db.delete(
+      'reminders',
+      where: 'id != ?',
+      whereArgs: [DEFAULT_REMINDER_ID],
+    );
+  }
+
+
   Future<void> _createDatabase(Database db, int version) async {
     await db.execute('''CREATE TABLE moods (
         id INTEGER PRIMARY KEY AUTOINCREMENT,

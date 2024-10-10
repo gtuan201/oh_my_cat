@@ -7,6 +7,7 @@ import 'package:mood_press/gen/colors.gen.dart';
 import 'package:get/get.dart';
 import 'package:mood_press/providers/backup_provider.dart';
 import 'package:mood_press/providers/emoji_provider.dart';
+import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/providers/local_auth_provider.dart';
 import 'package:mood_press/screen/dashboard/dashboard_screen.dart';
 import 'package:mood_press/screen/setting/local_auth/password_screen.dart';
@@ -28,14 +29,15 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     FirebaseAuth.instance.signInAnonymously();
+    context.read<HomeProvider>().getVideo();
     context.read<LocalAuthProvider>().getStatusLocalAuth();
     context.read<LocalAuthProvider>().getStatusAuthBio();
     context.read<BackupProvider>().checkSignInOnStartup();
     context.read<EmojiProvider>().getEmoji();
     Timer(1.5.seconds, (){
       Get.off(() => context.read<LocalAuthProvider>().enableAuth
-          ? PasswordScreen(isAuth: true,authAction: (){Get.off(() => const DashBoardScreen());},)
-          : const DashBoardScreen()
+          ? PasswordScreen(isAuth: true,authAction: (){Get.off(() => const DashBoardScreen(isRestart: false,));},)
+          : const DashBoardScreen(isRestart: false,)
       );
     });
   }

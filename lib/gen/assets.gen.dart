@@ -414,16 +414,6 @@ class $AssetJsonGen {
   List<String> get values => [testEn, testVi];
 }
 
-class $AssetVideoGen {
-  const $AssetVideoGen();
-
-  /// File path: asset/video/preview_video.mp4
-  String get previewVideo => 'asset/video/preview_video.mp4';
-
-  /// List of all assets
-  List<String> get values => [previewVideo];
-}
-
 class Assets {
   Assets._();
 
@@ -431,7 +421,6 @@ class Assets {
   static const $AssetFontGen font = $AssetFontGen();
   static const $AssetImageGen image = $AssetImageGen();
   static const $AssetJsonGen json = $AssetJsonGen();
-  static const $AssetVideoGen video = $AssetVideoGen();
 }
 
 class AssetGenImage {
