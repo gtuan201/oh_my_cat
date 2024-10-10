@@ -13,6 +13,7 @@ class HomeProvider with ChangeNotifier {
   String _selectedLocation = "";
   List<File> listImage = [];
   List<Mood> listMood = [];
+  List<String> listVideo = [];
 
   HomeProvider({required this.repo});
 
@@ -96,5 +97,9 @@ class HomeProvider with ChangeNotifier {
   void clear(){
     _selectedLocation = "";
     listImage.clear();
+  }
+  Future<void> getVideo() async {
+    listVideo = await repo.getVideoUrls();
+    notifyListeners();
   }
 }

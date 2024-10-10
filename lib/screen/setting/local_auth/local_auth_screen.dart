@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:mood_press/providers/local_auth_provider.dart';
+import 'package:mood_press/screen/setting/backup/backup_screen.dart';
 import 'package:mood_press/screen/setting/local_auth/password_screen.dart';
 import 'package:mood_press/ulti/constant.dart';
 import 'package:mood_press/ulti/function.dart';
@@ -31,6 +32,7 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
   void initState() {
     super.initState();
     localAuthProvider = context.read<LocalAuthProvider>();
+    localAuthProvider.getStatusLocalAuth();
   }
 
   @override
@@ -40,28 +42,29 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        title: Text(S.of(context).lock_code), // Localized string
+        title: Text(S.of(context).lock_code),
         centerTitle: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).cardTheme.color,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: Theme.of(context).cardTheme.shadowColor!,
-                  width: 3,
-                ),
-              ),
-              child: Consumer<LocalAuthProvider>(
-                  builder: (context, localAuthProvider, _) {
-                    enableLocalAuth.value = localAuthProvider.enableAuth;
-                    return Column(
+        child: Consumer<LocalAuthProvider>(
+            builder: (context, localAuthProvider, _) {
+              enableLocalAuth.value = localAuthProvider.enableAuth;
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardTheme.color,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: Theme.of(context).cardTheme.shadowColor!,
+                        width: 3,
+                      ),
+                    ),
+                    child: Column(
                       children: [
                         Row(
                           children: [
@@ -69,7 +72,7 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
                             const SizedBox(width: 12,),
                             Expanded(
                               child: Text(
-                                S.of(context).set_password, // Localized string
+                                S.of(context).set_password,
                                 style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
                               ),
                             ),
@@ -83,7 +86,9 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
                                     Get.to(() => PasswordScreen(isAuth: false, authAction: () { Get.back(); },));
                                   } else {
                                     enableLocalAuth.value = false;
-                                    showCustomToast(context: context, message: S.of(context).device_not_supported); // Localized string
+                                    if(context.mounted){
+                                      showCustomToast(context: context, message: S.of(context).device_not_supported);
+                                    }
                                   }
                                 } else {
                                   localAuthProvider.disableLocalAuth();
@@ -103,7 +108,7 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
                                   const SizedBox(width: 12,),
                                   Expanded(
                                     child: Text(
-                                      S.of(context).use_biometric, // Localized string
+                                      S.of(context).use_biometric,
                                       style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
                                     ),
                                   ),
@@ -123,13 +128,23 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
                               ),
                             ],
                           ),
-                        )
+                        ),
                       ],
-                    );
-                  }
-              ),
-            )
-          ],
+                    ),
+                  ),
+                  const SizedBox(height: 10,),
+                  if(localAuthProvider.enableAuth)
+                  Text(S.of(context).backup_restore_message, style: const TextStyle(color: Colors.white70, fontWeight: FontWeight.w600),),
+                  if(localAuthProvider.enableAuth)
+                  TextButton(
+                    onPressed: (){
+                      Get.to(() => const BackupScreen());
+                    },
+                    child: Text(S.of(context).backup_restore,style: const TextStyle(fontSize: 16,decoration: TextDecoration.underline),)
+                  )
+                ],
+              );
+            }
         ),
       ),
     );

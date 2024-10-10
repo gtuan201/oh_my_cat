@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mood_press/gen/assets.gen.dart';
+import 'package:mood_press/providers/home_provider.dart';
+import 'package:mood_press/ulti/constant.dart';
+import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 import '../../../generated/l10n.dart';
 
@@ -16,7 +19,7 @@ class _WidgetScreenState extends State<WidgetScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset(Assets.video.previewVideo)
+    _controller = VideoPlayerController.networkUrl(Uri.parse(context.read<HomeProvider>().listVideo[Constant.widget]))
       ..initialize().then((_) {
         setState(() {
           _controller.play();
