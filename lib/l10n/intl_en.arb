@@ -1,4 +1,5 @@
 {
+  "@@locale": "en",
   "month" : "Month",
   "year" : "year",
   "feeling_today": "Yo! How are you feeling today?",
@@ -143,5 +144,8 @@
   "google_not_logged_in": "You haven't logged into your Google account!",
   "restore_your_data_now": "Restore your data now?",
   "login_then_restore_data": "First, log in to your account, then restore your data from the most recent available backup.",
-  "restore": "Restore"
+  "restore": "Restore",
+  "facebook": "Facebook",
+  "email": "Email",
+  "phoneNumber" : "Phone number"
 }

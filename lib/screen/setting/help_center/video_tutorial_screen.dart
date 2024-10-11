@@ -54,8 +54,8 @@ class _VideoTutorialScreenState extends State<VideoTutorialScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Center(
                   child: SizedBox(
-                    height: Get.height - 112,
-                    width: Get.width,
+                    height: 710,
+                    width: 400,
                     child: VideoPlayer(_controller),
                   ),
                 ),

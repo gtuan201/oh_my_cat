@@ -1,4 +1,5 @@
 {
+  "@@locale": "vi",
   "month" : "Tháng",
   "year" : "năm",
   "day" : "Ngày",
@@ -144,5 +145,8 @@
   "google_not_logged_in": "Bạn chưa đăng nhập tài khoản Google!",
   "restore_your_data_now": "Khôi phục dữ liệu của bạn bây giờ?",
   "login_then_restore_data": "Trước tiên hãy đăng nhập vào tài khoản của bạn, sau đó khôi phục dữ liệu của bạn từ Bản sao lưu hiện có mới nhất.",
-  "restore": "Khôi phục"
+  "restore": "Khôi phục",
+  "facebook": "Facebook",
+  "email": "Email",
+  "phoneNumber" : "Số điện thoại"
 }

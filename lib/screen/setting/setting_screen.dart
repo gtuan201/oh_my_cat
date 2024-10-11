@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mood_press/providers/healing_provider.dart';
 import 'package:mood_press/providers/statisticaL_provider.dart';
 import 'package:mood_press/providers/theme_provider.dart';
+import 'package:mood_press/screen/setting/contact/contact_screen.dart';
 import 'package:mood_press/screen/setting/help_center/help_center_screen.dart';
 import 'package:mood_press/screen/setting/widget_screen/widget_screen.dart';
 import 'package:provider/provider.dart';
@@ -142,7 +143,9 @@ class _SettingScreenState extends State<SettingScreen> {
                   ItemSetting(
                     title: S.of(context).contact_us,
                     icon: Icons.contact_page,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const ContactScreen());
+                    },
                   ),
                 ],
               ),

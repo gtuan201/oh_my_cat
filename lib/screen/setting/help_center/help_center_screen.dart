@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mood_press/gen/assets.gen.dart';
 import 'package:mood_press/providers/home_provider.dart';
 import 'package:mood_press/screen/setting/help_center/video_tutorial_screen.dart';
 import 'package:mood_press/ulti/constant.dart';
 import 'package:provider/provider.dart';
-
 import '../../../generated/l10n.dart';
 import '../widget/item_setting.dart';
 
