@@ -147,5 +147,89 @@
   "restore": "Restore",
   "facebook": "Facebook",
   "email": "Email",
-  "phoneNumber" : "Phone number"
+  "phoneNumber" : "Phone number",
+  "mentalHealthHighlights": "Mental Health: Highlights",
+  "soulCareBalance": "Soul Care: Life Balance",
+  "dailyMentalProtection": "Daily Mental Protection",
+  "connectSoulLife": "Connect Soul with Life",
+  "stressRelief": "Effective Stress Relief",
+  "mentalRecoveryJourney": "Mental Recovery Journey",
+  "enhanceMentalHealth": "Enhance Mental Wellbeing",
+  "positiveThinkingKey": "Positive Thinking: Key to Soul Health",
+  "protectSoulFromCrisis": "Protect the Soul from Crises",
+  "unlockMentalBlocks": "Unlock Mental Blockages",
+  "joyfulLifeEnergy": "Joyful Living: Soul Energy",
+  "selfCareSoul": "Self-Care for the Soul",
+  "balanceSoulInSociety": "Balance the Soul in Society",
+  "immerseInJoy": "Immerse in Joy",
+  "improveMentalWellness": "Improve Mental Wellness",
+  "discoverInnerSelf": "Discover the Inner Self",
+  "awakenInnerFaith": "Awaken Inner Faith",
+  "setLifeGoals": "Set Life Goals",
+  "emotion_analysis_system_role": "You are an emotion analysis expert. Based on the user story provided, suggest the most appropriate emotion from the given list.",
+  "@emotion_analysis_system_role": {
+    "description": "System role for emotion analysis prompt"
+  },
+
+  "emotion_analysis_user_story": "User story",
+  "@emotion_analysis_user_story": {
+    "description": "Label for user story in prompt"
+  },
+
+  "emotion_analysis_available_emotions": "Available emotions",
+  "@emotion_analysis_available_emotions": {
+    "description": "Label for available emotions list"
+  },
+
+  "emotion_analysis_instructions": "Instructions",
+  "@emotion_analysis_instructions": {
+    "description": "Instructions section title"
+  },
+
+  "emotion_analysis_instruction_1": "Analyze the emotional tone and context of the story",
+  "@emotion_analysis_instruction_1": {
+    "description": "First instruction for emotion analysis"
+  },
+
+  "emotion_analysis_instruction_2": "Choose ONLY ONE emotion from the provided list",
+  "@emotion_analysis_instruction_2": {
+    "description": "Second instruction for emotion analysis"
+  },
+
+  "emotion_analysis_instruction_3": "Respond with ONLY the emotion name (no explanations)",
+  "@emotion_analysis_instruction_3": {
+    "description": "Third instruction for emotion analysis"
+  },
+
+  "emotion_analysis_instruction_4": "If unsure, choose the closest matching emotion",
+  "@emotion_analysis_instruction_4": {
+    "description": "Fourth instruction for emotion analysis"
+  },
+
+  "emotion_analysis_response": "Response",
+  "@emotion_analysis_response": {
+    "description": "Response label in prompt"
+  },
+
+  "emotion_default": "neutral",
+  "@emotion_default": {
+    "description": "Default emotion when analysis fails"
+  },
+  "listening_corner": "Listening Corner",
+  "tell_ai_your_story": "Tell AI your story today",
+  "ai_analyze_description": "AI will analyze and suggest the most suitable emotion for you 🎯",
+  "story_input_placeholder": "Today I feel...\n\nExample: \"Today I feel very happy because I met my long-time friends...\"",
+  "listening_status": "Listening...",
+  "tap_to_speak": "Tap to speak",
+  "ai_thinking": "AI is thinking...",
+  "analyze_button": "Analyze & Suggest Emotion",
+  "empty_story_toast": "Please enter your story",
+  "ai_suggestion_title": "🤖 AI Suggestion",
+  "ai_suggestion_content": "Based on your story, AI thinks you are feeling:",
+  "choose_again_button": "Choose Again",
+  "select_emotion_button": "Select This Emotion",
+  "permission_required_title": "Permission Required!",
+  "permission_required_content": "Microphone permission is needed to listen to your story. Please grant permission in settings!",
+  "cancel_button": "Cancel",
+  "open_settings_button": "Open Settings"
 }

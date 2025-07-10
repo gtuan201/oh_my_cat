@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:mood_press/firebase_options.dart';
 import 'package:mood_press/helper/notification_helper.dart';
 import 'package:mood_press/providers/backup_provider.dart';
@@ -24,9 +25,14 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.instance.initialize();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform
   );
+  MobileAds.instance.updateRequestConfiguration(
+    RequestConfiguration(testDeviceIds: ['B883CCF86378535711AA2AA4A08C4DC0']),
+  );
+
   await initializeDateFormatting('vi_VN', null);
   AudioHandler audioHandler =  await AudioService.init(
     builder: () => AudioPlayerHandler(),
@@ -50,7 +56,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => HealingProvider(repo: Get.find())),
         ChangeNotifierProvider(create: (_) => HomeProvider(repo: Get.find())),
-        ChangeNotifierProvider(create: (_) => EmojiProvider(storage: Get.find())),
+        ChangeNotifierProvider(create: (_) => EmojiProvider(storage: Get.find(), repo: Get.find())),
         ChangeNotifierProvider(create: (_) => TestProvider()),
         ChangeNotifierProvider(create: (_) => MusicProvider()),
         ChangeNotifierProvider(create: (_) {

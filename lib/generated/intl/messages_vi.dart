@@ -40,7 +40,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "Không tìm thấy địa chỉ",
     ),
     "advice": MessageLookupByLibrary.simpleMessage("Lời khuyên"),
+    "ai_analyze_description": MessageLookupByLibrary.simpleMessage(
+      "AI sẽ phân tích và gợi ý cảm xúc phù hợp nhất cho bạn 🎯",
+    ),
+    "ai_suggestion_content": MessageLookupByLibrary.simpleMessage(
+      "Dựa trên câu chuyện của bạn, AI nghĩ rằng bạn đang cảm thấy:",
+    ),
+    "ai_suggestion_title": MessageLookupByLibrary.simpleMessage("🤖 AI Gợi ý"),
+    "ai_thinking": MessageLookupByLibrary.simpleMessage("AI đang suy nghĩ..."),
     "all": MessageLookupByLibrary.simpleMessage("Tất cả"),
+    "analyze_button": MessageLookupByLibrary.simpleMessage(
+      "Phân tích & Gợi ý cảm xúc",
+    ),
     "apply_theme": MessageLookupByLibrary.simpleMessage("Dùng chủ đề"),
     "auth_to_access": MessageLookupByLibrary.simpleMessage(
       "Xác thực để truy cập ứng dụng",
@@ -53,6 +64,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "authentication_failed": MessageLookupByLibrary.simpleMessage(
       "Xác thực không thành công",
+    ),
+    "awakenInnerFaith": MessageLookupByLibrary.simpleMessage(
+      "Đánh Thức Niềm Tin Tâm Hồn",
     ),
     "backing_up_data": MessageLookupByLibrary.simpleMessage(
       "Sao lưu dữ liệu...",
@@ -73,10 +87,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "backup_to_google_drive": MessageLookupByLibrary.simpleMessage(
       "Sao lưu vào Google Drive",
     ),
+    "balanceSoulInSociety": MessageLookupByLibrary.simpleMessage(
+      "Cân Bằng Tâm Hồn Trong Xã Hội",
+    ),
     "biometric_auth_message": MessageLookupByLibrary.simpleMessage(
       "Để sử dụng tính năng này, bạn cần bật xác thực sinh trắc học trong cài đặt hệ thống.",
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
+    "cancel_button": MessageLookupByLibrary.simpleMessage("Hủy"),
     "cannotUndoAction": MessageLookupByLibrary.simpleMessage(
       "Bạn không thể hoàn tác hành động này.",
     ),
@@ -87,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Thay đổi theme app như thế nào?",
     ),
     "chooseLanguage": MessageLookupByLibrary.simpleMessage("Chọn ngôn ngữ"),
+    "choose_again_button": MessageLookupByLibrary.simpleMessage("Chọn lại"),
     "clear_app_data": MessageLookupByLibrary.simpleMessage(
       "Xoá dữ liệu ứng dụng",
     ),
@@ -98,8 +117,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Xác nhận mật khẩu",
     ),
+    "connectSoulLife": MessageLookupByLibrary.simpleMessage(
+      "Kết Nối Tâm Hồn Với Cuộc Sống",
+    ),
     "contact_us": MessageLookupByLibrary.simpleMessage("Liên hệ với chúng tôi"),
     "daily": MessageLookupByLibrary.simpleMessage("Hàng ngày"),
+    "dailyMentalProtection": MessageLookupByLibrary.simpleMessage(
+      "Bảo Vệ Tâm Lý Hằng Ngày",
+    ),
     "daily_data_note": MessageLookupByLibrary.simpleMessage(
       "Dựa trên dữ liệu hàng ngày của bạn",
     ),
@@ -126,10 +151,46 @@ class MessageLookup extends MessageLookupByLibrary {
     "device_not_supported": MessageLookupByLibrary.simpleMessage(
       "Thiết bị của bạn không hỗ trợ",
     ),
+    "discoverInnerSelf": MessageLookupByLibrary.simpleMessage(
+      "Khám Phá Bản Thân Tâm Lý",
+    ),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emoji": MessageLookupByLibrary.simpleMessage("Biểu tượng cảm xúc"),
+    "emotion_analysis_available_emotions": MessageLookupByLibrary.simpleMessage(
+      "Các cảm xúc có sẵn",
+    ),
+    "emotion_analysis_instruction_1": MessageLookupByLibrary.simpleMessage(
+      "Phân tích tông cảm xúc và ngữ cảnh của câu chuyện",
+    ),
+    "emotion_analysis_instruction_2": MessageLookupByLibrary.simpleMessage(
+      "Chỉ chọn MỘT cảm xúc từ danh sách được cung cấp",
+    ),
+    "emotion_analysis_instruction_3": MessageLookupByLibrary.simpleMessage(
+      "Chỉ trả lời tên cảm xúc (không giải thích)",
+    ),
+    "emotion_analysis_instruction_4": MessageLookupByLibrary.simpleMessage(
+      "Nếu không chắc chắn, hãy chọn cảm xúc gần nhất",
+    ),
+    "emotion_analysis_instructions": MessageLookupByLibrary.simpleMessage(
+      "Hướng dẫn",
+    ),
+    "emotion_analysis_response": MessageLookupByLibrary.simpleMessage(
+      "Trả lời",
+    ),
+    "emotion_analysis_system_role": MessageLookupByLibrary.simpleMessage(
+      "Bạn là chuyên gia phân tích cảm xúc. Dựa vào câu chuyện của user, hãy gợi ý cảm xúc phù hợp nhất từ danh sách được cung cấp.",
+    ),
+    "emotion_analysis_user_story": MessageLookupByLibrary.simpleMessage(
+      "Câu chuyện của user",
+    ),
+    "empty_story_toast": MessageLookupByLibrary.simpleMessage(
+      "Vui lòng nhập câu chuyện của bạn",
+    ),
     "enable_biometric_auth": MessageLookupByLibrary.simpleMessage(
       "Bật xác thực sinh trắc học",
+    ),
+    "enhanceMentalHealth": MessageLookupByLibrary.simpleMessage(
+      "Tăng Cường Sức Khoẻ Tinh Thần",
     ),
     "enter_password": MessageLookupByLibrary.simpleMessage(
       "Nhập mật khẩu gồm 4 chữ số",
@@ -177,12 +238,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "how_you_feel": MessageLookupByLibrary.simpleMessage(
       "Bạn cảm thấy thế nào?",
     ),
+    "immerseInJoy": MessageLookupByLibrary.simpleMessage(
+      "Đắm Mình Trong Niềm Vui",
+    ),
+    "improveMentalWellness": MessageLookupByLibrary.simpleMessage(
+      "Cải Thiện Sức Khoẻ Tâm Lý",
+    ),
     "instruction": MessageLookupByLibrary.simpleMessage(
       "Làm theo các bước sau để truy cập dữ liệu của bạn",
+    ),
+    "joyfulLifeEnergy": MessageLookupByLibrary.simpleMessage(
+      "Sống Vui Vẻ: Năng Lượng Tâm Hồn",
     ),
     "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
     "later": MessageLookupByLibrary.simpleMessage("Để sau"),
     "latest_result": MessageLookupByLibrary.simpleMessage("Kết quả gần nhất"),
+    "listening_corner": MessageLookupByLibrary.simpleMessage("Góc lắng nghe"),
+    "listening_status": MessageLookupByLibrary.simpleMessage("Đang nghe..."),
     "local_auth": MessageLookupByLibrary.simpleMessage("Khoá bảo mật"),
     "lock_code": MessageLookupByLibrary.simpleMessage("Khoá mật mã"),
     "login_then_restore_data": MessageLookupByLibrary.simpleMessage(
@@ -192,6 +264,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout_confirm": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
     "logout_confirmation": MessageLookupByLibrary.simpleMessage(
       "Bạn có muốn đăng xuất khỏi tài khoản này?",
+    ),
+    "mentalHealthHighlights": MessageLookupByLibrary.simpleMessage(
+      "Sức Khoẻ Tâm Lý: Điểm Nhấn",
+    ),
+    "mentalRecoveryJourney": MessageLookupByLibrary.simpleMessage(
+      "Hành Trình Hồi Phục Tâm Lý",
     ),
     "mental_health_quote": MessageLookupByLibrary.simpleMessage(
       "Quote về sức khỏe tinh thần",
@@ -219,17 +297,30 @@ class MessageLookup extends MessageLookupByLibrary {
       "Nội dung thông báo",
     ),
     "open_settings": MessageLookupByLibrary.simpleMessage("Mở cài đặt"),
+    "open_settings_button": MessageLookupByLibrary.simpleMessage("Mở Cài Đặt"),
     "out_of_total": MessageLookupByLibrary.simpleMessage("trong tổng số 11"),
     "password_mismatch": MessageLookupByLibrary.simpleMessage(
       "Mật khẩu không khớp",
     ),
+    "permission_required_content": MessageLookupByLibrary.simpleMessage(
+      "Cần quyền micro để nghe bạn kể chuyện. Hãy cấp quyền trong cài đặt!",
+    ),
+    "permission_required_title": MessageLookupByLibrary.simpleMessage(
+      "Cần quyền để lắng nghe!",
+    ),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
     "please_wait": MessageLookupByLibrary.simpleMessage("Vui lòng đợi..."),
+    "positiveThinkingKey": MessageLookupByLibrary.simpleMessage(
+      "Tư Duy Tích Cực: Chìa Khóa Sức Khoẻ Tâm Hồn",
+    ),
     "preview_emoji": MessageLookupByLibrary.simpleMessage(
       "Xem trước biểu tượng cảm xúc",
     ),
     "preview_theme_wallpaper": MessageLookupByLibrary.simpleMessage(
       "Xem trước hình nền chủ đề",
+    ),
+    "protectSoulFromCrisis": MessageLookupByLibrary.simpleMessage(
+      "Bảo Vệ Tâm Hồn Trước Biến Cố",
     ),
     "question": MessageLookupByLibrary.simpleMessage("Câu hỏi"),
     "quiz": MessageLookupByLibrary.simpleMessage("Bài kiểm tra"),
@@ -252,8 +343,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectReminderTime": MessageLookupByLibrary.simpleMessage(
       "Chọn thời gian nhắc nhở",
     ),
+    "select_emotion_button": MessageLookupByLibrary.simpleMessage(
+      "Chọn cảm xúc này",
+    ),
     "select_location": MessageLookupByLibrary.simpleMessage("Chọn địa điểm"),
+    "selfCareSoul": MessageLookupByLibrary.simpleMessage(
+      "Chăm Sóc Bản Thân Tâm Hồn",
+    ),
     "self_care": MessageLookupByLibrary.simpleMessage("Tự chăm sóc"),
+    "setLifeGoals": MessageLookupByLibrary.simpleMessage(
+      "Thiết Lập Mục Tiêu Sống",
+    ),
     "set_password": MessageLookupByLibrary.simpleMessage("Thiết lập mật mã"),
     "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
     "setup_reminder": MessageLookupByLibrary.simpleMessage(
@@ -261,9 +361,18 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "share": MessageLookupByLibrary.simpleMessage("Chia sẻ"),
     "show_all": MessageLookupByLibrary.simpleMessage("Hiển thị tất cả"),
+    "soulCareBalance": MessageLookupByLibrary.simpleMessage(
+      "Chăm Sóc Tâm Hồn: Cân Bằng Sống",
+    ),
     "start_quiz": MessageLookupByLibrary.simpleMessage("Bắt đầu bài kiểm tra"),
     "statistics": MessageLookupByLibrary.simpleMessage("Thống kê"),
+    "story_input_placeholder": MessageLookupByLibrary.simpleMessage(
+      "Hôm nay tôi cảm thấy...\n\nVí dụ: \"Hôm nay tôi rất vui vì được gặp bạn bè lâu ngày không gặp...\"",
+    ),
     "strengths": MessageLookupByLibrary.simpleMessage("Điểm mạnh"),
+    "stressRelief": MessageLookupByLibrary.simpleMessage(
+      "Giải Tỏa Stress Hiệu Quả",
+    ),
     "success_add": MessageLookupByLibrary.simpleMessage("Đã thêm thành công"),
     "success_delete": MessageLookupByLibrary.simpleMessage("Đã xoá thành công"),
     "success_update": MessageLookupByLibrary.simpleMessage(
@@ -282,6 +391,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "tap_to_connect_account": MessageLookupByLibrary.simpleMessage(
       "Nhấn để kết nối tài khoản",
     ),
+    "tap_to_speak": MessageLookupByLibrary.simpleMessage("Nhấn để nói"),
+    "tell_ai_your_story": MessageLookupByLibrary.simpleMessage(
+      "Kể cho AI nghe câu chuyện của bạn hôm nay",
+    ),
     "test_result_statistics": MessageLookupByLibrary.simpleMessage(
       "Thống kê kết quả kiểm tra",
     ),
@@ -294,6 +407,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "theme": MessageLookupByLibrary.simpleMessage("Chủ đề"),
     "title": MessageLookupByLibrary.simpleMessage("Tiêu đề"),
     "unknown_error": MessageLookupByLibrary.simpleMessage("Lỗi không xác định"),
+    "unlockMentalBlocks": MessageLookupByLibrary.simpleMessage(
+      "Tháo Gỡ Bế Tắc Tâm Lý",
+    ),
     "use_biometric": MessageLookupByLibrary.simpleMessage(
       "Sử dụng sinh trắc học",
     ),

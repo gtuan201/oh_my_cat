@@ -108,6 +108,9 @@ class $AssetImageGen {
   /// File path: asset/image/cat.jpeg
   AssetGenImage get cat => const AssetGenImage('asset/image/cat.jpeg');
 
+  /// File path: asset/image/computer_cat.svg
+  SvgGenImage get computerCat => const SvgGenImage('asset/image/computer_cat.svg');
+
   /// File path: asset/image/confused.svg
   SvgGenImage get confused => const SvgGenImage('asset/image/confused.svg');
 
@@ -329,6 +332,7 @@ class $AssetImageGen {
         bearPreview,
         bearThumb,
         cat,
+        computerCat,
         confused,
         confused2,
         confused3,

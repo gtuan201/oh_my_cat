@@ -1263,6 +1263,451 @@ class S {
       args: [],
     );
   }
+
+  /// `Mental Health: Highlights`
+  String get mentalHealthHighlights {
+    return Intl.message(
+      'Mental Health: Highlights',
+      name: 'mentalHealthHighlights',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Soul Care: Life Balance`
+  String get soulCareBalance {
+    return Intl.message(
+      'Soul Care: Life Balance',
+      name: 'soulCareBalance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily Mental Protection`
+  String get dailyMentalProtection {
+    return Intl.message(
+      'Daily Mental Protection',
+      name: 'dailyMentalProtection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connect Soul with Life`
+  String get connectSoulLife {
+    return Intl.message(
+      'Connect Soul with Life',
+      name: 'connectSoulLife',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Effective Stress Relief`
+  String get stressRelief {
+    return Intl.message(
+      'Effective Stress Relief',
+      name: 'stressRelief',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mental Recovery Journey`
+  String get mentalRecoveryJourney {
+    return Intl.message(
+      'Mental Recovery Journey',
+      name: 'mentalRecoveryJourney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enhance Mental Wellbeing`
+  String get enhanceMentalHealth {
+    return Intl.message(
+      'Enhance Mental Wellbeing',
+      name: 'enhanceMentalHealth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Positive Thinking: Key to Soul Health`
+  String get positiveThinkingKey {
+    return Intl.message(
+      'Positive Thinking: Key to Soul Health',
+      name: 'positiveThinkingKey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Protect the Soul from Crises`
+  String get protectSoulFromCrisis {
+    return Intl.message(
+      'Protect the Soul from Crises',
+      name: 'protectSoulFromCrisis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unlock Mental Blockages`
+  String get unlockMentalBlocks {
+    return Intl.message(
+      'Unlock Mental Blockages',
+      name: 'unlockMentalBlocks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Joyful Living: Soul Energy`
+  String get joyfulLifeEnergy {
+    return Intl.message(
+      'Joyful Living: Soul Energy',
+      name: 'joyfulLifeEnergy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Self-Care for the Soul`
+  String get selfCareSoul {
+    return Intl.message(
+      'Self-Care for the Soul',
+      name: 'selfCareSoul',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Balance the Soul in Society`
+  String get balanceSoulInSociety {
+    return Intl.message(
+      'Balance the Soul in Society',
+      name: 'balanceSoulInSociety',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Immerse in Joy`
+  String get immerseInJoy {
+    return Intl.message(
+      'Immerse in Joy',
+      name: 'immerseInJoy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Improve Mental Wellness`
+  String get improveMentalWellness {
+    return Intl.message(
+      'Improve Mental Wellness',
+      name: 'improveMentalWellness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discover the Inner Self`
+  String get discoverInnerSelf {
+    return Intl.message(
+      'Discover the Inner Self',
+      name: 'discoverInnerSelf',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Awaken Inner Faith`
+  String get awakenInnerFaith {
+    return Intl.message(
+      'Awaken Inner Faith',
+      name: 'awakenInnerFaith',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Life Goals`
+  String get setLifeGoals {
+    return Intl.message(
+      'Set Life Goals',
+      name: 'setLifeGoals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are an emotion analysis expert. Based on the user story provided, suggest the most appropriate emotion from the given list.`
+  String get emotion_analysis_system_role {
+    return Intl.message(
+      'You are an emotion analysis expert. Based on the user story provided, suggest the most appropriate emotion from the given list.',
+      name: 'emotion_analysis_system_role',
+      desc: 'System role for emotion analysis prompt',
+      args: [],
+    );
+  }
+
+  /// `User story`
+  String get emotion_analysis_user_story {
+    return Intl.message(
+      'User story',
+      name: 'emotion_analysis_user_story',
+      desc: 'Label for user story in prompt',
+      args: [],
+    );
+  }
+
+  /// `Available emotions`
+  String get emotion_analysis_available_emotions {
+    return Intl.message(
+      'Available emotions',
+      name: 'emotion_analysis_available_emotions',
+      desc: 'Label for available emotions list',
+      args: [],
+    );
+  }
+
+  /// `Instructions`
+  String get emotion_analysis_instructions {
+    return Intl.message(
+      'Instructions',
+      name: 'emotion_analysis_instructions',
+      desc: 'Instructions section title',
+      args: [],
+    );
+  }
+
+  /// `Analyze the emotional tone and context of the story`
+  String get emotion_analysis_instruction_1 {
+    return Intl.message(
+      'Analyze the emotional tone and context of the story',
+      name: 'emotion_analysis_instruction_1',
+      desc: 'First instruction for emotion analysis',
+      args: [],
+    );
+  }
+
+  /// `Choose ONLY ONE emotion from the provided list`
+  String get emotion_analysis_instruction_2 {
+    return Intl.message(
+      'Choose ONLY ONE emotion from the provided list',
+      name: 'emotion_analysis_instruction_2',
+      desc: 'Second instruction for emotion analysis',
+      args: [],
+    );
+  }
+
+  /// `Respond with ONLY the emotion name (no explanations)`
+  String get emotion_analysis_instruction_3 {
+    return Intl.message(
+      'Respond with ONLY the emotion name (no explanations)',
+      name: 'emotion_analysis_instruction_3',
+      desc: 'Third instruction for emotion analysis',
+      args: [],
+    );
+  }
+
+  /// `If unsure, choose the closest matching emotion`
+  String get emotion_analysis_instruction_4 {
+    return Intl.message(
+      'If unsure, choose the closest matching emotion',
+      name: 'emotion_analysis_instruction_4',
+      desc: 'Fourth instruction for emotion analysis',
+      args: [],
+    );
+  }
+
+  /// `Response`
+  String get emotion_analysis_response {
+    return Intl.message(
+      'Response',
+      name: 'emotion_analysis_response',
+      desc: 'Response label in prompt',
+      args: [],
+    );
+  }
+
+  /// `neutral`
+  String get emotion_default {
+    return Intl.message(
+      'neutral',
+      name: 'emotion_default',
+      desc: 'Default emotion when analysis fails',
+      args: [],
+    );
+  }
+
+  /// `Listening Corner`
+  String get listening_corner {
+    return Intl.message(
+      'Listening Corner',
+      name: 'listening_corner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tell AI your story today`
+  String get tell_ai_your_story {
+    return Intl.message(
+      'Tell AI your story today',
+      name: 'tell_ai_your_story',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AI will analyze and suggest the most suitable emotion for you 🎯`
+  String get ai_analyze_description {
+    return Intl.message(
+      'AI will analyze and suggest the most suitable emotion for you 🎯',
+      name: 'ai_analyze_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Today I feel...\n\nExample: "Today I feel very happy because I met my long-time friends..."`
+  String get story_input_placeholder {
+    return Intl.message(
+      'Today I feel...\n\nExample: "Today I feel very happy because I met my long-time friends..."',
+      name: 'story_input_placeholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Listening...`
+  String get listening_status {
+    return Intl.message(
+      'Listening...',
+      name: 'listening_status',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap to speak`
+  String get tap_to_speak {
+    return Intl.message(
+      'Tap to speak',
+      name: 'tap_to_speak',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AI is thinking...`
+  String get ai_thinking {
+    return Intl.message(
+      'AI is thinking...',
+      name: 'ai_thinking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Analyze & Suggest Emotion`
+  String get analyze_button {
+    return Intl.message(
+      'Analyze & Suggest Emotion',
+      name: 'analyze_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your story`
+  String get empty_story_toast {
+    return Intl.message(
+      'Please enter your story',
+      name: 'empty_story_toast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🤖 AI Suggestion`
+  String get ai_suggestion_title {
+    return Intl.message(
+      '🤖 AI Suggestion',
+      name: 'ai_suggestion_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Based on your story, AI thinks you are feeling:`
+  String get ai_suggestion_content {
+    return Intl.message(
+      'Based on your story, AI thinks you are feeling:',
+      name: 'ai_suggestion_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose Again`
+  String get choose_again_button {
+    return Intl.message(
+      'Choose Again',
+      name: 'choose_again_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select This Emotion`
+  String get select_emotion_button {
+    return Intl.message(
+      'Select This Emotion',
+      name: 'select_emotion_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission Required!`
+  String get permission_required_title {
+    return Intl.message(
+      'Permission Required!',
+      name: 'permission_required_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Microphone permission is needed to listen to your story. Please grant permission in settings!`
+  String get permission_required_content {
+    return Intl.message(
+      'Microphone permission is needed to listen to your story. Please grant permission in settings!',
+      name: 'permission_required_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel_button {
+    return Intl.message('Cancel', name: 'cancel_button', desc: '', args: []);
+  }
+
+  /// `Open Settings`
+  String get open_settings_button {
+    return Intl.message(
+      'Open Settings',
+      name: 'open_settings_button',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

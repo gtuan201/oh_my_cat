@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+
 import '../../gen/assets.gen.dart';
+import '../../generated/l10n.dart';
 
 class SelfCare {
   final int id;
@@ -14,7 +17,7 @@ class SelfCare {
   });
 }
 
-List<SelfCare> createSelfCareList() {
+List<SelfCare> createSelfCareList(BuildContext context) {
   List<String> listSelfCare = [
     "https://www.johas.go.jp/Portals/0/data0/sanpo/pdf/vietnamese_selfcare.pdf",
     "https://moet.gov.vn/content/vanban/Lists/VBDH/Attachments/3584/hoc-phan-5full16012024-3173527.pdf",
@@ -57,26 +60,27 @@ List<SelfCare> createSelfCareList() {
     Assets.image.selfcarePoster18,
   ];
 
-  List<String> titles = [
-    "Sức Khoẻ Tâm Lý: Điểm Nhấn",
-    "Chăm Sóc Tâm Hồn: Cân Bằng Sống",
-    "Bảo Vệ Tâm Lý Hằng Ngày",
-    "Kết Nối Tâm Hồn Với Cuộc Sống",
-    "Giải Tỏa Stress Hiệu Quả",
-    "Hành Trình Hồi Phục Tâm Lý",
-    "Tăng Cường Sức Khoẻ Tinh Thần",
-    "Tư Duy Tích Cực: Chìa Khóa Sức Khoẻ Tâm Hồn",
-    "Bảo Vệ Tâm Hồn Trước Biến Cố",
-    "Tháo Gỡ Bế Tắc Tâm Lý",
-    "Sống Vui Vẻ: Năng Lượng Tâm Hồn",
-    "Chăm Sóc Bản Thân Tâm Hồn",
-    "Cân Bằng Tâm Hồn Trong Xã Hội",
-    "Đắm Mình Trong Niềm Vui",
-    "Cải Thiện Sức Khoẻ Tâm Lý",
-    "Khám Phá Bản Thân Tâm Lý",
-    "Đánh Thức Niềm Tin Tâm Hồn",
-    "Thiết Lập Mục Tiêu Sống"
+  final titles = [
+    S.of(context).mentalHealthHighlights,
+    S.of(context).soulCareBalance,
+    S.of(context).dailyMentalProtection,
+    S.of(context).connectSoulLife,
+    S.of(context).stressRelief,
+    S.of(context).mentalRecoveryJourney,
+    S.of(context).enhanceMentalHealth,
+    S.of(context).positiveThinkingKey,
+    S.of(context).protectSoulFromCrisis,
+    S.of(context).unlockMentalBlocks,
+    S.of(context).joyfulLifeEnergy,
+    S.of(context).selfCareSoul,
+    S.of(context).balanceSoulInSociety,
+    S.of(context).immerseInJoy,
+    S.of(context).improveMentalWellness,
+    S.of(context).discoverInnerSelf,
+    S.of(context).awakenInnerFaith,
+    S.of(context).setLifeGoals,
   ];
+
 
   List<SelfCare> selfCareList = [];
 
