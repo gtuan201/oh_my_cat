@@ -19,8 +19,8 @@ class SelfCareScreen extends StatelessWidget {
               childAspectRatio: 0.7,
             ),
             delegate: SliverChildBuilderDelegate(
-                  (context, index) => ItemSelfCare(selfCare: createSelfCareList()[index]),
-              childCount: createSelfCareList().length,
+                  (context, index) => ItemSelfCare(selfCare: createSelfCareList(context)[index]),
+              childCount: createSelfCareList(context).length,
             ),
           ),
         ),

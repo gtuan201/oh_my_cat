@@ -441,10 +441,10 @@ class _InputInfoMoodWidgetState extends State<InputInfoMoodWidget> {
                         style: const TextStyle(color: Colors.red,fontWeight: FontWeight.w600),),
                       onTap: () {
                         Navigator.pop(context);
-                         showConfirmationDialog(context).then((value) {
+                         showConfirmationDialog(context).then((value) async {
                           if(value == true){
-                            contextParent.read<HomeProvider>().removeMood(widget.mood!);
-                            Navigator.of(contextParent).pop({Constant.showToast: true, Constant.message: S.of(context).success_delete});
+                            await contextParent.read<HomeProvider>().removeMood(widget.mood!);
+                            Navigator.of(contextParent).pop({Constant.showToast: true, Constant.message: S.of(Get.context!).success_delete});
                           }
                         });
                       },

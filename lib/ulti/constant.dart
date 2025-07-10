@@ -6,7 +6,9 @@ import '../gen/assets.gen.dart';
 class Constant{
 
   static const String BASE_URL_MAP = "https://nominatim.openstreetmap.org";
+  static const String AI_URL = 'https://openrouter.ai';
   static const String GET_ADDRESS = "reverse.php";
+  static const String ENDPOINT_AI = 'api/v1/chat/completions';
 
   static const int ALIGN_CENTER = 0;
   static const int ALIGN_LEFT = 1;
@@ -113,6 +115,7 @@ class Constant{
   static const String notEnrolled = "NotEnrolled";
   static const String languages = "Languages";
   static const String googleApiKey = "AIzaSyC1sswvFkexF72r2-UWCwPM1vPmW_QHo84";
+  static const String aiApiKey = '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';
   static const int addMood = 0;
   static const int widget = 1;
   static const int forgotPassword = 2;

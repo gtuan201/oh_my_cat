@@ -16,10 +16,10 @@ class ApiClient {
     return _handleResponse(response);
   }
 
-  Future<Response> post(String endpoint, {Map<String, dynamic>? body}) async {
+  Future<Response> post(String endpoint, {Map<String, dynamic>? body, Map<String,String>? headers,String? url}) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/$endpoint'),
-      headers: {'Content-Type': 'application/json'},
+      Uri.parse('${url ?? baseUrl}/$endpoint'),
+      headers: headers ?? {'Content-Type': 'application/json'},
       body: jsonEncode(body),
     );
     return _handleResponse(response);

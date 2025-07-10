@@ -101,7 +101,7 @@ class AllScreenState extends State<AllScreen> with AutomaticKeepAliveClientMixin
                 itemBuilder: (context,index)
                 => Container(
                   padding: EdgeInsets.only(left: index == 0 ? 24 : 0, right: index == 4 ? 24 : 0),
-                    child: PdfThumbnail(selfCare: createSelfCareList()[index])),
+                    child: PdfThumbnail(selfCare: createSelfCareList(context)[index])),
                 separatorBuilder: (BuildContext context, int index) {
                   return const SizedBox(width: 14,);
                 },

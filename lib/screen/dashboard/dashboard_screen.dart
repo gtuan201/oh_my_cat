@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mood_press/helper/my_ad_manager.dart';
 import 'package:mood_press/providers/backup_provider.dart';
 import 'package:mood_press/providers/local_auth_provider.dart';
 import 'package:mood_press/screen/healing/healing_screen.dart';
@@ -45,6 +46,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
       if(widget.isRestart){
         showDialogRestoreData();
       }
+    });
+    Get.find<MyAdManager>().loadAd().then((_){
+      Get.find<MyAdManager>().showAd();
     });
   }
 

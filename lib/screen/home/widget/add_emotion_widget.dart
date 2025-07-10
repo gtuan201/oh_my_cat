@@ -3,7 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:mood_press/gen/assets.gen.dart';
 import 'package:mood_press/providers/emoji_provider.dart';
+import 'package:mood_press/screen/home/widget/ai_suggestion_screen.dart';
 import 'package:mood_press/screen/home/widget/custom_tooltip.dart';
 import 'package:mood_press/screen/home/widget/input_info_mood_widget.dart';
 import 'package:mood_press/screen/setting/emoji/emoji_screen.dart';
@@ -56,6 +58,15 @@ class CircleListAnimationState extends State<AddEmotionWidget> {
           ),
         ),
         actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 8),
+            child: InkWell(
+                onTap: (){
+                  Get.to(() => const AIMoodSuggestionScreen());
+                },
+                child: Assets.image.computerCat.svg(width: 32),
+            ),
+          ),
           Container(
             margin: const EdgeInsets.only(right: 6),
             child: IconButton(
